@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ResponseSocketMapper">
+<mapper namespace="FullChannelXmlMapper">
 	
 	<!--表名 -->
 	<sql id="tableName">
-		SOCKET_RESPONSESOCKET
+		XML_FULLCHANNELXML
 	</sql>
 	
 	<!-- 字段 -->
 	<sql id="Field">
 		CONTENT,	
-		STATE,
-		FILEDMAP,	
 		CREATETIME,	
-		RESPONSESOCKET_ID
+		STATE,	
+		FULLCHANNELXML_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
 		#{CONTENT},	
-		#{STATE},
-		#{FILEDMAP},	
 		#{CREATETIME},	
-		#{RESPONSESOCKET_ID}
+		#{STATE},	
+		#{FULLCHANNELXML_ID}
 	</sql>
 	
 	<!-- 新增-->
@@ -41,7 +39,7 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			RESPONSESOCKET_ID = #{RESPONSESOCKET_ID}
+			FULLCHANNELXML_ID = #{FULLCHANNELXML_ID}
 	</delete>
 	
 	<!-- 修改 -->
@@ -50,12 +48,11 @@
 		<include refid="tableName"></include>
 		set 
 			CONTENT = #{CONTENT},
-			STATE = #{STATE},
-			FILEDMAP =#{FILEDMAP},
 			CREATETIME = #{CREATETIME},
-		RESPONSESOCKET_ID = RESPONSESOCKET_ID
+			STATE = #{STATE},
+		FULLCHANNELXML_ID = FULLCHANNELXML_ID
 		where 
-		RESPONSESOCKET_ID = #{RESPONSESOCKET_ID}
+		FULLCHANNELXML_ID = #{FULLCHANNELXML_ID}
 	</update>
 	
 	<!-- 通过ID获取数据 -->
@@ -65,7 +62,7 @@
 		from 
 		<include refid="tableName"></include>
 		where 
-			RESPONSESOCKET_ID = #{RESPONSESOCKET_ID}
+			FULLCHANNELXML_ID = #{FULLCHANNELXML_ID}
 	</select>
 	
 	<!-- 列表 -->
@@ -78,13 +75,13 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件-->
+					STATE LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
+					CONTENT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				
 				)
-		</if> order by CREATETIME desc
+		</if>
 	</select>
 	
 	<!-- 列表(全部) -->
@@ -100,7 +97,7 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			RESPONSESOCKET_ID in
+			FULLCHANNELXML_ID in
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
                  #{item}
 		</foreach>

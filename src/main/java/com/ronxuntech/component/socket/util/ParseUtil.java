@@ -6,11 +6,17 @@ package com.ronxuntech.component.socket.util;
  *
  */
 public class ParseUtil {
-
+	
+	/**
+	 * 2进制转换成十六进制
+	 * @param bString
+	 * @return
+	 */
     public static String binary2hex(String bString)  
     {  
         if (bString == null || bString.equals("") || bString.length() % 8 != 0)  
             return null;  
+      
         StringBuffer tmp = new StringBuffer();  
         int iTmp = 0;  
         for (int i = 0; i < bString.length(); i += 4)  
@@ -62,15 +68,20 @@ public class ParseUtil {
      */
     public static String stringToHex(String str){
 
-  	  char[] chars = str.toCharArray();
+    	  char[] chars = str.toCharArray();
 
-  	  StringBuffer hex = new StringBuffer();
-  	  for(int i = 0; i < chars.length; i++){
-  	    hex.append(Integer.toHexString((int)chars[i]));
-  	  }
+    	  StringBuffer hex = new StringBuffer();
+    	  for(int i = 0; i < chars.length; i++){
+    		String s=Integer.toHexString((int)chars[i]);
+    		//前补0
+    		if(s.length()%2>0){
+    			s="0"+s;
+    		}
+    		hex.append(s);
+    	  }
 
-  	  return hex.toString();
-  	 }
+    	  return hex.toString();
+    	 }
     /**
      * 16进制转acssi
      * @param hex
@@ -96,9 +107,16 @@ public class ParseUtil {
 
   	  return sb.toString();
   	}
+    
+    /*
+     *整型转换成16进制 
+     */
+    
     public static String intToHex(int i){
     	return Integer.toHexString(i);
     }
+    
+    
     public static void main(String[] args)  
     {  
     	int n1 = 14;
@@ -136,6 +154,8 @@ public class ParseUtil {
         String bitMap128Str=(hexToString("20")); 
         System.out.println(bitMap128Str);
        
+        String ab=binary2hex("11101111");
+        System.out.println(ab);
         String a="11110010001110100100010010000001100010001100000110000000000100000000000000000000000000000000000000010010000000000000000000000001";
         for(int i=0;i<a.length();i++){
         	if(a.charAt(i)=='1'){

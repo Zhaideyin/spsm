@@ -48,8 +48,9 @@
 								 	<select class="chosen-select form-control" name="name" id="id" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
 									<option value=""></option>
 									<option value="">全部</option>
-									<option value="">1</option>
-									<option value="">2</option>
+									<option value="PORT">端口号</option>
+									<option value="AFFECT">用途</option>
+									<option value="STATE">状态</option>
 								  	</select>
 								</td>
 								<c:if test="${QX.cha == 1 }">
@@ -69,6 +70,7 @@
 									<th class="center">端口</th>
 									<th class="center">用途</th>
 									<th class="center">状态</th>
+									<th class="center">规则</th>
 									<th class="center">创建时间</th>
 									<th class="center">操作</th>
 								</tr>
@@ -92,6 +94,7 @@
 											<td class='center'>${var.PORT}</td>
 											<td class='center'>${var.AFFECT}</td>
 											<td class='center'>${var.STATE}</td>
+											<td class='center'>${var.RULE}</td>
 											<td class='center'>${var.CREATETIME}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
@@ -335,12 +338,12 @@
 		}
 		
 		//修改
-		function edit(Id){
+		function edit(Id,rule){
 			 top.jzts();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
-			 diag.URL = '<%=basePath%>socketport/goEdit.do?SOCKETPORT_ID='+Id;
+			 diag.URL = '<%=basePath%>socketport/goEdit.do?SOCKETPORT_ID='+Id+'&RULE='+rule;
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.CancelEvent = function(){ //关闭事件

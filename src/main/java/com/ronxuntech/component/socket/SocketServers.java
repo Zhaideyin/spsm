@@ -51,5 +51,32 @@ public class SocketServers {
             bossGroup.shutdownGracefully();  
         }  
     }  
+    
+    //开启端口方法
+    public void start(int port,String path) throws Exception {  
+        EventLoopGroup bossGroup = new NioEventLoopGroup();  
+        EventLoopGroup workerGroup = new NioEventLoopGroup();  
+        try {  
+        	System.out.println(path+"socketServer-------------------------------------");
+            ServerBootstrap b = new ServerBootstrap();  
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)  
+                    .childHandler(new ChannelInitializer<SocketChannel>() {  
+                        @Override  
+                        public void initChannel(SocketChannel ch)  
+                                throws Exception {  
+                            // 注册handler  
+                            ch.pipeline().addLast(new ServerInHandler(path));  
+                        }  
+                    }).option(ChannelOption.SO_BACKLOG, 128)  
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);  
   
+            f = b.bind(port).sync();  
+            f.channel().closeFuture().sync();  
+        } finally {  
+            workerGroup.shutdownGracefully();  
+            bossGroup.shutdownGracefully();  
+        }  
+    }  
+    
+ 
 }  

@@ -10,8 +10,9 @@
 	<!-- 字段 -->
 	<sql id="Field">
 		PORT,
+		STATE,
+		RULE,	
 		AFFECT,	
-		STATE,	
 		CREATETIME,	
 		SOCKETPORT_ID
 	</sql>
@@ -20,6 +21,7 @@
 	<sql id="FieldValue">
 		#{PORT},	
 		#{STATE},
+		#{RULE},
 		#{AFFECT},	
 		#{CREATETIME},	
 		#{SOCKETPORT_ID}
@@ -52,6 +54,7 @@
 			PORT = #{PORT},
 			STATE = #{STATE},
 			AFFECT = #{AFFECT},
+			RULE = #{RULE},
 			CREATETIME = #{CREATETIME},
 		SOCKETPORT_ID = SOCKETPORT_ID
 		where 
@@ -68,6 +71,20 @@
 			SOCKETPORT_ID = #{SOCKETPORT_ID}
 	</select>
 	
+	<!-- 通过状态获取 数据-->
+	
+	<select id="findByState" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			RULE = #{RULE}
+	</select>
+		
+	<!-- 通过rule获取 数据-->
+	
+		
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		select
@@ -78,11 +95,11 @@
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+<!-- 					根据需求自己加检索条件 -->
+					AFFECT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
+					PORT LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				
 				)
 		</if>
 	</select>

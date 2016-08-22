@@ -1,11 +1,11 @@
 package com.ronxuntech.component.socket.util;
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -30,7 +30,8 @@ public class IsoChannelMessageFactory {
 	private String HEADER="603100310032";//12位BCD，6字节
 	
 	public IsoChannelMessageFactory(String path){
-		this.path=getClass().getResource("/").getFile().toString()+path;
+//		this.path=getClass().getResource("/").getFile().toString()+path;
+		this.path=path;
 	}
 
 	// 8583报文初始位图:128位01字符串
@@ -49,6 +50,8 @@ public class IsoChannelMessageFactory {
 	 * @return
 	 */
 	public LinkedHashMap<String,Object> unpack(byte[] bytes,int len){
+		try{
+			
 		//bitmap为16字节的ASCII，截取后转换成16进制
 		int bitMapLength=32;
 		//重新格式化为ASCII(4字节)+16进制(16字节)+ASCII+16进制(8字节)
@@ -122,6 +125,10 @@ public class IsoChannelMessageFactory {
 			e.printStackTrace();
 		}
 		return filedMap;
+}catch(Exception e){
+			System.out.println("ex");
+		}
+		return null;
 	}
 	/**
 	 * 组装报文
@@ -166,8 +173,6 @@ public class IsoChannelMessageFactory {
 		}
 		return null;
 	}
-	
-	
 	public Map<String,Object> formatValueTo8583(LinkedHashMap<String,Object> filedMap,String  bitMap){
 		Map<String,Object> map=new HashMap<String,Object>();
 		LinkedHashMap<String,Object> formatedFiledMap=new LinkedHashMap<String,Object>();

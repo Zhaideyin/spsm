@@ -11,7 +11,8 @@
 	<sql id="Field">
 		CONTENT,	
 		STATE,	
-		CREATETIME,	
+		CREATETIME,
+		FILEDMAP,	
 		REQUESTSOCKET_ID
 	</sql>
 	
@@ -19,7 +20,8 @@
 	<sql id="FieldValue">
 		#{CONTENT},	
 		#{STATE},	
-		#{CREATETIME},	
+		#{CREATETIME},
+		#{FILEDMAP},
 		#{REQUESTSOCKET_ID}
 	</sql>
 	
@@ -50,6 +52,7 @@
 			CONTENT = #{CONTENT},
 			STATE = #{STATE},
 			CREATETIME = #{CREATETIME},
+			FILEDMAP =#{FILEDMAP},
 		REQUESTSOCKET_ID = REQUESTSOCKET_ID
 		where 
 		REQUESTSOCKET_ID = #{REQUESTSOCKET_ID}
@@ -81,7 +84,7 @@
 					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
 				-->
 				)
-		</if>
+		</if>order by CREATETIME desc
 	</select>
 	
 	<!-- 列表(全部) -->

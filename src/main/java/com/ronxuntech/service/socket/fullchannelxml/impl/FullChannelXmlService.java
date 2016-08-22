@@ -1,4 +1,4 @@
-package com.ronxuntech.service.socket.socketport.impl;
+package com.ronxuntech.service.socket.fullchannelxml.impl;
 
 import java.util.List;
 import javax.annotation.Resource;
@@ -6,36 +6,46 @@ import org.springframework.stereotype.Service;
 import com.ronxuntech.dao.DaoSupport;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.util.PageData;
-import com.ronxuntech.service.socket.fullchannelxml.impl.FullChannelXmlService;
+import com.ronxuntech.service.socket.fullchannelxml.FullChannelXmlManager;
 import com.ronxuntech.service.socket.socketport.SocketPortManager;
 
 /** 
- * 说明： socket端口
+ * 说明： 全渠道配置文件
  * 创建人：Liuxh
- * 创建时间：2016-08-10
+ * 创建时间：2016-08-15
  * @version
  */
-@Service("socketportService")
-public class SocketPortService implements SocketPortManager{
+@Service("fullchannelxmlService")
+public class FullChannelXmlService implements FullChannelXmlManager{
 
 	@Resource(name = "daoSupport")
 	private DaoSupport dao;
 	
-	private FullChannelXmlService fullchannelxmlService;
+	@Resource(name="socketportService")
+	private SocketPortManager socketportService;
 	/**新增
 	 * @param pd
 	 * @throws Exception
 	 */
 	public void save(PageData pd)throws Exception{
-		dao.save("SocketPortMapper.save", pd);
+		dao.save("FullChannelXmlMapper.save", pd);
 	}
 	
 	/**删除
 	 * @param pd
 	 * @throws Exception
 	 */
-	public void delete(PageData pd)throws Exception{
-		dao.delete("SocketPortMapper.delete", pd);
+	public boolean delete(PageData pd)throws Exception{
+		//删除前，先判断如果端口中如果rule中存在有和fullchannel中state相同的，则不能删除
+		List<PageData> list =socketportService.findByState(pd);
+		boolean flag ;
+		if(list.size()==0){
+			dao.delete("FullChannelXmlMapper.delete", pd);
+			flag=true;
+		}else{
+			flag=false;
+		}
+		return flag;
 	}
 	
 	/**修改
@@ -43,7 +53,7 @@ public class SocketPortService implements SocketPortManager{
 	 * @throws Exception
 	 */
 	public void edit(PageData pd)throws Exception{
-		dao.update("SocketPortMapper.edit", pd);
+		dao.update("FullChannelXmlMapper.edit", pd);
 	}
 	
 	/**列表
@@ -52,7 +62,7 @@ public class SocketPortService implements SocketPortManager{
 	 */
 	@SuppressWarnings("unchecked")
 	public List<PageData> list(Page page)throws Exception{
-		return (List<PageData>)dao.findForList("SocketPortMapper.datalistPage", page);
+		return (List<PageData>)dao.findForList("FullChannelXmlMapper.datalistPage", page);
 	}
 	
 	/**列表(全部)
@@ -61,7 +71,7 @@ public class SocketPortService implements SocketPortManager{
 	 */
 	@SuppressWarnings("unchecked")
 	public List<PageData> listAll(PageData pd)throws Exception{
-		return (List<PageData>)dao.findForList("SocketPortMapper.listAll", pd);
+		return (List<PageData>)dao.findForList("FullChannelXmlMapper.listAll", pd);
 	}
 	
 	/**通过id获取数据
@@ -69,7 +79,7 @@ public class SocketPortService implements SocketPortManager{
 	 * @throws Exception
 	 */
 	public PageData findById(PageData pd)throws Exception{
-		return (PageData)dao.findForObject("SocketPortMapper.findById", pd);
+		return (PageData)dao.findForObject("FullChannelXmlMapper.findById", pd);
 	}
 	
 	/**批量删除
@@ -77,14 +87,7 @@ public class SocketPortService implements SocketPortManager{
 	 * @throws Exception
 	 */
 	public void deleteAll(String[] ArrayDATA_IDS)throws Exception{
-		dao.delete("SocketPortMapper.deleteAll", ArrayDATA_IDS);
-	}
-	/**
-	 * 通过 说明来查询
-	 * 
-	 */
-	public List<PageData> findByState(PageData pd) throws Exception {
-		return (List<PageData>)dao.findForList("SocketPortMapper.findByState", pd);
+		dao.delete("FullChannelXmlMapper.deleteAll", ArrayDATA_IDS);
 	}
 	
 }

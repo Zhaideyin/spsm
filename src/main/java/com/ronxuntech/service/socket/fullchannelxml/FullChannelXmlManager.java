@@ -1,16 +1,16 @@
-package com.ronxuntech.service.socket.socketport;
+package com.ronxuntech.service.socket.fullchannelxml;
 
 import java.util.List;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.util.PageData;
 
 /** 
- * 说明： socket端口接口
+ * 说明： 全渠道配置文件接口
  * 创建人：Liuxh
- * 创建时间：2016-08-10
+ * 创建时间：2016-08-15
  * @version
  */
-public interface SocketPortManager{
+public interface FullChannelXmlManager{
 
 	/**新增
 	 * @param pd
@@ -22,7 +22,7 @@ public interface SocketPortManager{
 	 * @param pd
 	 * @throws Exception
 	 */
-	public void delete(PageData pd)throws Exception;
+	public boolean delete(PageData pd)throws Exception;
 	
 	/**修改
 	 * @param pd
@@ -47,14 +47,6 @@ public interface SocketPortManager{
 	 * @throws Exception
 	 */
 	public PageData findById(PageData pd)throws Exception;
-	/**
-	 * 通过 说明 查询
-	 * @param pd
-	 * @return
-	 * @throws Exception
-	 */
-	public List<PageData> findByState(PageData pd)throws Exception;
-	
 	
 	/**批量删除
 	 * @param ArrayDATA_IDS

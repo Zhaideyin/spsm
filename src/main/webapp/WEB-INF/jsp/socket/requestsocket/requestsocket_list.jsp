@@ -67,7 +67,8 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center" style="width:75%;">报文内容</th>
+									<th class="center" style="width:65%;">报文内容</th>
+									<td class='center'>map</td>
 									<th class="center">状态</th>
 									<th class="center">创建时间</th>
 									<th class="center">操作</th>
@@ -86,6 +87,7 @@
 											</td>
 											<td class='center' style="width: 30px;">${vs.index+1}</td>
 											<td class='left' style="TABLE-LAYOUT:fixed;WORD-BREAK:break-all;font-size:4px"> ${var.CONTENT}</td>
+											<td class='center'>${var.FILEDMAP}</td>
 											<td class='center'>${var.STATE}</td>
 											<td class='center'>${var.CREATETIME}</td>
 											<td class="center">

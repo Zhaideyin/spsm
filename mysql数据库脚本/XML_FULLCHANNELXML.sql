@@ -1,0 +1,14 @@
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `XML_FULLCHANNELXML`
+-- ----------------------------
+DROP TABLE IF EXISTS `XML_FULLCHANNELXML`;
+CREATE TABLE `XML_FULLCHANNELXML` (
+ 		`FULLCHANNELXML_ID` varchar(100) NOT NULL,
+		`CONTENT` varchar(255) DEFAULT NULL COMMENT 'xml内容',
+		`CRATETIME` varchar(32) DEFAULT NULL COMMENT '创建时间',
+		`STATE` varchar(255) DEFAULT NULL COMMENT '说明',
+  		PRIMARY KEY (`FULLCHANNELXML_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -31,7 +31,7 @@
 						<div class="col-xs-12">
 							
 						<!-- 检索  -->
-						<form action="responsesocket/list.do" method="post" name="Form" id="Form">
+						<form action="fullchannelxml/list.do" method="post" name="Form" id="Form">
 						<table style="margin-top:5px;">
 							<tr>
 								<td>
@@ -48,8 +48,8 @@
 								 	<select class="chosen-select form-control" name="name" id="id" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
 									<option value=""></option>
 									<option value="">全部</option>
-									<option value="">1</option>
-									<option value="">2</option>
+									<option value="STATE">说明</option>
+									<option value="CONTENT">内容</option>
 								  	</select>
 								</td>
 								<c:if test="${QX.cha == 1 }">
@@ -67,10 +67,9 @@
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center" style="width:65%;">报文内容</th>
-									<th class="center">map</th>
-									<th class="center">状态</th>
+									<th class="center">xml内容</th>
 									<th class="center">创建时间</th>
+									<th class="center">说明</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -83,21 +82,27 @@
 									<c:forEach items="${varList}" var="var" varStatus="vs">
 										<tr>
 											<td class='center'>
-												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.RESPONSESOCKET_ID}" class="ace" /><span class="lbl"></span></label>
+												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.FULLCHANNELXML_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${vs.index+1}</td>
-											<td class='left' style="TABLE-LAYOUT:fixed;WORD-BREAK:break-all;font-size:5px">${var.CONTENT}</td>
-											<td class='center'>${var.FILEDMAP}</td>
-											<td class='center'>${var.STATE}</td>
+											<td class='center'> 
+											<!--不解析xml -->
+												<c:out escapeXml="true" value="${var.CONTENT }"></c:out>
+											</td>
 											<td class='center'>${var.CREATETIME}</td>
+											<td class='center'>${var.STATE}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-													
+													<c:if test="${QX.edit == 1 }">
+													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.FULLCHANNELXML_ID}');">
+														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
+													</a>
+													</c:if>
 													<c:if test="${QX.del == 1 }">
-													<a class="btn btn-xs btn-danger" onclick="del('${var.RESPONSESOCKET_ID}');">
+													<a class="btn btn-xs btn-danger" onclick="del('${var.FULLCHANNELXML_ID}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
 													</a>
 													</c:if>
@@ -111,7 +116,7 @@
 														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 															<c:if test="${QX.edit == 1 }">
 															<li>
-																<a style="cursor:pointer;" onclick="edit('${var.RESPONSESOCKET_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
+																<a style="cursor:pointer;" onclick="edit('${var.FULLCHANNELXML_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
 																	<span class="green">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</span>
@@ -120,7 +125,7 @@
 															</c:if>
 															<c:if test="${QX.del == 1 }">
 															<li>
-																<a style="cursor:pointer;" onclick="del('${var.RESPONSESOCKET_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
+																<a style="cursor:pointer;" onclick="del('${var.FULLCHANNELXML_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
 																	<span class="red">
 																		<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																	</span>
@@ -153,7 +158,9 @@
 						<table style="width:100%;">
 							<tr>
 								<td style="vertical-align:top;">
-									
+									<c:if test="${QX.add == 1 }">
+									<a class="btn btn-sm btn-success" onclick="add();">新增</a>
+									</c:if>
 									<c:if test="${QX.del == 1 }">
 									<a class="btn btn-sm btn-danger" onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除" ><i class='ace-icon fa fa-trash-o bigger-120'></i></a>
 									</c:if>
@@ -255,7 +262,7 @@
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
-			 diag.URL = '<%=basePath%>responsesocket/goAdd.do';
+			 diag.URL = '<%=basePath%>fullchannelxml/goAdd.do';
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.CancelEvent = function(){ //关闭事件
@@ -277,7 +284,7 @@
 			bootbox.confirm("确定要删除吗?", function(result) {
 				if(result) {
 					top.jzts();
-					var url = "<%=basePath%>responsesocket/delete.do?RESPONSESOCKET_ID="+Id+"&tm="+new Date().getTime();
+					var url = "<%=basePath%>fullchannelxml/delete.do?FULLCHANNELXML_ID="+Id+"&tm="+new Date().getTime();
 					$.get(url,function(data){
 						nextPage(${page.currentPage});
 					});
@@ -291,7 +298,7 @@
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
-			 diag.URL = '<%=basePath%>responsesocket/goEdit.do?RESPONSESOCKET_ID='+Id;
+			 diag.URL = '<%=basePath%>fullchannelxml/goEdit.do?FULLCHANNELXML_ID='+Id;
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.CancelEvent = function(){ //关闭事件
@@ -332,7 +339,7 @@
 							top.jzts();
 							$.ajax({
 								type: "POST",
-								url: '<%=basePath%>responsesocket/deleteAll.do?tm='+new Date().getTime(),
+								url: '<%=basePath%>fullchannelxml/deleteAll.do?tm='+new Date().getTime(),
 						    	data: {DATA_IDS:str},
 								dataType:'json',
 								//beforeSend: validateData,
@@ -351,7 +358,7 @@
 		
 		//导出excel
 		function toExcel(){
-			window.location.href='<%=basePath%>responsesocket/excel.do';
+			window.location.href='<%=basePath%>fullchannelxml/excel.do';
 		}
 	</script>
 
