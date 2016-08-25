@@ -1,51 +1,29 @@
 package com.sample
 import java.util.Date;
-import com.ronxuntech.component.socket.ServerInHandler.*;
+import com.ronxuntech.component.socket.ServerInHandler;
 import com.ronxuntech.component.socket.util.IsoChannelMessageFactory;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
- 
 rule "190000"
+no-loop true
     when
-        m : Message(m.getProcessCode().equals("190000"),myMessage : message)
+        m : Message(m.getProcessCode.equals("190000"),myMessage:message)
     then
-    	
         IsoChannelMessageFactory parseMessage=new IsoChannelMessageFactory(m.getPath());//8583配置xm文件
-        System.out.println("************************************************************");
-        System.out.println(m.getMessage().getBytes());
-        LinkedHashMap<Integer,Object> map = parseMessage.unpack(m.getMessage().getBytes(), 0);//解析包
-        //打包
-        System.out.println("-----------------------");
-         LinkedHashMap<Integer,Object>  data2=new LinkedHashMap<Integer,Object>();
-    	Date date=new Date();
-    	System.out.println("rule:date："+date);
-    	data2.put(3, map.get(3));
-    	data2.put(4, map.get(4));
-    	SimpleDateFormat df0 = new SimpleDateFormat("MMddHHmmss");
-    	SimpleDateFormat df1 = new SimpleDateFormat("HHmmss");
-    	SimpleDateFormat df2 = new SimpleDateFormat("MMdd");
-    	data2.put(7,df0.format(date));
-    	data2.put(12,df1.format(date));
-    	data2.put(13,df2.format(date));
-    	data2.put(15,map.get(15));
-    	data2.put(18,map.get(18));
-    	data2.put(25,map.get(25));
-    	data2.put(32, map.get(32));
-    	data2.put(33, map.get(33));
-    	data2.put(37, map.get(37));
-    	data2.put(41, map.get(41));
-    	data2.put(42, map.get(42));
-    	data2.put(48, map.get(48));
-    	data2.put(49, map.get(49));
-    	data2.put(60, map.get(60));
-    	data2.put(103, map.get(103));
-    	m.setBitmap(data2);
-        String response =new String(parseMessage.pack(map,"190000.xml",m.getMessage().toString()));
-        System.out.println(response);
-        m.setMessage(response);
-        
+        System.out.println(m.getPath());
+        System.out.println("接收到的报文"+myMessage);
+        LinkedHashMap<String, Object> map = m.getBitmap();//解析包
+        System.out.println("解析后得到的map: "+map.toString());
+        //获得报文的类型
+        String accept=m.getType(myMessage);
+		//设置返回类型
+	    m.setReturnType(m.reponseTypeByXml("channelReponse.xml", accept));
+	    m.setBitmap(map);
+        byte[] returnBytes=parseMessage.packNew(map,"190000.xml", m);
+        m.setMessage(new String(returnBytes));
         System.out.println("ok");
         update(m);
-        System.out.println("------helojihidfhihihidfhirhf-----------------");
+
 end
 
