@@ -10,10 +10,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class SocketServers {  
 	private ChannelFuture f=null;
+	
 	private SocketServers(){
 		
 	}
-	 
+	//单例模式 
     private static SocketServers socketServers=new SocketServers();  
     //静态工厂方法   
     public static SocketServers getInstance() {    
@@ -26,7 +27,11 @@ public class SocketServers {
     		f.channel().close();
     	}
 	}
-    //开启端口方法
+    /**
+     * 开启端口
+     * @param port
+     * @throws Exception
+     */
     public void start(int port) throws Exception {  
         EventLoopGroup bossGroup = new NioEventLoopGroup();  
         EventLoopGroup workerGroup = new NioEventLoopGroup();  
@@ -52,12 +57,16 @@ public class SocketServers {
         }  
     }  
     
-    //开启端口方法
+    /**
+     * 开启端口
+     * @param port
+     * @param path
+     * @throws Exception
+     */
     public void start(int port,String path) throws Exception {  
         EventLoopGroup bossGroup = new NioEventLoopGroup();  
         EventLoopGroup workerGroup = new NioEventLoopGroup();  
         try {  
-        	System.out.println(path+"socketServer-------------------------------------");
             ServerBootstrap b = new ServerBootstrap();  
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)  
                     .childHandler(new ChannelInitializer<SocketChannel>() {  
@@ -77,6 +86,4 @@ public class SocketServers {
             bossGroup.shutdownGracefully();  
         }  
     }  
-    
- 
 }  

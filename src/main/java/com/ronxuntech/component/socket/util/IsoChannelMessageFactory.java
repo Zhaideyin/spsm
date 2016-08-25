@@ -79,11 +79,12 @@ public class IsoChannelMessageFactory {
 			int pos = len+4+bitMapLength;
 	        for (int i = 0; i < bitMapStr.length(); i++) {
 	        	String filedValue = "";//字段值
-	        	String filedName = "Bit " + (i+1);
-	        	
+	        	String filedName ="Bit "+(i+1);
+//	        	System.out.println("filedname:"+filedName);
 		        if (i!=0&&bitMapStr.charAt(i) == '1') {
 		        	//获取域定义信息
 		        	Map<String,Object> field=getField(i+1);
+		        	System.out.println("field:"+field.get("id"));
 		        	String defType=field.get("type").toString();//类型定义例string
 					int defLen=(int) field.get("length");//长度定义,例20
 					boolean isFixLen=true;//是否定长判断
@@ -110,7 +111,7 @@ public class IsoChannelMessageFactory {
 
 					} else {//定长域
 						int defLen2 = defLen;
-						if(defType.startsWith("ascii")||defType.equals("b")){
+						if(defType.startsWith("ascii")||defType.equals("b")){//startsWith 测试直字符串否有指定前缀
 							defLen2=defLen2*2;
 						}
 						filedValue = new String(bytes, pos, defLen2, packet_encoding);

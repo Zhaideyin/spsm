@@ -85,10 +85,7 @@
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.FULLCHANNELXML_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${vs.index+1}</td>
-											<td class='center'> 
-											<!--不解析xml -->
-												<c:out escapeXml="true" value="${var.CONTENT }"></c:out>
-											</td>
+											<td class='center' style="width:65%;"> ${var.CONTENT }	</td>
 											<td class='center'>${var.CREATETIME}</td>
 											<td class='center'>${var.STATE}</td>
 											<td class="center">

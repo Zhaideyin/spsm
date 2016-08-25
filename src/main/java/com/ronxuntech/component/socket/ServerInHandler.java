@@ -82,15 +82,25 @@ public class ServerInHandler extends ChannelInboundHandlerAdapter {
         try{
         	factory=new IsoChannelMessageFactory(getFilePath());
 			map=factory.unpack(resultStr.getBytes(), 0);
-			  //接受8583的报文存入数据库
-			 pd.put("STATE","1");
+			//接受8583的报文存入数据库
+			if(map!=null){
+				pd.put("STATE","解析成功");
+			}else{
+				pd.put("STATE","解析失败");
+			}
+			System.out.println("****正常执行---------");
+			
         }catch(Exception e){
-        	 pd.put("STATE","0");
+        	System.out.println("***catch----------");
+        	 pd.put("STATE","解析失败");
         	 temp=0;
         }finally {
         	 pd.put("REQUESTSOCKET_ID", System.currentTimeMillis());
         	 pd.put("CONTENT", resultStr);
-        	 pd.put("FILEDMAP",map.toString());
+        	 System.out.println("map is empty:---");
+        	 if(map!=null){
+        		 pd.put("FILEDMAP",map.toString());
+        	 }
         	 pd.put("CREATETIME",new Date());
         	 requestsocketService.save(pd);
 		}
@@ -135,20 +145,27 @@ public class ServerInHandler extends ChannelInboundHandlerAdapter {
     		}
     		
             if(response!="" && response!=null){
-            	 // 在当前场景下，发送的数据必须转换成ByteBuf数组  
-                encoded = ctx.alloc().buffer(4 * response.length());  
-                encoded.writeBytes(response.getBytes()); 
-                //解析过后组装的报文，传给其他公司的
-                PageData pd1 = new PageData();
-                pd1.put("RESPONSESOCKET_ID",System.currentTimeMillis());
-                pd1.put("CONTENT", response);
-                pd1.put("STATE","1");
-                pd1.put("FILEDMAP",data2.toString());
-                pd1.put("CREATETIME",new Date());
-                responsesocketService.save(pd1);
+            	PageData pd1 = new PageData();
+            	try{
+	            	// 在当前场景下，发送的数据必须转换成ByteBuf数组  
+	                encoded = ctx.alloc().buffer(4 * response.length());  
+	                encoded.writeBytes(response.getBytes()); 
+	                //解析过后组装的报文，传给其他公司的
+	                pd1.put("RESPONSESOCKET_ID",System.currentTimeMillis());
+	                pd1.put("CONTENT", response);
+	                pd1.put("CREATETIME",new Date());
+	                pd1.put("FILEDMAP",data2.toString());
+	                pd1.put("STATE","组装成功");
+            	}catch (Exception e){
+            		pd1.put("STATE","组装失败");
+            	}finally{
+            		responsesocketService.save(pd1);
+            	}
             }
         }
-        ctx.write(encoded);  
+        if(encoded!=null  && encoded.toString()!=""){
+        	ctx.write(encoded);  
+        }
         ctx.flush();  
     }  
   

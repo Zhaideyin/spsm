@@ -1,16 +1,6 @@
 package com.ronxuntech.controller.socket.fullchannelxml;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ronxuntech.component.socket.util.Fileutil;
 import com.ronxuntech.controller.base.BaseController;
-import com.ronxuntech.controller.socket.socketport.SocketPortController;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.service.socket.fullchannelxml.FullChannelXmlManager;
 import com.ronxuntech.service.socket.socketport.SocketPortManager;
@@ -39,7 +28,6 @@ import com.ronxuntech.util.AppUtil;
 import com.ronxuntech.util.Jurisdiction;
 import com.ronxuntech.util.ObjectExcelView;
 import com.ronxuntech.util.PageData;
-import com.ronxuntech.util.PathUtil;
 
 /** 
  * 说明：全渠道配置文件
