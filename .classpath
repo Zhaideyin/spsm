@@ -125,8 +125,6 @@
 	<classpathentry kind="var" path="M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/alibaba/druid/1.0.9/druid-1.0.9.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_65/lib/jconsole.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_65/lib/tools.jar"/>
 	<classpathentry kind="var" path="M2_REPO/net/sf/ehcache/ehcache-core/2.6.9/ehcache-core-2.6.9.jar"/>
 	<classpathentry kind="var" path="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.21/freemarker-2.3.21.jar"/>
@@ -183,5 +181,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,29 +1,21 @@
 package com.sample
 import java.util.Date;
-import com.ronxuntech.component.socket.ServerInHandler;
+import com.ronxuntech.component.socket.ServerInHandler.*;
 import com.ronxuntech.component.socket.util.IsoChannelMessageFactory;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+
 rule "190000"
 no-loop true
     when
         m : Message(m.getProcessCode.equals("190000"),myMessage:message)
     then
         IsoChannelMessageFactory parseMessage=new IsoChannelMessageFactory(m.getPath());//8583配置xm文件
-        System.out.println(m.getPath());
-        System.out.println("接收到的报文"+myMessage);
         LinkedHashMap<String, Object> map = m.getBitmap();//解析包
-        System.out.println("解析后得到的map: "+map.toString());
-        //获得报文的类型
-        String accept=m.getType(myMessage);
-		//设置返回类型
-	    m.setReturnType(m.reponseTypeByXml("channelReponse.xml", accept));
-	    m.setBitmap(map);
-        byte[] returnBytes=parseMessage.packNew(map,"190000.xml", m);
-        m.setMessage(new String(returnBytes));
-        System.out.println("ok");
+   
+    	LinkedHashMap<String,Object> returnMap=parseMessage.packNew(map,"190000.xml", m);
+    	
         update(m);
-
 end
 

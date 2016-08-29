@@ -1,33 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <find>
-<deal><acceptType>0100</acceptType>
-<reponseType>0110</reponseType></deal>
+	<deal>
+		<acceptType>0100</acceptType>
+		<reponseType>0110</reponseType>
+	</deal>
 
-<deal><acceptType>0120</acceptType>
-<reponseType>0130</reponseType></deal>
+	<deal>
+		<acceptType>0120</acceptType>
+		<reponseType>0130</reponseType>
+	</deal>
 
-<deal><acceptType>0200</acceptType>
-<reponseType>0210</reponseType></deal>
+	<deal>
+		<acceptType>0200</acceptType>
+		<reponseType>0210</reponseType>
+	</deal>
 
-<deal><acceptType>0220</acceptType>
-<reponseType>0230</reponseType></deal>
+	<deal>
+		<acceptType>0220</acceptType>
+	    <reponseType>0230</reponseType>
+	</deal>
 
-<deal><acceptType>0320</acceptType>
-<reponseType>0330</reponseType></deal>
+	<deal>
+		<acceptType>0320</acceptType>
+		<reponseType>0330</reponseType>
+	</deal>
 
-<deal><acceptType>0330</acceptType>
-<reponseType>0400</reponseType></deal>
+	<deal>
+		<acceptType>0330</acceptType>
+		<reponseType>0400</reponseType>
+	</deal>
+	
+	<deal>
+		<acceptType>0400</acceptType>
+		<reponseType>0410</reponseType>
+	</deal>
+	
+	<deal>
+		<acceptType>0620</acceptType>
+		<reponseType>0630</reponseType>
+	</deal>
+	
+	<deal>
+		<acceptType>0800</acceptType>
+		<reponseType>0810</reponseType>
+	</deal>
 
-<deal><acceptType>0400</acceptType>
-<reponseType>0410</reponseType></deal>
-
-<deal><acceptType>0620</acceptType>
-<reponseType>0630</reponseType></deal>
-
-<deal><acceptType>0800</acceptType>
-<reponseType>0810</reponseType></deal>
-
-<deal><acceptType>0820</acceptType>
-<reponseType>0830</reponseType></deal>
+	<deal>
+		<acceptType>0820</acceptType>
+		<reponseType>0830</reponseType>
+	</deal>
 
 </find>
