@@ -31,7 +31,7 @@
 						<div class="col-xs-12">
 							
 						<!-- 检索  -->
-						<form action="socketport/list.do" method="post" name="Form" id="Form">
+						<form action="spider/list.do" method="post" name="Form" id="Form">
 						<table style="margin-top:5px;">
 							<tr>
 								<td>
@@ -45,11 +45,11 @@
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastStart" id="lastStart"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期" title="开始日期"/></td>
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastEnd" name="lastEnd"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期" title="结束日期"/></td>
 								<td style="vertical-align:top;padding-left:2px;">
-								 	<select class="chosen-select form-control" name="States" id="id" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
+								 	<select class="chosen-select form-control" name="name" id="id" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
 									<option value=""></option>
 									<option value="">全部</option>
-									<option value="开启">开启</option>
-									<option value="关闭">关闭</option>
+									<option value="">1</option>
+									<option value="">2</option>
 								  	</select>
 								</td>
 								<c:if test="${QX.cha == 1 }">
@@ -64,13 +64,17 @@
 							<thead>
 								<tr>
 									<th class="center" style="width:35px;">
+									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
 									<th class="center" style="width:50px;">序号</th>
-									<th class="center">端口</th>
-									<th class="center">用途</th>
-									<th class="center">状态</th>
-									<th class="center">规则</th>
-									<th class="center">创建时间</th>
+									<th class="center">标题</th>
+									<th class="center">作者</th>
+									<th class="center">摘要</th>
+									<th class="center">内容</th>
+									<th class="center">类型</th>
+									<th class="center">发布时间</th>
+									<th class="center">爬取时间</th>
+									<th class="center">关键字</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -83,45 +87,31 @@
 									<c:forEach items="${varList}" var="var" varStatus="vs">
 										<tr>
 											<td class='center'>
-											<!-- 开启 不能删除 -->
-												<c:if test="${var.STATE.equals('关闭') }">
-													<label class="pos-rel"><input type='checkbox' name='ids' value="${var.SOCKETPORT_ID}" class="ace" /><span class="lbl"></span></label>
-												</c:if>
-												
+												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.SPIDER_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
 											<td class='center' style="width: 30px;">${vs.index+1}</td>
-											<td class='center'>${var.PORT}</td>
-											<td class='center'>${var.AFFECT}</td>
-											<td class='center'>${var.STATE}</td>
-											<td class='center'>${var.RULE}</td>
-											<td class='center'>${var.CREATETIME}</td>
+											<td class='center'>${var.TITLE}</td>
+											<td class='center'>${var.AUTHOR}</td>
+											<td class='center'>${var.ABSTRACT}</td>
+											<td class='center'>${var.CONTENT}</td>
+											<td class='center'>${var.TYPENAME}</td>
+											<td class='center'>${var.PUBLISH_TIME}</td>
+											<td class='center'>${var.CREATE_TIME}</td>
+											<td class='center'>${var.KEYWORDS}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
-																					
-													
 													<c:if test="${QX.edit == 1 }">
-														<c:choose>
-															<c:when test="${var.STATE.equals('关闭')}">
-																<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SOCKETPORT_ID}');">
-																<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
-																</a>
-																<a class="btn btn-xs btn-danger" onclick="del('${var.SOCKETPORT_ID}');">
-																	<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
-																</a>
-																<a class="btn btn-xs btn-success" title="开启" onclick="start('${var.SOCKETPORT_ID}');">
-																	<i class="ace-icon fa fa-check bigger-120" title="开启"></i>
-																</a>
-															</c:when>
-															<c:otherwise>
-																<a class="btn btn-xs btn-success" title="关闭" onclick="stop('${var.SOCKETPORT_ID}');">
-																	<i class="ace-icon  fa fa-times bigger-120" title="关闭"></i>
-																</a>
-															</c:otherwise>
-														</c:choose>
-															
+													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SPIDER_ID}');">
+														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
+													</a>
+													</c:if>
+													<c:if test="${QX.del == 1 }">
+													<a class="btn btn-xs btn-danger" onclick="del('${var.SPIDER_ID}');">
+														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
+													</a>
 													</c:if>
 												</div>
 												<div class="hidden-md hidden-lg">
@@ -133,7 +123,7 @@
 														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 															<c:if test="${QX.edit == 1 }">
 															<li>
-																<a style="cursor:pointer;" onclick="edit('${var.SOCKETPORT_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
+																<a style="cursor:pointer;" onclick="edit('${var.SPIDER_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
 																	<span class="green">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</span>
@@ -142,7 +132,7 @@
 															</c:if>
 															<c:if test="${QX.del == 1 }">
 															<li>
-																<a style="cursor:pointer;" onclick="del('${var.SOCKETPORT_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
+																<a style="cursor:pointer;" onclick="del('${var.SPIDER_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
 																	<span class="red">
 																		<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																	</span>
@@ -279,7 +269,7 @@
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
-			 diag.URL = '<%=basePath%>socketport/goAdd.do';
+			 diag.URL = '<%=basePath%>spider/goAdd.do';
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.CancelEvent = function(){ //关闭事件
@@ -296,39 +286,12 @@
 			 diag.show();
 		}
 		
-		//开启
-		function start(Id){
-			bootbox.confirm("确定要开启吗?", function(result) {
-				if(result) {
-					top.jzts();
-					var url = "<%=basePath%>socketport/start.do?SOCKETPORT_ID="+Id;
-					$.get(url,function(data){
-						nextPage(${page.currentPage});
-					});
-				}
-			});
-		}
-		
-		
 		//删除
 		function del(Id){
 			bootbox.confirm("确定要删除吗?", function(result) {
 				if(result) {
 					top.jzts();
-					var url = "<%=basePath%>socketport/delete.do?SOCKETPORT_ID="+Id+"&tm="+new Date().getTime();
-					$.get(url,function(data){
-						nextPage(${page.currentPage});
-					});
-				}
-			});
-		}
-		
-		//关闭端口
-		function stop(Id){
-			bootbox.confirm("确定要关闭吗?", function(result) {
-				if(result) {
-					top.jzts();
-					var url = "<%=basePath%>socketport/stop.do?SOCKETPORT_ID="+Id;
+					var url = "<%=basePath%>spider/delete.do?SPIDER_ID="+Id+"&tm="+new Date().getTime();
 					$.get(url,function(data){
 						nextPage(${page.currentPage});
 					});
@@ -337,12 +300,12 @@
 		}
 		
 		//修改
-		function edit(Id,rule){
+		function edit(Id){
 			 top.jzts();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
-			 diag.URL = '<%=basePath%>socketport/goEdit.do?SOCKETPORT_ID='+Id+'&RULE='+rule;
+			 diag.URL = '<%=basePath%>spider/goEdit.do?SPIDER_ID='+Id;
 			 diag.Width = 450;
 			 diag.Height = 355;
 			 diag.CancelEvent = function(){ //关闭事件
@@ -383,7 +346,7 @@
 							top.jzts();
 							$.ajax({
 								type: "POST",
-								url: '<%=basePath%>socketport/deleteAll.do?tm='+new Date().getTime(),
+								url: '<%=basePath%>spider/deleteAll.do?tm='+new Date().getTime(),
 						    	data: {DATA_IDS:str},
 								dataType:'json',
 								//beforeSend: validateData,
@@ -402,8 +365,10 @@
 		
 		//导出excel
 		function toExcel(){
-			window.location.href='<%=basePath%>socketport/excel.do';
+			window.location.href='<%=basePath%>spider/excel.do';
 		}
 	</script>
+
+
 </body>
 </html>

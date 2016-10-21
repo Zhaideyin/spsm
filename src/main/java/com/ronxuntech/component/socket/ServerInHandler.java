@@ -33,7 +33,8 @@ public class ServerInHandler extends ChannelInboundHandlerAdapter {
 			.getBean("responsesocketService");
 	RequestSocketService requestsocketService = (RequestSocketService) SpringBeanFactoryUtils
 			.getBean("requestsocketService");
-	SocketPortService socketportService = (SocketPortService) SpringBeanFactoryUtils.getBean("socketportService");
+	SocketPortService socketportService = (SocketPortService) SpringBeanFactoryUtils
+			.getBean("socketportService");
 
 	// load up the knowledge base
 	KieServices ks = KieServices.Factory.get();
@@ -105,7 +106,7 @@ public class ServerInHandler extends ChannelInboundHandlerAdapter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// 接受8583的报文存入数据库
+			// 接受的报文存入数据库
 			pd.put("REQUESTSOCKET_ID", System.currentTimeMillis());
 			pd.put("CONTENT", resultStr);
 			pd.put("FILEDMAP", map.toString());
@@ -120,13 +121,13 @@ public class ServerInHandler extends ChannelInboundHandlerAdapter {
 				// 在当前场景下，发送的数据必须转换成ByteBuf数组
 				encoded = ctx.alloc().buffer(4 * response.length());
 				encoded.writeBytes(response.getBytes());
-				// 解析过后组装的报文，
+				// 解析过后组装的报文存入数据库
 				PageData pd1 = new PageData();
 				pd1.put("RESPONSESOCKET_ID", System.currentTimeMillis());
 				pd1.put("CONTENT", response);
-				pd1.put("STATE", "1");
 				pd1.put("FILEDMAP", message.getBitmap().toString());
 				pd1.put("CREATETIME", new Date());
+				pd1.put("STATE", "组装成功");
 				responsesocketService.save(pd1);
 			}
 		}

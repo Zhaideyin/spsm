@@ -1,4 +1,4 @@
-package com.ronxuntech.controller.socket.fullchannelxml;
+package com.ronxuntech.controller.spsm.spider;
 
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -16,55 +16,97 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ronxuntech.component.socket.util.Fileutil;
+import com.fasterxml.jackson.databind.deser.Deserializers.Base;
+import com.ronxuntech.component.spsm.BaseCrawler;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
-import com.ronxuntech.service.socket.fullchannelxml.FullChannelXmlManager;
-import com.ronxuntech.service.socket.socketport.SocketPortManager;
+import com.ronxuntech.service.spsm.spider.SpiderManager;
+import com.ronxuntech.service.spsm.type.TypeManager;
 import com.ronxuntech.util.AppUtil;
 import com.ronxuntech.util.Jurisdiction;
 import com.ronxuntech.util.ObjectExcelView;
 import com.ronxuntech.util.PageData;
 
+import us.codecraft.webmagic.Spider;
+
 /** 
- * 说明：全渠道配置文件
+ * 说明：数据爬取
  * 创建人：Liuxh
- * 创建时间：2016-08-15
+ * 创建时间：2016-10-08
  */
 @Controller
-@RequestMapping(value="/fullchannelxml")
-public class FullChannelXmlController extends BaseController {
+@RequestMapping(value="/spider")
+public class SpiderController extends BaseController {
 	
-	String menuUrl = "fullchannelxml/list.do"; //菜单地址(权限用)
-	@Resource(name="fullchannelxmlService")
-	private FullChannelXmlManager fullchannelxmlService;
+	String menuUrl = "spider/list.do"; //菜单地址(权限用)
+	@Resource(name="spiderService")
+	private SpiderManager spiderService;
 	
-	@Resource(name="socketportService")
-	private SocketPortManager socketportService;
+	@Resource(name="typeService")
+	private TypeManager typeService;
+	
+	private BaseCrawler crawler=BaseCrawler.getInstance();
+	/**
+	 * 跳转到爬取页面，取出所有数据类型
+	 */
+	@RequestMapping(value="/gostart")
+	public ModelAndView goStart() throws Exception{
+		logBefore(logger, Jurisdiction.getUsername()+"开启爬取");
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		//查询所有的数据类型
+		List<PageData> list =typeService.listAll(pd);
+		mv.addObject("list", list);
+//		mv.addObject("msg","success");
+		mv.setViewName("spsm/spider/spider_start");
+		return mv;
+	}
+	//开启爬取
+	@RequestMapping(value = "/start")
+	public void start(PrintWriter out,@RequestParam(value="seedUrl") String seedUrl,@RequestParam(value="typeName") String typeId) throws Exception {
+		logBefore(logger, Jurisdiction.getUsername() + "开启爬取");
+		PageData pd = new PageData();
+		//调用开启方法，传递种子和数据库的类型
+		crawler.start(seedUrl,typeId);
+		out.write("success");
+		out.close();
+	}
+	
+	//停止
+		@RequestMapping(value = "/stop")
+		public void stop(PrintWriter out) throws Exception {
+//			if(crawler.getS().getStatus()!=Spider.Status.Stopped){
+//				crawler.getS().stop();
+//				Thread t=new Thread();
+//				t.sleep(10000);
+//				System.out.println("stop: *******************   after "+crawler.getS().getStatus());
+//			}
+			
+			crawler.down();
+			out.write("success");
+			out.close();
+		}
+	
 	/**保存
 	 * @param
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/save")
 	public ModelAndView save() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"新增FullChannelXml");
+		logBefore(logger, Jurisdiction.getUsername()+"新增SPIDER");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("FULLCHANNELXML_ID", this.get32UUID());	//主键
-		//将输入的state值存入
-		pd.put("STATE",pd.getString("NEW_STATE"));
-		//获取当前的文件路径
-		String filepath  = Fileutil.createFile(pd.getString("NEW_STATE"),pd.getString("CONTENT"));
-		//content 存的是本地文件的路径
-		pd.put("CONTENT",filepath);
-		fullchannelxmlService.save(pd);
+		pd.put("SPIDER_ID", this.get32UUID());	//主键
+		spiderService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
+	
 		return mv;
 	}
 	
@@ -74,22 +116,11 @@ public class FullChannelXmlController extends BaseController {
 	 */
 	@RequestMapping(value="/delete")
 	public void delete(PrintWriter out) throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"删除FullChannelXml");
+		logBefore(logger, Jurisdiction.getUsername()+"删除SPIDER");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "del")){return;} //校验权限
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		
-		//先通过id查询出fullchannel
-		PageData pd1 =fullchannelxmlService.findById(pd);
-		//取出state放入pd2.
-		PageData pd2=new PageData();
-//		System.out.println(pd1.get("STATE")+"****STATE****");
-		pd2.put("RULE",pd1.get("STATE"));//将说明，（如8583放入pd2中。）
-		//判断是否有数据，如果有，那么不能删除，
-		boolean flag =fullchannelxmlService.delete(pd2);
-		if(flag){
-			fullchannelxmlService.delete(pd);
-		}
+		spiderService.delete(pd);
 		out.write("success");
 		out.close();
 	}
@@ -100,44 +131,16 @@ public class FullChannelXmlController extends BaseController {
 	 */
 	@RequestMapping(value="/edit")
 	public ModelAndView edit() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"修改FullChannelXml");
+		logBefore(logger, Jurisdiction.getUsername()+"修改SPIDER");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "edit")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		//通过文件路径，和修改类容。修改xml内容
-		
-		//先创建一个文件，将内容放进去。然后把文件替换掉
-//		Fileutil.createFile(pd.getString("STATE"),pd.getString("CONTENT"));
-		String path =Fileutil.updateFile(pd.getString("path"),pd.getString("CONTENT"),pd.getString("NEW_STATE"));
-		//保存文件路径
-		pd.put("CONTENT",path);
-		
-		//如果传进来的state和new-state一样那么就不用去修改之前的，否则就修改之前的 
-		if(pd.getString("STATE").equals(pd.getString("NEW_STATE"))){
-			
-		}else{
-			PageData pd2 =new PageData();
-			//取出修改之前的rule。然后查询
-			pd2.put("RULE",pd.getString("STATE"));
-			//查询所有关于这个rule的端口记录。然后修改之前的 规则为NEW_STATE
-			List<PageData> list=socketportService.findByState(pd2);
-			System.out.println("list.size:---"+list.size());
-			for(int i=0;i<list.size();i++){
-				PageData pd3=list.get(i);
-				pd3.put("RULE",pd.getString("NEW_STATE"));
-				socketportService.edit(pd3);
-			}
-		}
-		
-		//如果修改了xml说明 ,那么修改端口那边的规则
-		pd.put("STATE", pd.getString("NEW_STATE"));
-		fullchannelxmlService.edit(pd);
+		spiderService.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
 		return mv;
 	}
-	
 	
 	/**列表
 	 * @param page
@@ -145,7 +148,7 @@ public class FullChannelXmlController extends BaseController {
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(Page page) throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"列表FullChannelXml");
+		logBefore(logger, Jurisdiction.getUsername()+"列表SPIDER");
 		//if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限(无权查看时页面会有提示,如果不注释掉这句代码就无法进入列表页面,所以根据情况是否加入本句代码)
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
@@ -155,8 +158,8 @@ public class FullChannelXmlController extends BaseController {
 			pd.put("keywords", keywords.trim());
 		}
 		page.setPd(pd);
-		List<PageData>	varList = fullchannelxmlService.list(page);	//列出FullChannelXml列表
-		mv.setViewName("socket/fullchannelxml/fullchannelxml_list");
+		List<PageData>	varList = spiderService.list(page);	//列出SPIDER列表
+		mv.setViewName("spsm/spider/spider_list");
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
@@ -172,7 +175,7 @@ public class FullChannelXmlController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		mv.setViewName("socket/fullchannelxml/fullchannelxml_edit");
+		mv.setViewName("spsm/spider/spider_edit");
 		mv.addObject("msg", "save");
 		mv.addObject("pd", pd);
 		return mv;
@@ -187,12 +190,9 @@ public class FullChannelXmlController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd = fullchannelxmlService.findById(pd);	//根据ID读取
-		String path =pd.getString("CONTENT");
-		String content =Fileutil.readFile(path);
-		mv.setViewName("socket/fullchannelxml/fullchannelxml_edit");
+		pd = spiderService.findById(pd);	//根据ID读取
+		mv.setViewName("spsm/spider/spider_edit");
 		mv.addObject("msg", "edit");
-		mv.addObject("content",content);
 		mv.addObject("pd", pd);
 		return mv;
 	}	
@@ -204,7 +204,7 @@ public class FullChannelXmlController extends BaseController {
 	@RequestMapping(value="/deleteAll")
 	@ResponseBody
 	public Object deleteAll() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"批量删除FullChannelXml");
+		logBefore(logger, Jurisdiction.getUsername()+"批量删除SPIDER");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "del")){return null;} //校验权限
 		PageData pd = new PageData();		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -213,7 +213,7 @@ public class FullChannelXmlController extends BaseController {
 		String DATA_IDS = pd.getString("DATA_IDS");
 		if(null != DATA_IDS && !"".equals(DATA_IDS)){
 			String ArrayDATA_IDS[] = DATA_IDS.split(",");
-			fullchannelxmlService.deleteAll(ArrayDATA_IDS);
+			spiderService.deleteAll(ArrayDATA_IDS);
 			pd.put("msg", "ok");
 		}else{
 			pd.put("msg", "no");
@@ -229,24 +229,34 @@ public class FullChannelXmlController extends BaseController {
 	 */
 	@RequestMapping(value="/excel")
 	public ModelAndView exportExcel() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"导出FullChannelXml到excel");
+		logBefore(logger, Jurisdiction.getUsername()+"导出SPIDER到excel");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;}
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
-		titles.add("xml内容");	//1
-		titles.add("创建时间");	//2
-		titles.add("说明");	//3
+		titles.add("标题");	//1
+		titles.add("作者");	//2
+		titles.add("摘要");	//3
+		titles.add("内容");	//4
+		titles.add("类型");	//5
+		titles.add("发布时间");	//6
+		titles.add("爬取时间");	//7
+		titles.add("关键字");	//8
 		dataMap.put("titles", titles);
-		List<PageData> varOList = fullchannelxmlService.listAll(pd);
+		List<PageData> varOList = spiderService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
-			vpd.put("var1", varOList.get(i).getString("CONTENT"));	//1
-			vpd.put("var2", varOList.get(i).getString("CRATETIME"));	//2
-			vpd.put("var3", varOList.get(i).getString("STATE"));	//3
+			vpd.put("var1", varOList.get(i).getString("TITLE"));	//1
+			vpd.put("var2", varOList.get(i).getString("AUTHOR"));	//2
+			vpd.put("var3", varOList.get(i).getString("ABSTRACT"));	//3
+			vpd.put("var4", varOList.get(i).getString("CONTENT"));	//4
+			vpd.put("var5", varOList.get(i).get("TYPE").toString());	//5
+			vpd.put("var6", varOList.get(i).getString("PUBLISH_TIME"));	//6
+			vpd.put("var7", varOList.get(i).getString("CREATE_TIME"));	//7
+			vpd.put("var8", varOList.get(i).getString("KEYWORDS"));	//8
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);

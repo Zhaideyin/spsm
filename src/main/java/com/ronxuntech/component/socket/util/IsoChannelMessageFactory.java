@@ -3,6 +3,7 @@ package com.ronxuntech.component.socket.util;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +16,8 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.ronxuntech.component.socket.ServerInHandler.Message;
+import com.ronxuntech.controller.base.BaseController;
+import com.ronxuntech.util.Logger;
 
 /**
  * 渠道报文工具 BitMap为128位 域值均为ASCII，无压缩
@@ -22,8 +25,8 @@ import com.ronxuntech.component.socket.ServerInHandler.Message;
  * @author train
  *
  */
-public class IsoChannelMessageFactory {
-
+public class IsoChannelMessageFactory extends BaseController{
+	
 	private String packet_encoding = "UTF-8";
 
 	private String path;
@@ -65,7 +68,7 @@ public class IsoChannelMessageFactory {
 			}
 
 		} catch (DocumentException e1) {
-			// TODO Auto-generated catch block
+			logger.error(e1.getMessage());
 			e1.printStackTrace();
 		}
 		System.out.println("需要返回的域" + fileds.toString());
@@ -189,16 +192,14 @@ public class IsoChannelMessageFactory {
 							int defLen1 = defLen;
 
 							String realLenStr = new String(bytes, pos, defLen1, packet_encoding);// 报文中实际记录域长,例如16,023
-
+														
 							int realLen = Integer.valueOf(realLenStr);
-
 							int realAllLen = defLen1 + realLen;// 该字段总长度（包括长度值占的长度）
-
 							byte[] filedValueByte = new byte[Integer.valueOf(realLen)];
 							System.arraycopy(bytes, pos + defLen1, filedValueByte, 0, filedValueByte.length);
 							filedValue = new String(filedValueByte, packet_encoding);
 							pos += realAllLen;// 记录当前位置
-
+							
 						} else {// 定长域
 							int defLen2 = defLen;
 							if (defType.startsWith("ascii") || defType.equals("b")) {// startsWith
@@ -212,11 +213,11 @@ public class IsoChannelMessageFactory {
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 			return filedMap;
 		} catch (Exception e) {
-			System.out.println("ex");
+			logger.error(e.getMessage());
 		}
 		return null;
 	}
@@ -263,6 +264,7 @@ public class IsoChannelMessageFactory {
 			m.setMessage(new String(package8583));
 			return package8583;
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 
 		}
@@ -277,13 +279,12 @@ public class IsoChannelMessageFactory {
 			for (; it.hasNext();) {
 				String fieldId = it.next().toString();
 				String fieldValue = (String) filedMap.get(fieldId);
-				System.out.println("fieldValue.substring" + filedMap.get(fieldId).toString());
 				try {
 					if (fieldValue == null) {
 						System.out.println("error:报文域 {" + fieldId + "}为空值");
 						fieldValue = "";
-						continue;
-						// return null;
+//						continue;
+						 return null;
 					}
 					// 将域值编码转换，保证报文编码统一
 					fieldValue = new String(fieldValue.getBytes(packet_encoding), packet_encoding);
@@ -356,6 +357,7 @@ public class IsoChannelMessageFactory {
 					}
 
 				} catch (Exception e) {
+					logger.error(e.getMessage());
 					e.printStackTrace();
 				}
 			}
@@ -383,6 +385,7 @@ public class IsoChannelMessageFactory {
 			}
 			return null;
 		} catch (DocumentException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 		return null;
@@ -425,6 +428,7 @@ public class IsoChannelMessageFactory {
 				fixLen = strCopy("0", (defLen - len1.length())) + len1;
 			}
 		} catch (UnsupportedEncodingException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -464,6 +468,7 @@ public class IsoChannelMessageFactory {
 				}
 			}
 		} catch (UnsupportedEncodingException e) {
+			logger.error(e.getMessage());
 			e.printStackTrace();
 		}
 

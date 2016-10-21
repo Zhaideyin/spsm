@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<webList>
+   <!-- 中国种业网   -->
+    <!--注释：种业要闻 id=2 共27页 -->
+   <!-- <webpage>
+        <seed>http://www.meizitu.com/</seed>
+        <urlRex>http://www.meizitu.com/.*.html</urlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tbody/tr/td/allText()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>http://pic.meizitu.com/wp-content/uploads/20[0-9]{2}[a-z]/[0-9]{1,4}/[0-9]{1,4}/[0-9]{1,4}.jpg</imgRegex>
+            <imgTag>//div[@id='picture']</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <regex></regex>
+            <docTag></docTag>
+        </doc>
+         <page>
+        	<totalPage>1</totalPage>
+        	<pageTag></pageTag>
+        	<pageMethod>ajax</pageMethod>
+        </page>
+    </webpage> -->
+
+    <webpage>
+        <seed>http://www.natesc.org.cn/sites/zzx/List_21606_115457.html</seed>
+        <urlRex>http://www.natesc.org.cn/Html/[0-9]*_[0-9]*_[0-9]*/[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*.html</urlRex>
+        <tagList>
+            <tag1>//table[@class='AreaBorder']/h2/text()</tag1>
+            <tag2>//table[@class='AreaBorder']/allText()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://www.natesc.org.cn/frm/[a-zA-z]*.aspx\?StructID=[0-9]*&amp;amp;url=.[^&lt;&gt;]+.-.[0-9]{10,15}.(doc|pdf))</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+         <page>
+        	<totalPage>1</totalPage>
+        	<pageTag></pageTag>
+        	<pageMethod>ajax</pageMethod>
+        </page>
+    </webpage>
+
+
+   <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=2</seed>
+        <urlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+&amp;[a-zA-Z]+\=[0-9]+)</urlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tbody/tr/td/allText()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.docx&amp;&amp;filePath=[a-zA-z]*/[0-9]*.docx</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>27</totalPage>
+        	<pageTag>GridView1_LinkButtonNextPage</pageTag>
+        	<pageMethod>ajax</pageMethod>
+        </page>
+    </webpage>
+    <!--注释：要闻id=5  共26页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=5&amp;isSubType=yes</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tbody/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：地方新闻 id=31，共5页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=31</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+\&amp;db\=ppseed)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释;资讯信息 id=79 共2页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=79</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：执法情况 id=77  共1页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=77</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：企业动态 id=75 共6页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=75</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：企业动态 id=75 共6页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=97</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释; 法律法规 id=74  2页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=97</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：产业政策 ID=71  2页
+    <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=71</seed>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+\&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <tagList>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+        </tagList>
+    </webpage>
+     中国农业科学院网站
+    注释：农业新政  8 页
+    <webpage>
+        <seed>http://www.caas.net.cn/nykjxx/nyxz/index.shtml</seed>
+        <UrlRex>(.*/[0-9]+\.shtml)</UrlRex>
+        <tagList>
+            <tag1>//h3/text()</tag1>
+            <tag2>//div[@id='word']/font/allText()</tag2>
+        </tagList>
+    </webpage>
+    注释：农业财经   114页
+    <webpage>
+        <seed>http://www.caas.net.cn/nykjxx/nycj/index.shtml</seed>
+        <UrlRex>(.*/[0-9]+\.shtml)</UrlRex>
+        <tagList>
+            <tag1>//h3/text()</tag1>
+            <tag2>//div[@id='word']/font/allText()</tag2>
+        </tagList>
+    </webpage>
+     网站 中国林业知识产权
+    注释：政府法规  1 页  通过测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D5%FE%B2%DF%B7%A8%B9%E6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：执法保护  1 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D6%B4%B7%A8%B1%A3%BB%A4&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：动态信息  16 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%B6%AF%CC%AC%D0%C5%CF%A2&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：专项工作 3 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D7%A8%CF%EE%B9%A4%D7%F7&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：试点示范 2 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%CA%D4%B5%E3%CA%BE%B7%B6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：宣传培训 2 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D0%FB%B4%AB%C5%E0%D1%B5&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释：能力建设 1 页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%C4%DC%C1%A6%BD%A8%C9%E8&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释： 国际履约  1页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%B9%FA%BC%CA%C2%C4%D4%BC&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+    注释： 统计分析  4页  未测试
+    <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%CD%B3%BC%C6%B7%D6%CE%F6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <UrlRex>(.*/page/secondbrw\.cbs\?resna\=lyzs\&amp;order\=[0-9]+\&amp;result\=.*\&amp;indexval\=.*\&amp;page\=indexnext)</UrlRex>
+        <tagList>
+            <tag1>//table/tbody/tr/td/font[@style='font-size:20px;color:red;']/b/text()</tag1>
+            <tag2>//table/tbody/tr/td/font[@color='darkblue']/allText())</tag2>
+        </tagList>
+    </webpage>
+     中国种业网   -->
+</webList>

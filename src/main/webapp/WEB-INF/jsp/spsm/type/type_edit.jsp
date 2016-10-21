@@ -28,30 +28,14 @@
 			<div class="page-content">
 				<div class="row">
 					<div class="col-xs-12">
-					<form action="socketport/${msg }.do" name="Form" id="Form" method="post">
-						<input type="hidden" name="SOCKETPORT_ID" id="SOCKETPORT_ID" value="${pd.SOCKETPORT_ID}"/>
+					
+					<form action="type/${msg }.do" name="Form" id="Form" method="post">
+						<input type="hidden" name="TYPE_ID" id="TYPE_ID" value="${pd.TYPE_ID}"/>
 						<div id="zhongxin" style="padding-top: 13px;">
-				
-						<td><input type="text" hidden="true" name="STATE"  value="${pd.STATE}"/></td>
-						<td><input type="text"  hidden="true" name="CREATETIME" value="${pd.CREATETIME}" /></td>
 						<table id="table_report" class="table table-striped table-bordered table-hover">
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">端口:</td>
-								<td><input type="text" name="PORT" id="PORT" value="${pd.PORT}" maxlength="255" placeholder="这里输入端口" title="端口" style="width:98%;"/></td>
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">用途</td>
-								<td><input type="text" name="AFFECT" id=AFFECT value="${pd.AFFECT}" maxlength="255" placeholder="这里输入用途" title="用途" style="width:98%;"/></td>
-							</tr>
-							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">规则</td>
-								<td>
-								<!-- xml类型遍历 -->
-								<select id="RULE" name="RULE">
-									<c:forEach items="${rules}" var="r" varStatus="vs">
-										<option value="${r.STATE}">${r.STATE }</option>
-									</c:forEach>
-								</select>
+								<td style="width:75px;text-align: right;padding-top: 13px;">类型名:</td>
+								<td><input type="text" name="TYPENAME" id="TYPENAME" value="${pd.TYPENAME}" maxlength="255" placeholder="这里输入类型名" title="类型名" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="text-align: center;" colspan="10">
@@ -87,35 +71,15 @@
 		<script type="text/javascript">
 		$(top.hangge());
 		//保存
-		function save(){s
-			if($("#PORT").val()==""){
-				$("#PORT").tips({
+		function save(){
+			if($("#TYPENAME").val()==""){
+				$("#TYPENAME").tips({
 					side:3,
-		            msg:'请输入端口',
+		            msg:'请输入类型名',
 		            bg:'#AE81FF',
 		            time:2
 		        });
-				$("#PORT").focus();
-			return false;
-			}
-			if($("#STATE").val()==""){
-				$("#STATE").tips({
-					side:3,
-		            msg:'请输入状态',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#STATE").focus();
-			return false;
-			}
-			if($("#CREATETIME").val()==""){
-				$("#CREATETIME").tips({
-					side:3,
-		            msg:'请输入创建时间',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#CREATETIME").focus();
+				$("#TYPENAME").focus();
 			return false;
 			}
 			$("#Form").submit();

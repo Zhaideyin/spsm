@@ -1,5 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>FH</groupId>
 	<artifactId>ndrc_console</artifactId>
@@ -20,6 +23,7 @@
 	</properties>
 
 	<dependencies>
+		
 
 		<!-- spring start -->
 		<!--   drools start -->
@@ -67,11 +71,11 @@
 		    <version>4.0.40.Final</version>
 		</dependency>
 		<dependency>
-    <groupId>org.drools</groupId>
-    <artifactId>knowledge-api</artifactId>
-    <version>5.3.2.Final</version>
-</dependency>
-  <dependency>
+		    <groupId>org.drools</groupId>
+		    <artifactId>knowledge-api</artifactId>
+		    <version>5.3.2.Final</version>
+		</dependency>
+  		<dependency>
 	       <groupId>com.miglayout</groupId>
 	       <artifactId>miglayout</artifactId>
 	       <version>3.7.4</version>
@@ -82,14 +86,14 @@
 	      <version>1.1.7</version>
 	    </dependency>
 	     <dependency>
-    <groupId>org.apache.maven.plugin-tools</groupId>
-    <artifactId>maven-plugin-annotations</artifactId>
-    <version>3.4</version>
-</dependency>
- <dependency>
-	      <groupId>com.google.guava</groupId>
-	      <artifactId>guava</artifactId>
-	      <version>19.0</version>
+		    <groupId>org.apache.maven.plugin-tools</groupId>
+		    <artifactId>maven-plugin-annotations</artifactId>
+		    <version>3.4</version>
+		</dependency>
+ 		<dependency>
+		      <groupId>com.google.guava</groupId>
+		      <artifactId>guava</artifactId>
+		      <version>19.0</version>
 	    </dependency>
 		
 		
@@ -589,7 +593,33 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/weixinapi.jar</systemPath>
 		</dependency>
+		<!-- webmagic -->
+		 <dependency>
+		    <groupId>us.codecraft</groupId>
+		    <artifactId>webmagic-core</artifactId>
+		    <version>0.5.3</version>
+		</dependency>
+
+	
+		<dependency>
+		    <groupId>us.codecraft</groupId>
+		    <artifactId>webmagic-extension</artifactId>
+		    <version>0.5.3</version>
+		</dependency>
 		
+		<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.38.0</version>
+        </dependency>
+		
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.4.01</version>
+		</dependency>
+		
+	
 		
 		<!-- jwts -->
 		<dependency>
@@ -602,6 +632,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>console</finalName>

@@ -50,7 +50,7 @@ public class SocketPortController extends BaseController {
 	private int flag = 0;
 
 	/**
-	 * 开启端口 gostart
+	 * 开启端口 start
 	 */
 	@RequestMapping(value = "/start")
 	public void start(PrintWriter out) throws Exception {
@@ -125,30 +125,27 @@ public class SocketPortController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-
-		// //通过id查询出对应的xml.
-		// PageData pd2=new PageData();
-		// pd2.put("FULLCHANNELXML_ID", id);
-		// pd2 =fullchannelxmlService.findById(pd2);
-
 		// 先查询
 		List<PageData> list = socketportService.listAll(pd);
 		
 		int temp = 0; // 用来统计端口出现的次数， 如果端口出现过，则不能添加。
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).get("PORT").equals(pd.get("PORT"))) {
+				//如果数据库中出现了该端口，那么就修改temp的值，并且跳出，
 				temp++;
+				break;
 			} else {
 				continue;
 			}
 		}
-		if (temp == 0) {// 如果不存在则添加到数据库，
+		// 如果不存在则添加到数据库，
+		if (temp == 0) {
 			// 设置默认值 状态为关闭，创建时间为当前时间
 			pd.put("STATE", "关闭");
 			pd.put("CREATETIME", new Date());
-
 			pd.put("SOCKETPORT_ID", this.get32UUID()); // 主键
 			socketportService.save(pd);
+			
 		}
 		// 添加失败没有提示。
 		mv.addObject("msg", "success");
@@ -215,16 +212,17 @@ public class SocketPortController extends BaseController {
 		if (flag == 0) {
 			PageData pd1 = new PageData();
 			pd1.put("STATE", "开启");
-			List<PageData> list = socketportService.listAll(pd);// 查询出所有状态为开启的端口。
+			// 查询出所有状态为开启的端口。
+			List<PageData> list = socketportService.listAll(pd);
 
 			for (int i = 0; i < list.size(); i++) {
 				PageData temp = list.get(i);// 取出每个状态为开启的实体，
 				temp.put("STATE", "关闭"); // 修改状态。
-				System.out.println("----修改状态------");
 				socketportService.edit(temp);
 			}
 			flag++;
 		}
+		
 		String keywords = pd.getString("keywords"); // 关键词检索条件
 		if (null != keywords && !"".equals(keywords)) {
 			pd.put("keywords", keywords.trim());
@@ -251,12 +249,6 @@ public class SocketPortController extends BaseController {
 
 		// 查询rule,
 		List<PageData> list = fullchannelxmlService.listAll(pd);
-		/*
-		 * for(int i=0;i<list.size();i++){
-		 * System.out.println("-------------------------");
-		 * System.out.println(list.get(i).getString("STATE")); } pd.put("rule",
-		 * list);
-		 */
 		pd = this.getPageData();
 		mv.setViewName("socket/socketport/socketport_edit");
 		mv.addObject("msg", "save");

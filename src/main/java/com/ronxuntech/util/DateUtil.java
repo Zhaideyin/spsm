@@ -105,7 +105,7 @@ public class DateUtil {
 		}
 	}
 	
-	/**
+	/** 两个时间的差，年为单位，不足一年则返回 0 
 	 * @param startTime
 	 * @param endTime
 	 * @return
@@ -184,6 +184,9 @@ public class DateUtil {
     public static void main(String[] args) {
     	System.out.println(getDays());
     	System.out.println(getAfterDayWeek("3"));
+    	System.out.println(new Date().getTime());
+    	System.out.println(getDiffYear("2016-05-02", "2017-04-02"));
+    	
     }
 
 }

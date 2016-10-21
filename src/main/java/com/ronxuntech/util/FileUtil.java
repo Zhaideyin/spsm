@@ -47,7 +47,7 @@ public class FileUtil {
 		try {
 			String filePath = filePathAndName;
 			filePath = filePath.toString();
-			java.io.File myDelFile = new java.io.File(filePath);
+			File myDelFile = new File(filePath);
 			myDelFile.delete();
 		} catch (Exception e) {
 			System.out.println("删除文件操作出错");
