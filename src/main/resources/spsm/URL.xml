@@ -30,8 +30,8 @@
         <seed>http://www.natesc.org.cn/sites/zzx/List_21606_115457.html</seed>
         <urlRex>http://www.natesc.org.cn/Html/[0-9]*_[0-9]*_[0-9]*/[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*.html</urlRex>
         <tagList>
-            <tag1>//table[@class='AreaBorder']/h2/text()</tag1>
-            <tag2>//table[@class='AreaBorder']/allText()</tag2>
+            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
+            <tag2>//div[@id='lb14634']/allText()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -45,7 +45,9 @@
         </doc>
          <page>
         	<totalPage>1</totalPage>
-        	<pageTag></pageTag>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
         	<pageMethod>ajax</pageMethod>
         </page>
     </webpage>
@@ -70,7 +72,9 @@
         </doc>
         <page>
         	<totalPage>27</totalPage>
-        	<pageTag>GridView1_LinkButtonNextPage</pageTag>
+        	<pageAjaxTag>GridView1_LinkButtonNextPage</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
         	<pageMethod>ajax</pageMethod>
         </page>
     </webpage>

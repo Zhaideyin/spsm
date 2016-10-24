@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-md-12" style="padding-top:20px; text-align: center">
 							<!-- 检索  -->
-							<form action="spider/list.do" method="post" name="Form" id="Form">
+							<form action="spider/start.do" method="post" name="Form" id="Form">
 								<input type="text" name="seedUrl" style="width: 500px"> <select id="typeName"
 									name="typeName">
 									<c:forEach items="${list}" var="r" varStatus="vs">

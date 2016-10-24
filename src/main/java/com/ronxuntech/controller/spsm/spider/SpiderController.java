@@ -71,7 +71,9 @@ public class SpiderController extends BaseController {
 		logBefore(logger, Jurisdiction.getUsername() + "开启爬取");
 		PageData pd = new PageData();
 		//调用开启方法，传递种子和数据库的类型
-		crawler.start(seedUrl,typeId);
+//		crawler.start(seedUrl,typeId);
+		crawler.start(seedUrl, typeId);
+		Spider.create(crawler).addUrl(seedUrl).thread(10).run();
 		out.write("success");
 		out.close();
 	}
@@ -86,7 +88,7 @@ public class SpiderController extends BaseController {
 //				System.out.println("stop: *******************   after "+crawler.getS().getStatus());
 //			}
 			
-			crawler.down();
+//			crawler.down();
 			out.write("success");
 			out.close();
 		}

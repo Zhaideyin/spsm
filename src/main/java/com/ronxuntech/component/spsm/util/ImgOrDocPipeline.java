@@ -19,6 +19,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ronxuntech.service.spsm.spider.impl.SpiderService;
+import com.ronxuntech.util.SpringBeanFactoryUtils;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -26,8 +28,6 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.utils.FilePersistentBase;
 
 public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
-
-	
 	 
     private Logger logger = LoggerFactory.getLogger(getClass());
     public ImgOrDocPipeline() {
@@ -79,7 +79,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                                 .replaceAll("[\\pP‘’“”]", ""))//不懂
                                 .append(".")
                                 .append(extName);
- 
+                        
                         //这里通过httpclient下载之前抓取到的图片网址，并放在对应的文件中
                         //取得的连接中地址符号表示为 &amp;在网页中不需要amp;所以取出链接并且将连接中的amp： 去掉得到网页正的url.
                         String url = list.get(i).replace("amp;","");
@@ -114,5 +114,10 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
         } catch (IOException e) {
             logger.warn("write file error", e);
         }
+    }
+    
+    public void abc(Abc abc){
+    	//----
+    	abc.finish(3);
     }
 }

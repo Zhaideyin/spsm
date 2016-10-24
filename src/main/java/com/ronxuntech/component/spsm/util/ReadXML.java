@@ -64,9 +64,17 @@ public class ReadXML {
             List listPage=child.element("page").elements();
             Element elementTotalPage=(Element) listPage.get(0);
             hsmap.put("totalPage", elementTotalPage.getStringValue());
-            Element elementPageTag=(Element) listPage.get(1);
-            hsmap.put("pageTag", elementPageTag.getStringValue());
-            Element elementPageMethod=(Element) listPage.get(2);
+            
+            Element pageAjaxTag=(Element) listPage.get(1);
+            hsmap.put("pageAjaxTag", pageAjaxTag.getStringValue());
+            
+            Element pageGetTag=(Element) listPage.get(2);
+            hsmap.put("pageGetTag", pageGetTag.getStringValue());
+            
+            Element pagePostTag=(Element) listPage.get(3);
+            hsmap.put("pagePostTag", pagePostTag.getStringValue());
+            
+            Element elementPageMethod=(Element) listPage.get(4);
             hsmap.put("pageMethod", elementPageMethod.getStringValue());
             listmap.add(hsmap);
         }

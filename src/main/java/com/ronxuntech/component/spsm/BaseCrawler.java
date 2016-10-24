@@ -1,17 +1,20 @@
 package com.ronxuntech.component.spsm;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import com.ronxuntech.component.WebInfo;
+import com.ronxuntech.component.spsm.util.AnnexSpider;
 import com.ronxuntech.component.spsm.util.ImgOrDocPipeline;
 import com.ronxuntech.component.spsm.util.ReadXML;
 import com.ronxuntech.service.spsm.spider.impl.SpiderService;
 import com.ronxuntech.util.PageData;
+import com.ronxuntech.util.PathUtil;
 import com.ronxuntech.util.SpringBeanFactoryUtils;
 
 import us.codecraft.webmagic.Page;
@@ -19,12 +22,11 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
-import us.codecraft.webmagic.utils.UrlUtils;
 
 /**
  * Created by tongbu on 2016/10/8 0008.
  */
-public class BaseCrawler{
+public class BaseCrawler implements PageProcessor {
 	
 	//单例模式 
     private static BaseCrawler crawler=new BaseCrawler();  
@@ -36,20 +38,84 @@ public class BaseCrawler{
 //    private String seedUrl;
 //    private String typeId;
 	// 图片文件保存路径
-	private String filePath = "D:\\doc";
-	Spider s;
-
-	
-	public Spider getS() {
-		return s;
-	}
-
-	public void setS(Spider s) {
-		this.s = s;
-	}
-
+    private String filePath=PathUtil.getClasspath()+"uploadFiles/spsm/annex";
+	private Spider s;
 	// 创建service
-	SpiderService spiderService ;
+	private SpiderService spiderService ;
+	private WebInfo web=new WebInfo();
+	private Site site = Site.me().setRetryTimes(3).setSleepTime(1500);
+
+	private String typeId;
+	
+	
+	public void process(Page page) {
+		spiderService= (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
+//		spiderService=new SpiderService();
+				// 获取页面信息保存在html 对象中。
+				Html html = page.getHtml();
+				// 将爬取的目标地址添加到队列里面   web.getUrlRex()
+//				http://www.natesc.org.cn/Html/2010_03_08/21606_115457_2010_03_08_133230.html
+				page.addTargetRequests(html.links().regex(web.getUrlRex()).all());
+				// 抽取数据
+//				page.putField("url", page.getUrl().regex(web.getUrlRex()).toString());
+//				page.putField("title", html.xpath(web.getList().get(0).toString()).toString());
+//				page.putField("content", html.xpath(web.getList().get(1).toString()).toString());
+
+				PageData pd = new PageData();
+				pd.put("SPIDER_ID", System.currentTimeMillis());
+				pd.put("TITEL", html.xpath(web.getList().get(0).toString()).toString());
+				pd.put("CONTENT", html.xpath(web.getList().get(1).toString()).toString());
+				pd.put("TYPE", typeId);
+				
+				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String d =sdf.format(new Date());
+				pd.put("CREATE_TIME",d);
+				
+				//如果含有文字或者图片  传递当前页面的地址过去，
+				String pageUrl ="";
+//				for (Map.Entry<String, Object> entry : page.getResultItems().getAll().entrySet()) {
+//					System.out.println("遍历resultItems:");
+//					// entry.getValue()是保存的所有链接的集合。包括获取的title.
+//					if (entry.getValue() instanceof List) {
+//						pageUrl=entry.getValue().toString();
+//						System.out.println("获取的是List  " + entry.getValue().toString());
+//					}
+//				}
+				//获取当前页的图片或者文档
+				pageUrl =page.getUrl().toString();
+				System.out.println("pageUrl   :"+pageUrl);
+				if(web.isHasDoc()){
+					if(!(pageUrl.equals(web.getSeed()))){
+						//通过正则表达式来找出符合图片或者文档的链接
+						Pattern p=Pattern.compile(web.getDocRegex()); 
+						System.out.println("html:"+html.xpath(web.getList().get(1).toString()+"/html()").toString());
+				        Matcher m=p.matcher(html.xpath(web.getList().get(1).toString()+"/html()").toString()); 
+				        while(m.find())
+				        { 
+				        	if(pageUrl!=""){
+				        		AnnexSpider annex=new AnnexSpider(pageUrl,web.getSeed(),web);
+				        		Spider.create(annex).addUrl(pageUrl).addPipeline(new ImgOrDocPipeline(filePath)).thread(1).run();
+				        	}
+				        } 
+					}
+					
+					
+				}
+				try {
+					// 如果怕去的 内容是空，则不跳出。不存入数据库。
+					if(!(pd.get("CONTENT").toString().trim().equals(""))|| !(pd.get("CONTENT")==null)){
+						spiderService.save(pd);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+//				if(web.isHasDoc()){
+//					
+//				}
+		}
+		public Site getSite() {
+		return site;
+	}
 
 
 	/**
@@ -60,7 +126,7 @@ public class BaseCrawler{
 	 *            数据类型
 	 */
 
-	public void downLoadWords(Web web, String typeId) {
+	/*public void downLoadWords(Web web, String typeId) {
 		spiderService= (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
 //		spiderService=new SpiderService();
 		PageProcessor pageProcessor = new PageProcessor() {
@@ -103,14 +169,14 @@ public class BaseCrawler{
 		};
 		 s=Spider.create(pageProcessor).addUrl(web.getSeed()).thread(5);
 		 s.start();
-	}
+	}*/
 
 	/**
 	 * 图片下载
 	 * 
 	 * @param web
 	 */
-	public void downLoadImg(Web web) {
+	/*public void downLoadImg(Web web) {
 		PageProcessor ImgCrawler = new PageProcessor() {
 			// 我也不知道是什么
 			private Site site = Site.me().setDomain(UrlUtils.getDomain(web.getSeed()));
@@ -118,9 +184,9 @@ public class BaseCrawler{
 			public void process(Page page) {
 				// 通过page获取到页面， 并保存到html对象中
 				Html html = page.getHtml();
-				// 抓取所有符合的页面链接
+				// 抓取所有符合的页面的链接
 				List<String> requests = html.links().regex(web.getUrlRex()).all();
-				// 添加到队列中
+				// 添加到爬取的队列中
 				page.addTargetRequests(requests);
 				// 抓取符合条件的所有链接
 				List<String> listProcess = html.xpath(web.getImgTag()).regex(web.getImgRegex()).all();
@@ -140,13 +206,13 @@ public class BaseCrawler{
 		 s=Spider.create(ImgCrawler).addUrl(web.getSeed()).addPipeline(new ImgOrDocPipeline(filePath)).thread(10);
 		 s.start();
 	}
-
+*/
 	/**
 	 * 文档下载
 	 * 
 	 * @param web
 	 */
-	public void downLoadDoc(Web web) {
+	/*public void downLoadDoc(Web web) {
 		PageProcessor docCrawler = new PageProcessor() {
 			// 我也不知道是什么
 			private Site site = Site.me().setDomain(UrlUtils.getDomain(web.getSeed()));
@@ -163,14 +229,14 @@ public class BaseCrawler{
 				page.addTargetRequests(requests);
 				// 抓取符合条件的所有链接
 				List<String> listProcess = html.xpath(web.getDocTag()).regex(web.getDocRegex()).all();
-				/*
+				
 				 * for (Map.Entry<String, Object> entry :
 				 * page.getResultItems().getAll().entrySet()) {
 				 * System.out.println("遍历resultItems:"); //
 				 * entry.getValue()是保存的所有链接的集合。包括获取的title. if (entry.getValue()
 				 * instanceof List) { System.out.println("获取的是List  " +
 				 * entry.getValue().toString()); } }
-				 */
+				 
 				// 获取title，用于创建文件夹，保存相关的文档
 				String docHostFileName = html.xpath("//title/text()").toString();
 				// String
@@ -187,18 +253,18 @@ public class BaseCrawler{
 		};
 
 		s=Spider.create(docCrawler).addUrl(web.getSeed()).addPipeline(new ImgOrDocPipeline(filePath)).thread(10);
-		s.start();;
-	}
+		s.start();
+	}*/
 
 	/**
 	 * ajax分页
 	 * 
 	 * @param web
 	 */
-	public void pagingByAjax(Web web, String typeId) {
-		System.getProperties().setProperty("webdriver.chrome.driver", "D:\\tool\\chromedriver.exe");
+/*	public void pagingByAjax(Web web, String typeId) {
+		System.getProperties().setProperty("webdriver.chrome.driver", "C:\\Users\\tongbu\\Downloads\\chromedriver.exe");
 		// 设置模拟浏览器
-		WebDriver webDriver = new ChromeDriver();
+		WebDriver webDriver = (WebDriver) new ChromeDriver();
 		webDriver.get(web.getSeed());// 种子注入
 		// 获取总的页数
 		// WebElement all =
@@ -218,25 +284,25 @@ public class BaseCrawler{
 			webDriver.findElement(By.id(web.getPageTag())).click();
 		}
 
-	}
+	}*/
 
 	/**
 	 * 纯post请求分页
 	 * 
 	 * @param web
 	 */
-	public void pagingByPost(Web web) {
+	/*public void pagingByPost(Web web) {
 
-	}
+	}*/
 
 	/**
 	 * get请求分页
 	 * 
 	 * @param web
 	 */
-	public void pagingByGet(Web web) {
+	/*public void pagingByGet(Web web) {
 
-	}
+	}*/
 
 	/**
 	 * 开启方法
@@ -248,6 +314,7 @@ public class BaseCrawler{
 	 * @throws Exception
 	 */
 	public void start(String seedUrl, String typeId) throws Exception {
+		this.typeId =typeId;
 		ReadXML readXML = new ReadXML();
 		final List list = readXML.ResolveXml();
 		// 循环遍历读取到的xml
@@ -255,8 +322,7 @@ public class BaseCrawler{
 			HashMap<String, String> hashMap = (HashMap<String, String>) list.get(i);
 
 			String seed = hashMap.get("seed");
-			
-			System.out.println("start               "+  !(seed.equals(seedUrl)));
+			System.out.println("baseCrawler     "+seed);
 			// 通过传递的种子来判断网页的规则，如果种子不对应，则结束当层循环
 			if (!(seed.equals(seedUrl))) {
 				continue;
@@ -266,7 +332,7 @@ public class BaseCrawler{
 			String tag2 = hashMap.get("tag2");
 			// 文字类抓取
 			// 用web类来传值
-			final Web web = new Web();
+//			final Web web = new Web();
 			web.setSeed(seed);
 			web.setUrlRex(urlRex);
 			List<String> taglist = new ArrayList<String>();
@@ -291,15 +357,19 @@ public class BaseCrawler{
 
 			// 分页
 			int totalPage = Integer.parseInt(hashMap.get("totalPage"));
-			String pageTag = hashMap.get("pageTag");
-			String pageMethod = hashMap.get("pageMethod");
+			String pageAjaxTag = hashMap.get("pageAjaxTag");
+			String pageGetTag = hashMap.get("pageGetTag");
+			String pagePostTag=hashMap.get("pagePostTag");
+			String pageMethod =hashMap.get("pageMethod");
 			web.setTotalPage(totalPage);
 			web.setPageMethod(pageMethod);
-			web.setPageTag(pageTag);
+			web.setPageAjaxTag(pageAjaxTag);
+			web.setPageGetTag(pageGetTag);
+			web.setPagePostTag(pagePostTag);
 			// -----------------------------------------------------------------------------
 			// 分页
 			if (pageMethod.equals("ajax")) {
-				pagingByAjax(web, typeId);// 如果网页存在图片则爬取图片
+//				pagingByAjax(web, typeId);// 如果网页存在图片则爬取图片
 				
 			} else if (pageMethod.equals("get")) {
 
@@ -312,10 +382,11 @@ public class BaseCrawler{
 	}
 	
 	
+	
 	/**
 	 * 停止
 	 */
-	public void down(){
+/*	public void down(){
 //		if(crawler.getsDoc()!=null ){
 //			crawler.getsDoc().stop();
 //			System.out.println(crawler     + "           000 stop ----------------------------");
@@ -332,9 +403,9 @@ public class BaseCrawler{
 		
 		System.out.println(crawler     + "           stop ----------------------------");
 	}
-
+*/
 	// 用来传递数据的类
-	class Web {
+	/*class Web {
 		private String seed;// 种子
 		private String urlRex;// 要抓取的url正则表达式
 		private List<String> list;// 标签列表
@@ -445,5 +516,5 @@ public class BaseCrawler{
 		}
 
 	}
-
-}
+*/
+		}
