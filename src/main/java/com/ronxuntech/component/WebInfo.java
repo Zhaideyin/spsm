@@ -1,6 +1,10 @@
 package com.ronxuntech.component;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import com.ronxuntech.component.spsm.util.ReadXML;
 
 public class WebInfo {
 	private String seed;// 种子
@@ -17,8 +21,17 @@ public class WebInfo {
 	private String pageMethod; // 分页方式
 	private String pageGetTag;  // get
 	private String pagePostTag;  //post
+	private String typeId;  //传进来的类型id
 	
 	
+	public String getTypeId() {
+		return typeId;
+	}
+
+	public void setTypeId(String typeId) {
+		this.typeId = typeId;
+	}
+
 	public String getPageAjaxTag() {
 		return pageAjaxTag;
 	}
@@ -130,4 +143,64 @@ public class WebInfo {
 	public void setHasDoc(boolean hasDoc) {
 		this.hasDoc = hasDoc;
 	}
+	
+	
+	public static WebInfo init(String seedUrl, String typeId) throws Exception {
+		WebInfo web=new WebInfo();
+		web.typeId = typeId;
+		ReadXML readXML = new ReadXML();
+		final List list = readXML.ResolveXml();
+		// 循环遍历读取到的xml
+		for (int i = 0; i < list.size(); i++) {
+			HashMap<String, String> hashMap = (HashMap<String, String>) list.get(i);
+
+			String seed = hashMap.get("seed");
+			System.out.println("baseCrawler     " + seed);
+			// 通过传递的种子来判断网页的规则，如果种子不对应，则结束当层循环
+			if (!(seed.equals(seedUrl))) {
+				continue;
+			}
+			String urlRex = hashMap.get("urlRex");
+			String tag1 = hashMap.get("tag1");
+			String tag2 = hashMap.get("tag2");
+			// 文字类抓取
+			// 用web类来传值
+			// final Web web = new Web();
+			web.setSeed(seed);
+			web.setUrlRex(urlRex);
+			List<String> taglist = new ArrayList<String>();
+			taglist.add(tag1);
+			taglist.add(tag2);
+			web.setList(taglist);
+
+			// 图片爬取
+			boolean hasImg = Boolean.parseBoolean(hashMap.get("hasImg"));
+			String imgRegex = hashMap.get("imgRegex");
+			String imgTag = hashMap.get("imgTag");
+			web.setImgTag(imgTag);
+			web.setImgRegex(imgRegex);
+			web.setHasImg(hasImg);
+			// 文件
+			boolean hasDoc = Boolean.parseBoolean(hashMap.get("hasDoc"));
+			String DocRegex = hashMap.get("docRegex");
+			String docTag = hashMap.get("docTag");
+			web.setDocTag(docTag);
+			web.setDocRegex(DocRegex);
+			web.setHasDoc(hasDoc);
+
+			// 分页
+			int totalPage = Integer.parseInt(hashMap.get("totalPage"));
+			String pageAjaxTag = hashMap.get("pageAjaxTag");
+			String pageGetTag = hashMap.get("pageGetTag");
+			String pagePostTag = hashMap.get("pagePostTag");
+			String pageMethod = hashMap.get("pageMethod");
+			web.setTotalPage(totalPage);
+			web.setPageMethod(pageMethod);
+			web.setPageAjaxTag(pageAjaxTag);
+			web.setPageGetTag(pageGetTag);
+			web.setPagePostTag(pagePostTag);
+		}
+		return web;
+	}
+
 }

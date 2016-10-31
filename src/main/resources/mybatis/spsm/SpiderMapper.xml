@@ -16,6 +16,7 @@
 		TYPE,	
 		PUBLISH_TIME,	
 		CREATE_TIME,	
+		ANNEX_PATH,
 		KEYWORDS,	
 		SPIDER_ID
 	</sql>
@@ -29,6 +30,7 @@
 		#{TYPE},	
 		#{PUBLISH_TIME},	
 		#{CREATE_TIME},	
+		#{ANNEX_PATH},
 		#{KEYWORDS},	
 		#{SPIDER_ID}
 	</sql>
@@ -64,6 +66,7 @@
 			TYPE = #{TYPE},
 			PUBLISH_TIME = #{PUBLISH_TIME},
 			CREATE_TIME = #{CREATE_TIME},
+			ANNEX_PATH = #{ANNEX_PATH},	
 			KEYWORDS = #{KEYWORDS},
 		SPIDER_ID = SPIDER_ID
 		where 

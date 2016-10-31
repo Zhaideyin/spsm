@@ -1,7 +1,13 @@
 package com.ronxuntech.component.spsm.util;
-
+/**
+ * AnnexSpider 附件爬取类
+ *	by xieyun 
+ * 
+ */
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.ronxuntech.component.WebInfo;
 import com.ronxuntech.util.PathUtil;
@@ -37,32 +43,17 @@ public class AnnexSpider implements PageProcessor {
 		Html obj = page.getHtml();
 		List<String> requests = new ArrayList<>();
 		requests.add(pageUrl);
-//				obj.links().regex(urlPattern).all();
 		// 将满足条件的链接加入待爬取的队列中。
 		page.addTargetRequests(requests);
 		String imgHostFileName = obj.xpath("//title/text()").toString().replaceAll(" - 中国种子咨询网", "");
 		List<String> listProcess= new ArrayList<>();
 		//判断图片和
-		if(docRegex!=null || docRegex!=""){
+		
+		if(StringUtils.isNotEmpty(docRegex)){
 			listProcess = obj.xpath("//a").regex(docRegex).all();
-		}else if(imgRegex!=null || imgRegex!=""){
+		}else if(StringUtils.isNotEmpty(imgRegex)){
 			listProcess = obj.xpath(web.getImgTag()).regex(imgRegex).all();
 		}
-		
-		/**
-		 * 显示抓取的；链接的
-		 */
-		/*for (Map.Entry<String, Object> entry : page.getResultItems().getAll().entrySet()) {
-			System.out.println("遍历resultItems:");
-			// entry.getValue()是保存的所有链接的集合。包括获取的title.
-			if (entry.getValue() instanceof List) {
-				System.out.println("获取的是List  " + entry.getValue().toString());
-			}
-		}*/
-
-		
-//		System.out.println("imghost       :" + imgHostFileName);
-//		System.out.println("listProces        :" + listProcess.size());
 		// 此处将标题一并抓取，之后提取出来作为文件名
 		listProcess.add(0, imgHostFileName);
 		page.putField("img", listProcess);

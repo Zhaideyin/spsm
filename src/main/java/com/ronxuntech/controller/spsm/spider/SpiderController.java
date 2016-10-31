@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.deser.Deserializers.Base;
+import com.ronxuntech.component.AjaxCrawler;
+import com.ronxuntech.component.WebInfo;
 import com.ronxuntech.component.spsm.BaseCrawler;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
@@ -50,6 +52,7 @@ public class SpiderController extends BaseController {
 	private TypeManager typeService;
 	
 	private BaseCrawler crawler=BaseCrawler.getInstance();
+	private AjaxCrawler ajaxCrawler=AjaxCrawler.getInstance();
 	/**
 	 * 跳转到爬取页面，取出所有数据类型
 	 */
@@ -72,8 +75,12 @@ public class SpiderController extends BaseController {
 		PageData pd = new PageData();
 		//调用开启方法，传递种子和数据库的类型
 //		crawler.start(seedUrl,typeId);
-		crawler.start(seedUrl, typeId);
-		Spider.create(crawler).addUrl(seedUrl).thread(10).run();
+		WebInfo web=WebInfo.init(seedUrl, typeId);
+		if(web.getPageMethod().equals("get")){
+			crawler.start(web);
+		}else if(web.getPageMethod().equals("ajax")){
+			ajaxCrawler.start(web);
+		}
 		out.write("success");
 		out.close();
 	}

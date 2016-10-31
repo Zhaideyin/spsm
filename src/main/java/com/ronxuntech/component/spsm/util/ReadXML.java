@@ -56,8 +56,9 @@ public class ReadXML {
             hsmap.put("hasDoc",elementDoc1.getStringValue());
             Element elementDoc2=(Element) listDoc.get(1);
             hsmap.put("docRegex",elementDoc2.getStringValue());
-            Element elementDoc3=(Element) listImg.get(2);
+            Element elementDoc3=(Element) listDoc.get(2);
             hsmap.put("docTag",elementDoc3.getStringValue());
+            
             
             //分页
             

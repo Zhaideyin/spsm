@@ -29,27 +29,36 @@ import us.codecraft.webmagic.utils.FilePersistentBase;
 
 public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 	 
+	
     private Logger logger = LoggerFactory.getLogger(getClass());
     public ImgOrDocPipeline() {
         setPath("/data/webmagic/");
     }
  
-    public ImgOrDocPipeline(String path) {
+    public ImgOrDocPipeline(String path,String imgFileNameNew) {
         setPath(path);
+        this.imgFileNameNew.append(imgFileNameNew);
     }
+    
+	private  StringBuffer imgFileNameNew =new StringBuffer();
  
- 
-    public void process(ResultItems resultItems, Task task) {
-        String fileStorePath = this.path;
+	public StringBuffer getImgFileNameNew() {
+		return imgFileNameNew;
+	}
+
+	public void setImgFileNameNew(StringBuffer imgFileNameNew) {
+		this.imgFileNameNew = imgFileNameNew;
+	}
+
+	public void process(ResultItems resultItems, Task task) {
+//        String fileStorePath = this.path;
         try {
         	//这没用，在后边完全要替换掉
-        	String imgShortNameNew="(http://www.meizitu.com/wp-content/uploads/)|(jpg)";
             CloseableHttpClient httpclient = HttpClients.createDefault();
             
             for (Map.Entry<String, Object> entry : resultItems.getAll().entrySet()) {
             	//entry.getValue()是保存的所有链接的集合。包括获取的title.
             	if (entry.getValue() instanceof List) {
-            		System.out.println("获取的是List  "+entry.getValue().toString());
             		//	取得所有的链接。
             		List listOne= (List) entry.getValue();
                     List<String> list = new ArrayList<String>();
@@ -62,24 +71,13 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                     {
                     	
                         StringBuffer sb = new StringBuffer();
-                        StringBuffer imgFileNameNewYuan =sb.append(fileStorePath)
-                                .append(list.get(0)) //此处提取文件夹名，即之前采集的标题名
-                                .append("\\");
+                        StringBuffer imgFileNameNewYuan =sb.append(path); //此处提取文件夹名，即之前采集的标题名
+                                
                         //这里先判断文件夹名是否存在，不存在则建立相应文件夹
-                        Path target = Paths.get(imgFileNameNewYuan.toString());
-                        System.out.println("target:  "+target);
-                        if(!Files.isReadable(target)){
-                            Files.createDirectory(target);
+                        File fp=new File(imgFileNameNewYuan.toString());
+                        if(!fp.exists()){
+                        	fp.mkdirs();
                         }
-                        String extName=com.google.common.io
-                                .Files.getFileExtension(list.get(i));
-                        System.out.println("list.get(i):  "+list.get(i).toString());
-                        StringBuffer imgFileNameNew = imgFileNameNewYuan
-                                .append((list.get(i)).replaceAll(imgShortNameNew, "")
-                                .replaceAll("[\\pP‘’“”]", ""))//不懂
-                                .append(".")
-                                .append(extName);
-                        
                         //这里通过httpclient下载之前抓取到的图片网址，并放在对应的文件中
                         //取得的连接中地址符号表示为 &amp;在网页中不需要amp;所以取出链接并且将连接中的amp： 去掉得到网页正的url.
                         String url = list.get(i).replace("amp;","");
@@ -87,7 +85,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                         HttpResponse response = httpclient.execute(httpget);
                         HttpEntity entity = response.getEntity();
                         InputStream in = entity.getContent();
-                        File file = new File(imgFileNameNew.toString());
+                        File file = new File(path+getImgFileNameNew().toString());
  
                         try {
                             FileOutputStream fout = new FileOutputStream(file);
@@ -116,8 +114,5 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
         }
     }
     
-    public void abc(Abc abc){
-    	//----
-    	abc.finish(3);
-    }
+    
 }
