@@ -44,9 +44,12 @@ public class BaseCrawler implements PageProcessor {
 		page.addTargetRequest(html.xpath(web.getPageGetTag()).toString());
 		// 分页类型判断。从而取不同的方式
 		PageData pd = new PageData();
+		String regex="[\\[|\\]|,]";
+		String content=html.xpath(web.getList().get(1).toString()).all().toString().replaceAll(regex, "");
+		String title=html.xpath(web.getList().get(0).toString()).all().toString().replaceAll(regex, "");
 		pd.put("SPIDER_ID", System.currentTimeMillis());
-		pd.put("TITLE", html.xpath(web.getList().get(0).toString()).toString());
-		pd.put("CONTENT", html.xpath(web.getList().get(1).toString()).toString());
+		pd.put("TITLE", title);
+		pd.put("CONTENT", content);
 		pd.put("TYPE", web.getTypeId());
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

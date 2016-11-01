@@ -196,10 +196,10 @@ public class AnnexUtil {
 		String fileName = annexUrl.substring(index + 1);
 		// 文件夹
 		String dir = annexUrl.replace("http://", "");
-		String fileDir = dir.replace("https://", "").replace(hostName + "/", "").replace(fileName, "");
+//		String fileDir = dir.replace("https://", "").replace(hostName + "/", "").replace(fileName, "");
 
 		
-		String test="uploadFiles/spsm/"+html.xpath(web.getList().get(0)).toString();
+		String test="uploadFiles/spsm/"+html.xpath(web.getList().get(0)).toString()+"/";
 		System.out.println("test "+test);
 		map.put("fileName", fileName);
 		map.put("fileDir", test);

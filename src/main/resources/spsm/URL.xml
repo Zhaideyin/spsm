@@ -81,13 +81,13 @@
         </page>
     </webpage>
 
-<!--  农博网 20页 -->
+<!--  农博网 20页 ok -->
     <webpage>
         <seed>http://finance.aweb.com.cn/industry/news/index_1.html</seed>
          <urlRex>http://finance.aweb.com.cn/[0-9]+/[0-9]+.shtml</urlRex>
         <tagList>
-            <tag1>//*[@id="content"]/div[1]/h1/text()</tag1>
-            <tag2>//*[@id="content"]/div[1]/html()</tag2>
+            <tag1>//div[@class='newList f_left']/h1/span/text()</tag1>
+            <tag2>//*[@id="content"]/div[1]/p</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -107,13 +107,15 @@
         	<pageMethod>get</pageMethod>
         </page>
     </webpage>
+
+
 <!-- 地方新闻  共5页-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=31</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?[a-zA-Z]+\=[0-9]+&amp;[a-zA-Z]+\=[0-9]+&amp;db=ppseed)</UrlRex>
+        <UrlRex>(.*/DefaultInfoDetail.aspx\?[a-zA-Z]+=[0-9]+&amp;[a-zA-Z]+\=[0-9]+&amp;db=ppseed)</UrlRex>
         <tagList>
             <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tbody/tr/td/allText()</tag2>
+            <tag2>//table[@id='TbContent']/tbody/tr/td/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
