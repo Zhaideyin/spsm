@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <webList>
 <!--  图片测试     ok -->
-	<webpage>
-        <seed>http://www.meizitu.com/</seed>
+	<!-- <webpage>
+        <seed>http://www.meizitu.com</seed>
         <urlRex>http://www.meizitu.com/[a-z]/[0-9]{1,4}.html</urlRex>
         <tagList>
             <tag1>//title/text()</tag1>
@@ -25,7 +25,7 @@
         	<pagePostTag></pagePostTag>
         	<pageMethod>get</pageMethod>
         </page>
-    </webpage>
+    </webpage> -->
 
 <!--中国种业信息网   2页  ok-->
     <webpage>
@@ -57,7 +57,7 @@
 <!--  中国种业信息网 27页  部分测试 ok -->
    <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=2</seed>
-        <urlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+&amp;[a-zA-Z]+\=[0-9]+)</urlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id="LbTitle"]/text()</tag1>
             <tag2>//div[@class='conzw']/html()</tag2>
@@ -112,10 +112,10 @@
 <!-- 地方新闻  共5页-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=31</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?[a-zA-Z]+=[0-9]+&amp;[a-zA-Z]+\=[0-9]+&amp;db=ppseed)</UrlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tbody/tr/td/html()</tag2>
+             <tag1>//*[@id="LbTitle"]/text()</tag1>
+            <tag2>//div[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -123,13 +123,13 @@
             <imgTag></imgTag>
         </img>
         <doc>
-            <hasDoc>true</hasDoc>
+            <hasDoc>false</hasDoc>
             <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*\.(doc|docx|pdf|xls|zip|rar)&amp;&amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|docx|zip|rar))</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
             <totalPage>5</totalPage>
-            <pageAjaxTag>GridView1_LinkButtonNextPage</pageAjaxTag><!-- 分页的标签-->
+            <pageAjaxTag>GridView1_LinkButtonNextPage</pageAjaxTag>
             <pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
         	<pageMethod>ajax</pageMethod>
@@ -139,10 +139,10 @@
 <!--注释：执法情况 id=77  共1页 19条记录-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=77</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId=[0-9]+&amp;[a-zA-Z]+=[0-9]+)</UrlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+            <tag1>//*[@id="LbTitle"]/text()</tag1>
+            <tag2>//div[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -150,12 +150,12 @@
             <imgTag></imgTag>
         </img>
         <doc>
-            <hasDoc>true</hasDoc>
+            <hasDoc>ture</hasDoc>
             <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|docx|pdf|xls|zip|rar)&amp;&amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|zip|rar))</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
-            <totalPage>1</totalPage><!--只有一页不需要分页-->
+            <totalPage>1</totalPage>
             <pageAjaxTag></pageAjaxTag>
             <pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
@@ -166,10 +166,10 @@
 <!--注释：企业动态 id=75 共6页-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=75</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+&amp;[a-zA-Z]+=[0-9]+)</UrlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+            <tag1>//*[@id="LbTitle"]/text()</tag1>
+            <tag2>//div[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -194,10 +194,10 @@
 <!--品种公示 共一页 27 条记录-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=97</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+            <tag1>//*[@id="LbTitle"]/text()</tag1>
+            <tag2>//div[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -210,7 +210,7 @@
             <docTag>//a</docTag>
         </doc>
         <page>
-            <totalPage>1</totalPage><!--只有一页不需要分页-->
+            <totalPage>1</totalPage>
           	<pageAjaxTag></pageAjaxTag>
           	<pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
@@ -221,10 +221,10 @@
 <!-- 注释：产业政策 ID=71  2页-->
     <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=71</seed>
-        <UrlRex>(.*/DefaultInfoDetail.aspx\?InfoId\=[0-9]+&amp;[a-zA-Z]+\=[0-9]+)</UrlRex>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//h2/span[@id='LbTitle']/text()</tag1>
-            <tag2>//table[@id='TbContent']/tr/td/allText()</tag2>
+            <tag1>//*[@id="LbTitle"]/text()</tag1>
+            <tag2>//div[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -232,12 +232,12 @@
             <imgTag></imgTag>
         </img>
         <doc>
-            <hasDoc>true</hasDoc>
+            <hasDoc>false</hasDoc>
             <docRegex>http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|pdf|zip|docx|rar|xls)&amp;&amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|zip|docx|rar|xls)</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
-            <totalPage>2</totalPage><!--只有一页不需要分页-->
+            <totalPage>2</totalPage>
             <pageAjaxTag>GridView1_LinkButtonNextPage</pageAjaxTag>
           	<pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
@@ -249,10 +249,10 @@
     注释：农业新政  8 页-->
     <webpage>
         <seed>http://www.caas.net.cn/nykjxx/nyxz/index.shtml</seed>
-        <UrlRex>(.*/[0-9]+.shtml)</UrlRex>
+        <urlRex>(.*/[0-9]+.shtml)</urlRex>
         <tagList>
             <tag1>//h3/text()</tag1>
-            <tag2>//div[@id='word']/font/allText()</tag2>
+            <tag2>//div[@class='list_bj01']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -260,14 +260,14 @@
             <imgTag></imgTag>
         </img>
         <doc>
-            <hasDoc>true</hasDoc>
+            <hasDoc>false</hasDoc>
             <docRegex>http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*\.(doc|pdf)\&amp;\&amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf)</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
-            <totalPage>8</totalPage><!--只有一页不需要分页-->
-            <pageAjaxTag>GridView1_LinkButtonNextPage</pageAjaxTag>
-          	<pageGetTag></pageGetTag>
+            <totalPage>8</totalPage>
+            <pageAjaxTag></pageAjaxTag>
+          	<pageGetTag>//div[@id="fenye"]/form/a[3]/@href</pageGetTag>
         	<pagePostTag></pagePostTag>
             <pageMethod>get</pageMethod>
         </page>

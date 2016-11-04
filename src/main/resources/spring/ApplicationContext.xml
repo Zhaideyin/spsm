@@ -122,6 +122,7 @@
 			<property name="filterChainDefinitions">
 				<value>
 				/api/**						= anon
+				/spsm/**					= anon
 				/static/login/** 			= anon
 				/static/html_UI/** 			= anon
 				/static/js/myjs/** 			= authc

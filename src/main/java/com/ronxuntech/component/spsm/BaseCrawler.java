@@ -41,7 +41,9 @@ public class BaseCrawler implements PageProcessor {
 		// 将爬取的目标地址添加到队列里面 web.getUrlRex()
 		page.addTargetRequests(html.links().regex(web.getUrlRex()).all());
 		//下一页是个链接的。 比如： 下一页是   ....html.
-		page.addTargetRequest(html.xpath(web.getPageGetTag()).toString());
+		if(web.getPageGetTag()!=""){
+			page.addTargetRequest(html.xpath(web.getPageGetTag()).toString());
+		}
 		// 分页类型判断。从而取不同的方式
 		PageData pd = new PageData();
 		String regex="[\\[|\\]|,]";

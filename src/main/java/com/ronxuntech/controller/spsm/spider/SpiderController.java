@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.deser.Deserializers.Base;
 import com.ronxuntech.component.AjaxCrawler;
 import com.ronxuntech.component.WebInfo;
 import com.ronxuntech.component.spsm.BaseCrawler;
+import com.ronxuntech.component.spsm.util.ReadXML;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
@@ -64,6 +65,10 @@ public class SpiderController extends BaseController {
 		//查询所有的数据类型
 		List<PageData> list =typeService.listAll(pd);
 		mv.addObject("list", list);
+		ReadXML rxml=new ReadXML();
+		
+		List<HashMap> listmap =rxml.ResolveXml();
+		mv.addObject("urlList",listmap);
 //		mv.addObject("msg","success");
 		mv.setViewName("spsm/spider/spider_start");
 		return mv;
@@ -174,6 +179,9 @@ public class SpiderController extends BaseController {
 		mv.addObject("QX",Jurisdiction.getHC());	//按钮权限
 		return mv;
 	}
+	
+	
+	
 	
 	/**去新增页面
 	 * @param

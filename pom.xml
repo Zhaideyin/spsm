@@ -8,7 +8,7 @@
 	<artifactId>ndrc_console</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ndrc_console</name>
+	<name>spsm</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -635,7 +635,7 @@
 		
 	</dependencies>
 	<build>
-		<finalName>console</finalName>
+		<finalName>spsm</finalName>
 		<plugins>
 			<plugin>  
     <groupId>org.apache.maven.plugins</groupId>  

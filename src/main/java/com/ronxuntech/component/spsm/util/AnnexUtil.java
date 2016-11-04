@@ -154,11 +154,7 @@ public class AnnexUtil {
 				// 整个名称
 				fileName = fileName+ extName;
 //				fileDir = fileDir.substring(0, fileDir.lastIndexOf("/") + 1);
-				// 清楚特殊字符
-				String regex = "[|*?%<>\"]";
-				Pattern pattern = Pattern.compile(regex);
-				Matcher matcher = pattern.matcher(fileDir);
-				fileDir = matcher.replaceAll("").trim();
+				
 				doc = new ImgOrDocPipeline(fileDir, fileName);
 				Spider.create(annex).addUrl(pageUrl).addPipeline(doc).thread(1).start();
 				// 将当前下载的文档或者图片的路径保存到list
@@ -188,9 +184,6 @@ public class AnnexUtil {
 	 */
 	public Map findDirAndFileName(String annexUrl,Html html,WebInfo web) throws MalformedURLException {
 		Map<String, Object> map = new HashMap();
-
-		URL url = new URL(annexUrl);
-		String hostName = url.getHost();
 		int index = annexUrl.lastIndexOf("/");
 		// 文件名
 		String fileName = annexUrl.substring(index + 1);
@@ -198,11 +191,17 @@ public class AnnexUtil {
 		String dir = annexUrl.replace("http://", "");
 //		String fileDir = dir.replace("https://", "").replace(hostName + "/", "").replace(fileName, "");
 
+		// 网站/标题作为文件夹  清除特殊字符
+		String regex = "[:/|*?%<>\"]";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(web.getSeed());
+		String webUrl = matcher.replaceAll("").trim();
 		
-		String test="uploadFiles/spsm/"+html.xpath(web.getList().get(0)).toString()+"/";
-		System.out.println("test "+test);
+		String fileDir="uploadFiles/spsm/"+webUrl+"/"+html.xpath(web.getList().get(0)).toString()+"/";
+		
+		
 		map.put("fileName", fileName);
-		map.put("fileDir", test);
+		map.put("fileDir", fileDir);
 		return map;
 	}
 

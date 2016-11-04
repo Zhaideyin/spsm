@@ -30,8 +30,13 @@
 						<div class="col-md-12" style="padding-top:20px; text-align: center">
 							<!-- 检索  -->
 							<form action="spider/start.do" method="post" name="Form" id="Form">
-								<input type="text" name="seedUrl" style="width: 500px"> <select id="typeName"
-									name="typeName">
+							<!-- 	<input type="text" name="seedUrl" style="width: 500px">  -->
+								<select id="seedUrl" name="seedUrl" style="width: 500px">
+									<c:forEach items="${urlList}" var="url" varStatus="vs">
+										<option value="${url.seed}">${ url.seed}</option>
+									</c:forEach>
+								</select>
+								<select id="typeName" name="typeName">
 									<c:forEach items="${list}" var="r" varStatus="vs">
 										<option value="${r.TYPE_ID}">${r.TYPENAME }</option>
 									</c:forEach>
