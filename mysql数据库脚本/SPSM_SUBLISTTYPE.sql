@@ -1,0 +1,13 @@
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `SPSM_SUBLISTTYPE`
+-- ----------------------------
+DROP TABLE IF EXISTS `SPSM_SUBLISTTYPE`;
+CREATE TABLE `SPSM_SUBLISTTYPE` (
+ 		`SUBLISTTYPE_ID` varchar(100) NOT NULL,
+		`SUBLISTNAME` varchar(255) DEFAULT NULL COMMENT '子列表名',
+		`LISTID` varchar(255) DEFAULT NULL COMMENT '列表编号',
+  		PRIMARY KEY (`SUBLISTTYPE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

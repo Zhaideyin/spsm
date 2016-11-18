@@ -30,7 +30,6 @@ public class ReadXML {
         for (Element child : childElements) {
             HashMap<String ,String> hsmap=new HashMap<String ,String>();
             //获得种子
-            System.out.println(child.elementText("seed"));
             hsmap.put("seed",child.elementText("seed"));
             //获得url的正则表达式
             hsmap.put("urlRex",child.elementText("urlRex"));
@@ -39,7 +38,6 @@ public class ReadXML {
             for(int i=0;i<list.size();i++){
                 Element element=(Element) list.get(i);
                 hsmap.put("tag"+(i+1),element.getStringValue());
-                System.out.println(element.getStringValue());
             }
             //图片
             List listImg = child.element("img").elements();
@@ -77,6 +75,9 @@ public class ReadXML {
             
             Element elementPageMethod=(Element) listPage.get(4);
             hsmap.put("pageMethod", elementPageMethod.getStringValue());
+            
+            Element elementPageEncoding=(Element) listPage.get(5);
+            hsmap.put("pageEncoding", elementPageEncoding.getStringValue());
             listmap.add(hsmap);
         }
         return listmap;
@@ -90,7 +91,11 @@ public class ReadXML {
     public static void main(String[] args) {
         ReadXML readXML=new ReadXML();
         try {
-            readXML.ResolveXml();
+        	List<HashMap> map =readXML.ResolveXml();
+        	for(int i=0;i<map.size();i++){
+        		System.err.println(map.get(i).get("pageEncoding"));
+        	}
+        	
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <base href="<%=basePath%>">
+            <meta charset="UTF-8">
+            <title>breedKnowledge</title>
+            <style>
+                a {
+                    color: #ffffff;
+                    text-decoration:none;
+                }
+                *{  margin: 0px;
+                    padding: 0px;}
+                .head{
+                    background-color:#272727;
+                    width: 100%;
+                    height: 50px;
+                }
+                .head p{
+                    color: #ffffff;
+                }
+                .logo{
+                    background-image: url("../img/head.png");
+                    background-repeat: no-repeat;
+                    width: 293px;
+                    height: 46px;
+                    top:3px;
+                }
+                .container{
+                    margin: 0px;
+                    padding: 0px;
+                    width: 100%;
+                }
+                .first{
+                    position: absolute;
+                    left: 500px;
+                    top:15px;
+
+                }
+                .second{
+                    position: absolute;
+                    left: 650px;
+                    top:15px;
+
+
+                }
+                .third{
+                    position: absolute;
+                    left: 800px;
+                    top:15px;
+
+
+                }
+                .fourth{
+                    position: absolute;
+                    left: 1000px;
+                    top:15px;
+
+                }
+                .logo,.first,.second,.third,.fourth{
+                    height: 53px;
+                }
+                .main{
+                    background-color: azure;
+                    min-height: 820px;
+                    width: 100%;
+                }
+                .top {
+                    background-color: #12525e;
+                    width: 100%;
+                    height: 179px;
+                    margin-top: -10px;
+
+                }
+                .top p{
+                    position: relative;
+                    left: 10%;
+                    width: 750px;
+                }
+                .content_top{
+                    width: 100%;
+                    background-color: #0f4850;
+                    height: 35px;
+                }
+                .foot{
+                    background-color: #878784;
+                    width: 100%;
+                    height: 80px;
+                    position: relative;
+                    top:300px;
+                }
+                .footLogo{
+                    background-image: url("../img/foot.png");
+                    float: left;
+                    height: 57px;
+                    width: 59px;
+                }
+                .footText {
+                    margin-top: 10px;
+                   float: left;
+                    height: 57px;
+                }
+                .footText b{
+                    color: #ffffff;
+                }
+                .topFirst ,.topSecond{
+                    color: #ffffff;
+                }
+                .topFirst{
+                    margin: 7px 0px 2px 5px;
+                    top:20px;
+                }
+                .topSecond{
+                    font-size: 30px;
+                    top:30px;
+                    margin:20px 0px 10px 20px  ;
+                }
+
+                .content{
+
+                    position: absolute ;
+                    top:160px;
+                    left:10%;
+                    width:80%;
+                    min-height: 800px;
+
+                }
+                .content_top{
+                    padding: 5px 0px 0px 10px;
+                    width: 99%;
+                }
+                .content_title {
+                    width: 99.7%;
+                    height: 90px;
+            background-color: #106470;
+                }
+                .content_title h2{
+                    color: #ffffff;
+                    padding-left: 300px;
+                    padding-top: 27px;
+                }
+                .content_main_left{
+
+                    width: 20%;
+                    height:500px;
+                    position: absolute;
+                    top:100px;
+                    background-color: #f2f2f2;
+
+                }
+                .content_main_right{
+                    width: 80%;
+                    margin-left: 0px;
+                    height: 500px;
+                    position: relative;
+                    left:20.2%;
+                    padding-top: 30px;
+                }
+                .content_main-left-list0{
+                    width: 60%;
+                    height: 60px;
+                    padding:30px 0px 0px 70px;
+
+
+
+                }
+                .content_main-left-list_container{
+                    border: solid 1px;
+                    border-color: #4e6064;
+                    height: 700px;
+                }
+                .content_main-left-list{
+                    width: 68%;
+                    height:30px;
+                    padding:20px 0px 0px 10px;
+                    border-bottom: solid 1px;
+                    border-color: #586c70;
+                    margin-left: 7%;
+                }
+                .content_main-left-list-title{
+                    float: left;
+                }
+                .content_main-left-list-img{
+                   float: right;
+                }
+                .content_main_right_first,.content_main_right_second,.content_main_right_third{
+                    float:left;
+                    width: 32%;
+                    height: 600px;
+                    border: #07403d 2px solid;
+                    margin-right: 10px;
+                }
+                .content_main_right_first_middle{
+                    background-color: #538e96;
+                    height: 36px;
+                    margin-top: -3px;
+                    padding-top: 7px;
+                    padding-left: 40px;
+                }
+                .content_main_right_first_end_text{
+                    padding: 30px 10px 50px 10px;
+                }
+                .content_main_right_first_end_button{
+                    padding: 60px 50px 10px 30px;
+                }
+            </style>
+        </head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p>育种创新数据库</p>
+        </div>
+        <div class="second">
+            <p>种业产业数据库</p>
+        </div>
+        <div class="third">
+            <p >成果推广与转化数据库</p>
+        </div>
+        <div class="fourth">
+            <p>育种专家智库</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topFirst">&nbsp;首页/育种创新数据库 Breeding Innovation Database/育种知识服务 Breeding Research Service </p>
+            <p class="topSecond">育种知识服务</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                  <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="breedResearchImg.html">前沿育种研究</a>
+                      &nbsp; &nbsp; &nbsp;    <a href="breedKnowledge.html">育种知识服务</a> </b></p>
+            </div>
+            <div class="content_title">
+               <h2>创新咨询</h2>
+            </div>
+            <div class="content_main">
+             <div class="content_main_left">
+
+                 <div class="content_main-left-list0">
+                   <h4>育种知识服务</h4>
+                 </div>
+                 <div class="content_main-left-list_container">
+                     <div class="content_main-left-list">
+                         <div class="content_main-left-list-title">
+                             <h4>文献数据 </h4>
+                         </div>
+                         <div class="content_main-left-list-img">
+                             <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                         </div>
+                     </div>
+                     <div class="content_main-left-list">
+                         <div class="content_main-left-list-title">
+                             <h4>农业智库 </h4>
+                         </div>
+                         <div class="content_main-left-list-img">
+                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                         </div>
+                     </div>
+                     <div class="content_main-left-list">
+                         <div class="content_main-left-list-title">
+                             <h4>育种相关软件 </h4>
+                         </div>
+                         <div class="content_main-left-list-img">
+                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                         </div>
+                     </div>
+                     <div class="content_main-left-list">
+                         <div class="content_main-left-list-title">
+                             <h4>文件待查，整理数据分析</h4>
+                         </div>
+                         <div class="content_main-left-list-img">
+                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                         </div>
+                     </div>
+                     <div class="content_main-left-list">
+                         <div class="content_main-left-list-title">
+                             <h4>查新咨询</h4>
+                         </div>
+                         <div class="content_main-left-list-img">
+                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                    <div class="content_main_right_first_top">
+                        <img src="../img/9068870200cfc82be178o_0.jpg" style="height:240px;width: 100%;">
+                    </div>
+                        <div class="content_main_right_first_middle">
+                            <h4>文献待查</h4>
+                        </div>
+                        <div class="content_main_right_first_end">
+                            <div class="content_main_right_first_end_text">
+                            <p>
+                                以本馆馆藏各种文献资源和网络免费信息资源为基础，提供以下代理检索服务：①针对校内用户自然科学、社会科学及人文科学各个学科、各种目的的研究课题，以描述课题的主题词、关键词作为检索入口，开展文献检索服务。
+                                检索结果提供文献的文摘，部分可提供全文；② 根据需求，
+                                提供部分专利、标准检索服务； ③根据需求，提供学位论文检索服务。
+                            </p>
+                            </div>
+                            <div class="content_main_right_first_end_button">
+                                <input value="点击咨询" style="background-color: #535353 ;padding-left: 30px; color: #ffffff;width: 100px; height: 40px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="content_main_right_first_top">
+                            <img src="../img/addenbrookescancerresearchcentre_4253267347.jpg" style="height:240px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_middle">
+                            <h4>文献整理</h4>
+                        </div>
+                        <div class="content_main_right_first_end">
+                            <div class="content_main_right_first_end_text">
+                                <p>
+                                    以本馆馆藏各种文献资源和网络免费信息资源为基础，提供以下代理检索服务：①针对校内用户自然科学、社会科学及人文科学各个学科、各种目的的研究课题，以描述课题的主题词、关键词作为检索入口，开展文献检索服务。
+                                    检索结果提供文献的文摘，部分可提供全文；② 根据需求，
+                                    提供部分专利、标准检索服务； ③根据需求，提供学位论文检索服务。
+                                </p>
+                            </div>
+                            <div class="content_main_right_first_end_button">
+                                <input value="点击咨询" style="background-color: #535353 ;padding-left: 30px; color: #ffffff;width: 100px; height: 40px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_main_right_third">
+                        <div class="content_main_right_first_top">
+                            <img src="../img/sirjamesdysoncourtesyjdf.jpg" style="height:240px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_middle">
+                            <h4>数据分析</h4>
+                        </div>
+                        <div class="content_main_right_first_end">
+                            <div class="content_main_right_first_end_text">
+                                <p>
+                                    以本馆馆藏各种文献资源和网络免费信息资源为基础，提供以下代理检索服务：①针对校内用户自然科学、社会科学及人文科学各个学科、各种目的的研究课题，以描述课题的主题词、关键词作为检索入口，开展文献检索服务。
+                                    检索结果提供文献的文摘，部分可提供全文；② 根据需求，
+                                    提供部分专利、标准检索服务； ③根据需求，提供学位论文检索服务。
+                                </p>
+                            </div>
+                            <div class="content_main_right_first_end_button">
+                                <input value="点击咨询" style="background-color: #535353 ;padding-left: 30px; color: #ffffff;width: 100px; height: 40px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="foot">
+        <div class="footLogo">
+        </div>
+        <div class="footText">
+            <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
+            <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
+            <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

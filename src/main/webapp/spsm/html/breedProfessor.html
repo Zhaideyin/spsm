@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>breedProfessor</title>
+    <style>
+        a {
+            color: #ffffff;
+            text-decoration:none;
+        }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            position: relative;
+            left: 100px;
+            top:3px;
+        }
+        .first{
+            position: absolute;
+            left: 500px;
+            top:15px;
+        }
+        .second{
+            position: absolute;
+            left: 650px;
+            top:15px;
+
+
+        }
+        .third{
+            position: absolute;
+            left: 800px;
+            top:15px;
+
+
+        }
+        .fourth{
+            position: absolute;
+            left: 1000px;
+            top:15px;
+
+        }
+        .logo,.first,.second,.third,.fourth{
+            height: 53px;
+        }
+        .main{
+            background-color: azure;
+            height: 1200px;
+            width: 100%;
+        }
+        .top{
+            background-color: #12525e;
+            width: 100%;
+            height: 300px;
+        }
+        .top p{
+            position: relative;
+            width: 900px;
+            left:10%;
+        }
+        .content{
+            background-color: #f2f2f2;
+            position: absolute;
+            left: 10%;
+            top:150px;
+            width: 80%;
+            height: auto;
+        }
+        .content_top{
+            background-color: #0f4850;
+
+
+        }
+        .content_top p{
+            color: #ffffff;
+            position: relative;
+            left:30px;        }
+        .content_container{
+
+        }
+        .content_left{
+            float: left;
+            margin-left: 0px;
+            width: 75%;
+            height: 1378px;
+        }
+        .content_right{
+            margin-right: 0px;
+            background-color: #ffffff;
+            width: 25%;
+            float: left;
+            height: 1378px;
+
+        }
+        .content_left_container_left{
+            float: left;
+            width:60%;
+            height: 890px;
+            margin-bottom: 7px;
+        }
+        .content_left_container_left1{
+            width: 100%;
+            height: 200px;
+            border-bottom:solid 1px;
+            border-right:solid 1px;
+            margin-bottom: 4px;
+            padding-right: -14px;
+
+        }
+        .content_left_container_left2{
+            width: 100%;
+            height: 200px;
+            border-bottom:solid 1px;
+
+        }
+        .content_left_container_left3{
+            width: 100%;
+            height: 460px;
+
+        }
+        .content_left_container_left_text{
+            width: 50%;
+            height: 200px;
+            float: right;
+            padding: 10px 10px 10px ;
+
+        }
+        .content_left_container_right{
+            float: left;
+            width: 38%;
+            height: 900px;
+        }
+        .content_left_container_left3_left,.content_left_container_left3_right{
+            width: 48%;
+            float: left;
+            height: 400px;
+        }
+        .content_left_container_left3_text{
+            width: 90%;
+            height: 90px;
+        }
+        .content_left_container_right1,.content_left_container_right2,.content_left_container_right3,.content_left_container_right4{
+            border-bottom: solid 1px #1d8a6e;
+            border-left: solid 1px #1d8a6e;
+            width: 98%;
+            height: 200px;
+            padding: 10px 10px 30px 10px;
+            margin-bottom: 2px;
+        }
+        .content_right_introduce,.content_right_search,.content_right_links{
+            padding: 40px 5px 60px 40px;
+            margin-bottom: 60px;
+
+
+        }
+        .more{
+
+            position:relative;
+            left: 10%;
+            width: 500px;
+            height: 50px;
+            padding-top:20px;
+
+        }
+        .foot{
+            background-color: #878784;
+            position: relative;
+            top:340px;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 10px;
+            top:10px;
+            height: 57px;
+            width: 59px;
+        }
+        .container{
+            width: 100%;
+        }
+        .footText{
+            position: relative;
+            width: 800px;
+            left:70px;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topFirst ,.topSecond{
+            color: #ffffff;
+        }
+        .topFirst{
+            position: relative;
+            left:40px;
+            top:20px;
+        }
+        .topSecond{
+            font-size: 30px;
+            position: relative;
+            left:30px;
+            top:30px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p>育种创新数据库</p>
+        </div>
+        <div class="second">
+            <p>种业产业数据库</p>
+        </div>
+        <div class="third">
+            <p >成果推广与转化数据库</p>
+        </div>
+        <div class="fourth">
+            <p>育种专家智库</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topFirst">首页/育种专家智库 Seed Professor Database </p>
+            <p class="topSecond">育种专家智库</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p><a href="index.html" >首页</a>&nbsp;&nbsp;育种专家&nbsp;&nbsp;行业人物动态</p></div>
+            <div class="content_container">
+                <div class="content_left">
+                    <div class="content_img">
+                        <img src="../img/ee301a5714ca8373b4e1ab3bba635d30.jpg" style="width: 100%;height:400px;">
+                    </div>
+                    <div class="content_left_container">
+                        <div class="content_left_container_left">
+
+                            <div class="content_left_container_left1">
+                                <div class="content_left_container_left_img">
+                                    <img src="../img/9068870200cfc82be178o_0.jpg" style="width: 40%;height: 195px;float: left;">
+                                </div>
+                                <div class="content_left_container_left_text">
+                                    <h4> 利用大数据分析实现互联网精准营销</h4><br>
+                                    <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                        硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                        也是目前谷歌在华8大体验中心当中最大的一家，
+                                        下设Adwords体验中心、大数据分析应用中心、
+                                        跨境电商服务中心和跨境电商培训基地4个部分，
+                                        于去年11月26日在贵阳揭牌。</p>
+                                </div>
+                            </div>
+                            <div class="content_left_container_left2">
+                                <div class="content_left_container_left_img">
+                                    <img src="../img/160314cereals.jpg" style="width: 40%;height: 195px; float: left;">
+                                </div>
+                                <div class="content_left_container_left_text">
+                                    <h4> 利用大数据分析实现互联网精准营销</h4><br>
+                                    <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                        硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                        也是目前谷歌在华8大体验中心当中最大的一家，
+                                        下设Adwords体验中心、大数据分析应用中心、
+                                        跨境电商服务中心和跨境电商培训基地4个部分，
+                                        于去年11月26日在贵阳揭牌。</p>
+                                </div>
+                            </div>
+                            <div class="content_left_container_left3">
+                                <div class="content_left_container_left3_left">
+
+                                    <div class="content_left_container_left3_img">
+                                        <img src="../img/160524flowers.jpg" style="width:98%;height: 80%">
+                                    </div>
+                                    <div class="content_left_container_left3_text">
+                                        <h4> 利用大数据分析实现互联网精准营销</h4><br>
+                                        <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                            硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                            也是目前谷歌在华8大体验中心当中最大的一家，
+                                            下设Adwords体验中心、大数据分析应用中心、
+                                            跨境电商服务中心和跨境电商培训基地4个部分，
+                                            于去年11月26日在贵阳揭牌。</p>
+                                    </div>
+                                </div>
+                                <div class="content_left_container_left3_right">
+                                    <div class="content_left_container_left3_img">
+                                        <img src="../img/160524wheat.jpg" style="width:98%;height: 80%">
+                                    </div>
+                                    <div class="content_left_container_left3_text">
+                                        <h4> 利用大数据分析实现互联网精准营销</h4><br>
+                                        <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                            硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                            也是目前谷歌在华8大体验中心当中最大的一家，
+                                            下设Adwords体验中心、大数据分析应用中心、
+                                            跨境电商服务中心和跨境电商培训基地4个部分，
+                                            于去年11月26日在贵阳揭牌。</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="content_left_container_right">
+                            <div class="content_left_container_right1">
+                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
+                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                    也是目前谷歌在华8大体验中心当中最大的一家，
+                                    下设Adwords体验中心、大数据分析应用中心、
+                                    跨境电商服务中心和跨境电商培训基地4个部分，
+                                    于去年11月26日在贵阳揭牌。</p>
+                            </div>
+                            <div class="content_left_container_right2">
+                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
+                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                    也是目前谷歌在华8大体验中心当中最大的一家，
+                                    下设Adwords体验中心、大数据分析应用中心、
+                                    跨境电商服务中心和跨境电商培训基地4个部分，
+                                    于去年11月26日在贵阳揭牌。</p>
+                            </div>
+                            <div class="content_left_container_right3">
+                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
+                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                    也是目前谷歌在华8大体验中心当中最大的一家，
+                                    下设Adwords体验中心、大数据分析应用中心、
+                                    跨境电商服务中心和跨境电商培训基地4个部分，
+                                    于去年11月26日在贵阳揭牌。</p>
+                            </div>
+                            <div class="content_left_container_right4">
+                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
+                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
+                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
+                                    也是目前谷歌在华8大体验中心当中最大的一家，
+                                    下设Adwords体验中心、大数据分析应用中心、
+                                    跨境电商服务中心和跨境电商培训基地4个部分，
+                                    于去年11月26日在贵阳揭牌。</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="content_right">
+                    <div class="content_right_introduce">
+                        &nbsp;&nbsp;<h2 >简介</h2><br>
+                        <br>
+                        <p>种业产业数据库立足世界种业前沿，
+                            专注种业科技发展，创建世界一流网站，服务世界造福人类。
+                            为了实现这一宗旨，
+                            通过汇集世界各地种业产业、
+                            科学技术和种子市场等最新信息，动态集成到种业产业数据库，
+                            促进世界科技-特别是种业科技-前沿信息的快速流通。</p></div>
+                    <div class="content_right_search">
+                        <h2>搜索</h2><br>
+                        <br>
+                        <input value="搜索"  type ="search " style="width: 160px;height: 30px;"><input type="submit" style="color:
+                        #ffffff;width: 50px;height: 37px; background-color: #0f4850" value="搜索">
+                    </div>
+                    <div class="content_right_links">
+                        <h3>相关链接</h3><br><br>
+                        <li>中国作物信息网</li><br>
+                        <li>中国果蔬网</li><br>
+                        <li>中国农业新闻网</li><br>
+                        <li>世界种业网</li><br>
+                        <li>中国农业技术网</li><br>
+                        <li>中国农业科技网</li><br>
+
+                    </div>
+                </div>
+            </div>
+            <div class="more">
+                <input type="button" value="更多" style="background-color: #0d4450;width:200px;height: 40px; color: #ffffff">
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="foot">
+        <div class="footLogo">
+        </div>
+        <div class="footText">
+            <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
+            <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
+            <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

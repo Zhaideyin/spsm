@@ -44,12 +44,47 @@
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastStart" id="lastStart"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期" title="开始日期"/></td>
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastEnd" name="lastEnd"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期" title="结束日期"/></td>
 								<td style="vertical-align:top;padding-left:2px;">
-								 	<select class="chosen-select form-control" name="name" id="id" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
-									<option value=""></option>
-									<option value="">全部</option>
-									<option value="">1</option>
-									<option value="">2</option>
-								  	</select>
+								 
+								 
+								 <%-- <select id="DATABASETYPE_ID" name="DATABASETYPE_ID" databaseId="${pd.DATABASETYPE_ID}" >
+								 </select>
+								 <select id="NAVBARTYPE_ID" name="NAVBARTYPE_ID" navbarId="${pd.NAVBARTYPE_ID}">
+								 </select>
+								 <select id="LISTTYPE_ID" name="LISTTYPE_ID" listId="${pd.LISTTYPE_ID}">
+								 </select>
+								 <select id="SUBLISTTYPE_ID" name="SUBLISTTYPE_ID"sublistId="${pd.SUBLISTTYPE_ID}">
+								 </select> --%>
+								 
+								 <!-- 数据库 -->
+								<select id="DATABASETYPE_ID" name="DATABASETYPE_ID" onchange="getSecondSelect()">
+									<option value="" >--请选择库--</option>
+									<c:forEach items="${pd.databasetype}" var="r" varStatus="vs">
+										<option value="${r.DATABASETYPE_ID}" <c:if test="${r.DATABASETYPE_ID == pd.DATABASETYPE_ID}">selected</c:if>>${r.DATABASETYPENAME }</option>
+									</c:forEach>
+								</select> 
+								<!-- 导航栏 -->
+								<select id="NAVBARTYPE_ID" name="NAVBARTYPE_ID"  onchange="getThirdSelect()">
+									<option value="" >--请选择库--</option>
+									<c:forEach items="${pd.navbartype}" var="r" varStatus="vs">
+										<option value="${r.NAVBARTYPE_ID}" <c:if test="${r.NAVBARTYPE_ID == pd.NAVBARTYPE_ID}">selected</c:if>>${r.NAVBARTYPENAME }</option>
+									</c:forEach>
+										
+								</select>
+								
+								<!-- 列表 -->
+								<select id="LISTTYPE_ID" name="LISTTYPE_ID" onchange="getForthSelect()">
+									<option value="" >--请选择库--</option>
+									<c:forEach items="${pd.listtype}" var="r" varStatus="vs">
+										<option value="${r.LISTTYPE_ID}" <c:if test="${r.LISTTYPE_ID == pd.LISTTYPE_ID}">selected</c:if>>${r.LISTTYPENAME }</option>
+									</c:forEach>
+								</select> 
+								<!-- 子列表 -->
+								<select id="SUBLISTTYPE_ID" name="SUBLISTTYPE_ID"><option value="" >--请选择库--</option>
+									<c:forEach items="${pd.sublisttype}" var="r" varStatus="vs">
+										<option value="${r.SUBLISTTYPE_ID}" <c:if test="${r.SUBLISTTYPE_ID == pd.SUBLISTTYPE_ID}">selected</c:if>>${r.SUBLISTTYPENAME }</option>
+									</c:forEach>
+								</select> 
+								
 								</td>
 								<c:if test="${QX.cha == 1 }">
 								<td style="vertical-align:top;padding-left:2px"><a class="btn btn-light btn-xs" onclick="tosearch();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
@@ -73,7 +108,6 @@
 									<th class="center">类型</th>
 									<th class="center">发布时间</th>
 									<th class="center">爬取时间</th>
-									<th class="center">关键字</th>
 									<th class="center">操作</th>
 								</tr>
 							</thead>
@@ -93,10 +127,25 @@
 											<td class='center'>${var.AUTHOR}</td>
 											<td class='center'>${var.ABSTRACT}</td>
 											<td class='center'>${var.CONTENT}</td>
-											<td class='center'>${var.TYPENAME}</td>
+											<td class='center'>
+											<!-- 选择最小的类型作为显示-->
+											<c:choose>
+												<c:when test="${var.SUBLISTTYPENAME!=null}">
+													${var.SUBLISTTYPENAME }
+												</c:when>
+												<c:when test="${var.LISTTYPENAME!=null}">
+													${var.LISTTYPENAME }
+												</c:when>
+												<c:when test="${var.NAVBARTYPENAME!=null }">
+													${var.NAVBARTYPENAME }
+												</c:when>
+												<c:otherwise>
+													${var.DATABASETYPENAME }
+												</c:otherwise>
+											</c:choose>
+											</td>
 											<td class='center'>${var.PUBLISH_TIME}</td>
 											<td class='center'>${var.CREATE_TIME}</td>
-											<td class='center'>${var.KEYWORDS}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
@@ -366,7 +415,109 @@
 		function toExcel(){
 			window.location.href='<%=basePath%>spider/excel.do';
 		}
-	</script>
+		
+		<%-- 
+		function select1() {
+			var rid = $("#DATABASETYPE_ID").val();
+			$.ajax(
+			{
+				type: "post",
+				url: "<%=basePath%>spider/chooseNextSelect.do",
+				data: {"DATABASETYPE_ID":rid,"flag":1},
+				success: function (data) {
+					var obj = $.parseJSON(data);
+					for (var i = 0; i < obj.length; i++) {
+						if(proid==obj[i].id){
+							$("#NAVBARTYPE_ID").append("<option selected value=" + obj[i].NAVBARTYPE_ID +">" + obj[i].NAVBARTYPENAME + "</option>");
+							continue;
+						}
+						$("#NAVBARTYPE_ID").append("<option value=" + obj[i].NAVBARTYPE_ID + ">" + obj[i].NAVBARTYPENAME + "</option>");
+					}
+				
+				}
+			})
+		}; --%>
+		
+		
+	 	//加载第二个下拉框的数据
+		function getSecondSelect(){
+			var rid = $("#DATABASETYPE_ID").val();
+			if(null!=rid && rid!=""){
+				$.get("spider/chooseNextSelect.do",{"DATABASETYPE_ID":rid,"flag":1},function(datas){
+					$("#NAVBARTYPE_ID").html("<option value=\"\" >--请选择导航--</option>");
+					if(datas.length<1){
+						$("#NAVBARTYPE_ID").html("<option value=\"\" >--无--</option>");
+					}
+					for ( var i = 0; i < datas.length; i++) {
+						var json = datas[i];
+						//获取JSON对象的属性
+						var username = json.NAVBARTYPE_ID;
+						var name = json.NAVBARTYPENAME;
+						var option = "<option value=\""+username+"\">"+name+"</option>";
+						$("#NAVBARTYPE_ID").append(option);
+					}
+				},"json");
+			}else{
+				$("#NAVBARTYPE_ID").html("<option value=\"\" >--请选择导航--</option>");
+				$("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+				$("#SUBLISTTYPE_ID").html("<option value=\"\" >--请选择子列表--</option>");
+			}
+			
+	 	}
+		// 加载第三个下拉框的数据
+		function getThirdSelect(){
+			var rid = $("#NAVBARTYPE_ID").val();
+			if(null!=rid && rid!=""){
+				$.get("spider/chooseNextSelect.do",{"NAVBARTYPE_ID":rid,"flag":2},function(datas){
+					$("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+					if(datas.length<1){
+						$("#LISTTYPE_ID").html("<option value=\"\" >--无--</option>");
+					}
+					for ( var i = 0; i < datas.length; i++) {
+						var json = datas[i];
+						//获取JSON对象的属性
+						var username = json.LISTTYPE_ID;
+						var name = json.LISTTYPENAME;
+						var option = "<option value=\""+username+"\">"+name+"</option>";
+						$("#LISTTYPE_ID").append(option);
+					}
+				},"json");
+			}else{
+				$("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+				$("#SUBLISTTYPE_ID").html("<option value=\"\" >--请子列表--</option>");
+			}
+			
+		}
+		
+		//加载弟四个下拉框的数据。
+		function getForthSelect(){
+			var rid = $("#LISTTYPE_ID").val();
+			if(null!=rid && rid!=""){
+				$.get("spider/chooseNextSelect.do",{"LISTTYPE_ID":rid,"flag":3},function(datas){
+					$("#SUBLISTTYPE_ID").html("<option value=\"\" >--请选择子列表--</option>");
+					if(datas.length<1){
+						$("#SUBLISTTYPE_ID").html("<option value=\"\" >--无--</option>");
+					}
+					for ( var i = 0; i < datas.length; i++) {
+						var json = datas[i];
+						//获取JSON对象的属性
+						var username = json.SUBLISTTYPE_ID;
+						var name = json.SUBLISTTYPENAME;
+						var option ="<option value=\""+username+"\">"+name+"</option>";
+						$("#SUBLISTTYPE_ID").append(option);
+					}
+				},"json");
+			}
+			
+		} 
+		
+		
+	/* 	$(function () {
+			$('#DATABASETYPE_ID').bind("change", select1);
+			
+		}); */
+	
+		</script>
 
 
 </body>

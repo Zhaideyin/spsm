@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +15,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.ronxuntech.service.spsm.spider.impl.SpiderService;
-import com.ronxuntech.util.SpringBeanFactoryUtils;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -35,11 +29,14 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
         setPath("/data/webmagic/");
     }
  
-    public ImgOrDocPipeline(String path,String imgFileNameNew) {
+    public ImgOrDocPipeline(String path,List<String> annexNameList) {
         setPath(path);
-        this.imgFileNameNew.append(imgFileNameNew);
+        annexUtil =new AnnexUtil();
+        this.annexNameList=annexNameList;
     }
-    
+    // 附件名
+    private	List<String> annexNameList;
+    private AnnexUtil annexUtil;
 	private  StringBuffer imgFileNameNew =new StringBuffer();
  
 	public StringBuffer getImgFileNameNew() {
@@ -51,9 +48,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 	}
 
 	public void process(ResultItems resultItems, Task task) {
-//        String fileStorePath = this.path;
         try {
-        	//这没用，在后边完全要替换掉
             CloseableHttpClient httpclient = HttpClients.createDefault();
             
             for (Map.Entry<String, Object> entry : resultItems.getAll().entrySet()) {
@@ -69,7 +64,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                    //list.get(0)是title 所以不是链接。如果从零开始要报错。
                     for(int i=1;i<list.size();i++)
                     {
-                    	
+                    	System.out.println("listSize():"+list.size());
                         StringBuffer sb = new StringBuffer();
                         StringBuffer imgFileNameNewYuan =sb.append(path); //此处提取文件夹名，即之前采集的标题名
                                 
@@ -81,11 +76,12 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                         //这里通过httpclient下载之前抓取到的图片网址，并放在对应的文件中
                         //取得的连接中地址符号表示为 &amp;在网页中不需要amp;所以取出链接并且将连接中的amp： 去掉得到网页正的url.
                         String url = list.get(i).replace("amp;","");
+                        System.out.println("imgOrDocUrl:"+url);
                         HttpGet httpget = new HttpGet(url);
                         HttpResponse response = httpclient.execute(httpget);
                         HttpEntity entity = response.getEntity();
                         InputStream in = entity.getContent();
-                        File file = new File(path+getImgFileNameNew().toString());
+                        File file = new File(path+annexNameList.get(i-1).toString());
  
                         try {
                             FileOutputStream fout = new FileOutputStream(file);

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>breedDictionary</title>
+    <style>
+        a {
+            color: #ffffff;
+            text-decoration:none;
+        }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            top:3px;
+        }
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 1100px;
+        }
+        .first{
+            position: absolute;
+            left: 500px;
+            top:15px;
+
+        }
+        .second{
+            position: absolute;
+            left: 650px;
+            top:15px;
+
+
+        }
+        .third{
+            position: absolute;
+            left: 800px;
+            top:15px;
+
+
+        }
+        .fourth{
+            position: absolute;
+            left: 1000px;
+            top:15px;
+
+        }
+        .logo,.first,.second,.third,.fourth{
+            height: 53px;
+        }
+        .main{
+            background-color: azure;
+            min-height: 1290px;
+            width: 100%;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -10px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+            width: 750px;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+            position: relative;
+            top:1200px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            float: left;
+            height: 57px;
+            width: 59px;
+        }
+        .footText {
+            margin-top: 10px;
+            float: left;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topFirst ,.topSecond{
+            color: #ffffff;
+        }
+        .topFirst{
+            margin: 7px 0px 2px 5px;
+            top:20px;
+        }
+        .topSecond{
+            font-size: 30px;
+            top:30px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: absolute ;
+            top:160px;
+            left:10%;
+            width:80%;
+            min-height: 1000px;
+
+        }
+        .content_top{
+            padding: 5px 0px 0px 10px;
+            width: 99%;
+        }
+        .content_title {
+            width: 99.7%;
+            height: 90px;
+            background-color: #106470;
+        }
+        .content_title h1{
+            color: #ffffff;
+            padding-left: 310px;
+            padding-top: 27px;
+        }
+        .content_main_left{
+
+            width: 20%;
+            height:1000px;
+            position: absolute;
+            top:100px;
+            background-color: #f2f2f2;
+
+        }
+        .content_main_right{
+            width: 80%;
+            margin-left: 0px;
+            height: 900px;
+            position: relative;
+            left:20.2%;
+            padding-top: 30px;
+        }
+        .content_main-left-list0{
+            width: 60%;
+            height: 60px;
+            padding:30px 0px 0px 70px;
+
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+            height: 1000px;
+        }
+        .content_main-left-list_container1, .content_main-left-list_container2{
+            padding: 20px 2px 2px 30px;
+        }
+        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+            color: #0072d8;
+        }
+        .table_breeds{
+            width: 100%;
+            height: 600px;
+
+            padding: 10px 20px 30px 60px;
+        }
+        .table_breeds tr{
+            width: 100%;
+            height:30%;
+        }
+
+      li{
+    color: #0072d8;
+        }
+
+        .content_main_right_first{
+            float:left;
+            width: 64%;
+            height: 1200px;
+
+            margin-right: 10px;
+        }
+        .content_main_right_second{
+            float:left;
+            padding-left: 20px;
+            width: 30%;
+            height: 800px;
+            margin-right: 10px;
+        }
+     .breed_search,.links{
+         padding: 35px 10px 50px 30px;
+     }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p>育种创新数据库</p>
+        </div>
+        <div class="second">
+            <p>种业产业数据库</p>
+        </div>
+        <div class="third">
+            <p >成果推广与转化数据库</p>
+        </div>
+        <div class="fourth">
+            <p>育种专家智库</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topFirst">&nbsp;首页/种业产业数据库 Seed Industry Database/品种大全  seed dictionary </p>
+            <p class="topSecond">品种导航</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="IndustryInformation.html">
+                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp; &nbsp; &nbsp;种子企业 </b></p>
+            </div>
+            <div class="content_title">
+               <h1>水稻</h1>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+                    <div class="content_main-left-list0">
+                        <h4>品种导航</h4>
+                    </div>
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list_container1">
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-title">
+                                <h4>四川品种</h4><br><br>
+                            </div>
+                            <div class="content_main-left-list-content">
+                              <p>水稻</p>
+                                <p>麦类(小麦、青稞、荞麦)</p><br>
+                                <p>玉米(含高粱)</p><br>
+                                <p>油料（油菜、花生、豆类）</p><br>
+                                <p>薯类（甘薯、马铃薯）</p><br>
+                                <p>蔬菜</p><br>
+                                <p>果树</p><br>
+                                <p>茶树</p><br>
+                                <p>中药材</p><br>
+                                <p>蚕桑麻(含棉花)</p><br>
+                                <p>食用菌</p><br>
+                                <p>林竹木草(林木，竹类，花卉，牧草)</p><br>
+                                <p>畜禽(猪，鸡，水禽，羊，兔，水产，峰)</p><br>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="content_main-left-list_container2">
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-title">
+                                <h4>省外品种</h4><br><br>
+                            </div>
+                            <div class="content_main-left-list-content">
+                                <p>水稻</p><br>
+                                <p>麦类(小麦、青稞、荞麦)</p><br>
+                                <p>玉米(含高粱)</p><br>
+                                <p>油料（油菜、花生、豆类）</p><br>
+                                <p>薯类（甘薯、马铃薯）</p><br>
+                                <p>蔬菜</p><br>
+                                <p>果树</p><br>
+
+                        </div>
+                            </div>
+
+                    </div>
+                    </div>
+                </div>
+
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_img">
+                            <img src="../img/pexels-photo-41831.jpg" style="height:390px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_text">
+                           <table class="table_breeds">
+                               <tr>
+                                   <td>
+                                   <div class="breeds_A">
+                                       <h2>A</h2>
+                                       <ul>
+                                       <li><a href="breedIntroduce.html" style="
+  color: #0072d8;
+            text-decoration:none;
+        ">AT85-2</a></li>
+                                       <li>Albolia Plecoce</li>
+                                       </ul>
+                                   </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_E">
+                                           <h2>E</h2>
+                                           <ul>
+                                           <li>AT85-2</li>
+                                           <li>Albolia Plecoce</li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_I">
+                                       <h2>I</h2>
+                                           <ul>
+                                       <li>AT85-2</li>
+                                       <li>Albolia Plecoce</li>
+                                           </ul>
+                                   </div>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>  <div class="breeds_B">
+                                       <h2>B</h2>
+                                       <li>BG301</li>
+
+                                   </div></td>
+                                   <td><div class="breeds_F">
+                                       <h2>F</h2>
+                                       <li>BG301</li>
+
+                                   </div> </td>
+                                   <td>
+                                       <div class="breeds_J">
+                                           <h2>J</h2>
+                                           <li>BG301</li>
+
+                                       </div></td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                       <div class="breeds_C">
+                                           <h2>C</h2>
+                                           <ul>
+                                           <li>长伦占</li>
+                                           <li>超40</li>
+                                           <li>朝之光</li>
+                                           <li>成龙水晶米</li>
+                                           <li>寸谷糯</li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_G">
+                                           <h2>G</h2>
+                                           <ul>
+                                               <li>长伦占</li>
+                                               <li>超40</li>
+                                               <li>朝之光</li>
+                                               <li>成龙水晶米</li>
+                                               <li>寸谷糯</li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_K">
+                                           <h2>K</h2>
+                                           <ul>
+                                               <li>长伦占</li>
+                                               <li>超40</li>
+                                               <li>朝之光</li>
+                                               <li>成龙水晶米</li>
+                                               <li>寸谷糯</li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                       <div class="breeds_D">
+                                           <h2>D</h2>
+                                           <ul>
+                                           <li>多产稻</li>
+                                           <li>多年生水稻品系4913 </li>
+                                           <li>高蛋白温敏核不育系1290S  </li>
+                                           <li> 中组1号  </li>
+                                           <li>ITA 182 </li>
+                                           <li>Katy  </li>
+                                           <li>Rizzotto 264 </li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_H">
+                                           <h2>H</h2>
+                                           <ul>
+                                               <li>多产稻</li>
+                                               <li>多年生水稻品系4913 </li>
+                                               <li>高蛋白温敏核不育系1290S  </li>
+                                               <li> 中组1号  </li>
+                                               <li>ITA 182 </li>
+                                               <li>Katy  </li>
+                                               <li>Rizzotto 264 </li>
+                                           </ul>
+                                       </div>
+                                   </td>
+                                   <td>
+                                       <div class="breeds_L">
+                                           <h2>L</h2>
+                                           <ul>
+                                               <li>多产稻</li>
+                                               <li>多年生水稻品系4913 </li>
+                                               <li>高蛋白温敏核不育系1290S  </li>
+                                               <li> 中组1号  </li>
+                                               <li>ITA 182 </li>
+                                               <li>Katy  </li>
+                                               <li>Rizzotto 264 </li>
+                                           </ul>
+
+                                       </div>
+                                   </td>
+                               </tr>
+                           </table>
+                        </div>
+
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="breed_search">
+                         <h3>品种搜索</h3><br><br>
+                            <div class="breed_button">
+                                <input value="搜索" name="keyword" style=" height: 28px; width: 180px;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width: 60px;background-color: #0d8897">
+                            </div>
+                            <br>
+                            <br>
+                            <div class=" brief ">
+                                <span>
+                                    水稻原产中国，七千年前中国长江流域就种植水稻。按照不同的方法，水稻可以分为籼稻和粳稻、早稻和中晚稻，糯稻和非糯稻。我国科学家袁隆平对杂交水稻的研究作出了巨大贡献，被誉为“杂交水稻之父”。水稻所结子实即稻谷，稻谷(粒)去壳后称大米、香米、稻米。世界上近一半人口，
+                                    都以大米为食。大米的食用方法多种多样，
+                                    有米饭、米粥、米饼、米糕，米酒等。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h2>相关链接</h2>
+                            <br>
+                            <ul>
+                                <li>
+                                    国家水稻数据中心
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="foot">
+        <div class="footLogo">
+        </div>
+        <div class="footText">
+            <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
+            <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
+            <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
