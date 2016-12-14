@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>breedResearchImg</title>
     <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
         a {
             color: #ffffff;
             text-decoration:none;
@@ -15,115 +19,129 @@
             background-color:#272727;
             width: 100%;
             height: 50px;
+
         }
         .head p{
             color: #ffffff;
+        }
+
+        .container{
+            overflow: hidden;
+            height: auto;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+
+        .main{
+            overflow: hidden;
+            height: auto;
+            width: 100%;
+        }
+        .top {
+            float: left;
+            background-color: #12525e;
+            width: 100%;
+            height: 200px;
+            margin-top: -10px;
+
         }
         .logo{
             background-image: url("../img/head.png");
             background-repeat: no-repeat;
             width: 293px;
             height: 46px;
-            top:3px;
-        }
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-            height: 1100px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
         }
         .first{
-            position: absolute;
-            left: 500px;
-            top:15px;
-
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
         }
         .second{
-            position: absolute;
-            left: 650px;
-            top:15px;
-
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
 
         }
         .third{
-            position: absolute;
-            left: 800px;
-            top:15px;
-
-
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
         }
         .fourth{
-            position: absolute;
-            left: 1000px;
-            top:15px;
-
-        }
-        .logo,.first,.second,.third,.fourth{
-            height: 53px;
-        }
-        .main{
-            background-color: azure;
-            min-height: 1290px;
-            width: 100%;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -10px;
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
 
         }
         .top p{
             position: relative;
-            left: 10%;
+            left: 11%;
             width: 750px;
         }
         .content_top{
             width: 100%;
             background-color: #0f4850;
-            height: 35px;
+            height: 36px;
+
+        }
+        .content_top p{
+            padding-left: 1%;
+        }
+        .content p{
+            padding-top:8px;
         }
         .foot{
+            margin-top: 0px;
             background-color: #878784;
             width: 100%;
             height: 80px;
-            position: relative;
-            top:340px;
-
         }
         .footLogo{
             background-image: url("../img/foot.png");
-            float: left;
+            position:relative ;
+            left: 15%;
+            top:10px;
             height: 57px;
             width: 59px;
         }
-        .footText {
-            margin-top: 10px;
-            float: left;
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
             height: 57px;
         }
         .footText b{
             color: #ffffff;
         }
-        .topFirst ,.topSecond{
+        .topSecond{
             color: #ffffff;
         }
-        .topFirst{
-            margin: 7px 0px 2px 5px;
-            top:20px;
-        }
+
         .topSecond{
-            font-size: 30px;
-            top:30px;
+            font-size: 40px;
+            top:15px;
             margin:20px 0px 10px 20px  ;
         }
         .content{
-
-            position: absolute ;
-            top:160px;
-            left:10%;
+            float: right;
+            margin-right: 10%;
+            margin-top:-5%;
             width:80%;
-            min-height: 1000px;
 
         }
         .content_top{
@@ -131,39 +149,38 @@
             width: 99%;
         }
         .content_title {
-            width: 99.7%;
+            width: 99.8%;
             height: 90px;
             background-color: #106470;
         }
         .content_title h1{
             color: #ffffff;
-            padding-left: 310px;
-            padding-top: 27px;
+            padding: 15px;
         }
         .content_main_left{
-
+            float: left;
             width: 20%;
-            height:1000px;
-            position: absolute;
-            top:100px;
             background-color: #f2f2f2;
 
         }
         .content_main_right{
             width: 80%;
-            margin-left: 0px;
-            height: 900px;
-            position: relative;
-            left:20.2%;
+            float: left;
+            height: auto;
+            overflow: hidden;
             padding-top: 30px;
         }
-        .content_main-left-list0,  .content_main-left-list1,  .content_main-left-list2{
-            width: 60%;
-            padding:30px 0px 0px 70px;
+        .content_main-left-list0{
+            border: solid 0.5px #c7c7c7;
+            height:100%;
+        }
+        .content_main-left-list1,  .content_main-left-list2{
+            width: 70%;
+            padding-bottom :10px;
 
         }
         .content_main_right_first_text{
-            padding-left: 10%;
+
         }
         .content_main_right_first{
             float:left;
@@ -203,14 +220,34 @@
         }
         .items{
             margin-bottom: 10px;
-            height: 160px;
-             padding-top: 20px;
-            margin-left: -90px;
+            overflow: hidden;
+            padding-top: 20px;
+            margin-left: 15px;
+
         }
         .content_main-left-list0-items p{
             color: #0072d8;
+
+        }
+        .content_main-left-list0-items,.content_main-left-list1,.content_main-left-list2{
+            padding-left:30px;
+            padding-top: 20px;
         }
 
+
+
+        .content_main_left_title{
+            padding-left: 8%;
+            width: auto;
+            padding-top: 20px;
+            font-size: 20px;
+        }
+
+        .content_main{
+            overflow: hidden;
+            width: auto;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -219,52 +256,52 @@
         <div class="logo">
         </div>
         <div class="first">
-            <p>育种创新数据库</p>
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
         </div>
         <div class="second">
-            <p>种业产业数据库</p>
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
         </div>
         <div class="third">
-            <p >成果推广与转化数据库</p>
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
         </div>
         <div class="fourth">
-            <p>育种专家智库</p>
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
         </div>
     </div>
+</div>
     <div class="main">
         <div class="top">
-            <p class="topFirst">&nbsp;首页/育种创新数据库 Breeding Innovation Database/行业资讯 Industry Information </p>
             <p class="topSecond">行业资讯</p>
         </div>
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="IndustryInformation.html">行业资讯</a>&nbsp; &nbsp; &nbsp;    <a href="BreedDictionary.html"> 品种导航</a>&nbsp; &nbsp; &nbsp;    种子企业 </b></p>
+                <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="breedRightApplication.html">行业资讯</a>&nbsp; &nbsp;
+                    &nbsp;    <a href="BreedDictionary.html"> 品种导航</a>&nbsp; &nbsp; <a href="breedBusiness.html"> 种子企业</a> </b></p>
             </div>
             <div class="content_title">
                 <h1>分子育种</h1>
             </div>
             <div class="content_main">
                 <div class="content_main_left">
+                    <div class="content_main_left_title">前沿育种研究</div><br>
                     <div class="content_main-left-list0">
-                        <h4>新技术荟萃</h4>
-                        <hr>
-                        <br>
-                        <div class="content_main-left-list0-items">
-                            <br>
+                        <div class="content_main-left-list0-items"><br>
+                            <h4>新技术荟萃</h4>
                             <p>分子育种</p>   <br>
                             <p>基因工程</p>   <br>
                             <p>细胞工程</p>   <br>
                             <p>其他</p>   <br>
                         </div>
-                    </div>
+
                     <div class="content_main-left-list1">
                         <h4>种质创新&创新材料</h4>
-                        <hr>
+
                     </div>
                     <div class="content_main-left-list2">
                         <h4>育种热点追踪</h4>
-                        <hr>
+
                     </div>
+                </div>
                 </div>
                 <div class="content_main_right">
                     <div class="content_main_right_first">
@@ -275,8 +312,8 @@
                                    <img src="../img/1-1602191101450-L.jpg"  style="width: 90%; height:110px ">
                                 </div>
                                 <div class="content_main_right_first_text_items">
-                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3><br>
-                                    <p style="font-style: oblique">2016.06.22  22:20</p><br>
+                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3>
+                                    <p style="font-style: oblique">2016.06.22  22:20</p>
                                     <div class="text">
                                         <p>甜椒是温室大棚设施栽培最主要的蔬菜品种之一，温室甜（彩）椒高产高效生产技术体系包括选用适宜的彩椒品种、土壤有机化栽培技术、
                                             穴盘优化育苗技术、肥水量化管理技术、不利天气环境调控技术、甜椒植株整枝调整技术、CO2施用技术、病虫害综合防治技术等。 </p>
@@ -290,8 +327,8 @@
                                     <img src="../img/160524flowers.jpg"  style="width: 90%; height:110px ">
                                 </div>
                                 <div class="content_main_right_first_text_items">
-                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3><br>
-                                    <p style="font-style: oblique">2016.06.22  22:20</p><br>
+                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3>
+                                    <p style="font-style: oblique">2016.06.22  22:20</p>
                                     <div class="text">
                                         <p>甜椒是温室大棚设施栽培最主要的蔬菜品种之一，温室甜（彩）椒高产高效生产技术体系包括选用适宜的彩椒品种、土壤有机化栽培技术、
                                             穴盘优化育苗技术、肥水量化管理技术、不利天气环境调控技术、甜椒植株整枝调整技术、CO2施用技术、病虫害综合防治技术等。 </p>
@@ -305,8 +342,8 @@
                                     <img src="../img/160510algae.jpg"  style="width: 90%; height:110px ">
                                 </div>
                                 <div class="content_main_right_first_text_items">
-                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3><br>
-                                    <p style="font-style: oblique">2016.06.22  22:20</p><br>
+                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3>
+                                    <p style="font-style: oblique">2016.06.22  22:20</p>
                                     <div class="text">
                                         <p>甜椒是温室大棚设施栽培最主要的蔬菜品种之一，温室甜（彩）椒高产高效生产技术体系包括选用适宜的彩椒品种、土壤有机化栽培技术、
                                             穴盘优化育苗技术、肥水量化管理技术、不利天气环境调控技术、甜椒植株整枝调整技术、CO2施用技术、病虫害综合防治技术等。 </p>
@@ -320,8 +357,8 @@
                                     <img src="../img/160509africansongbird.jpg"  style="width: 90%; height:110px ">
                                 </div>
                                 <div class="content_main_right_first_text_items">
-                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3><br>
-                                    <p style="font-style: oblique">2016.06.22  22:20</p><br>
+                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3>
+                                    <p style="font-style: oblique">2016.06.22  22:20</p>
                                     <div class="text">
                                         <p>甜椒是温室大棚设施栽培最主要的蔬菜品种之一，温室甜（彩）椒高产高效生产技术体系包括选用适宜的彩椒品种、土壤有机化栽培技术、
                                             穴盘优化育苗技术、肥水量化管理技术、不利天气环境调控技术、甜椒植株整枝调整技术、CO2施用技术、病虫害综合防治技术等。 </p>
@@ -335,14 +372,16 @@
                                     <img src="../img/food.jpg"  style="width: 90%; height:110px ">
                                 </div>
                                 <div class="content_main_right_first_text_items">
-                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3><br>
-                                    <p style="font-style: oblique">2016.06.22  22:20</p><br>
+                                    <h3>凉山走出“富饶的贫困” 加快建设世界级清洁能源基地</h3>
+                                    <p style="font-style: oblique">2016.06.22  22:20</p>
                                     <br>
-                                    <input type="button" value="阅读更多" style="background-color: #4e6064;color: #feffff; height: 30px; width: 100px;">
+
                                     <div class="text">
                                         <p>甜椒是温室大棚设施栽培最主要的蔬菜品种之一，温室甜（彩）椒高产高效生产技术体系包括选用适宜的彩椒品种、土壤有机化栽培技术、
                                             穴盘优化育苗技术、肥水量化管理技术、不利天气环境调控技术、甜椒植株整枝调整技术、CO2施用技术、病虫害综合防治技术等。 </p>
                                     </div>
+                                    <br>
+                                    <input type="button" value="阅读更多" style="background-color: #4e6064;color: #feffff; height: 30px; width: 100px;">
                                 </div>
                             </div>
 
@@ -387,9 +426,9 @@
     <div class="footLogo">
     </div>
     <div class="footText">
-        <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
-        <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
-        <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农研所</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">  Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
     </div>
 </div>
 </div>

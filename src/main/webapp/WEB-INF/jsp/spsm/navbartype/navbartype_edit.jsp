@@ -43,10 +43,14 @@
 							
 								<select id="DATABASEID" name="DATABASEID" style="width: 328px;">
 									<c:forEach items="${list}" var="r" varStatus="vs">
-										<c:if test="${r.DATABASETYPE_ID==pd.DATABASEID }">
-											<option value="${r.DATABASETYPE_ID}" selected="selected">${r.DATABASETYPENAME }</option>
-										</c:if>
-										<option value="${r.DATABASETYPE_ID}" >${r.DATABASETYPENAME }</option>
+										<c:choose>
+											<c:when test="${r.DATABASETYPE_ID==pd.DATABASEID }">
+												<option value="${r.DATABASETYPE_ID}" selected="selected">${r.DATABASETYPENAME }</option>
+											</c:when>
+											<c:otherwise>
+												<option value="${r.DATABASETYPE_ID}" >${r.DATABASETYPENAME }</option>
+											</c:otherwise>
+										</c:choose>
 									</c:forEach>
 								</select> 
 								</td>

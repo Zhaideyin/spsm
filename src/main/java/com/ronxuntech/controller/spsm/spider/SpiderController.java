@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -27,20 +26,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ronxuntech.component.spsm.AjaxCrawler;
 import com.ronxuntech.component.spsm.BaseCrawler;
 import com.ronxuntech.component.spsm.WebInfo;
+import com.ronxuntech.component.spsm.util.ImgOrDocPipeline;
 import com.ronxuntech.component.spsm.util.ReadXML;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
+import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
 import com.ronxuntech.service.spsm.databasetype.DataBaseTypeManager;
 import com.ronxuntech.service.spsm.listtype.ListTypeManager;
 import com.ronxuntech.service.spsm.navbartype.NavBarTypeManager;
+import com.ronxuntech.service.spsm.seedurl.SeedUrlManager;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
 import com.ronxuntech.service.spsm.sublisttype.SubListTypeManager;
+import com.ronxuntech.service.spsm.targeturl.TargetUrlManager;
 import com.ronxuntech.util.AppUtil;
 import com.ronxuntech.util.Jurisdiction;
 import com.ronxuntech.util.ObjectExcelView;
 import com.ronxuntech.util.PageData;
 
 import net.sf.json.JSONSerializer;
+import us.codecraft.webmagic.Spider;
 
 /** 
  * 说明：数据爬取
@@ -57,19 +61,30 @@ public class SpiderController extends BaseController {
 	
 	@Resource(name="databasetypeService")
 	private DataBaseTypeManager  databasetypeService;
+	
 	@Resource(name="navbartypeService")
 	private NavBarTypeManager  navbartypeService;
 
 	@Resource(name="listtypeService")
 	private ListTypeManager  listtypeService;
+	
 	@Resource(name="sublisttypeService")
 	private SubListTypeManager sublisttypeService;
 	
-	private BaseCrawler crawler=BaseCrawler.getInstance();
-	private AjaxCrawler ajaxCrawler=AjaxCrawler.getInstance();
+	@Resource(name="seedurlService")
+	private SeedUrlManager seedurlService;
+	
+	@Resource(name="targeturlService")
+	private TargetUrlManager targeturlService;
+	
+	@Resource(name="annexurlService")
+	private AnnexUrlManager annexurlService;
+	
+	
 	
 	@Autowired
 	private  HttpServletRequest request;
+	
 	/**
 	 * 跳转到爬取页面，取出所有数据类型
 	 */
@@ -85,11 +100,15 @@ public class SpiderController extends BaseController {
 		
 		List<HashMap> listmap =rxml.ResolveXml();
 		mv.addObject("urlList",listmap);
-//		mv.addObject("msg","success");
 		mv.setViewName("spsm/spider/spider_start");
 		return mv;
 	}
 	
+	/**
+	 * 下拉框数据获取
+	 * @param response
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/chooseNextSelect")
 	public void chooseNextSelect(HttpServletResponse response) throws Exception{
 		List<PageData> list =new 	ArrayList<>();
@@ -102,7 +121,6 @@ public class SpiderController extends BaseController {
 		System.out.println("flag:"+flag);
 		if(flag.equals("1")){
 			list =navbartypeService.listFindByDatabaseID(pd);
-			
 		}else if(flag.equals("2")){
 			list = listtypeService.listFindByNavbarID(pd);
 		}else if(flag.equals("3")){
@@ -133,16 +151,81 @@ public class SpiderController extends BaseController {
 		if(DATABASETYPE_ID!="" && null!=DATABASETYPE_ID){
 			dataType.append(DATABASETYPE_ID+",");
 		}
-		//调用开启方法，传递种子和数据库的类型
-//		crawler.start(seedUrl,typeId);
+		//先查询传递来的种子是否已经爬取过。如果爬取过，则跳过。
+		PageData seedpd =new PageData();
+		seedpd.put("SEEDURL_ID", System.currentTimeMillis());
+		seedpd.put("SEEDURL", seedUrl);
+		seedpd.put("STATUS", "0");
+		PageData seedpd1= seedurlService.findByUrl(seedpd);
+		//初始化要爬取网站的信息
 		WebInfo web=WebInfo.init(seedUrl, dataType.toString());
+		//如果查询到数据库中存在了该种子，那么就证明该网站已经爬取过， 但是状态是 0，那么还有网站或者图未下载完成。
+		if(seedpd1!=null && seedpd1.size()!=0){
+				if(seedpd1.get("STATUS").equals("0")){
+					//重下目标网址
+					reDownloadTargetUrl(seedUrl, dataType, seedpd1);
+					//重下未下的附件（只是之前没有下载）
+					PageData seedPd2=new PageData();
+					seedPd2.put("SEEDURLID", seedpd1.getString("SEEDURL_ID"));
+					seedPd2.put("STATUS", "0");
+					List<PageData> redownAnnexUrlList= annexurlService.listBySeedUrlIdAndStatus(seedPd2);
+					if(redownAnnexUrlList.size()>0){
+						reDownloadAnnexUrl(seedUrl, seedpd1);
+					}
+					//接着爬取没有爬完的
+					collar(web);
+//					
+					checkDone(seedpd, out);
+				}
+		}else{
+			//将目前的这个种子添加到数据库
+			seedurlService.save(seedpd);
+			collar(web);
+			
+			checkDone(seedpd, out);
+		}
+		
+		out.close();
+	}
+	/**
+	 * 检查是否下载完成
+	 * @param seedpd1
+	 * @param out
+	 * @throws Exception
+	 */
+	public void checkDone(PageData seedpd1,PrintWriter out) throws Exception{
+		PageData targetPd= new PageData();
+		targetPd.put("SEEDURLID", seedpd1.get("SEEDURL_ID").toString());
+		targetPd.put("STATUS", "0");
+		List<PageData>  targetList = targeturlService.listBySeedUrlIdAndStatus(targetPd);
+		
+		PageData annexPd= new PageData();
+		annexPd.put("STATUS", "0");
+		annexPd.put("SEEDURLID",seedpd1.get("SEEDURL_ID").toString());
+		List<PageData>  annexList =annexurlService.listBySeedUrlIdAndStatus(annexPd);
+	
+		if(targetList.size()>0 || annexList.size()>0){
+			out.write("some thing not done");
+		}else{
+			out.write("success");
+		}
+	}
+	
+	/**
+	 * 开始抓取
+	 * @param pd
+	 * @param seedUrl
+	 * @param dataType
+	 * @throws Exception
+	 */
+	public void collar(WebInfo web) throws Exception{
+		BaseCrawler crawler=BaseCrawler.getInstance();
+		AjaxCrawler ajaxCrawler=AjaxCrawler.getInstance();
 		if(web.getPageMethod().equals("get")){
 			crawler.start(web);
 		}else if(web.getPageMethod().equals("ajax")){
 			ajaxCrawler.start(web);
 		}
-		out.write("success");
-		out.close();
 	}
 	
 	//停止
@@ -370,21 +453,19 @@ public class SpiderController extends BaseController {
 		Map<String,Object> dataMap = new HashMap<String,Object>();
 		List<String> titles = new ArrayList<String>();
 		titles.add("标题");	//1
-		titles.add("作者");	//2
-		titles.add("摘要");	//3
-		titles.add("内容");	//4
-		titles.add("类型");	//5
-		titles.add("发布时间");	//6
-		titles.add("爬取时间");	//7
+		titles.add("内容");	//2
+		titles.add("类型");	//3
+		titles.add("爬取时间");	//4
+		titles.add("网页地址");	//5
+		titles.add("附件链接");	//6
+		titles.add("附件地址");	//7
 		dataMap.put("titles", titles);
 		List<PageData> varOList = spiderService.listAll(pd);
 		List<PageData> varList = new ArrayList<PageData>();
 		for(int i=0;i<varOList.size();i++){
 			PageData vpd = new PageData();
 			vpd.put("var1", varOList.get(i).getString("TITLE"));	//1
-			vpd.put("var2", varOList.get(i).getString("AUTHOR"));	//2
-			vpd.put("var3", varOList.get(i).getString("ABSTRACT"));	//3
-			vpd.put("var4", varOList.get(i).getString("CONTENT"));	//4
+			vpd.put("var2", varOList.get(i).getString("CONTENT"));	//2
 			String type;
 			String SUBLISTTYPE_ID=varOList.get(i).get("SUBLISTTYPE_ID").toString();
 			String LISTTYPE_ID=varOList.get(i).get("LISTTYPE_ID").toString();
@@ -402,9 +483,11 @@ public class SpiderController extends BaseController {
 			}
 			
 			
-			vpd.put("var5", type);	//5
-			vpd.put("var6", varOList.get(i).getString("PUBLISH_TIME"));	//6
-			vpd.put("var7", varOList.get(i).getString("CREATE_TIME"));	//7
+			vpd.put("var3", type);	//3
+			vpd.put("var4", varOList.get(i).getString("CREATE_TIME"));	//4
+			vpd.put("var5", varOList.get(i).getString("TARGETURLID"));	//5
+			vpd.put("var6", varOList.get(i).getString("ANNEXURLS"));	//6
+			vpd.put("var7", varOList.get(i).getString("FILENAME"));	//7
 			varList.add(vpd);
 		}
 		dataMap.put("varList", varList);
@@ -417,5 +500,99 @@ public class SpiderController extends BaseController {
 	public void initBinder(WebDataBinder binder){
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(format,true));
+	}
+	
+	/**
+	 * 目标网址没有下载完成，则接着下载。同样会下载文档和图片
+	 * @param targetUrlList
+	 * @param redownTargetUrlList
+	 * @param web
+	 * @throws Exception   List<String> targetUrlList,List<PageData> redownTargetUrlList ,WebInfo web
+	 */
+	public void reDownloadTargetUrl(String seedUrl,StringBuffer dataType,PageData pd1) throws Exception{
+		BaseCrawler crawler=BaseCrawler.getInstance();
+		PageData pd2=new PageData();
+		pd2.put("SEEDURLID", pd1.getString("SEEDURL_ID"));
+		pd2.put("STATUS", "0");
+		List<PageData> redownTargetUrlList=targeturlService.listBySeedUrlIdAndStatus(pd2);
+		List<String> targetUrlList=new ArrayList<>();
+		if(redownTargetUrlList.size()>0){
+			for(int i=0;i<redownTargetUrlList.size();i++){
+				targetUrlList.add(redownTargetUrlList.get(i).getString("TARGETURL"));
+			}
+			//初始化webinfo
+			WebInfo web=WebInfo.init(seedUrl, dataType.toString());
+			//重新爬取
+			crawler.setTargetUrlListAndWebInfo(targetUrlList,web);
+			if(web.isHasDoc() || web.isHasImg()){
+				Spider.create(crawler).addUrl(redownTargetUrlList.get(0).getString("TARGETURL")).thread(4).run();
+			}else{
+				Spider.create(crawler).addUrl(redownTargetUrlList.get(0).getString("TARGETURL")).thread(10).run();
+			}
+		}
+		
+	}
+	
+	/**
+	 * 附件重新下载
+	 * @param seedUrl
+	 * @param pd1
+	 * @throws Exception
+	 */
+	public void reDownloadAnnexUrl(String seedUrl,PageData pd1) throws Exception{
+		PageData pd3 =new PageData();
+		pd3.put("SEEDURLID", pd1.getString("SEEDURL_ID"));
+		pd3.put("STATUS", "0");
+		
+		//得到需要下载的链接
+		List<PageData> redownAnnexUrlList= annexurlService.listBySeedUrlIdAndStatus(pd3);
+		List<String> annexUrlList=new ArrayList<>(); //重下的地址链接
+		List<String> annexNameList= new ArrayList<>(); //下载的文件名称
+		for(int i=0;i<redownAnnexUrlList.size();i++){
+			String annexurl= redownAnnexUrlList.get(i).getString("ANNEXURL");
+			//得到下载的url链接 ，并加入list中
+			annexUrlList.add(annexurl);
+			//通过url得到下载后的名称。
+			PageData pd4 =new PageData();
+			pd4.put("ANNEXURL", annexurl.trim());
+			pd4.put("TARGETURLID",redownAnnexUrlList.get(i).getString("TARGETURLID"));
+			pd4.put("STATUS", "0");
+			List<PageData> AnnexUrlAndPageUrlList =spiderService.findByAnnexUrlAndPageUrl(pd4);
+//			System.out.println("AnnexUrlAndPageUrlList.size(): "+ AnnexUrlAndPageUrlList.toString());
+			for(int j =0;j<AnnexUrlAndPageUrlList.size();j++){
+				String fileName =AnnexUrlAndPageUrlList.get(j).getString("FILENAME");
+				String annexUrls =AnnexUrlAndPageUrlList.get(j).getString("ANNEXURLS");
+//				System.out.println("fileName:"+fileName);
+//				System.out.println("annexUrls "+ annexUrls );
+				// 将得到的下载地址，通过‘，’分离。得到一个数组
+				if(annexUrls!=null && fileName!=null){
+					String [] urls =annexUrls.split(",");
+					String [] fileNameList =fileName.split(",");
+//					System.out.println("annexUrls:"+annexUrls.toString());
+					
+					//取出一个网页中多个附件中， 未下载的，
+					for(int n=0;n<urls.length;n++){
+						if(urls[n].equals(annexurl)){
+							annexNameList.add(fileNameList[n]);
+//							System.out.println("fileNameList() "+fileNameList[n]);
+						}
+					}
+				}
+				
+			}
+		}
+//		//下载未下载的文件
+//		System.out.println("annexNameList.size() :"+annexNameList.size());
+//		for(int m=0;m<annexNameList.size();m++){
+//			System.out.println("annexNameList(): "+annexNameList.get(m));
+//		}
+//		System.out.println("fileNameList.size() : "+annexUrlList.size()  );
+//		for(int s=0;s<annexUrlList.size();s++)
+//		{
+//			System.out.println("annexUrlList :"+annexUrlList.get(s));
+//		}
+		
+		ImgOrDocPipeline imgOrDoc =new ImgOrDocPipeline(seedUrl,annexNameList, annexUrlList);
+		imgOrDoc.reDownloadAnnex();
 	}
 }

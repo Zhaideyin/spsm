@@ -38,14 +38,19 @@
 								<td><input type="text" name="LISTTYPENAME" id="LISTTYPENAME" value="${pd.LISTTYPENAME}" maxlength="255" placeholder="这里输入列表名" title="列表名" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">导航栏编号:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">导航栏:</td>
 								<td>
 									<select id="NAVBARID" name="NAVBARID" style="width: 328px;">
 										<c:forEach items="${list}" var="r" varStatus="vs">
-											<c:if test="${r.NAVBARTYPE_ID==pd.NAVBARID }">
-												<option value="${r.NAVBARTYPE_ID}" selected="selected">${r.NAVBARTYPENAME }</option>
-											</c:if>
-											<option value="${r.NAVBARTYPE_ID}" >${r.NAVBARTYPENAME }</option>
+											<c:choose>
+												<c:when test="${r.NAVBARTYPE_ID==pd.NAVBARID }">
+													<option value="${r.NAVBARTYPE_ID}" selected="selected">${r.NAVBARTYPENAME }</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${r.NAVBARTYPE_ID}" >${r.NAVBARTYPENAME }</option>
+												</c:otherwise>
+											</c:choose>
+												
 										</c:forEach>
 									</select> 
 								</td>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>省外林竹木草(林木，竹类，花卉，牧草)</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        table{ width: 100%;}
+        a{
+            text-decoration:none;
+            color: #0a0903;}
+        .head a {
+            color: #ffffff;
+        }
+        .content_top a{
+            color: #ffffff;
+        }
+        .content_title a{  color: #ffffff; }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+
+
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .main{
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -20px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+            width: 750px;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            clear: both;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topSecond{
+            color: #ffffff;
+        }
+        .content_main{
+            overflow: hidden;
+            height: auto;
+        }
+        .topSecond{
+            font-size: 40px;
+            top:15px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: relative ;
+            top:-80px;
+            left:10%;
+            width:80%;
+
+        }
+        .content_top{
+            padding: 12px 0px 0px 10px;
+            width: 100%;
+        }
+        .content_title {
+            width: 100%;
+            background-color: #106470;
+            padding: 2px 0px 0px 10px;
+        }
+        .content_title h1{
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .content_main_left{
+
+            width: 20%;
+            float: left;
+            background-color: #f2f2f2;
+
+        }
+        .content_main_right{
+            width: 75%;
+            float: left;
+            margin-left: 2%;
+            padding-top: 10px;
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+        }
+        .content_main-left-list_container1, .content_main-left-list_container2{
+            padding: 20px 2px 2px 30px;
+        }
+        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+            color: #0072d8;
+        }
+        .content_main_right_first{
+            float:left;
+            width: 64%;
+            margin-right: 10px;
+        }
+        .content_main_right_second{
+            float:left;
+            padding-left: 20px;
+            width: 30%;
+            background-color: #f4f3ff;
+        }
+        .breed_search,.links{
+            padding: 3px 10px 50px 30px;
+        }
+        .sub-list-pg .imgs li {
+            display: block;
+            line-height: 20px;
+            float: left;
+            padding-left: 20px;
+            padding-right: 25px;
+        }
+        ul{
+            overflow: hidden;
+        }
+        .content_main-left-list-content1{
+            display:none;
+        }
+    </style>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".content_main-left-list-title1").click(function(){
+                $(".content_main-left-list-content1").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
+        </div>
+        <div class="second">
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
+        </div>
+        <div class="third">
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
+        </div>
+        <div class="fourth">
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">品种导航</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="breedRightApplication.html">
+                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp;
+                    &nbsp;     <a href="breedBusiness.html"> 种子企业 </a> </b></p>
+            </div>
+            <div class="content_title">
+               <h1>林竹木草(林木，竹类，花卉，牧草)</h1>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list_container1">
+                        <div class="content_main-left-list1">
+                            <div class="content_main-left-list-title1">
+                                <h4>四川品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content1">
+                                <p><a href="BreedDictionary1.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionary.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCorn.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOil.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotato.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetables.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTree.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTea.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicine.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCotton.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacterium.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlower.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimal.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="content_main-left-list_container2">
+                        <div class="content_main-left-list2">
+                            <div class="content_main-left-list-title2">
+                                <h4>省外品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content2">
+                                <p><a href="BreedDictionary1PO.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionaryPO.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCornPO.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOilPO.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotatoPO.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetablesPO.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTreePO.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTeaPO.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicinePO.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCottonPO.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacteriumPO.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlowerProvinceOut.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimalPO.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+
+                        </div>
+                            </div>
+
+                    </div>
+                    </div>
+                </div>
+
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="宋体">
+                        </font><div align="center"><font face="宋体">
+                        </font><center><font face="宋体">
+                            <!--mstheme--></font><table border="0" cellpadding="0" cellspacing="0" width="700">
+                            <tbody><tr>
+                                <td><!--mstheme--><font face="宋体"><font lang="ZH-CN" face="宋体" size="3"><a href="index.htm"><br>
+                                    <font color="#008000">
+                                        云南花卉</font></a> &gt; 热带植被<br>
+                                    <br>
+                                </font><!--mstheme--></font></td>
+                            </tr>
+                            </tbody></table><!--mstheme--><font face="宋体">
+
+                        </font></center><font face="宋体">
+                        </font></div><font face="宋体">
+
+                        </font><div align="center"><font face="宋体">
+                        </font><center><font face="宋体"><!--mstheme--></font><center>
+                        </center><table cellspacing="0" border="1" cellpadding="2" width="700" height="186" bordercolordark="#000000" bordercolorlight="#CCCCCC">
+                            <tbody><tr>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-1-3x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><font lang="ZH-CN" size="3">
+                                    <img border="0" src="../img/sb2-1-16x.jpg" width="150" height="90"></font><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-1-20x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-6-9x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体">
+                                </font><p align="center"><font face="宋体"><a href="htm/sb2-1-3.htm"><font lang="ZH-CN" size="3">
+                                    季节雨林（望天树）</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><font lang="ZH-CN" size="3">
+                                    <a href="htm/sb2-1-16.htm">季节雨</a><a href="htm/sb2-1-16.htm">林（笋兰）</a></font><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-1-20.htm"><font lang="ZH-CN" size="3">
+                                    季节雨林（千果榄仁）</font></a><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-6-9.htm"><font lang="ZH-CN" size="3">次生植被（三叶橡胶）</font></a><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-3-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-3-3x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-6-2x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-6-12x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体">
+                                </font><p align="center"><font face="宋体"><a href="htm/sb2-3-1.htm"><font lang="ZH-CN" size="3">
+                                    山地雨林</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-3-3.htm"><font lang="ZH-CN" size="3">
+                                    山地雨林(云南蕈树</font></a><font lang="ZH-CN" size="3">)</font><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-6-2.htm"><font size="3"><font lang="ZH-CN">次生植被</font>(<font face="宋体" lang="ZH-CN">藤冠灌丛）</font></font></a><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><font size="3"><a href="htm/sb2-6-12.htm"><font lang="ZH-CN">次生植被（铁刀木</font></a><font face="宋体" lang="ZH-CN" size="3">）</font></font><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-4-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-4-4x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-5-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="23" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb2-6-14x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="22" align="center"><!--mstheme--><font face="宋体"></font><p align="center"><font face="宋体"><a href="htm/sb2-4-1.htm"><font lang="ZH-CN" size="3">竹林1</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="22" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-4-4.htm"><font lang="ZH-CN" size="3">竹林2</font></a><!--mstheme--></font></td>
+                                <td width="192" height="22" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-5-1.htm"><font lang="ZH-CN" size="3">河岸植被1</font></a><!--mstheme--></font></td>
+                                <td width="192" height="22" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb2-6-14.htm"><font lang="ZH-CN" size="3">次生植被（凤凰木）</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            </tbody></table><!--mstheme--><font face="宋体"></font></center><font face="宋体">
+                        </font></div><font face="宋体">
+                            　<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></tbody></table>
+
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="宋体">
+                        </font><div align="center"><font face="宋体">
+                        </font><center><font face="宋体">
+                            <!--mstheme--></font><table border="0" cellpadding="0" cellspacing="0" width="700">
+                            <tbody>
+                            <tr>
+                                <td><!--mstheme--><font face="宋体"><font lang="ZH-CN" face="宋体" size="3"><br>
+                                    <a href="index.htm"><font color="#008000">
+                                        云南花卉</font></a> &gt; 亚热带阔叶森林植被<br>
+                                    <br>
+                                </font><!--mstheme--></font></td>
+                            </tr>
+                            </tbody></table><!--mstheme--><font face="宋体">
+
+                        </font></center><font face="宋体">
+                        </font></div><font face="宋体">
+
+                        </font><div align="center"><font face="宋体">
+                            <!--mstheme--></font><center>
+                        </center><center>
+                        </center><center>
+                        </center><center>
+                        </center><table cellspacing="0" border="1" cellpadding="2" width="700" height="131" bordercolordark="#000000" bordercolorlight="#CCCCCC">
+                            <tbody><tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-1-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><font face="宋体" lang="ZH-CN" size="3">
+                                    <img border="0" src="../img/sb3-1-6x.jpg" width="150" height="90"></font><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-2-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-2-6x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体"><a href="htm/sb3-1-1.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    季风常绿阔叶林</font></a><!--mstheme--></font></p></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><font face="宋体" lang="ZH-CN" size="3">
+                                    <a href="htm/sb3-1-6.htm">季风常绿阔</a><a href="htm/sb3-1-6.htm">叶林（红木荷）</a></font><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-2-1.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        半湿性常绿阔叶林</font></a><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-2-6.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        半湿性常绿阔叶林</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            <tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-2-5x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-11x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-17x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体"><a href="htm/sb3-2-5.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    半湿性常绿阔叶林</font></a><!--mstheme--></font></p></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-3-1.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        山地常绿阔叶林</font></a><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><font size="3">
+                                    <a href="htm/sb3-3-11.htm"><font face="宋体" lang="ZH-CN">
+                                        山地常绿阔叶林</font>(<font face="宋体" lang="ZH-CN">大王杜鹃）</font></a></font><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><font size="3">
+                                    <a href="htm/sb3-3-17.htm"><font face="宋体" lang="ZH-CN">
+                                        山地常绿阔叶林</font>(<font face="宋体" lang="ZH-CN">虎头兰）</font></a></font><!--mstheme--></font></td>
+                            </tr>
+
+                            <tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-5x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-7x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-3-9x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb3-4-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体"><a href="htm/sb3-3-5.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    山地常绿阔叶林（峨眉栲）</font></a><!--mstheme--></font></p></td>
+                                <td width="174" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-3-7.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        山地常绿阔叶林（木莲）</font></a><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-3-9.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        山地常绿阔叶林（红花荷）</font></a><!--mstheme--></font></td>
+                                <td width="175" height="25" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb3-4-1.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        山地苔藓常绿林</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            </tbody></table><!--mstheme--><font face="宋体">
+                        </font></div><font face="宋体">
+                            　<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></tbody></table>
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><!--msnavigation--><td valign="top"><!--mstheme--><font face="宋体">
+                        </font><div align="center"><font face="宋体">
+                        </font><center><font face="宋体">
+                            <!--mstheme--></font><table border="0" cellpadding="0" cellspacing="0" width="700">
+                            <tbody><tr>
+                                <td><!--mstheme--><font face="宋体"><font lang="ZH-CN" face="宋体" size="3"><a href="index.htm"><br>
+                                    <font color="#008000">
+                                        云南花卉</font></a> &gt; 亚热带针叶林及生灌草丛植被<br>
+                                    <br>
+                                </font><!--mstheme--></font></td>
+                            </tr>
+                            </tbody></table><!--mstheme--><font face="宋体">
+                        </font></center><font face="宋体">
+                        </font></div><font face="宋体">
+
+                        </font><div align="center"><font face="宋体">
+                            <!--mstheme--></font><center>
+                        </center><center>
+                        </center><center>
+                        </center><center>
+                        </center>
+                            <table cellspacing="0" border="1" cellpadding="2" width="700" height="135" bordercolordark="#000000" bordercolorlight="#CCCCCC">
+                            <tbody><tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-2-1x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-2-7ax.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-2-7bx.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-2-11x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体"><a href="htm/sb4-2-1.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    云南松林（云南松）</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb4-2-7a.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        云南松林（炮仗花杜鹃）</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体">
+                                    <a href="htm/sb4-2-7b.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        云南松林（碎米花杜鹃）</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb4-2-11.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    云南松林（东紫苏）</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            <tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-2-10x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/sb4-6-4x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-21x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-15x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体">
+                                    <a href="htm/sb4-2-10.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                        云南松林（滇含笑）</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/sb4-6-4.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    亚热带次生灌草丛（马缨花）</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/4-6-10.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    亚热带次生灌草丛</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/4-6-15.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    亚热带次生灌草丛</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            <tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-13x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-12x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-16x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><img border="0" src="../img/4-6-15x.jpg" width="150" height="90"><!--mstheme--></font></td>
+                            </tr>
+                            <tr>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体">
+                                </font><p><font face="宋体"><a href="htm/4-6-13.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    亚热带次生灌草丛</font></a><!--mstheme--></font></p></td>
+                                <td width="191" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/4-6-12.htm"><font size="3">(蕨菜）亚热带次生灌草丛</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/4-6-16.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    亚热带次生灌草丛（戟叶酸模）</font></a><!--mstheme--></font></td>
+                                <td width="192" height="26" align="center"><!--mstheme--><font face="宋体"><a href="htm/4-6-15.htm"><font face="宋体" lang="ZH-CN" size="3">
+                                    扶桑金星蕨</font></a><!--mstheme--></font></td>
+                            </tr>
+
+                            </tbody></table><!--mstheme--><font face="宋体">
+                        </font></div><font face="宋体">
+                            　<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></tbody></table>
+
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="breed_search">
+                         <h2>品种搜索</h2><br>
+                            <div class="breed_button">
+                                <input value="搜索" name="keyword" style=" height: 28px; width: 60%;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:30%;background-color: #0d8897">
+                            </div>
+                            <br>
+                            <br>
+                            <div class=" brief ">
+                                <span>
+                                  植被（vegetation）就是覆盖地表的植物群落的总称。它是一个植物学、生态学、农学或地球科学的名词。植被可以因为生长环境的不同而被分类，譬如高山植被、草原植被、海岛植被等。
+陆地表面分布着由许多植物组成的各种植物群落，如森林、草原、灌丛、荒漠、草甸、沼泽等，总称为该地区的植被。分为自然植被和人工（栽培）植被。毛主席说过有些人“只视树木，不见森林”，是
+                                    比喻“只见局部，不见全部”，所以植被对植物个体来说，它是一个整体，全面的概念。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h2>相关链接</h2>
+                            <br>
+                            <ul>
+                                <li>
+                                   <a href="http://www.ricedata.cn/" style="color: black"> 国家水稻数据中心</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+        <div class="foot">
+            <div class="footLogo">
+            </div>
+            <div class="footText">
+                <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+                <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+                <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+            </div>
+        </div>
+</div>
+</div>
+</body>
+
+</html>

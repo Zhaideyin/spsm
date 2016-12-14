@@ -80,6 +80,13 @@ public class SpiderService implements SpiderManager{
 	public void deleteAll(String[] ArrayDATA_IDS)throws Exception{
 		dao.delete("SpiderMapper.deleteAll", ArrayDATA_IDS);
 	}
+
+	/**
+	 * 通过下载链接去查询下载后的名称及地址。
+	 */
+	public List<PageData> findByAnnexUrlAndPageUrl(PageData pd) throws Exception {
+		return (List<PageData>)dao.findForList("SpiderMapper.findByAnnexUrlAndPageUrl", pd);
+	}
 	
 }
 

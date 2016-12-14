@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>省外油料</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        table{ width: 100%;}
+        a{
+            text-decoration:none;
+            color: #0a0903;}
+        .head a {
+            color: #ffffff;
+        }
+        .content_top a{
+            color: #ffffff;
+        }
+        .content_title a{  color: #ffffff; }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+
+
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .main{
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -20px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+            width: 750px;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            clear: both;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topSecond{
+            color: #ffffff;
+        }
+        .content_main{
+            overflow: hidden;
+            height: auto;
+        }
+        .topSecond{
+            font-size: 40px;
+            top:15px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: relative ;
+            top:-80px;
+            left:10%;
+            width:80%;
+
+        }
+        .content_top{
+            padding: 12px 0px 0px 10px;
+            width: 100%;
+        }
+        .content_title {
+            width: 100%;
+            background-color: #106470;
+            padding: 2px 0px 0px 10px;
+        }
+        .content_title h1{
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .content_main_left{
+
+            width: 20%;
+            float: left;
+            background-color: #f2f2f2;
+
+        }
+        .content_main_right{
+            width: 75%;
+            float: left;
+            margin-left: 2%;
+            padding-top: 10px;
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+        }
+        .content_main-left-list_container1, .content_main-left-list_container2{
+            padding: 20px 2px 2px 30px;
+        }
+        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+            color: #0072d8;
+        }
+        .content_main_right_first{
+            float:left;
+            width: 64%;
+            margin-right: 10px;
+        }
+        .content_main_right_second{
+            float:left;
+            padding-left: 20px;
+            width: 30%;
+            background-color: #f4f3ff;
+        }
+        .breed_search,.links{
+            padding: 3px 10px 50px 30px;
+        }
+        .sub-list-pg .imgs li {
+            display: block;
+            line-height: 20px;
+            float: left;
+            padding-left: 20px;
+            padding-right: 25px;
+        }
+        ul{
+            overflow: hidden;
+        }
+        .content_main-left-list-content1{
+            display:none;
+        }
+    </style>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".content_main-left-list-title1").click(function(){
+                $(".content_main-left-list-content1").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
+        </div>
+        <div class="second">
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
+        </div>
+        <div class="third">
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
+        </div>
+        <div class="fourth">
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">品种导航</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="breedRightApplication.html">
+                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp;
+                    &nbsp;     <a href="breedBusiness.html"> 种子企业 </a> </b></p>
+            </div>
+            <div class="content_title">
+               <h1>油料（油菜、花生、豆类）</h1>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list_container1">
+                        <div class="content_main-left-list1">
+                            <div class="content_main-left-list-title1">
+                                <h4>四川品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content1">
+                                <p><a href="BreedDictionary1.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionary.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCorn.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOil.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotato.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetables.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTree.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTea.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicine.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCotton.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacterium.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlower.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimal.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="content_main-left-list_container2">
+                        <div class="content_main-left-list2">
+                            <div class="content_main-left-list-title2">
+                                <h4>省外品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content2">
+                                <p><a href="BreedDictionary1PO.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionaryPO.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCornPO.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOilPO.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotatoPO.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetablesPO.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTreePO.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTeaPO.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicinePO.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCottonPO.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacteriumPO.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlowerProvinceOut.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimalPO.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+
+                        </div>
+                            </div>
+
+                    </div>
+                    </div>
+                </div>
+
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_img">
+                            <img src="../img/1737726_100636233129_2.jpg" style="height:390px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_text">
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>大豆</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆冀豆12号.htm">冀豆12号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆豫豆19号.htm">豫豆19号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆淮豆6号.htm">淮豆6号</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆濮海10号.htm">濮海10号</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆黑河26号.htm">黑河26号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆晋大53.htm">晋大53</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆中豆31.htm">中豆31</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆中黄13.htm">中黄13</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆中黄17.htm">中黄17</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆科新3号.htm">科新3号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆晋豆23号.htm">晋豆23号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3"><a href="大豆/大豆徐豆10号.htm">徐豆10号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEF8D3">&nbsp; </td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3">&nbsp; </td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEF8D3">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆黑河12.htm">黑河12</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆齐黄27号.htm">齐黄27号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆合豆一号.htm">合豆一号</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆沧豆4号.htm">沧豆4号</a></td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆豫豆22号.htm">豫豆22号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆晋豆11号.htm">晋豆11号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3"><a href="大豆/大豆豫豆23号.htm">豫豆23号</a></td>
+                                            <td width="17%" height="35" align="center" bgcolor="#FEE0D3">&nbsp; </td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEE0D3">&nbsp; </td>
+                                            <td width="16%" height="35" align="center" bgcolor="#FEE0D3">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="33" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆北丰11号.htm">北丰11号</a></td>
+                                            <td width="17%" height="33" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆贡豆6号.htm">贡豆6号</a></td>
+                                            <td width="17%" height="33" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆合丰35号.htm">合丰35号</a></td>
+                                            <td width="16%" height="33" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆黑河11号.htm">黑河11号</a></td>
+                                            <td width="16%" height="33" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆黑河13号.htm">黑河13号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="29" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆吉林30号.htm">吉林30号</a></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆晋豆19号.htm">晋豆19号</a></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆徐豆8号.htm">徐豆8号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆豫豆16号.htm">豫豆16号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆豫豆18号.htm">豫豆18号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="34" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆中豆20　.htm">中豆20</a></td>
+                                            <td width="17%" height="34" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆中豆26.htm">中豆26</a></td>
+                                            <td width="17%" height="34" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆中豆28.htm">中豆28</a></td>
+                                            <td width="16%" height="34" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆中黄9号.htm">中黄9号</a></td>
+                                            <td width="16%" height="34" align="center" bgcolor="#FCE0FB"><a href="大豆/大豆中野1号.htm">中野1号</a></td>
+                                        </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>绿豆新品种</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="21" align="center"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="绿豆/绿豆冀绿2号.htm">冀绿2号</a></font></p></td>
+                                            <td width="17%" height="21" align="center"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="绿豆/绿豆潍绿4号.htm">潍绿4号</a></font></p></td>
+                                            <td width="17%" height="21" align="center"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="绿豆/绿豆豫绿4号.htm">豫绿4号</a></font></p></td>
+                                            <td width="16%" height="21" align="center">&nbsp; </td>
+                                            <td width="16%" height="21" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="content_main_right_first_img">
+                                <img src="../img/842488_134955025959_2.jpg" style="height:390px;width: 100%;">
+                            </div>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>油菜</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%" height="241" cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="31" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜H165.htm">H165 </a></font></p></td>
+                                            <td width="17%" height="31" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜川油15.htm">川油15</a></font></p></td>
+                                            <td width="17%" height="31" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜绵油11号.htm">绵油11号</a></font></p></td>
+                                            <td width="16%" height="31" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜秦优7号.htm">秦优7号</a></font></p></td>
+                                            <td width="16%" height="31" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜皖油18号.htm">皖油18号</a></font></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="27" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜油研七号.htm">油研七号</a></font></p></td>
+                                            <td width="17%" height="27" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜中双8号.htm">中双8号</a></font></p></td>
+                                            <td width="17%" height="27" align="center" bgcolor="#E3FBFA"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="油菜/油菜中油杂3号.htm">中油杂3号</a></font></p></td>
+                                            <td width="16%" height="27" align="center" bgcolor="#E3FBFA">&nbsp;&nbsp; </td>
+                                            <td width="16%" height="27" align="center" bgcolor="#E3FBFA">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="26" align="center" bgcolor="#E9FCE0">&nbsp;<a href="油菜/油菜川油18.htm">川油18</a></td>
+                                            <td width="17%" height="26" align="center" bgcolor="#E9FCE0"><a href="油菜/油菜湘农油571.htm">湘农油571</a></td>
+                                            <td width="17%" height="26" align="center" bgcolor="#E9FCE0"><a href="油菜/油菜中双四号.htm">中双四号</a></td>
+                                            <td width="16%" height="26" align="center" bgcolor="#E9FCE0"><a href="油菜/油菜中油119.htm">中油119</a></td>
+                                            <td width="16%" height="26" align="center" bgcolor="#E9FCE0"><a href="油菜/油菜中油杂1号.htm">中油杂1号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="25" align="center" bgcolor="#E9FCE0"><a href="油菜/油菜青油14号.htm">青油14号</a></td>
+                                            <td width="17%" height="25" align="center" bgcolor="#E9FCE0">&nbsp; </td>
+                                            <td width="17%" height="25" align="center" bgcolor="#E9FCE0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </td>
+                                            <td width="16%" height="25" align="center" bgcolor="#E9FCE0">&nbsp; </td>
+                                            <td width="16%" height="25" align="center" bgcolor="#E9FCE0">&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="29" align="center" bgcolor="#FAF9E2"><p align="center"><a href="油菜/油菜川油21.htm">川油21 </a></p></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜杂选一号.htm">杂选一号</a></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜浙双3号.htm">浙双3号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜中油杂2号.htm">中油杂2号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜中双七号.htm">中双七号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="30" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜湘油15号.htm">湘油15号</a></td>
+                                            <td width="17%" height="30" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜两优586.htm">两优586</a></td>
+                                            <td width="17%" height="30" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜华协1号.htm">华协1号</a></td>
+                                            <td width="16%" height="30" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜陕油8号.htm">陕油8号</a></td>
+                                            <td width="16%" height="30" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜宁油10号.htm">宁油10号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="28" align="center" bgcolor="#FAF9E2"><a href="油菜/油菜华杂4号.htm">华杂4号</a></td>
+                                            <td width="17%" height="28" align="center" bgcolor="#FAF9E2">　</td>
+                                            <td width="17%" height="28" align="center" bgcolor="#FAF9E2">&nbsp; </td>
+                                            <td width="16%" height="28" align="center" bgcolor="#FAF9E2">　</td>
+                                            <td width="16%" height="28" align="center" bgcolor="#FAF9E2">　</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="29" align="center" bgcolor="#E4FCFB"><a href="油菜/油菜皖油14号.htm">皖油14号</a></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#E4FCFB"><a href="油菜/油菜宁杂一号.htm">宁杂一号</a></td>
+                                            <td width="17%" height="29" align="center" bgcolor="#E4FCFB"><a href="油菜/油菜湘杂油2号.htm">湘杂油2号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#E4FCFB"><a href="油菜/油菜中油杂1号.htm">中油杂1号</a></td>
+                                            <td width="16%" height="29" align="center" bgcolor="#E4FCFB">　</td>
+                                        </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="content_main_right_first_img">
+                                <img src="../img/200821912927616_2.jpg" style="height:390px;width: 100%;">
+                            </div>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>花生</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><a href="花生/花生花育19号.htm"><font face="宋体" size="3">花育19号</font></a></td>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生花育20号.htm">花育20号</a></font></p></td>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生开农30.htm">开农30</a></font></p></td>
+                                            <td width="16%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生泰花3号.htm">泰花3号</a></font></p></td>
+                                            <td width="16%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生天府14号.htm">天府14号 </a></font></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生豫花14号.htm">豫花14号 </a></font></p></td>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生远杂9102.htm">远杂9102 </a></font></p></td>
+                                            <td width="17%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生远杂9307.htm">远杂9307</a></font></p></td>
+                                            <td width="16%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生粤油79.htm">粤油79</a></font></p></td>
+                                            <td width="16%" height="24" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生湛油30.htm">湛油30 </a></font></p></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="19" align="center" bgcolor="#E4DDF9"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="花生/花生中花8号.htm">中花8号 </a></font></p></td>
+                                            <td width="17%" height="19" align="center" bgcolor="#E4DDF9">&nbsp; </td>
+                                            <td width="17%" height="19" align="center" bgcolor="#E4DDF9">&nbsp; </td>
+                                            <td width="16%" height="19" align="center" bgcolor="#E4DDF9">&nbsp; </td>
+                                            <td width="16%" height="19" align="center" bgcolor="#E4DDF9">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="27" align="center" bgcolor="#EEFCE9"><a href="花生/花生豫花11号.htm">豫花11号</a></td>
+                                            <td width="17%" height="27" align="center" bgcolor="#EEFCE9"><a href="花生/花生徐花8号.htm">徐花8号</a></td>
+                                            <td width="17%" height="27" align="center" bgcolor="#EEFCE9"><a href="花生/花生锦花5号.htm">锦花5号</a></td>
+                                            <td width="16%" height="27" align="center" bgcolor="#EEFCE9"><a href="花生/花生豫花15号.htm">豫花15号</a></td>
+                                            <td width="16%" height="27" align="center" bgcolor="#EEFCE9"><a href="花生/花生邢花1号.htm">邢花1号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="28" align="center" bgcolor="#EEFCE9"><a href="花生/花生豫花9号.htm">豫花9号</a></td>
+                                            <td width="17%" height="28" align="center" bgcolor="#EEFCE9"><a href="花生/花生鲁花14号.htm">鲁花14号</a></td>
+                                            <td width="17%" height="28" align="center" bgcolor="#EEFCE9"><a href="花生/花生豫花7号.htm">豫花7号</a></td>
+                                            <td width="16%" height="28" align="center" bgcolor="#EEFCE9"><a href="花生/花生豫花10号.htm">豫花10号</a></td>
+                                            <td width="16%" height="28" align="center" bgcolor="#EEFCE9"><a href="花生/花生花育17号.htm">花育17号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="26" align="center" bgcolor="#EEFCE9"><a href="花生/花生天府11号.htm">天府11号</a></td>
+                                            <td width="17%" height="26" align="center" bgcolor="#EEFCE9"><a href="花生/花生粤油202-35.htm">粤油202-35</a></td>
+                                            <td width="17%" height="26" align="center" bgcolor="#EEFCE9">&nbsp;&nbsp; </td>
+                                            <td width="16%" height="26" align="center" bgcolor="#EEFCE9">&nbsp; </td>
+                                            <td width="16%" height="26" align="center" bgcolor="#EEFCE9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="26" align="center" bgcolor="#FCF0E9"><a href="花生/花生粤油223.htm">粤油223</a></td>
+                                            <td width="17%" height="26" align="center" bgcolor="#FCF0E9">&nbsp;<a href="花生/花生中花5号.htm">中花5号</a> </td>
+                                            <td width="17%" height="26" align="center" bgcolor="#FCF0E9">&nbsp; </td>
+                                            <td width="16%" height="26" align="center" bgcolor="#FCF0E9">&nbsp; </td>
+                                            <td width="16%" height="26" align="center" bgcolor="#FCF0E9">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="19" align="center" bgcolor="#FCF0E9"><a href="花生/花生豫花3号.htm">豫花3号</a></td>
+                                            <td width="17%" height="19" align="center" bgcolor="#FCF0E9">&nbsp;<a href="花生/花生中花4号.htm">中花4号</a> </td>
+                                            <td width="17%" height="19" align="center" bgcolor="#FCF0E9">&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                            <td width="16%" height="19" align="center" bgcolor="#FCF0E9">&nbsp; </td>
+                                            <td width="16%" height="19" align="center" bgcolor="#FCF0E9">&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>芝麻</h2>
+                            </div>
+                            <table border="0">
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻豫芝11号.htm"><font face="宋体" size="3">豫芝11号</font></a></td>
+                                            <td width="17%" height="21" align="center"><font face="宋体" size="3"></font><p align="center"><font face="宋体" size="3"><a href="芝麻/芝麻郑杂芝H03.htm">郑杂芝H03</a></font></p></td>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻郑芝97C01.htm"><font face="宋体" size="3">郑芝97C01</font></a></td>
+                                            <td width="16%" height="21" align="center">&nbsp; </td>
+                                            <td width="16%" height="21" align="center">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻中芝10号.htm">中芝10号</a></td>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻中芝9号.htm">中芝9号</a></td>
+                                            <td width="17%" height="21" align="center">&nbsp; </td>
+                                            <td width="16%" height="21" align="center">&nbsp;&nbsp;&nbsp; </td>
+                                            <td width="16%" height="21" align="center">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻豫芝4号.htm">豫芝4号</a></td>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻冀芝一号.htm">冀芝一号</a></td>
+                                            <td width="17%" height="21" align="center"><a href="芝麻/芝麻豫芝3号.htm">豫芝3号</a></td>
+                                            <td width="16%" height="21" align="center">&nbsp; </td>
+                                            <td width="16%" height="21" align="center">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="19" align="center"><p align="center"><a href="芝麻/芝麻豫芝8号.htm">豫芝8号</a></p></td>
+                                            <td width="17%" height="19" align="center"><a href="芝麻/芝麻豫芝9号.htm">豫芝9号</a></td>
+                                            <td width="17%" height="19" align="center">&nbsp;&nbsp;&nbsp; </td>
+                                            <td width="16%" height="19" align="center">&nbsp; </td>
+                                            <td width="16%" height="19" align="center">&nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+
+
+                        </div>
+
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="breed_search">
+                         <h3>品种搜索</h3><br><br>
+                            <div class="breed_button">
+                                <input value="搜索" name="keyword" style=" height: 28px; width: 60%;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:30%;background-color: #0d8897">
+                            </div>
+                            <br>
+                            <br>
+                            <div class=" brief ">
+                                <span>
+                                  油料作物是以榨取油脂为主要用途的一类作物。这类作物主要有油菜、大豆、花生、芝麻、向日葵、棉籽、蓖麻、苏子、油用亚麻和大麻等。
+世界四大主要油料作物为大豆、油菜、花生、向日葵。
+我国四大（五大）主要油料作物为大豆、油菜、花生、芝麻（向日葵）。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h2>相关链接</h2>
+                            <br>
+                            <ul>
+                                <li>
+                                   <a href="http://www.ricedata.cn/" style="color: black"> 国家水稻数据中心</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+        <div class="foot">
+            <div class="footLogo">
+            </div>
+            <div class="footText">
+                <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+                <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+                <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+            </div>
+        </div>
+</div>
+</div>
+</body>
+
+</html>

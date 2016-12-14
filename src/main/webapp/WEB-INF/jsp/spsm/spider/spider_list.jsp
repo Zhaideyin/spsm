@@ -102,11 +102,11 @@
 									</th>
 									<th class="center" style="width:50px;">序号</th>
 									<th class="center">标题</th>
-									<th class="center">作者</th>
-									<th class="center">摘要</th>
+									<!-- <th class="center">作者</th> -->
+									<!-- <th class="center">摘要</th> -->
 									<th class="center">内容</th>
 									<th class="center">类型</th>
-									<th class="center">发布时间</th>
+									<!-- <th class="center">发布时间</th> -->
 									<th class="center">爬取时间</th>
 									<th class="center">操作</th>
 								</tr>
@@ -124,8 +124,8 @@
 											</td>
 											<td class='center' style="width: 30px;">${vs.index+1}</td>
 											<td class='center'>${var.TITLE}</td>
-											<td class='center'>${var.AUTHOR}</td>
-											<td class='center'>${var.ABSTRACT}</td>
+											<%-- <td class='center'>${var.AUTHOR}</td> --%>
+										<%-- 	<td class='center'>${var.ABSTRACT}</td> --%>
 											<td class='center'>${var.CONTENT}</td>
 											<td class='center'>
 											<!-- 选择最小的类型作为显示-->
@@ -144,7 +144,7 @@
 												</c:otherwise>
 											</c:choose>
 											</td>
-											<td class='center'>${var.PUBLISH_TIME}</td>
+											<%-- <td class='center'>${var.PUBLISH_TIME}</td> --%>
 											<td class='center'>${var.CREATE_TIME}</td>
 											<td class="center">
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">

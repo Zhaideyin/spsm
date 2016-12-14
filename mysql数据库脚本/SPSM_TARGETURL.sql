@@ -1,0 +1,14 @@
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `SPSM_TARGETURL`
+-- ----------------------------
+DROP TABLE IF EXISTS `SPSM_TARGETURL`;
+CREATE TABLE `SPSM_TARGETURL` (
+ 		`TARGETURL_ID` varchar(100) NOT NULL,
+		`TARGETURL` varchar(255) DEFAULT NULL COMMENT '目标地址',
+		`STATUS` varchar(255) DEFAULT NULL COMMENT '状态',
+		`SEEDURLID` varchar(255) DEFAULT NULL COMMENT '种子地址',
+  		PRIMARY KEY (`TARGETURL_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

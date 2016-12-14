@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>details</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        a {
+            color: #ffffff;
+            text-decoration:none;
+        }
+        li{
+            color: #0072d8;
+        }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .main{
+            width: 100%;
+        }
+        .top{
+            background-color: #12525e;
+            width: 100%;
+            height: 300px;
+        }
+        .top p{
+            position: relative;
+            width: 900px;
+            left:10%;
+        }
+        .content{
+            margin-top:-200px;
+            margin-right:10%;
+            float: right;
+            width: 80%;
+            height: auto;
+        }
+
+        .content_top p{
+            color: #ffffff;
+            position: relative;
+            left:30px;
+            top:8px;}
+
+        .foot{
+            clear: both;
+            margin-top: 30px;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .container{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+.content{
+    border: solid 1px #939987;
+    background-color: #ffffff;
+}
+    #LbTitle{
+       padding-top: 30px;
+        padding-left: 20%;
+     }
+    #LbDate{
+        padding-left: 40%;
+    }
+    #LbHit{
+        padding-left: 41%;
+    }
+
+        .topFirst ,.topSecond{
+            color: #ffffff;
+        }
+        .topFirst{
+            margin-left:2%;
+            top:20px;
+        }
+        .topSecond{
+            font-size: 30px;
+            margin-left: 3%;
+            top:30px;
+        }
+
+
+        .content_img_title span{
+            font-size: 26px;
+            padding-left: 10px;
+            font-family: 微软雅黑;
+        }
+
+        .boxtitse {
+            height: 42px;
+            line-height: 42px;
+            padding-left: 30px;
+            padding-right: 10px;
+            border-bottom: 1px dotted #ccc;
+        }
+        .contit {
+            padding: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
+        </div>
+        <div class="second">
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
+        </div>
+        <div class="third">
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
+        </div>
+        <div class="fourth">
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">焦点关注</p>
+        </div>
+        <div class="content">
+            <div class="listright">
+                <div class="boxtitse">
+                <span>
+                    <span id="LbType">所属类别:地方新闻</span></span>
+                </div>
+                <div class="contit">
+                    <h2 style=" height:80px;">
+                        <span id="LbTitle1"></span><span id="LbTitle">北京市农业局代表团到甘肃省农牧厅考察交流种业有关工作</span></h2>
+                    <div class="rq">
+                        <span id="LbDate">发布时间:2016年10月12日</span><br>
+                        <span id="LbHit">此信息已被浏览534次</span><br>
+
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <div class="conzw">
+                    <table id="TbContent" border="0">
+                        <tbody><tr>
+                            <td valign="top"><p class="MsoNormal" style="text-indent:32.0000pt;">
+                                为了贯彻中共中央《<span>国民经济和社会发展第十三个五年规划纲要</span>》、<span>《关于落实发展新理念加快农业现代化</span> <span>实现全面小康目标的若干意见》</span>(中发[2016]1号)的有关精神，落实国家现代种业发展布局，促进北京市国家现代种业创新示范区与甘肃省国家级玉米制种基地相互支撑，共同建设一区一地，建立区域协作机制，8月25日至8月29日，北京市农业局代表团到甘肃省考察了北京市种子企业生产加工基地，并与甘肃省农牧厅座谈交流了种业相关工作。
+                            </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <b>一、深入基地，了解种子生产一线情况</b><b></b>
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <span>北京市农业局代表团由郑渝副局长带队，北京市农委社会发展处涂宏汉处长、北京市农业局科教处程晓仙处长、粮经处肖勇处长、北京市种子管理站贾希海书记、通州区农业局王永利副局长等</span>9位同志参加了此次考察活动。代表团一行首先考察了北京顺鑫农科种业科技有限公司制种基地和北京华农伟业种子科技有限公司制种基地，向基层技术人员询问了当地农民对制种工作的热情和制种技术水平，了解了当地的气候特点、土壤肥力水平和制种产量情况，以及制种对提高当地农民收入的作用。郑渝副局长要求企业负责人，特别是生产一线工作人员，一定要与当地政府和农民处理好关系，在种子生产和收购过程中诚信守法，树立首都种子企业的良好形象。
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <b>二、参观现场，考察种子加工仓储情况</b><b></b>
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <span>按照种子法的相关规定，同时考虑到降低运输成本等要求，种子企业纷纷在甘肃省玉米制种基地建立种子加工、仓储基地。北京市农业局代表团在考察过程中先后参观了中国种子集团中种国际种子公司加工仓储基地、北京顺鑫农科种业科技有限公司加工仓储基地和北京华农伟业种子科技有限公司加工仓储基地。中国种子集团中种国际种子公司加工仓储基地于</span>2013年投入使用。该公司引进丹麦和美国的设备，在甘肃省已建成4条加工能力10吨/小时的加工线，可满足6-8万亩种子的加工需要，仓储设施达1200平方米，可贮存1500万公斤种子，这套设备居亚洲先进水平。北京顺鑫农科种业科技有限公司引进德国皮特库斯设备，正在改扩建其加工仓储基地。工程分三期实施，一期工程建设一条15吨/小时的加工线，建设一条每次可烘干1500吨果穗的烘干线，可烘干2万亩玉米果穗，建设可存贮6000吨籽粒的种子贮藏库，一期工程将在2017年建成使用。北京华农伟业种子科技有限公司同样引进德国皮特库斯设备，正在建设其加工仓储基地。工程分两期实施，计划建设两条种子加工生产线和四条烘干线，以及种子贮藏库，同时，计划研发、试用风力干燥设备替代传统的种子烘干设备。全套设备可满足6万亩种子田的加工需要。这三家企业的加工仓储设施基本上代表了北京市育繁推一体化企业和市级注册企业的种子加工水平，具有自动化程度高、工作效率高、加工质量好等特点。
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <b>三、组织座谈，倾听种子企业的诉求</b><b></b>
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    两头在外是北京市种子企业的一个特点，甘肃省张掖市具有适宜玉米制种的优越的自然条件，农民熟练掌握玉米制种技术，制种产量高、质量好。因此，北京市的种子企业大多常年在甘肃省安排玉米种子生产。此次交流考察过程中，代表团在张掖市召开了六家在甘肃制种的北京市种子企业代表座谈会，参会的企业有北京奥瑞金种业股份有限公司、中国种子集团中种国际种子公司、北京德农种业有限公司、北京屯玉种业有限责任公司、北京顺鑫农科种业科技有限公司、北京华农伟业种子科技有限公司。在座谈中，企业代表首先介绍了企业今年安排玉米制种的计划和落实情况、当前的长势；介绍了本企业在甘肃建设种子加工仓储基地的情况；对今年种子企业在甘肃省玉米种子生产情况进行了交流，初步分析和预测了明年玉米种子市场供需情况；肯定了甘肃省对玉米制种基地管理采取的积极、高效的措施；同时，普遍反应，近年来，当地的制种成本也在逐年提高。
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    在座谈会上，郑渝副局长首先向种子企业代表转达了北京市农委和北京市农业局主要领导对大家的问候。指出甘肃省既是国家玉米种子生产主要基地，也是北京市玉米种子生产重要基地，此次考察既是要了解今年的种子生产情况，更是要倾听企业的呼声和意见，改进种子管理工作；当前，北京市正在筹备建设国家现代种业创新试验示范区，制度和政策创新是示范区建设的主要内容之一，希望企业积极参与此项工作，提出促进首都种业创新发展的政策创新建议和意见；同时，要求种子企业要依靠当地政府，为当地经济发展服务，承担企业应负的社会责任。
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    在甘肃省召开北京市种子企业座谈会，研讨种子生产和种子管理问题尚属首次。通过此次接地气式的座谈，使农业管理部门了解了种子生产第一线的实际情况，更重要的是进一步畅通了管理部门与企业的沟通渠道。
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <b>四、加强合作，促进一区一地建设</b><b></b>
+                                </p>
+                                <p class="MsoNormal" style="text-indent:32.0000pt;">
+                                    <span>北京市种业在全国具有较强的科研优势，对全国种业的发展起着引领作用。北京种业</span>“三中心一平台”地位日益凸显，今年，农业部确定在北京建设国家（北京）现代种业自主创新试验示范区。甘肃省作为全国最大的玉米制种基地，常年玉米制种面积达到140-150万亩，玉米制种总面积和总产量占全国的40%以上，目前正在加快推进国家玉米制种基地建设项目。优良的品种和通过严格的种子生产管理程序生产出的高质量种子是现代种业的两个关键所在，也是北京市和甘肃省两地区对国家现代种业的两个不同重要功能。为了充分发挥北京市的科研优势和甘肃省的种子生产环境优势，北京市农业局代表团和甘肃省农业厅、甘肃省种子管理局进行了较深入的交流。双方在互相介绍本省（市）种业基础情况和种子管理工作经验的基础上，交流了当前建设一区一地（即国家（北京）现代种业自主创新试验示范区和甘肃省国家级玉米制种基地）的思路和工作重点，认真研究了一区一地相互支撑、互通有无的合作前景。交流过程中，两省市的与会同志重点讨论了两省市间如何构建农作物种业科技创新共同体、推进国家级种业制种基地建设、加强种业政策和监督管理事项沟通协调、建立种业信息资源共享机制以及开展种子管理人才培训和技术交流等五个方面的合作意向。最后，由北京市农委、北京市农业局和甘肃省农牧厅领导共同见证，北京市种子管理站和甘肃省种子管理局签署了《北京市种子管理站 甘肃省种子管理局推进现代农作物种业发展合作备忘录》，开创了北京市和甘肃省跨地域省际间合作的新篇章。
+                                </p>
+                                <p class="MsoNormal">
+                                    &nbsp;
+                                </p>
+                                <p class="MsoNormal">
+                                    <br>
+                                </p>
+                                <p class="MsoNormal">
+                                    <br>
+                                </p></td>
+                        </tr>
+                        </tbody></table>
+                    <table id="TbFile" align="Center" border="0" style="width:600px;">
+                        <tbody><tr>
+                            <td valign="bottom" style="height:22px;">相关附件：</td>
+                        </tr><tr>
+                            <td style="background-color:Gainsboro;height:1px;"></td>
+                        </tr><tr>
+                            <td valign="middle" style="height:22px;"><a title="农办种[2016]26号.pdf" href="./FileDownload/DownloadTransfer.aspx?filename=农办种[2016]26号.pdf&amp;&amp;filePath=Attachment/20161013164231466.pdf" target="_blank">农办种[2016]26号.pdf</a></td>
+                        </tr><tr>
+                            <td valign="middle" style="height:22px;"><a title="农办种[2016]26号.pdf" href="./FileDownload/DownloadTransfer.aspx?filename=农办种[2016]26号.pdf&amp;&amp;filePath=Attachment/20161013163439066.pdf" target="_blank">农办种[2016]26号.pdf</a></td>
+                        </tr>
+                        </tbody></table>
+                    <div class="jiathis_style_32x32">
+                        <a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a><a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a><a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a><a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a><a class="jiathis_button_renren" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren"></span></a><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a><a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_23" title="累计分享0次">0</span></a>
+                    </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1396507623937103" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code/plugin.client.js" charset="utf-8"></script>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="foot">
+    <div class="footLogo">
+    </div>
+    <div class="footText">
+        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    </div>
+</div>
+
+</body>
+</html>

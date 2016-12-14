@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>登海11号</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        table{ width: 100%;}
+        a{
+            text-decoration:none;
+            color: #0a0903;}
+        .head a {
+            color: #ffffff;
+        }
+        .content_top a{
+            color: #ffffff;
+        }
+        .content_title a{  color: #ffffff; }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+
+
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .main{
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -20px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+            width: 750px;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            clear: both;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topSecond{
+            color: #ffffff;
+        }
+        .content_main{
+            overflow: hidden;
+            height: auto;
+        }
+        .topSecond{
+            font-size: 40px;
+            top:15px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: relative ;
+            top:-80px;
+            left:10%;
+            width:80%;
+
+        }
+        .content_top{
+            padding: 12px 0px 0px 10px;
+            width: 100%;
+        }
+        .content_title {
+            width: 100%;
+            background-color: #106470;
+            padding: 2px 0px 0px 10px;
+        }
+        .content_title h1{
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .content_main_left{
+
+            width: 20%;
+            float: left;
+            background-color: #f2f2f2;
+
+        }
+        .content_main_right{
+            width: 75%;
+            float: left;
+            margin-left: 2%;
+            padding-top: 10px;
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+        }
+        .content_main-left-list_container1, .content_main-left-list_container2{
+            padding: 20px 2px 2px 30px;
+        }
+        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+            color: #0072d8;
+        }
+        .content_main_right_first{
+            float:left;
+            width: 64%;
+            margin-right: 10px;
+        }
+        .content_main_right_second{
+            float:left;
+            padding-left: 20px;
+            width: 30%;
+            background-color: #f4f3ff;
+        }
+        .breed_search,.links{
+            padding: 3px 10px 50px 30px;
+        }
+        .sub-list-pg .imgs li {
+            display: block;
+            line-height: 20px;
+            float: left;
+            padding-left: 20px;
+            padding-right: 25px;
+        }
+        ul{
+            overflow: hidden;
+        }
+        .content_main-left-list-content2{
+            display:none;
+        }
+    </style>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".content_main-left-list-title2").click(function(){
+                $(".content_main-left-list-content2").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p>育种创新数据库</p>
+        </div>
+        <div class="second">
+            <p>种业产业数据库</p>
+        </div>
+        <div class="third">
+            <p >成果推广与转化数据库</p>
+        </div>
+        <div class="fourth">
+            <p>育种专家智库</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">品种导航</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="breedRightApplication.html">
+                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp; &nbsp; &nbsp;种子企业 </b></p>
+            </div>
+            <div class="content_title">
+                <h1>登海11号</h1>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list_container1">
+                            <div class="content_main-left-list1">
+                                <div class="content_main-left-list-title1">
+                                    <h4>四川品种</h4><br>
+                                </div>
+                                <div class="content_main-left-list-content1">
+                                    <p><a href="BreedDictionary1.html" style="color: #0072d8;">水稻</a></p><br>
+                                    <p><a href="BreedDictionary.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                    <p><a href="BDCorn.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                    <p><a href="BDOil.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                    <p><a href="BDPotato.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                    <p><a href="BDVegetables.html" style="color: #0072d8">蔬菜</a></p><br>
+                                    <p><a href="BDFruitTree.html" style="color: #0072d8">果树</a></p><br>
+                                    <p><a href="BDTea.html" style="color: #0072d8">茶树</a></p><br>
+                                    <p><a href="BDMedicine.html" style="color: #0072d8">中药材</a></p><br>
+                                    <p><a href="BDCotton.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                    <p><a href="BDBacterium.html" style="color: #0072d8">食用菌</a></p><br>
+                                    <p><a href="BDFlower.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                    <p><a href="BDAnimal.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content_main-left-list_container2">
+                            <div class="content_main-left-list2">
+                                <div class="content_main-left-list-title2">
+                                    <h4>省外品种</h4><br>
+                                </div>
+                                <div class="content_main-left-list-content2">
+                                    <p><a href="BreedDictionary1PO.html" style="color: #0072d8;">水稻</a></p><br>
+                                    <p><a href="BreedDictionaryPO.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                    <p><a href="BDCornPO.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                    <p><a href="BDOilPO.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                    <p><a href="BDPotatoPO.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                    <p><a href="BDVegetablesPO.html" style="color: #0072d8">蔬菜</a></p><br>
+                                    <p><a href="BDFruitTreePO.html" style="color: #0072d8">果树</a></p><br>
+                                    <p><a href="BDTeaPO.html" style="color: #0072d8">茶树</a></p><br>
+                                    <p><a href="BDMedicinePO.html" style="color: #0072d8">中药材</a></p><br>
+                                    <p><a href="BDCottonPO.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                    <p><a href="BDBacteriumPO.html" style="color: #0072d8">食用菌</a></p><br>
+                                    <p><a href="BDFlowerProvinceOut.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                    <p><a href="BDAnimalPO.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_img">
+                            <img src="../img/a71ea8d3fd1f4134c81c7eb5221f95cad0c85ed5.jpg" style="height:390px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_text">
+                            <div class="text1">
+                                <table border="0" width="98%" cellspacing="0" cellpadding="0">
+                                    <tbody><tr>
+                                        <td width="100%"><font size="3" color="#000080">品种审定编号：国审玉2001005<br>品种名称：登海11号<br>选育单位：山东省莱州市农业科学院<br>品种来源：DH65232×DH40<br>省级审定情况：2000年四川省农作物品种审定委员会审定<br>全国品审会审定意见：经审核，该品种符合国家玉米品种审定标准，通过审定。适宜在河北、河南、山东、陕西、江苏北部、安徽北部夏玉米区和四川、重庆等适宜地区种植，但矮花叶病和弯孢菌叶斑病流行区慎用。<br></font> <p>　</p></td>
+                                    </tr>
+                                    </tbody></table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="breed_search">
+                            <h2>品种搜索</h2><br>
+                            <div class="breed_button">
+                                <input value="搜索" name="keyword" style=" height: 28px; width: 60%;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:30%;background-color: #0d8897">
+                            </div>
+                            <br>
+                            <br>
+                            <div class=" brief ">
+                                <span>
+                                      玉米（拉丁学名：Zea mays L.）是禾本科玉蜀黍属一年生草本植物。别名：玉蜀黍、棒子、包谷、包米、包粟、玉茭、苞米、珍珠米、
+                                    苞芦、大芦粟，东北辽宁话称珍珠粒，潮州话称薏米仁，粤语称为粟米，闽南语称作番麦.我国玉米的栽培历史大约有470多年。目前我国播种面积在3亿亩左右，仅次于稻、麦，在粮食作物中居第三位，在世界上仅次
+                                    于美国。全世界热带和温带地区广泛种植，为一重要谷物。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h2>相关链接</h2>
+                            <br>
+                            <ul>
+                                <li>
+                                    <a href="http://www.ricedata.cn/" style="color: black">   国家水稻数据中心</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="foot">
+            <div class="footLogo">
+            </div>
+            <div class="footText">
+                <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+                <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+                <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

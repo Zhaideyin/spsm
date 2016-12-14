@@ -93,7 +93,7 @@ public class ReadXML {
         try {
         	List<HashMap> map =readXML.ResolveXml();
         	for(int i=0;i<map.size();i++){
-        		System.err.println(map.get(i).get("pageEncoding"));
+        		System.out.println(map.get(i).get("tag1").toString().equals(""));
         	}
         	
         } catch (Exception e) {

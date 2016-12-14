@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>省外小麦</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        table{ width: 100%;}
+        a{
+            text-decoration:none;
+            color: #0a0903;}
+        .head a {
+            color: #ffffff;
+        }
+        .content_top a{
+            color: #ffffff;
+        }
+        .content_title a{  color: #ffffff; }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+
+
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .main{
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -20px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+            width: 750px;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            clear: both;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+        .topSecond{
+            color: #ffffff;
+        }
+        .content_main{
+            overflow: hidden;
+            height: auto;
+        }
+        .topSecond{
+            font-size: 40px;
+            top:15px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: relative ;
+            top:-80px;
+            left:10%;
+            width:80%;
+
+        }
+        .content_top{
+            padding: 12px 0px 0px 10px;
+            width: 100%;
+        }
+        .content_title {
+            width: 100%;
+            background-color: #106470;
+            padding: 2px 0px 0px 10px;
+        }
+        .content_title h1{
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .content_main_left{
+
+            width: 20%;
+            float: left;
+            background-color: #f2f2f2;
+
+        }
+        .content_main_right{
+            width: 75%;
+            float: left;
+            margin-left: 2%;
+            padding-top: 10px;
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+        }
+        .content_main-left-list_container1, .content_main-left-list_container2{
+            padding: 20px 2px 2px 30px;
+        }
+        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+            color: #0072d8;
+        }
+        .content_main_right_first{
+            float:left;
+            width: 64%;
+            margin-right: 10px;
+        }
+        .content_main_right_second{
+            float:left;
+            padding-left: 20px;
+            width: 30%;
+            background-color: #f4f3ff;
+        }
+        .breed_search,.links{
+            padding: 3px 10px 50px 30px;
+        }
+        .sub-list-pg .imgs li {
+            display: block;
+            line-height: 20px;
+            float: left;
+            padding-left: 20px;
+            padding-right: 25px;
+        }
+        ul{
+            overflow: hidden;
+        }
+        .content_main-left-list-content1{
+            display:none;
+        }
+    </style>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".content_main-left-list-title1").click(function(){
+                $(".content_main-left-list-content1").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
+        </div>
+        <div class="second">
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
+        </div>
+        <div class="third">
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
+        </div>
+        <div class="fourth">
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">品种导航</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="breedRightApplication.html">
+                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp; &nbsp;
+                    <a href="breedBusiness.html"> 种子企业 </a></b></p>
+            </div>
+            <div class="content_title">
+               <h1>小麦</h1>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list_container1">
+                        <div class="content_main-left-list1">
+                            <div class="content_main-left-list-title1">
+                                <h4>四川品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content1">
+                                <p><a href="BreedDictionary1.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionary.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCorn.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOil.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotato.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetables.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTree.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTea.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicine.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCotton.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacterium.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlower.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimal.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="content_main-left-list_container2">
+                        <div class="content_main-left-list2">
+                            <div class="content_main-left-list-title2">
+                                <h4>省外品种</h4><br>
+                            </div>
+                            <div class="content_main-left-list-content2">
+                                <p><a href="BreedDictionary1PO.html" style="color: #0072d8;">水稻</a></p><br>
+                                <p><a href="BreedDictionaryPO.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
+                                <p><a href="BDCornPO.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
+                                <p><a href="BDOilPO.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
+                                <p><a href="BDPotatoPO.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
+                                <p><a href="BDVegetablesPO.html" style="color: #0072d8">蔬菜</a></p><br>
+                                <p><a href="BDFruitTreePO.html" style="color: #0072d8">果树</a></p><br>
+                                <p><a href="BDTeaPO.html" style="color: #0072d8">茶树</a></p><br>
+                                <p><a href="BDMedicinePO.html" style="color: #0072d8">中药材</a></p><br>
+                                <p><a href="BDCottonPO.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
+                                <p><a href="BDBacteriumPO.html" style="color: #0072d8">食用菌</a></p><br>
+                                <p><a href="BDFlowerProvinceOut.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
+                                <p><a href="BDAnimalPO.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
+
+                        </div>
+                            </div>
+
+                    </div>
+                    </div>
+                </div>
+
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_img">
+                            <img src="../img/a15747004_01000.jpg" style="height:390px;width: 100%;">
+                        </div>
+                        <div class="content_main_right_first_text">
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>小麦</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%" cellspacing="0">
+                                        <tbody><tr>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦渝麦7号.htm">渝麦7号</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦绵农6号.htm">绵农6号</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦扬麦12号.htm">扬麦12号</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦淮麦16.htm">淮麦16</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦淮麦18.htm">淮麦18</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="24" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦豫麦58号.htm">豫麦58号</a></td>
+                                            <td  height="24" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦闫麦8911.htm">闫麦8911</a></td>
+                                            <td  height="24" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦高优503.htm">高优503</a></td>
+                                            <td  height="24" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦中育6号.htm">中育6号</a></td>
+                                            <td  height="24" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦邯4589.htm">邯4589</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦龙麦26.htm">龙麦26</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦龙辐麦10号.htm">龙辐麦10号</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦宁农2号.htm">宁农2号</a></td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3">&nbsp; </td>
+                                            <td  height="29" align="center" bgcolor="#D5FBE3">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="24" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦川麦107.htm">川麦107</a></td>
+                                            <td  height="24" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦皖西8906.htm">皖西8906</a></td>
+                                            <td  height="24" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦安农92484.htm">安农92484</a></td>
+                                            <td  height="24" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦淮麦17号.htm">淮麦17号</a></td>
+                                            <td  height="24" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦徐州25号.htm">徐州25号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="27" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦豫麦49号.htm">豫麦49号</a></td>
+                                            <td  height="27" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦豫麦51.htm">豫麦51</a></td>
+                                            <td  height="27" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦豫麦62.htm">豫麦62</a></td>
+                                            <td  height="27" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦邯5316.htm">邯5316</a></td>
+                                            <td  height="27" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦晋麦63号.htm">晋麦63号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="26" align="center" bgcolor="#D3D7FC"><a href="小麦/小麦龙辐麦8号.htm">龙辐麦8号</a></td>
+                                            <td  height="26" align="center" bgcolor="#D3D7FC">　</td>
+                                            <td  height="26" align="center" bgcolor="#D3D7FC">&nbsp; </td>
+                                            <td  height="26" align="center" bgcolor="#D3D7FC">&nbsp; </td>
+                                            <td  height="26" align="center" bgcolor="#D3D7FC">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦川农麦1号.htm">川农麦1号</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦川育14.htm">川育14</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦鄂麦12.htm">鄂麦12</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦京冬8号.htm">京冬8号</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦绵阳28.htm">绵阳28</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦石4185.htm">石4185</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦皖麦19.htm">皖麦19</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3"><a href="小麦/小麦皖麦38.htm">皖麦38</a></td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3">&nbsp;&nbsp; </td>
+                                            <td  height="26" align="center" bgcolor="#D5FBE3">&nbsp; </td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="27" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦长武134.htm">长武134</a></td>
+                                            <td  height="27" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦淮麦14号.htm">淮麦14号</a></td>
+                                            <td  height="27" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦冀麦37号.htm">冀麦37号</a></td>
+                                            <td  height="27" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦冀麦38号.htm">冀麦38号</a></td>
+                                            <td  height="27" align="center" bgcolor="#DAD5FB">&nbsp;<a href="小麦/小麦晋麦47号.htm">晋麦47号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="32" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦辽春10号.htm">辽春10号</a></td>
+                                            <td  height="32" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦龙麦19.htm">龙麦19</a></td>
+                                            <td  height="32" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦鲁麦15.htm">鲁麦15</a></td>
+                                            <td  height="32" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦绵阳24号.htm">绵阳24号</a></td>
+                                            <td  height="32" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦绵阳26号.htm">绵阳26号</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="29" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦秦麦8918.htm">秦麦8918</a></td>
+                                            <td  height="29" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦太T15.htm">太T15</a></td>
+                                            <td  height="29" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦新春6号.htm">新春6号</a></td>
+                                            <td  height="29" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦豫麦34号.htm">豫麦34号</a></td>
+                                            <td  height="29" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦豫麦41.htm">豫麦41</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  height="28" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦郑丰3号.htm">郑丰3号</a></td>
+                                            <td  height="28" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦中麦9号.htm">中麦9号</a></td>
+                                            <td  height="28" align="center" bgcolor="#DAD5FB"><a href="小麦/小麦中优9507.htm">中优9507</a></td>
+                                            <td  height="28" align="center" bgcolor="#DAD5FB">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </td>
+                                            <td  height="28" align="center" bgcolor="#DAD5FB">&nbsp; </td>
+                                        </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>大麦</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%" cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="24px"><p align="center"><a href="大麦法瓦维持.htm">法瓦维持</a></p></td>
+                                            <td width="17%" height="24px"><p align="center"><a href="大麦秀麦1号.htm">秀麦1号</a></p></td>
+                                            <td width="17%" height="24px">&nbsp; </td>
+                                            <td width="16%" height="24px">&nbsp; </td>
+                                            <td width="16%" height="24px">&nbsp; </td>
+                                        </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>黍稷新品种</h2>
+                            </div>
+                            <table border="0" >
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="9"><p align="center"><a href="黍稷/黍稷冀黍1号.htm"><font face="宋体" size="3">冀黍1号</font></a></p></td>
+                                            <td width="17%" height="9"><p align="center"><a href="黍稷/黍稷榆糜3号.htm"><font face="宋体" size="3">榆糜3号</font></a></p></td>
+                                            <td width="17%" height="9"></td>
+                                            <td width="16%" height="9"></td>
+                                            <td width="16%" height="9"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="17%" height="1"><p align="center"><a href="黍稷/黍稷宁糜10号.htm">宁糜10号</a></p></td>
+                                            <td width="17%" height="1"><p align="center"><a href="黍稷/黍稷内糜5号.htm">内糜5号</a></p></td>
+                                            <td width="17%" height="1"><p align="center"><a href="黍稷/黍稷陇糜4号.htm">陇糜4号</a></p></td>
+                                            <td width="16%" height="1"><p align="center"><a href="黍稷/黍稷宁糜9号.htm">宁糜9号</a></p></td>
+                                            <td width="16%" height="1">&nbsp; </td>
+                                        </tr>
+
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+
+                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
+                                <h2>荞麦新品种</h2>
+                            </div>
+                            <table border="0" width="770">
+                                <tbody><tr>
+                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
+                                        <tbody><tr>
+                                            <td width="17%" height="23" align="center"><a href="荞麦/荞麦九江苦荞.htm">九江苦荞</a>
+                                            </td>
+                                            <td width="17%" height="23" align="center"><a href="荞麦/荞麦西荞一号.htm">西荞一号</a>
+                                            </td>
+                                            <td width="17%" height="23" align="center"><a href="荞麦/荞麦川荞1号.htm">川荞1号</a>
+                                            </td>
+                                            <td width="16%" height="23" align="center"><a href="荞麦/荞麦凤凰苦荞.htm">凤凰苦荞</a>
+                                            </td>
+                                            <td width="16%" height="23" align="center">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td>
+                                        </tr>
+
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                        </div>
+
+                    </div>
+                    <div class="content_main_right_second">
+                        <div class="breed_search">
+                         <h3>品种搜索</h3><br><br>
+                            <div class="breed_button">
+                                <input value="搜索" name="keyword" style=" height: 28px; width: 60%;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:30%;background-color: #0d8897">
+                            </div>
+                            <br>
+                            <br>
+                            <div class=" brief ">
+                                <span>
+                                    水稻原产中国，七千年前中国长江流域就种植水稻。按照不同的方法，水稻可以分为籼稻和粳稻、早稻和中晚稻，糯稻和非糯稻。我国科学家袁隆平对杂交水稻的研究作出了巨大贡献，被誉为“杂交水稻之父”。水稻所结子实即稻谷，稻谷(粒)去壳后称大米、香米、稻米。世界上近一半人口，
+                                    都以大米为食。大米的食用方法多种多样，
+                                    有米饭、米粥、米饼、米糕，米酒等。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="links">
+                            <h2>相关链接</h2>
+                            <br>
+                            <ul>
+                                <li>
+                                   <a href="http://www.ricedata.cn/" style="color: black"> 国家水稻数据中心</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+<div class="foot">
+    <div class="footLogo">
+    </div>
+    <div class="footText">
+        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    </div>
+</div>
+</body>
+
+</html>

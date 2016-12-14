@@ -10,34 +10,30 @@
 	<!-- 字段 -->
 	<sql id="Field">
 		TITLE,	
-		AUTHOR,	
-		ABSTRACT,	
 		CONTENT,	
 		DATABASETYPE,
 		NAVBARTYPE,
 		LISTTYPE,
 		SUBLISTTYPE,	
-		PUBLISH_TIME,	
 		CREATE_TIME,	
-		ANNEX_PATH,
-		KEYWORDS,	
+		TARGETURLID,
+		ANNEXURLS,
+		FILENAME,	
 		SPIDER_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
 		#{TITLE},	
-		#{AUTHOR},	
-		#{ABSTRACT},	
 		#{CONTENT},	
 		#{DATABASETYPE},
 		#{NAVBARTYPE},
 		#{LISTTYPE},
 		#{SUBLISTTYPE},	
-		#{PUBLISH_TIME},	
 		#{CREATE_TIME},	
-		#{ANNEX_PATH},
-		#{KEYWORDS},	
+		#{TARGETURLID},
+		#{ANNEXURLS},
+		#{FILENAME},	
 		#{SPIDER_ID}
 	</sql>
 	
@@ -50,6 +46,30 @@
 		) values (
 	<include refid="FieldValue"></include>
 		)
+	</insert>
+	
+		<!-- 新增多条-->
+	<insert id="saveAll" parameterType="pd">
+		insert into 
+		<include refid="tableName"></include>
+		(
+			<include refid="Field"></include>
+		) values
+			<foreach collection="list" item="item" separator="," index="index">
+			(
+				#{item.TITLE},	
+				#{item.CONTENT},	
+				#{item.DATABASETYPE},
+				#{item.NAVBARTYPE},
+				#{item.LISTTYPE},
+				#{item.SUBLISTTYPE},	
+				#{item.CREATE_TIME},	
+				#{item.TARGETURLID},
+				#{item.ANNEXURLS},	
+				#{item.FILENAME},
+				#{item.SPIDER_ID}
+			)
+			</foreach>
 	</insert>
 	
 	<!-- 删除-->
@@ -66,17 +86,15 @@
 		<include refid="tableName"></include>
 		set 
 			TITLE = #{TITLE},
-			AUTHOR = #{AUTHOR},
-			ABSTRACT = #{ABSTRACT},
 			CONTENT = #{CONTENT},
 			DATABASETYPE = #{DATABASETYPE},
 			NAVBARTYPE = #{NAVBARTYPE},
 			LISTTYPE = #{LISTTYPE},
 			SUBLSITTYPE = #{SUBLISTTYPE},
-			PUBLISH_TIME = #{PUBLISH_TIME},
 			CREATE_TIME = #{CREATE_TIME},
-			ANNEX_PATH = #{ANNEX_PATH},	
-			KEYWORDS = #{KEYWORDS},
+			TARGETURLID = #{TARGETURLID},	
+			ANNEXURLS = #{ANNEXURLS},
+			FILENAME = #{FILENAME},
 		SPIDER_ID = SPIDER_ID
 		where 
 		SPIDER_ID = #{SPIDER_ID}
@@ -90,6 +108,30 @@
 		<include refid="tableName"></include>
 		where 
 			SPIDER_ID = #{SPIDER_ID}
+	</select>
+	
+	<!-- SELECT s.* ,a.PAGEURL from spsm_spider s left JOIN spsm_annexurl a on 
+	a.PAGEURL=s.CURRENT_URL WHERE a.pageurl='http://www.cgris.net/32pu/dnsxmysjy.htm ' -->
+	<select id="findByAnnexUrlAndPageUrl" parameterType="pd" resultType="pd">
+		SELECT s.* ,a.* from spsm_spider s 
+		left JOIN spsm_annexurl a 
+		on 
+		a.TARGETURLID=s.TARGETURLID 
+		WHERE 1= 1
+		and
+		a.TARGETURLID=#{TARGETURLID} 
+		and 
+		a.STATUS=#{STATUS}
+		<!-- <if test= "ANNEXURL !=null and ANNEXURL !=''">
+			and  s.ANNEXURLS  LIKE CONCAT(CONCAT('%', #{ANNEXURL}),'%')
+		</if>
+		 -->
+		<!-- select s.*
+		from spsm_spider s 
+		where  1=1
+		<if test= "ANNEXURL !=null and ANNEXURL !=''">
+			and  s.KEYWORDS  LIKE CONCAT(CONCAT('%', #{ANNEXURL}),'%')
+		</if> -->
 	</select>
 	
 	<!-- 列表 -->

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="<%=basePath%>">
+    <meta charset="UTF-8">
+    <title>品种权公告</title>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
+        a {
+            color: #ffffff;
+            text-decoration:none;
+        }
+        *{  margin: 0px;
+            padding: 0px;}
+        .head{
+            background-color:#272727;
+            width: 100%;
+            height: 50px;
+        }
+        .head p{
+            color: #ffffff;
+        }
+        .logo{
+            background-image: url("../img/head.png");
+            background-repeat: no-repeat;
+            width: 293px;
+            height: 46px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .container{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 1100px;
+        }
+
+        .main{
+            width: 100%;
+            overflow: hidden;
+        }
+        .top {
+            background-color: #12525e;
+            width: 100%;
+            height: 179px;
+            margin-top: -20px;
+
+        }
+        .top p{
+            position: relative;
+            left: 10%;
+        }
+        .content_top{
+            width: 100%;
+            background-color: #0f4850;
+            height: 35px;
+        }
+        .foot{
+            clear: both;
+            margin-top: 200px;
+            background-color: #878784;
+            width: 100%;
+            height: 80px;
+        }
+        .footLogo{
+            background-image: url("../img/foot.png");
+            position:relative ;
+            left: 15%;
+            top:10px;
+            height: 57px;
+            width: 58px;
+        }
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
+            height: 57px;
+        }
+        .footText b{
+            color: #ffffff;
+        }
+       .topSecond{
+            color: #ffffff;
+        }
+
+        .topSecond{
+            font-size: 40px;
+            top:15px;
+            margin:20px 0px 10px 20px  ;
+        }
+
+        .content{
+
+            position: relative;
+            top:-80px;
+            left:10%;
+            width:80%;
+
+        }
+        .content_top{
+            padding: 10px 0px 0px 15px;
+            width: 99%;
+        }
+        .content_title {
+            width: 100%;
+            background-color: #106470;
+        }
+        .content_title h2{
+            color: #ffffff;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .content_main_left{
+
+            width: 20%;
+            float:left;
+            background-color: #f2f2f2;
+
+        }
+        .content_main-left-list_container{
+            border: solid 1px;
+            border-color: #4e6064;
+            padding-bottom: 15px;
+        }
+        .content_main-left-list{
+               width: 79%;
+               overflow: hidden;
+               padding:20px 0px 0px 10px;
+               border-bottom: solid 1px;
+               border-color: #586c70;
+               margin-left: 7%;
+           }
+        .content_main-left-list-title{
+            float: left;
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+        .content_main-left-list-logo{ float: left;}
+
+
+
+        .content_main-left-list-down {
+            width: 79%;
+            padding: 10px 0px 10px 10px;
+            border-right: solid 1px;
+            border-left: solid 1px;
+            border-bottom: solid 1px;
+            border-color: #586c70;
+            margin-left: 7%;
+            display:none;
+        }  .content_main-left-list-down span{
+               font-size: 10px;
+               color: #007aff;
+               line-height: 25px;
+           }  .content_main-left-list-title{
+                  float: left;
+              }  .content_main-left-list-img{
+                     float: right;
+                 }
+
+        .content_main_right{
+            width: 80%;
+           float:left;
+        }
+
+
+
+      .table{
+          width: 98%;
+          margin-left: 1%;
+          border: 1px solid #e9e9e9;
+      }
+        .table td{
+            width: 40px;
+            background-color: #e9e9e9;
+        }
+
+        li{
+            color: #0072d8;
+        }
+.content_main_right_first_search{
+    padding-left: 20%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+        .content_main_right_first{
+            float:left;
+            width: 100%;
+
+            margin-right: 10px;
+        }
+        .content_main_right_first_page{
+            margin-left: 40%;
+            margin-top: 40px;
+        }
+        .left,.right,.one,.two,.three,.four,.five{
+            float: left;
+            width: 30px;
+            height: 30px;
+            background-color: #4e6064;
+            padding: 10px 8px 8px 18px;
+            margin-right: 2px;
+
+                             }
+        .one ,.two,.three,.four,.five p{
+            color: #feffff;
+        }
+
+
+td{
+    text-align: center;
+}
+
+    </style>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".down").click(function(){
+                $(".content_main-left-list-down").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <div class="logo">
+        </div>
+        <div class="first">
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
+        </div>
+        <div class="second">
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
+        </div>
+        <div class="third">
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
+        </div>
+        <div class="fourth">
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="top">
+            <p class="topSecond">行业资讯</p>
+        </div>
+        <div class="content">
+            <div class="content_top">
+                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;
+                    <a href="breedRightApplication.html"> 行业资讯</a>&nbsp; &nbsp; &nbsp;    <a href="BreedDictionary.html"> 品种导航</a>&nbsp; &nbsp; &nbsp;
+                    <a href="breedBusiness.html"> 种子企业 </a> </b></p>
+            </div>
+            <div class="content_title">
+                <h2>品种公告</h2>
+            </div>
+            <div class="content_main">
+                <div class="content_main_left">
+                    <div class="content_main-left-list_container">
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-logo">
+                                <img src="../img/生成采集成果.png" style="width: 35px;height:35px;">
+                            </div>
+                            <div class="content_main-left-list-title">
+                                <a href="AchievementShow.html" style="color: #0a0903;"><h5>种业要闻 </h5> </a>
+                            </div>
+                            <div class="content_main-left-list-img">
+                                <a href="AchievementShow.html"><img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
+                            </div>
+                        </div>
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-logo">
+                                <img src="../img/专利.png" style="width: 35px;height:35px;">
+                            </div>
+                            <div class="content_main-left-list-title">
+                                <a href="patent.html" style="color: #0a0903;"><h5>市场动态</h5></a>
+                            </div>
+                            <div class="content_main-left-list-img">
+                                <a href="patent.html" ><img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
+                            </div>
+                        </div>
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-logo">
+                                <img src="../img/视频.png" style="width: 35px;height:35px;">
+                            </div>
+                            <div class="content_main-left-list-title">
+                                <a href="vedio.html" style="color: #0a0903;"><h5>展会信息</h5></a>
+                            </div>
+                            <div class="content_main-left-list-img">
+                                <a href="vedio.html" > <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"> </a>
+                            </div>
+                        </div>
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-logo">
+                                <img src="../img/视频.png" style="width: 35px;height:35px;">
+                            </div>
+                            <div class="content_main-left-list-title">
+                                <a href="vedio.html" style="color: #0a0903;"><h5>政策法规</h5></a>
+                            </div>
+                            <div class="content_main-left-list-img">
+                                <a href="vedio.html" > <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"> </a>
+                            </div>
+                        </div>
+                        <div class="content_main-left-list">
+                            <div class="content_main-left-list-logo">
+                                <img src="../img/种植技术3图标.png" style="width: 35px;height:35px;">
+                            </div>
+                            <div class="content_main-left-list-title">
+                                <h5>品种权</h5>
+                            </div>
+                            <div class="content_main-left-list-img">
+                                <img class="down" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                            </div>
+                        </div>
+                        <div class="content_main-left-list-down">
+                                <span>
+                            <a href="plantingTechnology.html" style="color: #0072d8;">品种权申请查询</a></span><br>
+                            <span> <a href="breedingTechnology.html" style="color: #0072d8;">品种权授权查询</a></span><br>
+                            <span> <a href="plantingTechnology.html" style="color: #0072d8;">最新农林品种权公告</a></span><br>
+                        </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                <div class="content_main_right">
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_search">
+                            <select style="height: 30px;width: 100px;">
+                                <option>申请号</option>
+                                <option>公告号</option>
+                                <option>公告日</option>
+                                <option>申请人</option>
+                                <option>申请日</option>
+                                <option>植物种类</option>
+                                <option>品种暂定名</option>
+                            </select>
+                            <input value="搜索" name="keyword" style=" height: 28px; width: 30%;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width: 90px;background-color: #0d8897">
+                        </div>
+                        <div class="content_main_right_first_text">
+                            <table class="table">
+                                <tr style="background-color: #0d8897">
+                                    <td style=" background-color: #1d8a6e;color: #ffffff;font-size: 20px">id</td>
+                                    <td style=" background-color: #1d8a6e; color: #ffffff;font-size: 20px">申请号</td>
+                                    <td style=" background-color: #1d8a6e;color: #ffffff;font-size: 20px">植物种类</td>
+                                    <td style=" background-color: #1d8a6e;color: #ffffff;font-size: 20px">品种暂定名</td>
+                                    <td style=" background-color: #1d8a6e; color: #ffffff;font-size: 20px">申请人</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+
+
+
+
+                            </table>
+                        </div>
+                        <div class="content_main_right_first_page">
+                            <div class="left">
+                                <img src="../img/Left.png" style="height: 10px;width: 10px;">
+                            </div>
+                            <div class="one"><p>1</p></div>
+                            <div class="two"><p>2</p></div>
+                            <div class="three"><p>3</p></div>
+                            <div class="four"><p>4</p></div>
+                            <div class="five"><p>5</p></div>
+                            <div class="right">
+                                <img src="../img/right.png" style="height: 10px;width: 10px;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+</div>
+
+
+
+
+<div class="foot">
+    <div class="footLogo">
+    </div>
+    <div class="footText">
+        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    </div>
+</div>
+    </div>
+
+</body>
+
+</html>

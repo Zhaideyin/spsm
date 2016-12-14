@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>IndustryInformation</title>
     <style>
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }
         a {
             color: #ffffff;
             text-decoration:none;
@@ -24,7 +28,41 @@
             background-repeat: no-repeat;
             width: 293px;
             height: 46px;
-            top:3px;
+            /*position: relative;*/
+            /*left: 11%;*/
+            /*top:3px;*/
+            margin-left:10%;;
+            float: left;
+        }
+        .first{
+            /*position: absolute;*/
+            /*left: 500px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+        }
+        .second{
+            /*position: absolute;*/
+            /*left: 650px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
+        }
+        .third{
+            /*position: absolute;*/
+            /*left: 800px;*/
+            /*top:15px;*/
+            margin-top:15px;
+            float: left;
+        }
+        .fourth{
+            /*position: absolute;*/
+            /*left: 1000px;*/
+            /*top:15px;*/
+            float: left;
+            margin-top:15px;
+
         }
         .container{
             margin: 0px;
@@ -32,38 +70,8 @@
             width: 100%;
             height: 1100px;
         }
-        .first{
-            position: absolute;
-            left: 500px;
-            top:15px;
 
-        }
-        .second{
-            position: absolute;
-            left: 650px;
-            top:15px;
-
-
-        }
-        .third{
-            position: absolute;
-            left: 800px;
-            top:15px;
-
-
-        }
-        .fourth{
-            position: absolute;
-            left: 1000px;
-            top:15px;
-
-        }
-        .logo,.first,.second,.third,.fourth{
-            height: 53px;
-        }
         .main{
-            background-color: azure;
-            min-height: 1290px;
             width: 100%;
         }
         .top {
@@ -84,22 +92,25 @@
             height: 35px;
         }
         .foot{
+            clear: both;
+            margin-top: 200px;
             background-color: #878784;
             width: 100%;
             height: 80px;
-            position: relative;
-            top:350px;
-
         }
         .footLogo{
             background-image: url("../img/foot.png");
-            float: left;
+            position:relative ;
+            left: 15%;
+            top:10px;
             height: 57px;
-            width: 59px;
+            width: 58px;
         }
-        .footText {
-            margin-top: 10px;
-            float: left;
+        .footText{
+            position: relative;
+            width: 900px;
+            left:20%;
+            top:-40px;
             height: 57px;
         }
         .footText b{
@@ -128,51 +139,46 @@
 
         }
         .content_top{
-            padding: 5px 0px 0px 10px;
+            padding: 10px 0px 0px 15px;
             width: 99%;
         }
         .content_title {
-            width: 99.7%;
-            height: 90px;
+            width: 100%;
             background-color: #106470;
         }
         .content_title h1{
             color: #ffffff;
-            padding-left: 310px;
-            padding-top: 27px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
         .content_main_left{
 
             width: 20%;
-            height:1000px;
-            position: absolute;
-            top:100px;
+           float:left;
             background-color: #f2f2f2;
 
         }
         .content_main_right{
             width: 80%;
-            margin-left: 0px;
-            height: 900px;
-            position: relative;
-            left:20.2%;
-            padding-top: 30px;
+           float:left;
         }
         .content_main-left-list0{
             width: 60%;
-            height: 60px;
-            padding:30px 0px 0px 70px;
+            height: 45px;
+            padding:10px 0px 0px 50px;
 
         }
 
         .content_main-left-list_container{
             border: solid 1px;
             border-color: #4e6064;
-            height: 1000px;
+
         }
         .content_main-left-list-img{
-            float: right;
-            margin-bottom: 10px;
+            position: relative;
+            left: 85%;
+            top: -15px;
 
         }
         .content_main-left-list{
@@ -197,9 +203,9 @@
             color: #0072d8;
         }
       .table{
-          margin: 20px 10px 10px 20%;
-          height: 70%;
-          width: 68%;
+
+
+          width: 100%;
       }
         .table tr{
             height: 50px;
@@ -213,11 +219,12 @@
         }
 .content_main_right_first_search{
     padding-left: 20%;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
         .content_main_right_first{
             float:left;
             width: 100%;
-            height: 1200px;
 
             margin-right: 10px;
         }
@@ -237,7 +244,15 @@
         .one ,.two,.three,.four,.five p{
             color: #feffff;
         }
+        .content_main-left-list-title_list{
+            padding: 20px 0px 0px 0px
+        }
+        .content_main-left-list-img{
 
+        }
+td{
+    text-align: center;
+}
 
     </style>
 </head>
@@ -247,16 +262,16 @@
         <div class="logo">
         </div>
         <div class="first">
-            <p>育种创新数据库</p>
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
         </div>
         <div class="second">
-            <p>种业产业数据库</p>
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
         </div>
         <div class="third">
-            <p >成果推广与转化数据库</p>
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
         </div>
         <div class="fourth">
-            <p>育种专家智库</p>
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
         </div>
     </div>
     <div class="main">
@@ -281,42 +296,42 @@
                         <div class="content_main-left-list_container1">
                             <div class="content_main-left-list">
                                 <div class="content_main-left-list-title">
-                                    <h5>种业要闻</h5>
+                                   <div class="content_main-left-list-title_list"><h5>种业要闻</h5></div>
                                 </div>
                                 <div class="content_main-left-list-img">
-                                    <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 10px;">
+                                    <img src="../img/right.png" style="height: 15px; width: 15px;">
                                 </div>
                             </div>
                             <div class="content_main-left-list">
                                 <div class="content_main-left-list-title">
-                                    <h5>市场动态</h5>
+                                    <div class="content_main-left-list-title_list">  <h5>市场动态</h5></div>
                                 </div>
                                 <div class="content_main-left-list-img">
-                                    <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                                    <img src="../img/right.png" style="height: 15px; width: 15px;">
                                 </div>
                             </div>
                             <div class="content_main-left-list">
                                 <div class="content_main-left-list-title">
-                                    <h5>展会信息 </h5>
+                                    <div class="content_main-left-list-title_list">  <h5>展会信息 </h5></div>
                                 </div>
                                 <div class="content_main-left-list-img">
-                                    <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                                    <img src="../img/right.png" style="height: 15px; width: 15px;">
                                 </div>
                             </div>
                             <div class="content_main-left-list">
                                 <div class="content_main-left-list-title">
-                                    <h5>政策法规</h5>
+                                    <div class="content_main-left-list-title_list"> <h5>政策法规</h5></div>
                                 </div>
                                 <div class="content_main-left-list-img">
-                                    <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                                    <img src="../img/right.png" style="height: 15px; width: 15px;">
                                 </div>
                             </div>
                             <div class="content_main-left-list">
                                 <div class="content_main-left-list-title">
-                                    <h5>品种权</h5>
+                                    <div class="content_main-left-list-title_list"><h5>品种权</h5></div>
                                 </div>
                                 <div class="content_main-left-list-img">
-                                    <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                                    <img src="../img/right.png" style="height: 15px; width: 15px;">
                                 </div>
                             </div>
                         </div>
@@ -332,8 +347,6 @@
 
                         </div>
                     </div>
-                </div>
-
                 <div class="content_main_right">
                     <div class="content_main_right_first">
                         <div class="content_main_right_first_search">
@@ -346,25 +359,18 @@
                                 <option>植物种类</option>
                                 <option>品种暂定名</option>
                             </select>
-                            <input value="搜索" name="keyword" style=" height: 28px; width: 300px;
+                            <input value="搜索" name="keyword" style=" height: 28px; width: 30%;
 
             ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width: 90px;background-color: #0d8897">
                         </div>
                         <div class="content_main_right_first_text">
                             <table class="table">
                                 <tr style="background-color: #0d8897">
-                                 <td>id</td>
-                                    <td>申请号</td>
-                                    <td>植物种类</td>
-                                    <td>品种暂定名</td>
-                                    <td>申请人</td>
-                                </tr>
-                                <tr>
-                                 <td>11880</td>
-                                    <td>20130729.1</td>
-                                    <td>香蕉</td>
-                                    <td>红研2号</td>
-                                    <td>云南省红河热带农业科学研究所</td>
+                                    <td style="color: #ffffff;font-size: 20px">id</td>
+                                    <td style="color: #ffffff;font-size: 20px">申请号</td>
+                                    <td style="color: #ffffff;font-size: 20px">植物种类</td>
+                                    <td style="color: #ffffff;font-size: 20px">品种暂定名</td>
+                                    <td style="color: #ffffff;font-size: 20px">申请人</td>
                                 </tr>
                                 <tr>
                                     <td>11880</td>
@@ -429,20 +435,27 @@
                                     <td>红研2号</td>
                                     <td>云南省红河热带农业科学研究所</td>
                                 </tr>
-                                  <tr>
-                                <td>11880</td>
-                                <td>20130729.1</td>
-                                <td>香蕉</td>
-                                <td>红研2号</td>
-                                <td>云南省红河热带农业科学研究所</td>
-                            </tr>
-                                    <tr>
-                                <td>11880</td>
-                                <td>20130729.1</td>
-                                <td>香蕉</td>
-                                <td>红研2号</td>
-                                <td>云南省红河热带农业科学研究所</td>
-                            </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
+                                <tr>
+                                    <td>11880</td>
+                                    <td>20130729.1</td>
+                                    <td>香蕉</td>
+                                    <td>红研2号</td>
+                                    <td>云南省红河热带农业科学研究所</td>
+                                </tr>
                                 <tr>
                                     <td>11880</td>
                                     <td>20130729.1</td>
@@ -478,9 +491,9 @@
                             </table>
                         </div>
                         <div class="content_main_right_first_page">
-                          <div class="left">
-                              <img src="../img/Left.png" style="height: 10px;width: 10px;">
-                          </div>
+                            <div class="left">
+                                <img src="../img/Left.png" style="height: 10px;width: 10px;">
+                            </div>
                             <div class="one"><p>1</p></div>
                             <div class="two"><p>2</p></div>
                             <div class="three"><p>3</p></div>
@@ -496,6 +509,9 @@
 
 
                 </div>
+                </div>
+
+
 
 
 
@@ -510,15 +526,15 @@
 
 
 
-    <div class="foot">
-            <div class="footLogo">
-            </div>
-            <div class="footText">
-                <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
-                <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
-                <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
-            </div>
-        </div>
+<div class="foot">
+    <div class="footLogo">
+    </div>
+    <div class="footText">
+        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农研所</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
+        <b style="color: #cccbc9; font-size: 14px;">  Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+    </div>
+</div>
     </div>
 
 </body>

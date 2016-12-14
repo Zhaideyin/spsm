@@ -3,11 +3,18 @@
 <head>
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
-    <title>breedInnovationDatabase</title>
+    <title>育种创新数据库</title>
+    <link href="../css/pgwslider.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/liMarquee.css">
     <style>
-        a {
+        body{
+            font-family: 微软雅黑;
+            line-spacing: 22px;
+        }  a {
             color: #ffffff;
             text-decoration:none;
+        }  li{
+            color: #0072d8;
         }
         *{  margin: 0px;
             padding: 0px;}
@@ -15,127 +22,122 @@
             background-color:#272727;
             width: 100%;
             height: 50px;
-        }
-        .head p{
+        }  .head p{
             color: #ffffff;
-        }
-        .logo{
+        }  .logo{
             background-image: url("../img/head.png");
             background-repeat: no-repeat;
             width: 293px;
             height: 46px;
-            position: relative;
-            left: 100px;
-            top:3px;
+            margin-left:10%;;
+            float: left;
         }
         .first{
-            position: absolute;
-            left: 500px;
-            top:15px;
-        }
-        .second{
-            position: absolute;
-            left: 650px;
-            top:15px;
 
+               float: left;
+               margin-top:15px;
+           }  .second{
+                  float: left;
+                  margin-top:15px;
+              }  .third{
+                     margin-top:15px;
+                     float: left;
+                 }  .fourth{
+                        float: left;
+                        margin-top:15px;
 
-        }
-        .third{
-            position: absolute;
-            left: 800px;
-            top:15px;
-
-
-        }
-        .fourth{
-            position: absolute;
-            left: 1000px;
-            top:15px;
-
-        }
-        .logo,.first,.second,.third,.fourth{
-            height: 53px;
-        }
+                    }
         .main{
-            background-color: azure;
-            height: 1200px;
             width: 100%;
         }
         .top{
             background-color: #12525e;
             width: 100%;
-            height: 300px;
+            height:300px;
         }
         .top p{
             position: relative;
-            width: 900px;
-            left:10%;
+            left:7%;
         }
+        .m{ background-color: #0a0903;
+            overflow: hidden;}
         .content{
-            background-color: #f2f2f2;
-            position: absolute;
-            left: 10%;
-            top:150px;
+            margin-top:-225px;
+            margin-right:10%;
+            float: right;
             width: 80%;
+            overflow: hidden;
             height: auto;
         }
         .content_top{
             background-color: #0f4850;
-
+            height: 36px;
 
         }
         .content_top p{
             color: #ffffff;
             position: relative;
-            left:30px;        }
+            left:2%;
+            top:8px;}
         .content_container{
-
+            height: auto;
+            overflow: hidden;
+            background-color: #feffff;
         }
         .content_left{
             float: left;
             margin-left: 0px;
             width: 75%;
-            height: 1378px;
         }
         .content_right{
             margin-right: 0px;
-            background-color: #ffffff;
+            background-color: #f3f3f3;
+            margin-top: 15px;
             width: 25%;
             float: left;
-            height: 1378px;
-
         }
         .content_left_container_left{
             float: left;
             width:60%;
-            height: 890px;
             margin-bottom: 7px;
+
         }
         .content_left_container_left1{
             width: 100%;
-            height: 200px;
-            border-bottom:solid 1px;
-            border-right:solid 1px;
-            margin-bottom: 4px;
+            height:auto;
+            overflow: hidden;
+            margin-bottom: 15px;
             padding-right: -14px;
-
+            padding-bottom: 15px;
+            border-bottom:solid 0.5px #c7c7c7;
+        }
+        .content_left_container{
+            height: auto;
+            overflow: hidden;
+            margin-top:10px;
         }
         .content_left_container_left2{
             width: 100%;
-            height: 200px;
-            border-bottom:solid 1px;
+            height:auto;
+            overflow: hidden;
+            border-bottom:solid 0.5px #c7c7c7;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
 
         }
         .content_left_container_left3{
             width: 100%;
-            height: 460px;
+            height: 26%;
+
+            margin-bottom: 15px;
+            padding-bottom: 15px;
 
         }
         .content_left_container_left_text{
             width: 50%;
-            height: 200px;
-            float: right;
-            padding: 10px 10px 10px ;
+            float: left;
+            padding: 0px 10px 10px 22px;
+            line-height: 22px;
 
         }
         .content_left_container_right{
@@ -146,81 +148,132 @@
         .content_left_container_left3_left,.content_left_container_left3_right{
             width: 48%;
             float: left;
-            height: 400px;
+            height: auto;
+            padding-left: 0px;
+        }
+        .content_left_container_left3_right{
+            margin-left: 16px;
         }
         .content_left_container_left3_text{
             width: 90%;
-            height: 90px;
+            height: auto;
+            line-height: 22px;
         }
         .content_left_container_right1,.content_left_container_right2,.content_left_container_right3,.content_left_container_right4{
-            border-bottom: solid 1px #1d8a6e;
-            border-left: solid 1px #1d8a6e;
+            border-bottom: solid 0.5px #c7c7c7;
+            border-left: solid 0.5px #c7c7c7;
             width: 98%;
-            height: 200px;
+
+            line-height: 22px;
             padding: 10px 10px 30px 10px;
-            margin-bottom: 2px;
         }
-        .content_right_introduce,.content_right_search,.content_right_links{
-            padding: 40px 5px 60px 40px;
-            margin-bottom: 60px;
+        .content_right_search{
+
+            margin-left: 1%;
+            overflow: hidden;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-right: 1%;
+
+        }
+        .content_right_title{
+
+            overflow: hidden;
+            padding: 10px 0px 10px 10px;
 
 
         }
+        .content_right_content{
+            padding: 20px 0px 20px 40px;
+        }
+        .content_right_title_logo{
+            float: left;
+        }
+        .content_right_title_text{
+            float: left;
+            margin-left: 5px;
+        }
+        .content_right_links{
+            margin-left: 1%;
+            margin-right: 1%;
+            overflow: hidden;
+
+        }
+        .content_right_content_scroll { height: 300px;margin-left: 5px; font-size: 14px;}
+        .content_right_content_scroll ul { margin: 0; line-height: 40px;}
+        .content_right_content_scroll a { color: #333; text-decoration: none;}
+        .content_right_content_scroll a:hover { color: #2698d6; }
+        .content_right_content_scroll ul li{ line-height: 32px;}
         .more{
-
-            position:relative;
-            left: 10%;
-            width: 500px;
-            height: 50px;
-            padding-top:20px;
-
+            margin-top: 20px;
+            margin-left: 29%;
         }
+
         .foot{
+            clear: both;
+            margin-top: 30px;
             background-color: #878784;
-            position: relative;
-            top:340px;
             width: 100%;
             height: 80px;
         }
         .footLogo{
             background-image: url("../img/foot.png");
-            position:relative ;
-            left: 10px;
-            top:10px;
+            float: left;
+            margin-left:10%;
+            margin-top:10px;
             height: 57px;
-            width: 59px;
-        }
-        .container{
-            width: 100%;
+            width: 58px;
         }
         .footText{
-            position: relative;
-            width: 800px;
-            left:70px;
-            top:-40px;
+            float: left;
+            margin-top:10px;
             height: 57px;
         }
         .footText b{
             color: #ffffff;
         }
-        .topFirst ,.topSecond{
-            color: #ffffff;
+        .container{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
         }
-        .topFirst{
-            position: relative;
-            left:40px;
-            top:20px;
+
+        .topSecond{
+            color: #ffffff;
         }
         .topSecond{
             font-size: 30px;
-            position: relative;
-            left:30px;
-            top:30px;
+            margin-left: 3%;
+            top:15px;
+        }
+
+        .content_img_title span{
+            font-size: 26px;
+            padding-left: 10px;
+            font-family: 微软雅黑;
         }
 
 
 
     </style>
+    <script src="../js/jquery-1.10.1.min.js"></script>
+    <script src="../js/pgwslider.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).ready(function() {
+                $('.pgwSlider').pgwSlider();
+            });
+        });
+    </script>
+    <script src="../js/jquery.liMarquee.js"></script>
+    <script>
+        $(function(){
+            $('.content_right_content_scroll').liMarquee({
+                direction: 'up'
+            });
+        });
+    </script>
+
 </head>
 <body>
 <div class="container">
@@ -228,90 +281,80 @@
         <div class="logo">
         </div>
         <div class="first">
-            <p>育种创新数据库</p>
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
         </div>
         <div class="second">
-            <p>种业产业数据库</p>
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
         </div>
         <div class="third">
-            <p >成果推广与转化数据库</p>
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
         </div>
         <div class="fourth">
-            <p>育种专家智库</p>
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
         </div>
     </div>
     <div class="main">
         <div class="top">
-            <p class="topFirst">首页/育种创新数据库 Seed Innovation Database </p>
             <p class="topSecond">育种创新数据库</p>
         </div>
         <div class="content">
             <div class="content_top">
-                <p><a href="index.html"><a href="index.html"> 首页</a></a>&nbsp;&nbsp;<a href="breedResearchImg.html"> 前沿育种研究</a>&nbsp;&nbsp;<a href="breedKnowledge.html"> 育种知识服务</a></p></div>
+                <p><a href="index.html"><a href="index.html"> 首页</a></a>&nbsp;&nbsp;<a href="hotSportOfBreed.html"> 前沿育种研究</a>&nbsp;&nbsp;<a href="breedKnowledge.html"> 育种知识服务</a></p></div>
             <div class="content_container">
+                <div class="m">
+                    <ul class="pgwSlider">
+                        <li><img src="../img/636046917122473748712.jpg" style="width: 100%;height: 80px;" alt="UAV agricultural application" ><span>UAV agricultural application</span></li>
+                        <li><img src="../img/20160629105970937093.jpg" style="width: 100%;height: 80px;"   alt="Modern farm" ><span>Modern farm</span></li>
+                        <li><img src="../img/20160329071758dff3e.jpg" style="width: 100%;height: 80px;"   alt="Mechanized harvesting"><span>Mechanized harvesting</span></li>
+                        <li> <img src="../img/8167850_125904655000_2.jpg" style="width: 100%;height: 80px;" > <span>Modern greenhouse</span> </li>
+                        <li> <img src="../img/pexels-photo-56708.jpg" style="width: 100%;height: 80px;"  > <span>Mechanized harvesting</span>  </li>
+                    </ul>
+                </div>
                 <div class="content_left">
-                    <div class="content_img">
-                        <img src="../img/pexels-photo-56708.jpg" style="width: 100%;height:400px;">
-                    </div>
                     <div class="content_left_container">
                         <div class="content_left_container_left">
 
                             <div class="content_left_container_left1">
                                 <div class="content_left_container_left_img">
-                                    <img src="../img/9068870200cfc82be178o_0.jpg" style="width: 40%;height: 195px;float: left;">
+                                    <img src="../img/2s5pfd1oax.png" style="width: 40%;height: 195px;float: left;">
                                 </div>
                                 <div class="content_left_container_left_text">
-                                    <h4> 利用大数据分析实现互联网精准营销</h4><br>
-                                    <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                        硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                        也是目前谷歌在华8大体验中心当中最大的一家，
-                                        下设Adwords体验中心、大数据分析应用中心、
-                                        跨境电商服务中心和跨境电商培训基地4个部分，
-                                        于去年11月26日在贵阳揭牌。</p>
+                                    <h4><a href="BINLdetails1.html" style="color: black">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></h4><br>
+                                    <p>近日，合成生物学国际顶尖赛事——国际遗传工程机器设计竞赛（International Genetically Engineered Machine Competition，iGEM）2016全球总决赛在美国波士顿海因斯会议中心落幕，
+                                        上海交通大学的两支参赛队伍SJTU-Software和SJTU-BioX-Shanghai再度获得金牌。</p>
                                 </div>
                             </div>
                             <div class="content_left_container_left2">
                                 <div class="content_left_container_left_img">
-                                    <img src="../img/160314cereals.jpg" style="width: 40%;height: 195px; float: left;">
+                                    <img src="../img/57d7ba1f20f59.jpg" style="width: 40%;height: 195px; float: left;">
                                 </div>
                                 <div class="content_left_container_left_text">
-                                    <h4> 利用大数据分析实现互联网精准营销</h4><br>
-                                    <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                        硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                        也是目前谷歌在华8大体验中心当中最大的一家，
-                                        下设Adwords体验中心、大数据分析应用中心、
-                                        跨境电商服务中心和跨境电商培训基地4个部分，
-                                        于去年11月26日在贵阳揭牌。</p>
+                                    <h4><a href="BINLdetails2.html" style="color: black">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></h4><br>
+                                    <p>怎么讲生命时代？所有的生命，不管是人、动植物、微生物都是ATCG，这个世界就是这么简单，就是这么奇妙。而在上世纪最重要的一件事情就是把ATCG变成了0101。这把尺子是在4年前诺贝尔博物馆发现的，这是一个发明的尺子，
+                                        一共有两米长，正反两面打开是这样子的。
+                                        每一个刻度上都是一个重大的历史事件，要么就是社会的，要么就是科学技术的。</p>
                                 </div>
                             </div>
                             <div class="content_left_container_left3">
                                 <div class="content_left_container_left3_left">
 
                                     <div class="content_left_container_left3_img">
-                                        <img src="../img/160524flowers.jpg" style="width:98%;height: 80%">
+                                        <img src="../img/20165131059093294.jpg" style="width:98%;height: 80%;">
                                     </div>
                                     <div class="content_left_container_left3_text">
-                                        <h4> 利用大数据分析实现互联网精准营销</h4><br>
-                                        <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                            硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                            也是目前谷歌在华8大体验中心当中最大的一家，
-                                            下设Adwords体验中心、大数据分析应用中心、
-                                            跨境电商服务中心和跨境电商培训基地4个部分，
-                                            于去年11月26日在贵阳揭牌。</p>
+                                        <h4><a href="BINLdetails3.html" style="color: black">新型转基因小麦产量有望提高20%</a></h4><br>
+                                        <p>　英国研究人员正在向英国环境、食品和农村事务部提出一项申请，希望获准在户外研究工作中种植新型转基因小麦。如这项申请获得批准，该团队计划第一年四月开始种植，第二年收获。
+                                            　　在温室研究中，该技术可显著地将作物产量提高了20%—40%。研究人员希望，在户外种植中这一比例至少能达到20%。</p>
                                     </div>
                                 </div>
                                 <div class="content_left_container_left3_right">
                                     <div class="content_left_container_left3_img">
-                                        <img src="../img/160524wheat.jpg" style="width:98%;height: 80%">
+                                        <img src="../img/201606036015.jpg" style="width:98%;height: 80%;">
                                     </div>
                                     <div class="content_left_container_left3_text">
-                                        <h4> 利用大数据分析实现互联网精准营销</h4><br>
-                                        <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                            硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                            也是目前谷歌在华8大体验中心当中最大的一家，
-                                            下设Adwords体验中心、大数据分析应用中心、
-                                            跨境电商服务中心和跨境电商培训基地4个部分，
-                                            于去年11月26日在贵阳揭牌。</p>
+                                        <h4><a href="BINLdetails4.html" style="color: black">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></h4><br>
+                                        <p>日前，安徽省劳动竞赛委员会、省总工会表彰了2015年度安徽省劳动竞赛先进集体和先进个人。皖西学院安徽省植物细胞工程中心被授予2015年度“安徽省工人先锋号”荣誉称号。
+                                            6月1日下午，省教育工会主席凤桦，在副主席唐成等陪同下来到皖西学院向皖西学院安徽省植物细胞工程中心授牌。</p>
                                     </div>
                                 </div>
 
@@ -319,92 +362,122 @@
                         </div>
                         <div class="content_left_container_right">
                             <div class="content_left_container_right1">
-                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
-                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                    也是目前谷歌在华8大体验中心当中最大的一家，
-                                    下设Adwords体验中心、大数据分析应用中心、
-                                    跨境电商服务中心和跨境电商培训基地4个部分，
-                                    于去年11月26日在贵阳揭牌。</p>
+                                <h4><a href="BINRdetails1.html" style="color: black"> "十二五"期间我国植物分子育种研究取得重要突破</a></h4><br>
+                                <p><a href="BINRdetails1.html" style="color: black">“十二五”期间，围绕保障国家粮食安全、生态安全和增加农民收入等重大目标，
+                                    863计划现代农业技术领域先后启动了“作物分子育种与品种创制”、“林果花草分子育种与品种创制”、
+                                    “主要蔬菜分子育种与功能基因组研究”等3个项目。经过近五年的研究，各项目组攻克了一批分子育种关键技术，
+                                    选育了一批高产、优质、多抗、高效的作物、
+                                    蔬菜及林果花草的新种质、新品种，
+                                    有力推进了我国植物育种技术的发展，
+                                    带动了相关产业创新和能力提升，部分相关成果达到世界先进水平。</a></p>
                             </div>
                             <div class="content_left_container_right2">
-                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
-                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                    也是目前谷歌在华8大体验中心当中最大的一家，
-                                    下设Adwords体验中心、大数据分析应用中心、
-                                    跨境电商服务中心和跨境电商培训基地4个部分，
-                                    于去年11月26日在贵阳揭牌。</p>
+                                <h4><a href="BINRdetails2.html" style="color: black"> 精准育种 微生物 大数据 科技创新——未来农业的出路</a></h4><br>
+                                <p>在不断涌现的农业技术背后，是朝气蓬勃的农业初创企业和看好农业新技术前景的投资人。
+                                    2015年，全球农业投资达到前所未有的100亿美元（约650亿元人民币），对农业技术的风险投资高达46亿美元
+                                    （约300亿元人民币），创历年新高。密集涌入的资金为农业领域带来了崭新的技术，加快了农业技术创新的步伐，
+                                    不断有新技术被运用到农业领域当中。而在已开发的技术领域中，例如农业生物技术，
+                                    也吸引了更多企业和研究者的加入。</p>
                             </div>
                             <div class="content_left_container_right3">
-                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
-                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                    也是目前谷歌在华8大体验中心当中最大的一家，
-                                    下设Adwords体验中心、大数据分析应用中心、
-                                    跨境电商服务中心和跨境电商培训基地4个部分，
-                                    于去年11月26日在贵阳揭牌。</p>
+                                <h4><a href="BINRdetails3.html" style="color: black"> 高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></h4><br>
+                                <p>深秋时节，山东省高唐县盛和锦鲤养殖场的锦鲤池内，五彩斑斓的锦鲤在清澈的水中相互簇拥着自由游弋，如水中盛开的朵朵牡丹。“这批价值10万余元的5000尾锦鲤已经被一位南方的客商预订了。”盛和锦鲤养殖场负责人贾清河喜滋滋地告诉记者，
+                                    “锦鲤养殖从鱼苗到成鱼大约需经4个月时间，品相好的能卖到上万元一尾，预计今年可创收300余万元”。</p>
                             </div>
                             <div class="content_left_container_right4">
-                                <h4 style="color: #0f4850"> 利用大数据分析实现互联网精准营销</h4><br>
-                                <p>走进位于贵阳国家高新区的Google AdWords贵州体验中心，
-                                    硅谷式的办公氛围扑面而来。这是西南地区第一家Google体验中心，
-                                    也是目前谷歌在华8大体验中心当中最大的一家，
-                                    下设Adwords体验中心、大数据分析应用中心、
-                                    跨境电商服务中心和跨境电商培训基地4个部分，
-                                    于去年11月26日在贵阳揭牌。</p>
+                                <h4><a href="BINRdetails4.html" style="color: black">北京打造全国农业科技创新示范中心</a></h4><br>
+                                <p>今年全市农业科教工作紧紧围绕都市型现代农业生活、生态、生产与示范功能，突出“节水、生态、安全、高效”的重点，着力加强现代都市农业科技创新体系、
+                                    产业技术服务体系和农民科技教育培训体系的建设，打造全国农业科技创新中心和农业科技示范中心。</p>
                             </div>
 
 
                         </div>
-
                     </div>
                 </div>
                 <div class="content_right">
-                    <div class="content_right_introduce">
-                        &nbsp;&nbsp;<h2 >简介</h2><br>
-                        <br>
-                        <p>种业产业数据库立足世界种业前沿，
-                            专注种业科技发展，创建世界一流网站，服务世界造福人类。
-                            为了实现这一宗旨，
-                            通过汇集世界各地种业产业、
-                            科学技术和种子市场等最新信息，动态集成到种业产业数据库，
-                            促进世界科技-特别是种业科技-前沿信息的快速流通。</p></div>
                     <div class="content_right_search">
-                        <h2>搜索</h2><br>
-                        <br>
-                        <input value="搜索"  type ="search " style="width: 160px;height: 30px;"><input type="submit" style="color:
-                        #ffffff;width: 50px;height: 37px; background-color: #0f4850" value="搜索">
+                        <div class="content_right_title">
+                            <div class="content_right_title_logo">
+                                <img src="../img/1198274.gif" style="height: 30px;width: 30px;">
+                            </div>
+                            <div class="content_right_title_text">
+                                <span>搜索栏</span>
+                            </div>
+                        </div>
+                        <div class="content_right_content">
+                            <input value="搜索"  type ="search " style="width: 50%;height: 30px;">&nbsp;
+                            <input type="submit" style="color:#ffffff;width: 20%;height: 36px; background-color: #0f4850" value="搜索">
+                        </div>
+
+                    </div>
+                    <div class="content_right_scroll">
+                        <div class="content_right_title">
+                            <div class="content_right_title_logo">
+                                <img src="../img/1195360.gif" style="height: 30px;width: 30px;">
+                            </div>
+                            <div class="content_right_title_text">
+                                <span>行业动态</span>
+                            </div>
+                        </div>
+                        <div class="content_right_content_scroll">
+                                <ul >
+                                    <li><a href="BINLdetails1.html">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></li>
+                                    <li><a href="BINLdetails2.html">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></li>
+                                    <li><a href="BINLdetails3.html">新型转基因小麦产量有望提高20%</a></li>
+                                    <li><a href="BINLdetails4.html">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></li>
+                                    <li><a href="BINRdetails1.html"> "十二五"期间我国植物分子育种研究取得重要突破</a></li>
+                                    <li><a href="BINRdetails2.html">精准育种 微生物 大数据 科技创新——未来农业的出路</a></li>
+                                    <li><a href="BINRdetails3.html">高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></li>
+                                    <li><a href="BINRdetails4.html">北京打造全国农业科技创新示范中心</a></li>
+                                    <li><a href="BINRROLdetails9.html">美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></li>
+                                    <li><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></li>
+                                    <li><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></li>
+                                    <li><a href="BINRROLdetails12.html">纳米农药“一点到位”</a></li>
+                                    <li><a href="BINRROLdetails13.html">世界粮食奖和沃尔夫农业奖得主力挺转基因</a></li>
+                                    <li><a href="BINRROLdetails14.html">袁隆平种出了“海水稻”</a></li>
+                                    <li><a href="BINRROLdetails15.html">超级稻20年：累计推广种植10.9亿亩 增收600亿公斤稻谷</a></li>
+                                    <li><a href="BINRROLdetails16.html">农业“嫁接”光伏，结什么果？</a></li>
+                                    <li><a href="BINRROLdetails17.html">农用聚磷酸铵引领磷肥液体化新方向</a></li>
+                                    <li><a href="BINRROLdetails18.html">秸秆颗粒肥研制成了</a></li>
+                                </ul>
+
+                        </div>
                     </div>
                     <div class="content_right_links">
-                        <h3>相关链接</h3><br><br>
-                        <li>中国作物信息网</li><br>
-                        <li>中国果蔬网</li><br>
-                        <li>中国农业新闻网</li><br>
-                        <li>世界种业网</li><br>
-                        <li>中国农业技术网</li><br>
-                        <li>中国农业科技网</li><br>
+                        <div class="content_right_title">
+                            <div class="content_right_title_logo">
+                                <img src="../img/1192824.gif" style="height: 30px;width: 30px;">
+                            </div>
+                            <div class="content_right_title_text">
+                                <span>相关链接</span>
+                            </div>
+                        </div>
+                        <div class="content_right_content">
+                            <li><a href="http://icgr.caas.net.cn/" style="color: #0072d8">中国作物信息网</a></li><br>
+                            <li><a href="http://www.veg-china.com/" style="color: #0072d8">中国果蔬网</a></li><br>
+                            <li><a href="http://www.farmer.com.cn/" style="color: #0072d8">中国农业新闻网</a></li><br>
+                            <li><a href="http://theworldseeds.cn/index.php" style="color: #0072d8">世界种业网</a></li><br>
+                            <li><a href="http://www.chinanyjs.com/" style="color: #0072d8">中国农业技术网</a></li><br>
+                            <li><a href="http://www.cnasc.org/" style="color: #0072d8">中国农业科技网</a></li><br>
+                        </div>
+
 
                     </div>
                 </div>
             </div>
-            <div class="more">
-                <input type="button" value="更多" style="background-color: #0d4450;width:200px;height: 40px; color: #ffffff">
-            </div>
+
         </div>
-
-
-
-
-
+        <div class="more">
+            <a href="breedInvoationDatabaseMore.html" style="color: black;"><input type="button" value="更多" style="background-color: #0d4450;width:200px;height: 40px; color: #ffffff"></a>
+        </div>
     </div>
     <div class="foot">
         <div class="footLogo">
         </div>
         <div class="footText">
-            <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
-            <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
-            <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+            <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+            <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+            <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
         </div>
     </div>
 </div>

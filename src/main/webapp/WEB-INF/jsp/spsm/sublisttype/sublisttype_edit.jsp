@@ -42,10 +42,14 @@
 								<td>
 									<select id="LISTID" name="LISTID" style="width: 328px;">
 										<c:forEach items="${list}" var="r" varStatus="vs">
-											<c:if test="${r.LISTTYPE_ID==pd.LISTID }">
-												<option value="${r.LISTTYPE_ID}" selected="selected">${r.LISTTYPENAME }</option>
-											</c:if>
-											<option value="${r.LISTTYPE_ID}" >${r.LISTTYPENAME }</option>
+											<c:choose>
+												<c:when test="${r.LISTTYPE_ID==pd.LISTID }">
+													<option value="${r.LISTTYPE_ID}" selected="selected">${r.LISTTYPENAME }</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${r.LISTTYPE_ID}" >${r.LISTTYPENAME }</option>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</select> 
 								</td>

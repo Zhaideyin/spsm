@@ -204,23 +204,27 @@ public class WebInfo {
 		final List list = readXML.ResolveXml();
 		//将传递来的typeID,对应各个级别上、
 		List<String> typeList=web.getTypeID(typeId);
-		 int num=typeList.size()-1;
-		 for(int i=num;i>=0;i--){
-			 if(i==num){
-				 web.setDatabaseType(typeList.get(i).toString());
-//				 System.out.println("DATABASETYPE:"+web.getDatabaseType());
-			 }
-			 if(num-i==1){
-				 web.setNavbarType(typeList.get(i).toString());
-			 }
-			 if(num-i==2){
-				 web.setListType(typeList.get(i).toString());
-			 }
-			 if(num-i==3){
-				 web.setSublistType(typeList.get(i).toString());
-			 }
-			 
+		
+		if(typeList!=null){
+			 int num=typeList.size()-1;
+			 for(int i=num;i>=0;i--){
+				 if(i==num){
+					 web.setDatabaseType(typeList.get(i).toString());
+//					 System.out.println("DATABASETYPE:"+web.getDatabaseType());
+				 }
+				 if(num-i==1){
+					 web.setNavbarType(typeList.get(i).toString());
+				 }
+				 if(num-i==2){
+					 web.setListType(typeList.get(i).toString());
+				 }
+				 if(num-i==3){
+					 web.setSublistType(typeList.get(i).toString());
+				 }
+				 
+			}
 		}
+		
 		// 循环遍历读取到的xml
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> hashMap = (HashMap<String, String>) list.get(i);
@@ -237,26 +241,26 @@ public class WebInfo {
 			// 文字类抓取
 			// 用web类来传值
 			// final Web web = new Web();
-			web.setSeed(seed);
-			web.setUrlRex(urlRex);
+			web.setSeed(seed.trim());
+			web.setUrlRex(urlRex.trim());
 			List<String> taglist = new ArrayList<String>();
-			taglist.add(tag1);
-			taglist.add(tag2);
+			taglist.add(tag1.trim());
+			taglist.add(tag2.trim());
 			web.setList(taglist);
 
 			// 图片爬取
 			boolean hasImg = Boolean.parseBoolean(hashMap.get("hasImg"));
 			String imgRegex = hashMap.get("imgRegex");
 			String imgTag = hashMap.get("imgTag");
-			web.setImgTag(imgTag);
-			web.setImgRegex(imgRegex);
+			web.setImgTag(imgTag.trim());
+			web.setImgRegex(imgRegex.trim());
 			web.setHasImg(hasImg);
 			// 文件
 			boolean hasDoc = Boolean.parseBoolean(hashMap.get("hasDoc"));
 			String DocRegex = hashMap.get("docRegex");
 			String docTag = hashMap.get("docTag");
-			web.setDocTag(docTag);
-			web.setDocRegex(DocRegex);
+			web.setDocTag(docTag.trim());
+			web.setDocRegex(DocRegex.trim());
 			web.setHasDoc(hasDoc);
 
 			// 分页
@@ -267,11 +271,11 @@ public class WebInfo {
 			String pageMethod = hashMap.get("pageMethod");
 			String pageEncoding =hashMap.get("pageEncoding");
 			web.setTotalPage(totalPage);
-			web.setPageMethod(pageMethod);
-			web.setPageAjaxTag(pageAjaxTag);
-			web.setPageGetTag(pageGetTag);
-			web.setPagePostTag(pagePostTag);
-			web.setPageEncoding(pageEncoding);
+			web.setPageMethod(pageMethod.trim());
+			web.setPageAjaxTag(pageAjaxTag.trim());
+			web.setPageGetTag(pageGetTag.trim());
+			web.setPagePostTag(pagePostTag.trim());
+			web.setPageEncoding(pageEncoding.trim());
 		}
 		return web;
 	}
@@ -282,12 +286,17 @@ public class WebInfo {
 	 * @return
 	 */
 	public List<String> getTypeID(String typeIds){
-		List<String> typeList =new ArrayList<String>();
-		String typeId[] =typeIds.split(",");
-		for(int i=0;i<typeId.length;i++){
-			typeList.add(typeId[i]);
+		if(!(typeIds.equals(""))){
+			List<String> typeList =new ArrayList<String>();
+			String typeId[] =typeIds.split(",");
+			for(int i=0;i<typeId.length;i++){
+				typeList.add(typeId[i]);
+			}
+			return typeList;
+		}else{
+			return null;
 		}
-		return typeList;
+		
 	}
 
 }

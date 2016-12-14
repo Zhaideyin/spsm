@@ -19,7 +19,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a class="navbar-brand">
-						<small><img style="height: 30px;" src="static/ace/images/yinlianlogo.png"> ${pd.SYSNAME} </small>
+						<small><img style="height: 30px;" src="static/ace/images/spsmlogo-2.png"> ${pd.SYSNAME} </small>
 					</a>
 
 					<!-- /section:basics/navbar.layout.brand -->

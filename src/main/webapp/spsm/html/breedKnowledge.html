@@ -5,6 +5,10 @@
             <meta charset="UTF-8">
             <title>breedKnowledge</title>
             <style>
+                body{
+                    font-family: 微软雅黑;
+                    line-spacing: 22px;
+                }
                 a {
                     color: #ffffff;
                     text-decoration:none;
@@ -14,7 +18,7 @@
                 .head{
                     background-color:#272727;
                     width: 100%;
-                    height: 50px;
+                    height: 60px;
                 }
                 .head p{
                     color: #ffffff;
@@ -24,44 +28,43 @@
                     background-repeat: no-repeat;
                     width: 293px;
                     height: 46px;
-                    top:3px;
-                }
-                .container{
-                    margin: 0px;
-                    padding: 0px;
-                    width: 100%;
+                    /*position: relative;*/
+                    /*left: 11%;*/
+                    /*top:3px;*/
+                    margin-left:10%;;
+                    float: left;
                 }
                 .first{
-                    position: absolute;
-                    left: 500px;
-                    top:15px;
-
+                    /*position: absolute;*/
+                    /*left: 500px;*/
+                    /*top:15px;*/
+                    float: left;
+                    margin-top:15px;
                 }
                 .second{
-                    position: absolute;
-                    left: 650px;
-                    top:15px;
-
+                    /*position: absolute;*/
+                    /*left: 650px;*/
+                    /*top:15px;*/
+                    float: left;
+                    margin-top:15px;
 
                 }
                 .third{
-                    position: absolute;
-                    left: 800px;
-                    top:15px;
-
-
+                    /*position: absolute;*/
+                    /*left: 800px;*/
+                    /*top:15px;*/
+                    margin-top:15px;
+                    float: left;
                 }
                 .fourth{
-                    position: absolute;
-                    left: 1000px;
-                    top:15px;
+                    /*position: absolute;*/
+                    /*left: 1000px;*/
+                    /*top:15px;*/
+                    float: left;
+                    margin-top:15px;
 
                 }
-                .logo,.first,.second,.third,.fourth{
-                    height: 53px;
-                }
                 .main{
-                    background-color: azure;
                     min-height: 820px;
                     width: 100%;
                 }
@@ -74,8 +77,8 @@
                 }
                 .top p{
                     position: relative;
-                    left: 10%;
-                    width: 750px;
+                    padding-left: 10%;
+
                 }
                 .content_top{
                     width: 100%;
@@ -83,46 +86,39 @@
                     height: 35px;
                 }
                 .foot{
+                    clear: both;
+                    margin-top: 30px;
                     background-color: #878784;
                     width: 100%;
                     height: 80px;
-                    position: relative;
-                    top:300px;
-                }
-                .footLogo{
-                    background-image: url("../img/foot.png");
-                    float: left;
-                    height: 57px;
-                    width: 59px;
-                }
-                .footText {
-                    margin-top: 10px;
-                   float: left;
-                    height: 57px;
-                }
-                .footText b{
+                }  .footLogo{
+                       background-image: url("../img/foot.png");
+                       float: left;
+                       margin-left:10%;
+                       margin-top:10px;
+                       height: 57px;
+                       width: 58px;
+                   }  .footText{
+                          float: left;
+                          margin-top:10px;
+                          height: 57px;
+                      }  .footText b{
+                             color: #ffffff;
+                         }
+             .topSecond{
                     color: #ffffff;
-                }
-                .topFirst ,.topSecond{
-                    color: #ffffff;
-                }
-                .topFirst{
-                    margin: 7px 0px 2px 5px;
-                    top:20px;
                 }
                 .topSecond{
-                    font-size: 30px;
-                    top:30px;
-                    margin:20px 0px 10px 20px  ;
+                    font-size: 40px;
+                    top:15px;
                 }
 
                 .content{
 
-                    position: absolute ;
-                    top:160px;
+                    position: relative ;
+                    top:-80px;
                     left:10%;
                     width:80%;
-                    min-height: 800px;
 
                 }
                 .content_top{
@@ -131,64 +127,59 @@
                 }
                 .content_title {
                     width: 99.7%;
-                    height: 90px;
+
             background-color: #106470;
                 }
                 .content_title h2{
                     color: #ffffff;
-                    padding-left: 300px;
-                    padding-top: 27px;
+                    padding-left: 30px;
+                    padding-top: 5px;
+                    padding-bottom: 10px;
                 }
                 .content_main_left{
 
                     width: 20%;
-                    height:500px;
-                    position: absolute;
-                    top:100px;
+                    float: left;
                     background-color: #f2f2f2;
 
                 }
                 .content_main_right{
                     width: 80%;
                     margin-left: 0px;
-                    height: 500px;
-                    position: relative;
-                    left:20.2%;
-                    padding-top: 30px;
+                    overflow: hidden;
+                    float: left;
+                    padding-top: 10px;
                 }
-                .content_main-left-list0{
-                    width: 60%;
-                    height: 60px;
-                    padding:30px 0px 0px 70px;
-
-
-
-                }
+             .content_main{ overflow: hidden;}
                 .content_main-left-list_container{
                     border: solid 1px;
                     border-color: #4e6064;
-                    height: 700px;
+                    padding-bottom: 15px;
                 }
                 .content_main-left-list{
-                    width: 68%;
-                    height:30px;
+                    width: 79%;
+                    overflow: hidden;
                     padding:20px 0px 0px 10px;
                     border-bottom: solid 1px;
                     border-color: #586c70;
                     margin-left: 7%;
                 }
+                .content_main-left-list-logo{ float: left;}
                 .content_main-left-list-title{
                     float: left;
+                    margin-left: 5px;
+                    margin-top: 10px;
                 }
                 .content_main-left-list-img{
                    float: right;
+                    padding-top: 10px;
                 }
                 .content_main_right_first,.content_main_right_second,.content_main_right_third{
                     float:left;
-                    width: 32%;
-                    height: 600px;
-                    border: #07403d 2px solid;
+                    width: 30%;
+                    border: #07403d 0.5px solid;
                     margin-right: 10px;
+                    margin-left: 1.7%;
                 }
                 .content_main_right_first_middle{
                     background-color: #538e96;
@@ -198,10 +189,11 @@
                     padding-left: 40px;
                 }
                 .content_main_right_first_end_text{
-                    padding: 30px 10px 50px 10px;
+                    padding: 30px 10px 10px 10px;
                 }
                 .content_main_right_first_end_button{
-                    padding: 60px 50px 10px 30px;
+                    padding-bottom: 10PX;
+                    padding-left: 18px;
                 }
             </style>
         </head>
@@ -211,76 +203,87 @@
         <div class="logo">
         </div>
         <div class="first">
-            <p>育种创新数据库</p>
+            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
         </div>
         <div class="second">
-            <p>种业产业数据库</p>
+            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
         </div>
         <div class="third">
-            <p >成果推广与转化数据库</p>
+            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
         </div>
         <div class="fourth">
-            <p>育种专家智库</p>
+            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
         </div>
     </div>
     <div class="main">
         <div class="top">
-            <p class="topFirst">&nbsp;首页/育种创新数据库 Breeding Innovation Database/育种知识服务 Breeding Research Service </p>
             <p class="topSecond">育种知识服务</p>
         </div>
         <div class="content">
             <div class="content_top">
-                  <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="breedResearchImg.html">前沿育种研究</a>
+                  <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="hotSportOfBreed.html">前沿育种研究</a>
                       &nbsp; &nbsp; &nbsp;    <a href="breedKnowledge.html">育种知识服务</a> </b></p>
             </div>
             <div class="content_title">
-               <h2>创新咨询</h2>
+               <h2>文献待查，数据，整理分析</h2>
             </div>
             <div class="content_main">
              <div class="content_main_left">
 
-                 <div class="content_main-left-list0">
-                   <h4>育种知识服务</h4>
-                 </div>
                  <div class="content_main-left-list_container">
                      <div class="content_main-left-list">
+                         <div class="content_main-left-list-logo">
+                             <img src="../img/文献资料.png" style="width: 35px;height:35px;">
+                         </div>
                          <div class="content_main-left-list-title">
-                             <h4>文献数据 </h4>
+                             <a href="documentDatabase.html" style="color: #0a0903;"> <h5>文献数据库</h5></a>
                          </div>
                          <div class="content_main-left-list-img">
-                             <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                             <a href="documentDatabase.html" style="color: #0a0903;"> <img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
                          </div>
                      </div>
                      <div class="content_main-left-list">
+                         <div class="content_main-left-list-logo">
+                             <img src="../img/智库 (2).png" style="width: 35px;height:35px;">
+                         </div>
                          <div class="content_main-left-list-title">
-                             <h4>农业智库 </h4>
+                             <a href="AgricultureThink-tank.html" style="color: #0a0903;"><h5>农业智库</h5></a>
                          </div>
                          <div class="content_main-left-list-img">
-                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                             <a href="AgricultureThink-tank.html" style="color: #0a0903;"><img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
                          </div>
                      </div>
                      <div class="content_main-left-list">
+                         <div class="content_main-left-list-logo">
+                             <img src="../img/软件管理.png" style="width: 35px;height:35px;">
+                         </div>
                          <div class="content_main-left-list-title">
-                             <h4>育种相关软件 </h4>
+                             <a href="breedSoftware.html" style="color: #0a0903;"> <h5>育种相关软件</h5></a>
                          </div>
                          <div class="content_main-left-list-img">
-                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                             <a href="breedSoftware.html" style="color: #0a0903;"><img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
                          </div>
                      </div>
                      <div class="content_main-left-list">
+                         <div class="content_main-left-list-logo">
+                             <img src="../img/数据分析.png" style="width: 35px;height:35px;">
+                         </div>
                          <div class="content_main-left-list-title">
-                             <h4>文件待查，整理数据分析</h4>
+                             <a href="breedKnowledge.html" style="color: #0a0903;"> <h5>文献待查，数据，整理分析</h5></a>
                          </div>
                          <div class="content_main-left-list-img">
-                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                             <a href="breedKnowledge.html" style="color: #0a0903;"><img class="down" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
                          </div>
                      </div>
                      <div class="content_main-left-list">
+                         <div class="content_main-left-list-logo">
+                             <img src="../img/咨询.png" style="width: 35px;height:35px;">
+                         </div>
                          <div class="content_main-left-list-title">
-                             <h4>查新咨询</h4>
+                             <a href="Advice.html" style="color: #0a0903;"> <h5>查新咨询</h5></a>
                          </div>
                          <div class="content_main-left-list-img">
-                             <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
+                             <a href="Advice.html" style="color: #0a0903;"><img class="down" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
                          </div>
                      </div>
                  </div>
@@ -373,9 +376,9 @@
         <div class="footLogo">
         </div>
         <div class="footText">
-            <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
-            <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
-            <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
+            <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+            <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+            <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
         </div>
     </div>
 </div>

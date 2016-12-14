@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<webList>
+<!--     xmlns:xi="http://www.w3.org/2001/XInclude">
+	<xi:include href="lknet.xml" parse="xml"
+         /> -->
 
-<!--中国种业信息网   2页  ok-->
+<webList>
+<!--                  中国种业信息网   2页  ok                -->
    <!--  <webpage>
         <seed>http://www.natesc.org.cn/sites/zzx/List_21606_115457.html</seed>
         <urlRex>http://www.natesc.org.cn/Html/[0-9]*_[0-9]*_[0-9]*/[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*_[0-9]*.html</urlRex>
         <tagList>
-            <tag1>//*[@id='lb14634']/table/tbody/tr/td/h2/text()</tag1>标题所在的标签
-            <tag2>//div[@id='lb14634']/html()</tag2>
+            <tag1>//*[@id='lb14634']/table/tbody/tr/td/h2/font/text()</tag1>
+            <tag2>//*[@id='lb14634']/table/tbody/tr/td/div/html()</tag2>
         </tagList>
         <img>
             <hasImg>true</hasImg>
@@ -29,53 +32,26 @@
         </page>
     </webpage> -->
 
-<!--  中国种业信息网 27页  部分测试 ok -->
-   <!-- <webpage>
+<!--                     中国种业信息网 开始             -->
+   <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=5&amp;isSubType=yes</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
+            <hasImg>true</hasImg>
+            <imgRegex>http://www.seedchina.com.cn/jpg/.*.\w+</imgRegex>
+            <imgTag>img/@src</imgTag>
         </img>
         <doc>
             <hasDoc>true</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.[docx|doc|pdf|zip|xls|rar|ceb].*filePath=[a-zA-z]*/[0-9]*.(docx|doc|zip|pdf|xls|rar|ceb))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*\.(doc|docx|xls|pdf))</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
-        	<totalPage>27</totalPage>
-        	<pageAjaxTag>//*[@id='GridView1_LinkButtonNextPage']</pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>ajax</pageMethod>
-        	<pageEncoding>utf-8</pageEncoding>
-        </page>
-    </webpage> -->
-    
-    <!--  <webpage>
-        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=2</seed>
-        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
-        <tagList>
-            <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>true</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.[docx|doc|pdf|zip|xls|rar|ceb].*filePath=[a-zA-z]*/[0-9]*.(docx|doc|zip|pdf|xls|rar|ceb))</docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>27</totalPage>
+        	<totalPage>1</totalPage>
         	<pageAjaxTag>//*[@id='GridView1_LinkButtonNextPage']</pageAjaxTag>
         	<pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
@@ -83,14 +59,14 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage>
-     -->
-    
-    <!--  <webpage>
-        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=71</seed>
+
+
+	<!--<webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=2</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+             <tag1>//*[@id='LbTitle']/text()</tag1>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -98,8 +74,38 @@
             <imgTag></imgTag>
         </img>
         <doc>
+           <doc>
             <hasDoc>true</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.[docx|doc|pdf|zip|xls|rar|ceb].*filePath=[a-zA-z]*/[0-9]*.(docx|doc|zip|pdf|xls|rar|ceb))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>27</totalPage>
+        	<pageAjaxTag>//*[@id='GridView1_LinkButtonNextPage']</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>-->
+
+	<!--  <webpage>
+        <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=71</seed>
+        <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
+        <tagList>
+            <tag1>//*[@id='LbTitle']/text()</tag1>
+            <tag2>//*[@class='conzw']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+       <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -111,22 +117,23 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage> -->
-    
-    <!--  <webpage>
+
+	<!--  <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=74</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
             <imgRegex></imgRegex>
             <imgTag></imgTag>
         </img>
-        <doc>
+       <doc>
             <hasDoc>true</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.[docx|doc|pdf|zip|xls|rar|ceb].*filePath=[a-zA-z]*/[0-9]*.(docx|doc|zip|pdf|xls|rar|ceb))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -138,24 +145,24 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage> -->
-    
 
-<!-- 地方新闻  共5页-->
+	<!-- 地方新闻  共5页-->
     <!-- <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=31</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag1>//*[@id='LbTitle']/text()</tag1>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
             <imgRegex></imgRegex>
             <imgTag></imgTag>
         </img>
-        <doc>
+       <doc>
             <hasDoc>false</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*\.(doc|docx|pdf|xls|zip|rar)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|docx|zip|rar))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -167,22 +174,23 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage> -->
-    
-     <!-- <webpage>
+
+	<!-- <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=79</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
              <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
             <imgRegex></imgRegex>
             <imgTag></imgTag>
         </img>
-        <doc>
+       <doc>
             <hasDoc>false</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*\.(doc|docx|pdf|xls|zip|rar)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|docx|zip|rar))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -194,14 +202,14 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage> -->
-    
-<!--注释：执法情况 id=77  共1页 19条记录-->
+
+	<!--注释：执法情况 id=77  共1页 19条记录-->
    <!--  <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=77</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -209,8 +217,9 @@
             <imgTag></imgTag>
         </img>
         <doc>
-            <hasDoc>ture</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|docx|pdf|xls|zip|rar)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|zip|rar))</docRegex>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -222,15 +231,14 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage> -->
- 
-<!--注释：企业动态 id=75 共6页-->
-   
-    <!-- <webpage>
+
+	<!--注释：企业动态 id=75 共6页-->
+   <!-- <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=75</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -239,7 +247,8 @@
         </img>
         <doc>
             <hasDoc>false</hasDoc>
-            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|docx|pdf|xls|zip|rar)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|xls|zip|rar))</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -250,25 +259,24 @@
             <pageMethod>ajax</pageMethod>
             <pageEncoding>utf-8</pageEncoding>
         </page>
-
-    </webpage>   --> 
-
-<!--品种公示 共一页 27 条记录-->
+    </webpage>  -->
+	<!--品种公示 共一页 27 条记录-->
    <!--  <webpage>
         <seed>http://www.seedchina.com.cn/defaultInfoList.aspx?Id=97</seed>
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
-            <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+             <tag1>//*[@id='LbTitle']/text()</tag1>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
             <imgRegex></imgRegex>
             <imgTag></imgTag>
         </img>
-        <doc>
+       <doc>
             <hasDoc>true</hasDoc>
-            <docRegex>http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|pdf|docx|xls|rar|zip)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|docx|xls|rar|zip)</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))
+			</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -287,7 +295,7 @@
         <urlRex>DefaultInfoDetail.aspx\?InfoId=[0-9]*&amp;amp;TypeId=[0-9]*</urlRex>
         <tagList>
             <tag1>//*[@id='LbTitle']/text()</tag1>
-            <tag2>//div[@class='conzw']/html()</tag2>
+            <tag2>//*[@class='conzw']/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -296,7 +304,7 @@
         </img>
         <doc>
             <hasDoc>false</hasDoc>
-            <docRegex>http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(doc|pdf|zip|docx|rar|xls)&amp;amp;&amp;amp;filePath=[a-zA-z]*/[0-9]*.(doc|pdf|zip|docx|rar|xls)</docRegex>
+            <docRegex>(http://www.seedchina.com.cn/FileDownload/DownloadTransfer.aspx\?filename=.*.(\w*).*filePath=[a-zA-z]*/[0-9]*.(\w*))</docRegex>
             <docTag>//a</docTag>
         </doc>
         <page>
@@ -308,13 +316,14 @@
             <pageEncoding></pageEncoding>
         </page>
     </webpage> -->
+<!-- 中国种业信息网  结束-->
 
-<!--  中国农业科学院网站  注释：农业新政  8 页-->
-   <!--  <webpage>
+	<!--  中国农业科学院网站  开始-->
+    <webpage>
         <seed>http://www.caas.net.cn/nykjxx/nyxz/index.shtml</seed>
-        <urlRex>(.*/[0-9]+.shtml)</urlRex>
+        <urlRex>http://www.caas.net.cn/nykjxx/nyxz/[0-9]+.shtml</urlRex>
         <tagList>
-            <tag1>//*[@id='wrap']/div[3]/div[1]/div[2]/div[1]/h3/p/text()</tag1>
+            <tag1></tag1>
             <tag2>//*[@id='wrap']/div[3]/div[1]/div[2]/html()</tag2>
         </tagList>
         <img>
@@ -335,69 +344,13 @@
             <pageMethod>get</pageMethod>
             <pageEncoding>gb2312</pageEncoding>
         </page>
-    </webpage> -->
-    <!-- 国家农作物种质资源平台 -->
-   <!--  <webpage>
-        <seed>http://www.cgris.net/cgris%E5%9B%BD%E5%AE%B6%E7%A7%8D%E8%B4%A8%E5%9C%83.html</seed>
-        <urlRex>http://www.cgris.net/32pu/\w*.htm</urlRex>
-        <tagList>
-            <tag1>/html/body/div/center/table/tbody/tr[1]/td/p/span/font/text()</tag1>
-            <tag2>/html/body/div/center/table/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>true</hasImg>
-            <imgRegex>(images/\w*.(jpg|gif|png))</imgRegex>
-            <imgTag>/html/body/div/center/table</imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage> -->
-    
-    <!--  农博网 20页 ok -->
-   <!--  <webpage>
-        <seed>http://finance.aweb.com.cn/industry/news/index_1.html</seed>
-         <urlRex>http://finance.aweb.com.cn/[0-9]+/[0-9]+.shtml</urlRex>
-        <tagList>
-            <tag1>//div[@class='newList f_left']/h1/span/text()</tag1>
-            <tag2>//*[@id='content']/div[1]/p</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>20</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag>//a[@class='a_2']/@href</pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>utf-8</pageEncoding>
-        </page>
-    </webpage> -->
-    
-    
-  <!--  <webpage>
+    </webpage>
+
+	<!--  <webpage>
         <seed>http://www.caas.net.cn/nykjxx/nyxw/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/nykjxx/nyxw/[0-9]*.shtml</urlRex>
         <tagList>
-            <tag1>//*[@id='wrap']/div[3]/div[1]/div[2]/div[1]/h3/p/text()</tag1>
+            <tag1></tag1>
             <tag2>//*[@id='wrap']/div[3]/div[1]/div[2]/html()</tag2>
         </tagList>
         <img>
@@ -419,13 +372,12 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-    
-   <!--  <webpage>
+
+	<!--  <webpage>
         <seed>http://www.caas.net.cn/nykjxx/nyxz/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/nykjxx/nyxw/[0-9]*.shtml</urlRex>
         <tagList>
-            <tag1>//*[@id='wrap']/div[3]/div[1]/div[2]/div[1]/h3/p/text()</tag1>
+             <tag1></tag1>
             <tag2>//*[@id='wrap']/div[3]/div[1]/div[2]/html()</tag2>
         </tagList>
         <img>
@@ -444,15 +396,70 @@
         	<pageGetTag>//*[@id='fenye']/a/@href</pageGetTag>
         	<pagePostTag></pagePostTag>
         	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-    <!--  <webpage>
+
+	<!--  <webpage>
+        <seed>http://www.caas.net.cn/nkjt/jtdt/index.shtml</seed>
+        <urlRex>((http://www.caas.net.cn/nkjt/jtdt/[0-9]+.shtml)|(http://www.caas.net.cn/nkjt/jtdt/index[0-9]*.shtml))</urlRex>
+        <tagList>
+            <tag1>//*[@id='content']/div/div/div[1]/h3/p/text()</tag1>
+            <tag2>//*[@id='content']/div/div/div[3]/div/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>\.\./\.\./images/content/[0-9]+-[0-9]+/[0-9]*.jpg</imgRegex>
+            <imgTag>//*[@id='content']/div/div/div[3]/div/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+
+	<!-- <webpage>
+        <seed>http://www.caas.net.cn/nkjt/mtbdzt/index.shtml</seed>
+        <urlRex>((http://www.caas.net.cn/nkjt/mtbdzt/[0-9]+.shtml)|(http://www.caas.net.cn/nkjt/mtbdzt/index[0-9]*.shtml))</urlRex>
+        <tagList>
+            <tag1>//*[@id='wrap']/div[3]/div[1]/div[2]/div[1]/h3/p/text()</tag1>
+            <tag2>//*[@id="wrap"]/div[3]/div[1]/div[2]/div[3]/div/div[1]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>\.\./\.\./images/content/[0-9]+-[0-9]+/[0-9]*.jpg</imgRegex>
+            <imgTag>//*[@id='content']/div/div/div[3]/div/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+
+	<!-- <webpage>
         <seed>http://www.caas.net.cn/ysxw/kyjz/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/kyjz/[0-9]*.shtml</urlRex>
         <tagList>
             <tag1>//*[@id='wrap']/div[3]/div[1]/div[2]/div[1]/h3/p/text()</tag1>
-            <tag2>//*[@id='wrap']/div[3]/div[1]/div[2]/html()</tag2>
+            <tag2>//*[@id='wrap']/div[3]/div[1]/div[2]/div[3]/div/div[1]/html()</tag2>
         </tagList>
         <img>
             <hasImg>false</hasImg>
@@ -473,9 +480,8 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-    
-    <!-- <webpage>
+
+	<!-- <webpage>
         <seed>http://www.caas.net.cn/ysxw/mtbd/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/mtbd/[0-9]*.shtml</urlRex>
         <tagList>
@@ -501,8 +507,8 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-   <!--  <webpage>
+
+	<!--  <webpage>
         <seed>http://www.caas.net.cn/ysxw/jctpxw/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/dwzw/[0-9]*.shtml</urlRex>
         <tagList>
@@ -528,9 +534,8 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage>-->
-    
-    
-    <!--  <webpage>
+
+	<!--  <webpage>
         <seed>http://www.caas.net.cn/ky/kyjz1/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/kyjz/[0-9]*.shtml</urlRex>
         <tagList>
@@ -556,7 +561,7 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
+
     <!-- <webpage>
         <seed>http://www.caas.net.cn/ysxw/gjhz/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/gjhz/[0-9]*.shtml</urlRex>
@@ -583,8 +588,7 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-    
+
     <!-- <webpage>
         <seed>http://www.caas.net.cn/ysxw/xzhd/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ysxw/xzhd/[0-9]*.shtml</urlRex>
@@ -611,7 +615,8 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    <!--  跟上一个网页是一模一样  -->
+
+	<!--  跟上一个网页是一模一样  -->
     <!-- <webpage>
         <seed>http://www.caas.net.cn/nykjxx/njbk/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/nykjxx/nyxw/[0-9]*.shtml</urlRex>
@@ -637,8 +642,8 @@
         	<pageMethod>get</pageMethod>
         </page>
     </webpage> -->
-    
-    <!-- <webpage>
+
+	<!-- <webpage>
         <seed>http://www.caas.net.cn/nykjxx/nycj/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/nykjxx/nyxw/[0-9]*.shtml</urlRex>
         <tagList>
@@ -664,146 +669,7 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-    <!-- 该网站的下一页是图片，不知道可以用xpath点击吗，但是只有一页，所以可以抓取。 -->
-  	 <!-- <webpage>
-        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D5%FE%B2%DF%B7%A8%B9%E6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
-        <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
-        <tagList>
-            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
-            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage> -->
-    
-    <!-- <webpage>
-        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%C1%EC%B5%BC%BD%B2%BB%B0&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
-        <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
-        <tagList>
-            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
-            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage> -->
-  
-  
-   <!-- <webpage>
-        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D6%B4%B7%A8%B1%A3%BB%A4&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
-       <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
-        <tagList>
-            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
-            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage> -->
-  
-  <!--   实际抓取的是 http://crop.agridata.cn/ch_newsFrm.asp -->
- <!--  <webpage> 	
-        <seed>http://crop.agridata.cn/ch_NewsFrm/newsList.asp</seed>
-        <urlRex>http://crop.agridata.cn/ch_NewsFrm/newsOne.asp\?id=[0-9]*</urlRex>
-        <tagList>
-            <tag1>/html/body/table/tbody/tr/td[3]/table/tbody/tr[3]/td/table/tbody/tr[3]/td/table/tbody/tr/td/table/tbody/tr[1]/td/text()</tag1>
-            <tag2>/html/body/table/tbody/tr/td[3]/table/tbody/tr[3]/td/table/tbody/tr[3]/td/table/tbody/tr/td/table/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage>  -->
-  
-  	<!-- <webpage>
-		<seed>http://icscaas.com.cn/sites/ICS/List_17968_72992.html</seed>
-        <urlRex>http://icscaas.com.cn/Html/.*.html</urlRex>
-        <tagList>
-            <tag1>//*[@id='lb16649']/table/tbody/tr/td/strong/font/p[1]/font/font/strong/font/text()</tag1>
-            <tag2>//*[@id='lb16649']/table/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>false</hasImg>
-            <imgRegex></imgRegex>
-            <imgTag></imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>utf-8</pageEncoding>
-        </page>
-    </webpage>   -->
-    
-    <!-- 测试ok -->
+
     <!-- <webpage>
         <seed>http://www.caas.net.cn/ky/kjpt/gjjzwzzk/gjjnzwzzp/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ky/kjpt/gjjzwzzk/gjjnzwzzp/[0-9]*.shtml</urlRex>
@@ -830,7 +696,7 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
+   
     <!--  <webpage>
         <seed>http://www.caas.net.cn/ky/kjpt/gjjzwzzk/gjjnzwzzk/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ky/kjpt/gjjzwzzk/gjjnzwzzk/[0-9]*.shtml</urlRex>
@@ -856,8 +722,8 @@
         	<pageMethod>get</pageMethod>
         	<pageEncoding>gb2312</pageEncoding>
         </page>
-    </webpage>
-     -->
+    </webpage> -->
+    
    <!--  <webpage>
         <seed>http://www.caas.net.cn/ky/kjpt/glzx/index.shtml</seed>
         <urlRex>http://www.caas.net.cn/ky/kjpt/glzx/[0-9]*.shtml</urlRex>
@@ -884,46 +750,20 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-    
-     <!-- <webpage>
-        <seed>http://www.chinaforage.com/guifanbiaozhun.htm</seed>
-        <urlRex>http://www.chinaforage.com/guifanbiaozhun/[a-zA-Z]*.htm</urlRex>
+
+<!--中国农业科学院网站  结束-->
+<!-- 国家农作物种质资源平台 开始-->
+    <webpage>
+        <seed>http://www.cgris.net/cgris%E5%9B%BD%E5%AE%B6%E7%A7%8D%E8%B4%A8%E5%9C%83.html</seed>
+        <urlRex>http://www.cgris.net/32pu/\w*.htm</urlRex>
         <tagList>
-            <tag1>//*[@id='table3']/tbody/tr/td/p[2]/b/span/text()</tag1>
-            <tag2>//*[@id='table3']/tbody/html()</tag2>
+            <tag1></tag1>
+            <tag2>/html/body/div/center/table/tbody/html()</tag2>
         </tagList>
         <img>
             <hasImg>true</hasImg>
-            <imgRegex>../[a-zA-Z]/.*.jpg</imgRegex>
-            <imgTag>//*[@id='table3']/tbody</imgTag>
-        </img>
-        <doc>
-            <hasDoc>false</hasDoc>
-            <docRegex></docRegex>
-            <docTag>//a</docTag>
-        </doc>
-        <page>
-        	<totalPage>1</totalPage>
-        	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag></pageGetTag>
-        	<pagePostTag></pagePostTag>
-        	<pageMethod>get</pageMethod>
-        	<pageEncoding>gb2312</pageEncoding>
-        </page>
-    </webpage> -->
-    
-    <!-- 部分抓不到title -->
-    <!-- <webpage>
-        <seed>http://www.chinaforage.com/yanjiujinzhan.htm</seed>
-        <urlRex>http://www.chinaforage.com/yanjiujinzhan/[a-zA-Z]*.htm</urlRex>
-        <tagList>
-            <tag1>//*[@id='table3']/tbody/tr/td/p[2]/b/span/text()/text()</tag1>
-            <tag2>//*[@id='table3']/tbody/html()</tag2>
-        </tagList>
-        <img>
-            <hasImg>true</hasImg>
-            <imgRegex>anli.files/image[0-9]*.jpg</imgRegex>
-            <imgTag>//*[@id='table3']/tbody</imgTag>
+            <imgRegex>(images/\w*.(jpg|gif|png))</imgRegex>
+            <imgTag>/html/body/div/center/table</imgTag>
         </img>
         <doc>
             <hasDoc>false</hasDoc>
@@ -939,14 +779,13 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage>
-     -->
-    
-    <!-- <webpage>
+     
+    <!--<webpage>
         <seed>http://www.cgris.net/xw/newsMore.asp</seed>
         <urlRex>http://www.cgris.net/xw/(\w*.\w*\?id=[0-9]*&amp;sp=1|\w*/.*.doc)</urlRex>
         <tagList>
-            <tag1>/html/body/table/tbody/tr[4]/td/table/tbody/tr[2]/td/font/strong/html()</tag1>
-            <tag2>/html/body/table/tbody/tr[4]/td/table/tbody</tag2>
+            <tag1>/html/body/table/tbody/tr[4]/td/table/tbody/tr[2]/td/font/strong/text()</tag1>
+            <tag2>/html/body/table/tbody/tr[4]/td/table/tbody/tr[4]/td/font/text()</tag2>
         </tagList>
         <img>
             <hasImg>true</hasImg>
@@ -967,20 +806,18 @@
         	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
-   
-<!-- 以上已经测试过网站 -->   
-   <!-- 云南植被 --> 
-  <!--    <webpage>
+
+    <webpage>
         <seed>http://www.cgris.net/YunnanFlower/default.htm</seed>
-        <urlRex>http://www.cgris.net/YunnanFlower/\w*.htm</urlRex>
+        <urlRex>(http://www.cgris.net/YunnanFlower/(\w)*(-)*(\w)*.htm)</urlRex>
         <tagList>
-            <tag1>/html/body/table[2]/tbody/tr/td/div[1]/text()</tag1>
-            <tag2>/html/body/table[2]/tbody/tr/td/div[2]/html()</tag2>
+            <tag1>/html/body/table[2]/tbody/tr/td/div[1]/center/table/tbody/tr/td/font/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/html()|/html/body/div[3]/html()</tag2>
         </tagList>
         <img>
             <hasImg>true</hasImg>
-            <imgRegex>flower/\w*.jpg</imgRegex>
-            <imgTag>/html/body/table[2]/tbody/tr/td/div[2]/center/table/tbody/img</imgTag>
+            <imgRegex>(flower/(\w)*(-|\w)*.(jpg|png))</imgRegex>
+            <imgTag>/html/body/table[2]/tbody</imgTag>
         </img>
         <doc>
             <hasDoc>false</hasDoc>
@@ -990,9 +827,1099 @@
         <page>
         	<totalPage>1</totalPage>
         	<pageAjaxTag></pageAjaxTag>
-        	<pageGetTag>/html/body/table[2]/tbody/tr/td/div[2]/center/table/tbody/tr[7]/td/font/a/@href</pageGetTag>
+        	<pageGetTag></pageGetTag>
         	<pagePostTag></pagePostTag>
         	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+   
+    <!--<webpage>
+        <seed>http://www.cgris.net/Ipgri/part1/grass/caoyuan.HTM</seed>
+        <urlRex>http://www.cgris.net/Ipgri/part1/grass/\w*.HTM</urlRex>
+        <tagList>
+            <tag1>//title/text()</tag1>
+            <tag2>/html/body/div/center/table/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>((../../image2/)*\w*.jpg)</imgRegex>
+            <imgTag>/html/body/div/center/table</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
         </page>
     </webpage> -->
+
+<!-- 国家农作物种质资源平台 结束-->
+
+<!-- 农博网 20页  -->
+     <webpage>
+        <seed>http://finance.aweb.com.cn/industry/news/index_1.html</seed>
+         <urlRex>http://finance.aweb.com.cn/[0-9]+/[0-9]+.shtml</urlRex>
+        <tagList>
+            <tag1>//div[@class='newList f_left']/h1/span/text()</tag1>
+            <tag2>//*[@id='content']/div[1]/p/outerHtml()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>20</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag>//a[@class='a_2']/@href</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+<!-- 可以换成get 请求  -->
+<!-- 中国茶网 开始 -->
+    <webpage>
+        <seed>http://www.tea.agri.cn/newscw/cyzhcw/</seed>
+        <urlRex>(\./[0-9]*/t[0-9]*_[0-9]*.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/text()</tag1>
+            <tag2>//div[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag>/html/body/div[2]/div[3]/div[2]/div[2]/a[12]</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+    
+    <!-- <webpage>
+        <seed>http://www.tea.agri.cn/newscw/jjxwcw/</seed>
+        <urlRex>(\./[0-9]*/t[0-9]*_[0-9]*.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/text()</tag1>
+            <tag2>//div[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page> 36
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag>/html/body/div[2]/div[3]/div[2]/div[2]/a[12]</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://www.tea.agri.cn/newscw/whxwcw/</seed>
+        <urlRex>(\./[0-9]*/t[0-9]*_[0-9]*.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/text()</tag1>
+            <tag2>//div[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>21
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag>/html/body/div[2]/div[3]/div[2]/div[2]/a[12]</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://www.tea.agri.cn/newscw/ppnewscw/</seed>
+        <urlRex>(\./[0-9]*/t[0-9]*_[0-9]*.htm)</urlRex>
+         <tagList>
+            <tag1>/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/text()</tag1>
+            <tag2>//div[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>10
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag>/html/body/div[2]/div[3]/div[2]/div[2]/a[12]</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!--<webpage>
+        <seed>http://www.tea.agri.cn/newscw/gjnewscw/</seed>
+        <urlRex>(\./[0-9]*/t[0-9]*_[0-9]*.htm)</urlRex>
+         <tagList>
+            <tag1>/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/text()</tag1>
+            <tag2>//div[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>9
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag>/html/body/div[2]/div[3]/div[2]/div[2]/a[12]</pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+<!-- 中国茶网结束 -->
+
+
+<!-- 中国林业网 知识产权 开始-->
+  	 <!-- <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D5%FE%B2%DF%B7%A8%B9%E6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+     <!--  <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%C1%EC%B5%BC%BD%B2%BB%B0&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+  
+     <!-- <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D6%B4%B7%A8%B1%A3%BB%A4&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+       <urlRex>http://www.cfip.cn:1012/page/secondbrw.cbs\?[a-zA-z]*=[a-zA*z]*&amp;[a-zA-Z]*=[0-9]*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=.*&amp;[a-zA-Z]*=[a-zA-Z]*</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+
+	 <!-- <webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%B6%AF%CC%AC%D0%C5%CF%A2&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <urlRex>../page/secondbrw.cbs\?resna=lyzs&amp;amp;order=[0-9]+&amp;amp;result=.*?&amp;amp;indexval=\+.*?&amp;amp;page=indexnext</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>16</totalPage>
+        	<pageAjaxTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[3]/input</pageAjaxTag>
+        	<pageGetTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[1]/input</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+     <!--<webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%D7%A8%CF%EE%B9%A4%D7%F7&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <urlRex>../page/secondbrw.cbs\?resna=lyzs&amp;amp;order=[0-9]+&amp;amp;result=.*?&amp;amp;indexval=\+.*?&amp;amp;page=indexnext</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[3]/input</pageAjaxTag>
+        	<pageGetTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[1]/input</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+     <!--<webpage>
+        <seed>http://www.cfip.cn:1012/page/fieldtitle2.cbs?resna=lyzs&amp;FieldNo=5&amp;f=%CA%D4%B5%E3%CA%BE%B7%B6&amp;field=%C0%B8%C4%BF&amp;fldtype=67</seed>
+        <urlRex>../page/secondbrw.cbs\?resna=lyzs&amp;amp;order=[0-9]+&amp;amp;result=.*?&amp;amp;indexval=\+.*?&amp;amp;page=indexnext</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[1]/td/font/b/text()</tag1>
+            <tag2>/html/body/table[2]/tbody/tr/td[1]/table/tbody/tr/td/table[2]/tbody/tr[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[3]/input</pageAjaxTag>
+        	<pageGetTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/center/table[3]/tbody/tr/td[3]/table/tbody/tr/td[1]/input</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+     <webpage>
+        <seed>http://www.cfip.cn:1012/page/recbrows.cbs?resna=sqpzsjk</seed>
+        <urlRex>../page/browseInfo.cbs\?resna=sqpzsjk&amp;amp;no=[0-9]*&amp;amp;order=[0-9]*&amp;amp;page=recbrows</urlRex>
+        <tagList>
+            <tag1>//*[@id='layout']/font/a/text()</tag1>
+            <tag2>//*[@id='mycontext']/table/tbody/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\b/file/(\w)*/(\w)*.(jpg|png))</imgRegex>
+            <imgTag>//*[@id='mycontext']/table</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/table[5]/tbody/tr/td[3]/table/tbody/tr/td[3]/input</pageAjaxTag>
+        	<pageGetTag>/html/body/table[2]/tbody/tr/td[2]/div/table/tbody/tr/td/table[5]/tbody/tr/td[3]/table/tbody/tr/td[1]/input</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>ajax</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+<!-- 中国林业知识产权 结束-->
+
+ <!--   实际抓取的是 http://crop.agridata.cn/ch_newsFrm.asp -->
+ 
+      <webpage>
+		<seed>http://icscaas.com.cn/sites/ICS/List_17968_72992.html</seed>
+        <urlRex>http://icscaas.com.cn/Html/.*.html</urlRex>
+        <tagList>
+            <tag1>//*[@id='lb16649']/table/tbody/tr/td/strong/font/p[1]/font/font/strong/font/text()</tag1>
+            <tag2>//*[@id='lb16649']/table/tbody/tr/td/div/font/gcmssplit/div/table/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+   
+<!--中国牧草种子资源信息网   开始-->
+
+	  <webpage>
+        <seed>http://www.chinaforage.com/guifanbiaozhun.htm</seed>
+        <urlRex>http://www.chinaforage.com/guifanbiaozhun/[a-zA-Z]*.htm</urlRex>
+        <tagList>
+            <tag1>//*[@id='table3']/tbody/tr/td/p[2]/b/span/text()</tag1>
+            <tag2>//*[@id='table3']/tbody/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>\.\./[a-zA-Z]+/.*.jpg</imgRegex>
+            <imgTag>//*[@id='table3']/tbody</imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://www.chinaforage.com/\W*.(doc|docx|xls|xlsx))</docRegex>
+            <docTag>//a/@href</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+    
+     <!--  <webpage>
+        <seed>http://www.chinaforage.com/yanjiujinzhan.htm</seed>
+        <urlRex>http://www.chinaforage.com/yanjiujinzhan/[a-zA-Z]+.htm</urlRex>
+        <tagList>
+            <tag1></tag1>
+            <tag2>//*[@id='table3']/tbody/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>anli.files/image[0-9]*.jpg</imgRegex>
+            <imgTag>//*[@id='table3']/tbody</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>1</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+<!--中国牧草种子资源信息网   结束-->
+   
+
+<!-- http://rdjc.lknet.ac.cn/list.php 中国林业信息网 开始-->
+    <!-- 不太方便。直接通过循环来添加到listPorcess-->
+     <!-- <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=114</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>299
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>  -->
+    
+    <!-- <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=111</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>5176
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=233</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>50
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=115</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{6,7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>41</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+    <!-- <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=113</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>3298
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+
+    <!--http://rdjc.lknet.ac.cn/list.php 等同于  http://rdjc.lknet.ac.cn/list.php?colid=  -->
+     <webpage>
+        <seed>http://rdjc.lknet.ac.cn/list.php?colid=</seed>
+        <urlRex>(http://rdjc.lknet.ac.cn/content.php\?id=[0-9]{7})</urlRex>
+        <tagList>
+            <tag1>/html/body/div/div[6]/div/div[2]/text()</tag1>
+            <tag2>//div[@class='linye_tt_article']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex></imgRegex>
+            <imgTag></imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page><!-- 3298 -->
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    <!-- http://rdjc.lknet.ac.cn/list.php 中国林业信息网 结束-->
+
+<!-- 中国农业信息网开始 -->
+     <webpage>
+        <seed>http://www.agri.cn/V20/ZX/nyyw/</seed>
+        <urlRex>(http://www.agri.cn/V20/ZX/nyyw/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/table[3]/tbody/tr/td[1]/table[2]/tbody/tr/td/table[4]/tbody/tr[1]/td/text()</tag1>
+            <tag2>//*[@id='nr']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page><!-- 34 -->
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag>//span[@id='next']/a/@href</pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+<!-- 中国农业信息网结束-->
+   
+<!-- http://catf.agri.cn/  开始 -->
+     <webpage>
+        <seed>http://catf.agri.cn/gzdt/</seed>
+        <urlRex>(http://catf.agri.cn/gzdt/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+        <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page><!-- 33 -->
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+    <webpage>
+        <seed>http://catf.agri.cn/tzgg/</seed>
+        <urlRex>(http://catf.agri.cn/tzgg/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+        <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://catf.agri.cn/tzgg/[0-9]+/\w+.(doc|docx|xls|pdf))</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>13
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+    <!-- <webpage>
+        <seed>http://catf.agri.cn/tqhd/</seed>
+        <urlRex>(http://catf.agri.cn/tqhd/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+         <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>http://catf.agri.cn/tqhd/[0-9]+/\w+.doc</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+        	<totalPage>3</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+<!-- http://catf.agri.cn/  结束-->
+
+
+<!--http://cxpt.agri.gov.cn/ 开始 -->
+   	<!--  <webpage>
+        <seed>http://cxpt.agri.gov.cn/gzdt/</seed>
+        <urlRex>(http://cxpt.agri.gov.cn/gzdt/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+         <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[4]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex>http://catf.agri.cn/tqhd/[0-9]+/\w+.doc</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>41
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://cxpt.agri.gov.cn/zxgz/</seed>
+        <urlRex>(http://cxpt.agri.gov.cn/zxgz/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+         <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[4]/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex>http://catf.agri.cn/tqhd/[0-9]+/\w+.doc</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>41
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <webpage>
+        <seed>http://cxpt.agri.gov.cn/mtbd/nmrb/</seed>
+        <urlRex>(http://cxpt.agri.gov.cn/mtbd/nmrb/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+         <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table[4]/html()</tag2>
+        </tagList>
+        <img>     
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>
+        	<totalPage>33</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+<!-- http://cxpt.agri.gov.cn/ 结束  --> 
+
+<!-- http://www.moa.gov.cn/ztzl/cxzl/zhtg/  开始 -->
+
+	<!-- <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/zhtg/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/zhtg/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>
+        	<totalPage>31</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/hdyw/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/hdyw/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(http://szb.farmer.com.cn/nmrb/images/[0-9]+-[0-9]+/[0-9]+/[0-9]+/\w+_\w+.jpg)</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>
+        	<totalPage>13</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+  
+     <!-- <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/cxzh/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/cxzh/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>31
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/dqzh/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/dqzh/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>31
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    <!-- <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/wlcg/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/wlcg/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>31
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+    
+    
+    <!-- <webpage>
+        <seed>http://www.moa.gov.cn/ztzl/cxzl/hdcg/</seed>
+        <urlRex>(http://www.moa.gov.cn/ztzl/cxzl/hdcg/[0-9]+/t[0-9]+_[0-9]+.html)</urlRex>
+         <tagList>
+            <tag1>/html/body/table[2]/tbody/tr/td[2]/table[2]/tbody/tr/td/strong/text()</tag1>
+            <tag2>//*[@id='TRS_AUTOADD']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>false</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//p/img</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>31
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage> -->
+   
+<!-- http://www.moa.gov.cn 结束  -->    
+    
+<!-- http://pfscnew.agri.gov.cn 开始 -->    
+    <webpage>
+        <seed>http://pfscnew.agri.gov.cn/scdt/</seed>
+        <urlRex>(http://pfscnew.agri.gov.cn/scdt/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr/td/table[1]/tbody/tr[1]/td/h3/text()</tag1>
+            <tag2>//div[@class='Custom_UnionStyle']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//img/@src</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page><!-- 31 -->
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+    
+     <webpage>
+        <seed>http://pfscnew.agri.gov.cn/fxbg/</seed>
+        <urlRex>(http://pfscnew.agri.gov.cn/fxbg/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+       <tagList>
+            <tag1>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr/td/table[1]/tbody/tr[1]/td/h3/text()</tag1>
+            <tag2>//div[@class='Custom_UnionStyle']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//img/@src</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex></docRegex>
+            <docTag></docTag>
+        </doc>
+        <page>
+        	<totalPage>4</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+<!-- 已测试 -->
+     <webpage>
+        <seed>http://pfscnew.agri.gov.cn/ggb/</seed>
+        <urlRex>(http://pfscnew.agri.gov.cn/ggb/[0-9]+/t[0-9]+_[0-9]+.htm)</urlRex>
+        <tagList>
+            <tag1>/html/body/table[2]/tbody/tr[2]/td/table/tbody/tr/td/table[1]/tbody/tr[1]/td/h3/text()</tag1>
+            <tag2>//div[@class='Custom_UnionStyle']/html()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>(\./\w+.(jpg|png))</imgRegex>
+            <imgTag>//img/@src</imgTag>
+        </img>
+        <doc>
+            <hasDoc>true</hasDoc>
+            <docRegex>(http://pfscnew.agri.gov.cn/ggb/[0-9]+/\w+.(docx|doc|xls|xlsx))</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page><!-- 4 -->
+        	<totalPage>2</totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>gb2312</pageEncoding>
+        </page>
+    </webpage>
+<!-- http://pfscnew.agri.gov.cn 结束 -->      
+    
 </webList>
