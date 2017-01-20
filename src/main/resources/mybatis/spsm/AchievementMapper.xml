@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AchievementMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		SPSM_ACHIEVEMENT
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		TITLE,	
+		COMPLETE_ORG,	
+		COMPLETE_PER,	
+		ENCOURAGEMENT_CLASS,	
+		ENCOURAGEMENT_GRADE,	
+		ENCOURAGEMENT_DATE,	
+		ENCOURAGEMENT_LEVEL,	
+		DESCRIPTION,	
+		ORGANIZATION_NAME,	
+		ORGANIZATION_ADDRESS,	
+		ORGANIZATION_POSTCODE,	
+		ORGANIZATION_PHONE,	
+		ORGANIZATION_LINKMAN,	
+		SOURCE,	
+		DATA_PUBLIC_NAME,	
+		DATA_PUBLIC_DATE,	
+		KEYWORDS,	
+		IDENTIFY_DATE,	
+		IDENTIFY_ORG,	
+		REGISTRATION_MARK,	
+		PUBLIC_ORGANIZATION,	
+		PUBLIC_DATE,	
+		CREATE_TIME,	
+		HIT,	
+		ACHIEVEMENT_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{TITLE},	
+		#{COMPLETE_ORG},	
+		#{COMPLETE_PER},	
+		#{ENCOURAGEMENT_CLASS},	
+		#{ENCOURAGEMENT_GRADE},	
+		#{ENCOURAGEMENT_DATE},	
+		#{ENCOURAGEMENT_LEVEL},	
+		#{DESCRIPTION},	
+		#{ORGANIZATION_NAME},	
+		#{ORGANIZATION_ADDRESS},	
+		#{ORGANIZATION_POSTCODE},	
+		#{ORGANIZATION_PHONE},	
+		#{ORGANIZATION_LINKMAN},	
+		#{SOURCE},	
+		#{DATA_PUBLIC_NAME},	
+		#{DATA_PUBLIC_DATE},	
+		#{KEYWORDS},	
+		#{IDENTIFY_DATE},	
+		#{IDENTIFY_ORG},	
+		#{REGISTRATION_MARK},	
+		#{PUBLIC_ORGANIZATION},	
+		#{PUBLIC_DATE},	
+		#{CREATE_TIME},	
+		#{HIT},	
+		#{ACHIEVEMENT_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ACHIEVEMENT_ID = #{ACHIEVEMENT_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			TITLE = #{TITLE},
+			COMPLETE_ORG = #{COMPLETE_ORG},
+			COMPLETE_PER = #{COMPLETE_PER},
+			ENCOURAGEMENT_CLASS = #{ENCOURAGEMENT_CLASS},
+			ENCOURAGEMENT_GRADE = #{ENCOURAGEMENT_GRADE},
+			ENCOURAGEMENT_DATE = #{ENCOURAGEMENT_DATE},
+			ENCOURAGEMENT_LEVEL = #{ENCOURAGEMENT_LEVEL},
+			DESCRIPTION = #{DESCRIPTION},
+			ORGANIZATION_NAME = #{ORGANIZATION_NAME},
+			ORGANIZATION_ADDRESS = #{ORGANIZATION_ADDRESS},
+			ORGANIZATION_POSTCODE = #{ORGANIZATION_POSTCODE},
+			ORGANIZATION_PHONE = #{ORGANIZATION_PHONE},
+			ORGANIZATION_LINKMAN = #{ORGANIZATION_LINKMAN},
+			SOURCE = #{SOURCE},
+			DATA_PUBLIC_NAME = #{DATA_PUBLIC_NAME},
+			DATA_PUBLIC_DATE = #{DATA_PUBLIC_DATE},
+			KEYWORDS = #{KEYWORDS},
+			IDENTIFY_DATE = #{IDENTIFY_DATE},
+			IDENTIFY_ORG = #{IDENTIFY_ORG},
+			REGISTRATION_MARK = #{REGISTRATION_MARK},
+			PUBLIC_ORGANIZATION = #{PUBLIC_ORGANIZATION},
+			PUBLIC_DATE = #{PUBLIC_DATE},
+			CREATE_TIME = #{CREATE_TIME},
+			HIT = #{HIT},
+		ACHIEVEMENT_ID = ACHIEVEMENT_ID
+		where 
+		ACHIEVEMENT_ID = #{ACHIEVEMENT_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			ACHIEVEMENT_ID = #{ACHIEVEMENT_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 1=1
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ACHIEVEMENT_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>

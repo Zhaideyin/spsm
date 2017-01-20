@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -43,19 +42,14 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 	 * 构造方法 （用于默认爬取时使用）
 	 * 
 	 * @param path
-	 * @param annexNameList
-	 * @param pageUrl
-	 * @param seedUrl
 	 */
-	public ImgOrDocPipeline(String path, List<String> annexNameList, String pageUrl, String seedUrl) {
+	
+	public ImgOrDocPipeline(String path){
 		setPath(path);
-		this.annexNameList = annexNameList;
 		annexurlService = (AnnexUrlManager) SpringBeanFactoryUtils.getBean("annexurlService");
 		targeturlService = (TargetUrlManager) SpringBeanFactoryUtils.getBean("targeturlService");
 		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
-		this.seedUrl = seedUrl;
 	}
-
 	/**
 	 * 构造方法 （用于重爬时使用）
 	 * 
@@ -99,58 +93,41 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 					.setConnectionRequestTimeout(5000).setStaleConnectionCheckEnabled(true).build();
 			CloseableHttpClient httpclient = HttpClients.custom().setDefaultRequestConfig(defaultRequestConfig).build();
 
-			for (Map.Entry<String, Object> entry : resultItems.getAll().entrySet()) {
-				// entry.getValue()是保存的所有链接的集合。包括获取的title.
-				if (entry.getValue() instanceof List) {
-					// 取得所有的链接。
-					List listOne = (List) entry.getValue();
-					List<String> list = new ArrayList<String>();
+			List<String> annexUrlList =resultItems.get("annexUrlList");
+			List<String> annexFileNameList =resultItems.get("annexFileNameList");
+			String pageUrl =resultItems.get("pageUrl");
+			StringBuffer sb = new StringBuffer();
+			StringBuffer imgFileNameNewYuan = sb.append(path); // 此处提取文件夹名，即之前采集的标题名
 
-					for (int i = 0; i < listOne.size(); i++) {
-						list.add((String) listOne.get(i));
-					}
-					// list.get(0)是title 所以不是链接。如果从零开始要报错。
-					for (int i = 1; i < list.size(); i++) {
-						System.out.println("listSize():" + list.size());
-						StringBuffer sb = new StringBuffer();
-						StringBuffer imgFileNameNewYuan = sb.append(path); // 此处提取文件夹名，即之前采集的标题名
-
-						// 这里先判断文件夹名是否存在，不存在则建立相应文件夹
-						File fp = new File(imgFileNameNewYuan.toString());
-						if (!fp.exists()) {
-							fp.mkdirs();
-						}
-						// 这里通过httpclient下载之前抓取到的图片网址，并放在对应的文件中
-						// 取得的连接中地址符号表示为 &amp;在网页中不需要amp;所以取出链接并且将连接中的amp：
-						// 去掉得到网页正的url.
-						String url = list.get(i).trim();
-						HttpGet httpget = new HttpGet(url);
-						HttpResponse response = httpclient.execute(httpget);
-						HttpEntity entity = response.getEntity();
-						InputStream in = entity.getContent();
-						File file = new File(path + annexNameList.get(i - 1).toString());
-						// 下载附件
-						downAnnex(file, url, in);
-					}
-				} else {
-					System.out.println(entry.getKey() + ":\t" + entry.getValue());
-				}
+			// 这里先判断文件夹名是否存在，不存在则建立相应文件夹
+			File fp = new File(imgFileNameNewYuan.toString());
+			if (!fp.exists()) {
+				fp.mkdirs();
+			}
+			for(int i=0;i<annexUrlList.size();i++){
+				String url = annexUrlList.get(i).trim();
+				System.out.println("pageUrl :"+pageUrl +"imgordocpipeline:"+i+"   "+url);
+				HttpGet httpget = new HttpGet(url);
+				HttpResponse response = httpclient.execute(httpget);
+				HttpEntity entity = response.getEntity();
+				InputStream in = entity.getContent();
+				File file = new File(annexFileNameList.get(i).toString());
+				// 下载附件
+				downAnnex(file, url, in);
+				
 			}
 			httpclient.close();
-
-			/*// 如果附件下载完成并且网页下载完成则设置该网页爬取完成
-			if(annexUtil.seedUrlDone(seedUrl, targeturlService, seedurlService, annexurlService)){
-				annexUtil.updateSeedStatus(seedUrl, seedurlService);
-			}*/
+			
 		} catch (IOException e) {
 			logger.warn("write file error", e);
 		}
-	}
-
+	}		
+			
+	
 	/**
 	 * 未下载的附件重新下载附件
 	 */
-	public void reDownloadAnnex() {
+	/*public void reDownloadAnnex() {
 		RequestConfig defaultRequestConfig = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000)
 				.setConnectionRequestTimeout(5000).setStaleConnectionCheckEnabled(true).build();
 		CloseableHttpClient httpclient = HttpClients.custom().setDefaultRequestConfig(defaultRequestConfig).build();
@@ -174,15 +151,11 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 
 			}
 			httpclient.close();
-			// 如果附件下载完成并且网页下载完成则设置该网页爬取完成
-			/*if(annexUtil.seedUrlDone(seedUrl, targeturlService, seedurlService, annexurlService)){
-				annexUtil.updateSeedStatus(seedUrl, seedurlService);
-			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	/**
 	 * 下载附件
@@ -243,7 +216,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 							listPd.get(i).put("STATUS", "1");
 							
 							listPd.get(i).put("UPDATETIME", sdf.format(new Date()));
-							// 等下载完成， 更新数据库中的状态
+							 //等下载完成， 更新数据库中的状态
 							annexurlService.edit(listPd.get(i));
 							break;
 						}

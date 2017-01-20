@@ -4,651 +4,478 @@
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>成果展示</title>
+    <link href="../css/Achievement.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }
-        a{     text-decoration:none;}
-        .head a {
-            color: #ffffff;
-            text-decoration:none;
-        }
-        .content_top a{
-            color: #ffffff;
-            text-decoration:none;
-        }
-        .content_main-left-list a{
-            text-decoration:none;
-        }
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 60px;
-        }
-        .head p{
-            color: #ffffff;
-        }  .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-            margin-left:10%;;
-            float: left;
-        }  .first{
-
-            float: left;
-            margin-top:15px;
-        }  .second{
-
-            float: left;
-            margin-top:15px;
-
-        }  .third{
-
-            margin-top:15px;
-            float: left;
-        }  .fourth{
-
-            float: left;
-            margin-top:15px;
-
-        }
-        .main{
-            width: 100%;
-            overflow: hidden;
-            height: auto;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 120px;
-            margin-top: -10px;
-        }
-        .top p{
-            position: relative;
-            left: 10%;
-
-        }
-        .content_top{
-            width: 100%;
-            background-color: #0f4850;
-            height: 35px;
-        }
-        .foot{
-            clear: both;
-            margin-top: 30px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }  .footLogo{
-               background-image: url("../img/foot.png");
-               float: left;
-               margin-left:10%;
-               margin-top:10px;
-               height: 57px;
-               width: 58px;
-           }  .footText{
-                  float: left;
-                  margin-top:10px;
-                  height: 57px;
-              }  .footText b{
-                     color: #ffffff;
-                 }
-       .topSecond{
-            color: #ffffff;
-        }
-
-        .topSecond{
-            font-size: 30px;
-            top:15px;
-        }
-
-        .content{
-
-            position: relative ;
-            top:-60px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_main{overflow: hidden;height: auto;
-        }
-        .content_top{
-            padding: 5px 0px 0px 10px;
-            width: 99%;
-        }
-        .content_title {
-            width: 99.7%;
-
-            background-color: #106470;
-        }
-        .content_title h2{
-            color: #ffffff;
-            padding-left: 30px;
-            padding-top: 5px;
-            padding-bottom: 10px;
-        }
-        .content_main_left{
-
-            width: 20%;
-            float: left;
-            background-color: #f2f2f2;
-
-        }
-        .content_main_right{
-            width: 78%;
-            float: left;
-            padding-top: 20px;
-            padding-left: 2%;
-            overflow: hidden;
-            height: auto;
-        }
-        .content_main-left-list_container{
-            border: solid 1px;
-            border-color: #4e6064;
-            padding-bottom: 15px;
-        }  .content_main-left-list{
-            width: 79%;
-           overflow: hidden;
-            padding:20px 0px 0px 10px;
-            border-bottom: solid 1px;
-            border-color: #586c70;
-            margin-left: 7%;
-        }
-        .content_main-left-list-title{
-            float: left;
-            margin-left: 5px;
+        .content_main_right_list_content {
+            border: solid 0.5px #dddddd;
+            padding: 10px;
             margin-top: 10px;
         }
-        .content_main-left-list-logo{ float: left;}
-        .content_main-left-list-down {
-            width: 79%;
-            padding: 10px 0px 10px 10px;
-            border-right: solid 1px;
-            border-left: solid 1px;
-            border-bottom: solid 1px;
-            border-color: #586c70;
-            margin-left: 7%;
-            display:none;
-        }  .content_main-left-list-down span{
-            font-size: 10px;
-            color: #007aff;
-            line-height: 25px;
-        }  .content_main-left-list-title{
+
+        .content_main_right_box_title {
+            background: url("../img/index19.png") no-repeat;
+            margin-bottom: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .content_main_right_first_search {
             float: left;
-        }  .content_main-left-list-img{
+            margin-left: 150px;
+        }
+
+        .content_main_right_box_title span {
+            font-size: 18px;
+            padding-left: 23px;
+            color: #109171;
+            display: block;
+            float: left;
+        }
+
+        .content_main_right_list {
+            border-bottom: dashed 1px rgba(49, 49, 49, 0.33);
+            overflow: hidden;
+            height: auto;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .content_main_right_list_left {
+            float: left;
+            width: 48%;
+        }
+
+        .content_main_right_list_right {
+            float: left;
+            width: 48%;
+            margin-left: 3%;
+        }
+
+        .content_main_right_list_img {
+            float: left;
+            width: 30%;
+        }
+
+        .content_main_right_list_text {
+            float: left;
+            width: 68%;
+            margin-left: 2%
+        }
+
+        .content_main_right_list_text_head {
+            padding: 5px;
+        }
+
+        .content_main_right_list_text_content {
+            padding: 5px;
+        }
+
+        .content_main_right_list_text_end {
+            overflow: hidden;
+            height: auto;
+        }
+
+        .content_main_right_list_text_end {
+            padding-left: 7px;
+            padding-right: 15px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .content_main_right_list_text_end_left {
+            float: left;
+        }
+
+        .content_main_right_list_text_end_right {
             float: right;
         }
-        .content_main_right_list{ border-bottom: dashed 1px rgba(49, 49, 49, 0.33); overflow: hidden;height: auto;padding-bottom: 20px; padding-top: 20px;}  .content_main_right_list_left{ float: left; width: 48%;}  .content_main_right_list_right{ float: left;width: 48%;margin-left: 3%;}
-        .content_main_right_list_img{  float:left;width: 30%; }  .content_main_right_list_text{ float:left;width:68%; margin-left: 2%}
-        .content_main_right_list_text_head{padding: 5px;} .content_main_right_list_text_content{ padding: 5px;} .content_main_right_list_text_end{ overflow: hidden;height: auto;}
-        .content_main_right_list_text_end{padding-left: 7px;padding-right: 15px; font-size: 14px;margin-top: 15px;} .content_main_right_list_text_end_left{ float: left;}   .content_main_right_list_text_end_right{ float: right;}
+
+        .nav6 {
+            background: #109171
+        }
+
+        .table {
+            width: 100%;
+            border: 1px solid #e9e9e9;
+        }
+
+        tr {
+            height: 30px;
+        }
+
+        td {
+            text-align: center;
+            border-bottom: 0.5px solid #dddddd;
+            border-right: 0.5px solid #dddddd;
+        }
+
     </style>
-    <script src="../jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".down").click(function(){
-                $(".content_main-left-list-down").slideToggle("slow");
-            });
-        });
-    </script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+
 </head>
 <body>
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo">
+            </div>
+            <div class="first">
+                <p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="second">
+                <p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="third">
+                <p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="fourth">
+                <p><a href="breedProfessor.html"> 育种专家数据库</a></p>
+            </div>
         </div>
     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">成果展示</p>
-        </div>
+
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html">首页</a>&nbsp; &nbsp; &nbsp;    <a href="AchievementShow.html">成果展示</a>
-                    &nbsp; &nbsp; &nbsp;    <a href="AgencyService.html">机构服务</a> &nbsp; &nbsp; &nbsp;   <a href="cooperation.html">产学研合作</a> </b></p>
-            </div>
-            <div class="content_title">
-                <h2>成果推介</h2>
+                <div class="nav0">
+                    <a href="index.html">首页</a>
+                </div>
+                <div class="nav1 nav"><a href="hotSportOfBreed.html">前沿育种研究</a></div>
+                <div class="nav2 nav"><a href="breedKnowledge.html">育种知识服务</a></div>
+                <div class="nav3 nav"><a href="breedIndustryNews.html">行业资讯</a></div>
+                <div class="nav4 nav"><a href="BreedDictionary.html">品种导航</a></div>
+                <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>
+                <div class="nav6 nav"><a href="AchievementShow.html">成果展示</a></div>
+                <div class="nav7 nav"><a href="AgencyService.html">机构服务</a></div>
+                <div class="nav8 nav"><a href="cooperation.html">产学研合作</a></div>
+                <div class="nav9 nav"><a href="professors.html">育种专家</a></div>
+                <div class="nav10 nav"><a href="professorNews.html">人物动态</a></div>
+
             </div>
             <div class="content_main">
                 <div class="content_main_left">
-
-
-                    <div class="content_main-left-list_container">
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/生成采集成果.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <a href="AchievementShow.html" style="color: #0a0903;"><h5>成果推介 </h5> </a>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <a href="AchievementShow.html"><img src="../img/right.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
-                            </div>
-                        </div>
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/专利.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <a href="patent.html" style="color: #0a0903;"><h5>专利推介</h5></a>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <a href="patent.html" ><img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"></a>
-                            </div>
-                        </div>
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/视频.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <a href="vedio.html" style="color: #0a0903;"><h5>视频图文展示</h5></a>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <a href="vedio.html" > <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"> </a>
-                            </div>
-                        </div>
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/种植技术3图标.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                              <h5>实用技术指导</h5>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <img class="down" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
-                            </div>
-                        </div>
-                        <div class="content_main-left-list-down">
-                                <span>
-                            <a href="plantingTechnology.html" style="color: #0a0903;">种植技术指导</a></span><br>
-                               <span> <a href="breedingTechnology.html" style="color: #0a0903;">养殖技术</a></span>
+                    <div class="content_main_left_term">
+                        <div class="dataBaseTitle">
+                            <span><a href="breedAchievement.html " style="color: #12525e;">成果推广数据库</a></span>
                         </div>
 
                     </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title">
+                            <span> 成果展示</span>
+                        </div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/成果.png" style="width: 40px;height: 40px;"><span><a
+                                    href="AchievementShow.html" style="color: #0f4850;">成果推介</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/专利 (1).png"
+                                     style="width: 40px;height: 40px;"><span><a href="patent.html"
+                                                                                style="color: #0f4850;">专利推介</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/视频 (1).png" style="width: 40px;height: 40px;"><span> <a
+                                    href="vedio.html" style="color: #0f4850;">视频图文展示</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/种植技术.png" style="width: 40px;height: 40px;"><span><a
+                                    href="TechnologyGuide.html" style="color: #0f4850;">实用技术指导</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title">
+                            <span> 机构服务</span>
+                        </div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/04学校管理 (1).png"
+                                     style="width: 40px;height: 40px;"><span><a href="AgencyService.html"
+                                                                                style="color: #0f4850;">科研院校</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/5.中介机构  灰色 (1).png"
+                                     style="width: 40px;height: 40px;"><span><a href="intermediaryAgencies.html"
+                                                                                style="color: #0f4850;">中介机构</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/企业 (1).png"
+                                     style="width: 40px;height: 40px;"><span><a href="AgriculturalEnterprise.html"
+                                                                                style="color: #0f4850;">涉农企业</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/平台 (1).png"
+                                     style="width: 40px;height: 40px;"><span><a href="ResearchPlatform.html"
+                                                                                style="color: #0f4850;">科研平台</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title">
+                            <span> 产学研合作</span>
+                        </div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list1">
+                                <a href="cooperation.html"> <img src="../img/canxueyan.jpg"
+                                                                 style="width: 100%;height: 60px;"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title">
+                            <span>相关链接</span>
+                        </div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="http://www.zgny.com.cn/ifm/tech/Nyjs6List.shtml">
+                                    <img src="../img/zgny.png" style="width: 100%;height: 60px;">
+                                </a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="http://www.worldfood.com.cn/index.shtml">
+                                    <img src="../img/worldfood.png" style="width: 100%;height: 60px;">
+                                </a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="http://www.cgris.net/default.asp">
+                                    <img src="../img/chineseCrops.png" style="width: 100%;height: 60px;">
+                                </a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="http://www.tea.agri.cn/jspd/kycg/">
+                                    <img src="../img/chinatea.png" style="width: 100%;height: 60px;">
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="content_main_right">
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                             <img src="../img/W020160511341541604212.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>安徽农业大学专家揭“苦茶”之谜</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>常言道“不苦不涩不成茶”，茶叶的苦涩味主要来源于多酚类物质，
-                                        掌握多酚类物质的形成机理，就</p>
-                                </div>
-                              <div class="content_main_right_list_text_end">
-                                  <div class="content_main_right_list_text_end_left">
-                                      <span>2016-05-11</span>
-                                  </div>
-                                  <div class="content_main_right_list_text_end_right">
-                                     <a href="BARROLdetails9.html"> <span>查看详情>></span></a>
-                                  </div>
-                              </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020151015380987717614.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>黑茶新产品“酸茶”面市 获2项国家发明专利</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>这种以天然有机生态茶树鲜叶为原料，借助现代生物技术发酵而成的具有抗癌功效的养生茶一经推</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-10-15</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails12.html"><span>查看详情>></span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    <div class="content_main_right_title">
+                        <span class="content_main_rightTitle">成果推介</span><span class="position">首页&nbsp;>&nbsp;成果推广数据库&nbsp;>&nbsp;成果展示&nbsp;>&nbsp;成果推介</span>
                     </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020150708583652242999.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>黎平引种“中茶108”成功</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>据了解，“中茶108”由中国农业科学院茶叶研究所用“龙井43号”茶树品种作为母体通过辐射育</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-07-08</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails14.html"><span>查看详情>></span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020151028570613419312.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>永安天宝岩茶业获福建三明首个茶业国家...</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>近日，国家知识产权局授权公告了我市永安天宝岩茶业发展有限公司的“一种茶叶的加工工艺”发明</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-10-28</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails11.html"><span>查看详情>></span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                    <div class="content_main_right_box_title">
+                        <span><a href="AchievementShowImg.html" style="color: #109171;">成果展示</a></span>
                     </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020151009373849372387.png" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>13年攻关育出有机抗寒茶 极端耐寒温度可...</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>冬天寒冷的天气有时候会将茶叶冻坏，但是青岛农业大学茶叶研究所丁兆堂博士却研究出一种“抗寒</p>
+                    <div class="content_main_right_list_content">
+                        <div class="content_main_right_list">
+                            <div class="content_main_right_list_left">
+                                <div class="content_main_right_list_img">
+                                    <img src="../img/W020160511341541604212.jpg" style="width:100%;height: 115px;">
                                 </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                     <span>2015-10-09</span>
+                                <div class="content_main_right_list_text">
+                                    <div class="content_main_right_list_text_head"><h5>安徽农业大学专家揭“苦茶”之谜</h5></div>
+                                    <div class="content_main_right_list_text_content">
+                                        <p>常言道“不苦不涩不成茶”，茶叶的苦涩味主要来源于多酚类物质，
+                                            掌握多酚类物质的形成机理，就</p>
                                     </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails13.html"><span>查看详情>></span></a>
+                                    <div class="content_main_right_list_text_end">
+                                        <div class="content_main_right_list_text_end_left">
+                                            <span>2016-05-11</span>
+                                        </div>
+                                        <div class="content_main_right_list_text_end_right">
+                                            <a href="BARROLdetails9.html"> <span>查看详情>></span></a>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
+                            <div class="content_main_right_list_right">
+                                <div class="content_main_right_list_img">
+                                    <img src="../img/W020151015380987717614.jpg" style="width:100%;height: 115px;">
+                                </div>
+                                <div class="content_main_right_list_text">
+                                    <div class="content_main_right_list_text_head"><h5>黑茶新产品“酸茶”面市 获2项国家发明专利</h5></div>
+                                    <div class="content_main_right_list_text_content">
+                                        <p>这种以天然有机生态茶树鲜叶为原料，借助现代生物技术发酵而成的具有抗癌功效的养生茶一经推</p>
+                                    </div>
+                                    <div class="content_main_right_list_text_end">
+                                        <div class="content_main_right_list_text_end_left">
+                                            <span>2015-10-15</span>
+                                        </div>
+                                        <div class="content_main_right_list_text_end_right">
+                                            <a href="BARROLdetails12.html"><span>查看详情>></span></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020150521407778956804.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>七旬老人试制成功高端黄茶 获国家专利谜</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>国家知识产权局专利证书上对郭宏坤的黄茶制作工艺评价称：“形美质优、芽色黄褐一致、汤色黄亮</p>
+                        <div class="content_main_right_list">
+                            <div class="content_main_right_list_left">
+                                <div class="content_main_right_list_img">
+                                    <img src="../img/W020150708583652242999.jpg" style="width:100%;height: 115px;">
                                 </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-05-21</span>
+                                <div class="content_main_right_list_text">
+                                    <div class="content_main_right_list_text_head"><h5>黎平引种“中茶108”成功</h5></div>
+                                    <div class="content_main_right_list_text_content">
+                                        <p>据了解，“中茶108”由中国农业科学院茶叶研究所用“龙井43号”茶树品种作为母体通过辐射育</p>
                                     </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails15.html"><span>查看详情>></span></a>
+                                    <div class="content_main_right_list_text_end">
+                                        <div class="content_main_right_list_text_end_left">
+                                            <span>2015-07-08</span>
+                                        </div>
+                                        <div class="content_main_right_list_text_end_right">
+                                            <a href="BARROLdetails14.html"><span>查看详情>></span></a>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
+                            <div class="content_main_right_list_right">
+                                <div class="content_main_right_list_img">
+                                    <img src="../img/W020151028570613419312.jpg" style="width:100%;height: 115px;">
+                                </div>
+                                <div class="content_main_right_list_text">
+                                    <div class="content_main_right_list_text_head"><h5>永安天宝岩茶业获福建三明首个茶业国家...</h5></div>
+                                    <div class="content_main_right_list_text_content">
+                                        <p>近日，国家知识产权局授权公告了我市永安天宝岩茶业发展有限公司的“一种茶叶的加工工艺”发明</p>
+                                    </div>
+                                    <div class="content_main_right_list_text_end">
+                                        <div class="content_main_right_list_text_end_left">
+                                            <span>2015-10-28</span>
+                                        </div>
+                                        <div class="content_main_right_list_text_end_right">
+                                            <a href="BARROLdetails11.html"><span>查看详情>></span></a>
+                                        </div>
+                                    </div>
 
-                    </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805603300893864.jpg" style="width:100%;height: 115px;">
+                                </div>
                             </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>苦瓜强雌系优异种质创制与赣苦瓜1、2、3...</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>该项目针对苦瓜杂种优势利用关键技术及苦瓜生产上品种早熟性差、果实商品性不良、产量低等问</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805605288027580.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>多项花卉科研成果获云南科技奖</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>其中“《云南植物志》的编研”和“鲜花含片关键技术研究与系列产品开发”项目分别入列自然科学</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805601954922171.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>湖南省林业科学院木本花卉研究基础及条件</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>湖南省林业科学院从事木本花卉良种繁育及开发利用的研究30多年，积累了丰富的木本花卉良种繁育</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805600886631990.png" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>用杯苗生产红掌盆花优势明显
-                                </h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>长期以来，栽培红掌盆花，穴苗→上杯→换盆→成品，一直是花企沿袭的生产管理模式，周期长达11</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805557364118299.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>名优花卉矮化科研成果获国家大奖</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>花卉微型化是国际花卉发展趋势之一，也是花卉业的新技术增长点。</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020160805555438918643.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>云南：特色花卉研究出成果</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>云南省农业科学院花卉研究所、大理白族自治州园艺工作站、云南云科花卉有限公司等单位历时5年</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2016-08-05</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020150424408666837169.png" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>浙江省茶界首获第一个浙江省科技进步一等奖</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>浙江大学茶学系屠幼英教授、须海荣副教授、李博博士、吴媛媛副教授等完成的“生物催化技术重组</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-04-24</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails10.html"><span>查看详情>></span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020150424388355752691.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>云南发现香茶菜新品种 叫洱源香茶菜</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>云南香茶菜属家族添“丁”了，中科院昆明植物研究所研究人员在研究标本时，发现了一种新的香茶</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2015-04-24</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <a href="BARROLdetails18.html"> <span>查看详情>></span></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="content_main_right_list">
-                        <div class="content_main_right_list_left">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020141024409798098318.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>陈宗懋--中国科学院院士、茶学专家</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>陈宗懋 茶学专家。出生于上海市，原籍浙江省海盐县人。1954年毕业于沈阳农学院植保系。曾任中</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2014-10-23</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="content_main_right_list_right">
-                            <div class="content_main_right_list_img">
-                                <img src="../img/W020141024610826139546.jpg" style="width:100%;height: 115px;">
-                            </div>
-                            <div class="content_main_right_list_text">
-                                <div class="content_main_right_list_text_head"><h5>张天福--茶学家、制茶和审评专家</h5></div>
-                                <div class="content_main_right_list_text_content">
-                                    <p>张天福，1910年出生于上海名医世家，茶学家、制茶和审评专家。中国茶业界普遍把张天福称</p>
-                                </div>
-                                <div class="content_main_right_list_text_end">
-                                    <div class="content_main_right_list_text_end_left">
-                                        <span>2014-10-24</span>
-                                    </div>
-                                    <div class="content_main_right_list_text_end_right">
-                                        <span>查看详情>></span>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
 
                     </div>
 
+                    <div class="content_main_right_box_title">
+                        <span><a href="AchievementShowText.html" style="color: #109171;">成果库</a></span>
+                        <div class="content_main_right_first_search">
+                            <select style="height: 30px;width: 100px;">
+                                <option>序号</option>
+                                <option>成果名称</option>
+                                <option>完成单位</option>
+                                <option>奖励种类</option>
+                                <option>完成人</option>
+                                <option>奖励时间</option>
+                                <option>奖励等级</option>
+                                <option>奖励级别</option>
+                                <option>主题词</option>
 
+                            </select>
+                            <input name="keyword" style=" height: 25px; width: 150px;
+
+            ">&nbsp;<input type="button" class="submit" value="搜索"
+                           style="height: 28px;width: 70px;background-color: #12525e;color: white">
+                        </div>
+                    </div>
+                    <table class="table" style="table-layout:fixed;">
+                        <tr style="background-color: #0d8897">
+                            <td style=" background-color: #d6d6d6;color: #1f6c70;font-size: 20px;width: 8%;">
+                                序号
+                            </td>
+                            <td style=" background-color: #d6d6d6; color: #1f6c70;font-size: 20px;width: 21%;">
+                                成果名称
+                            </td>
+                            <td style=" background-color: #d6d6d6;color: #1f6c70;font-size: 20px;width: 21%;;">
+                                时间
+                            </td>
+
+                        </tr>
+                        <tbody class="tableAchievement">
+                        <tr>
+                            <td>1</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(19)">水稻耐热、高配合力籼粳交恢复系泸恢17的创制与应用</a></td>
+                            <td>2005</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(35)">水稻重穗型高配合力恢复系宜恢1577的选育及应用</a></td>
+                            <td>2004</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(38)">水稻高配合力、抗病恢复系江恢151的选育与应用</a></td>
+                            <td>2003</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(42)">水稻高配合力、高异交率新质源不育系K17A的选育与应用</a></td>
+                            <td>2000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(45)">大穗型高配合力水稻优良不育系冈46A的选育和应用推广</a></td>
+                            <td>1995</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(49)">水稻雄性不育K型新质源的创制、研究与应用</a></td>
+                            <td>2001</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(72)">名特优质稻米系列开发研究</a></td>
+                            <td>1998</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(73)">抗病、高产、优质杂交水稻新组合汕优多系1号选育和利用研究</a></td>
+                            <td>1997</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(80)">水稻重大病虫害监测治理与无公害稻米生产</a></td>
+                            <td>2002</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(81)">籼型新不育系CA的选育与应用</a></td>
+                            <td>2003</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(83)">优质、广亲和、高收获指数水稻新恢复系成恢448的创制与应用</a></td>
+                            <td>2003</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(127)">川丰5-4型深泥脚水田耕耘机</a></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td style="height:30px;overflow: hidden;text-overflow:ellipsis;display: block;white-space: nowrap;padding-top: 10px;">
+                                <a class="details" onclick="details(132)">中籼迟熟杂交稻新组合Ⅱ优802</a></td>
+                            <td>1997</td>
+                        </tr>
+
+                        </tbody>
+
+
+                    </table>
 
                 </div>
 
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
         </div>
@@ -657,12 +484,13 @@
     </div>
 
     <div class="foot">
-        <div class="footLogo">
-        </div>
-        <div class="footText">
-            <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-            <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-            <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+        <div class="footBox">
+            <div class="footLogo"></div>
+            <div class="footText"><b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br> <b
+                    style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail:pbding@163.com </b><br> <b
+                    style="color: #cccbc9; font-size: 14px;"> Copyright news.sichuan.edu.cn All rights reserved</b>
+            </div>
         </div>
     </div>
 </div>

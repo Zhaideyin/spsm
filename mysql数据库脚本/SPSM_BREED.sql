@@ -1,0 +1,23 @@
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `SPSM_BREED`
+-- ----------------------------
+DROP TABLE IF EXISTS `SPSM_BREED`;
+CREATE TABLE `SPSM_BREED` (
+ 		`BREED_ID` varchar(100) NOT NULL,
+		`TITLE` varchar(255) DEFAULT NULL COMMENT '品种名',
+		`BREEDING_ORG` varchar(255) DEFAULT NULL COMMENT '选育单位',
+		`AUTHORISE_DATE` varchar(255) DEFAULT NULL COMMENT '审定时间',
+		`BREED_SOURCE` varchar(255) DEFAULT NULL COMMENT '品种源',
+		`FEATURE` varchar(255) DEFAULT NULL COMMENT '特征',
+		`OUTPUT` varchar(255) DEFAULT NULL COMMENT '产量表现',
+		`GROW_POINT` varchar(255) DEFAULT NULL COMMENT '栽培要点',
+		`AREA` varchar(255) DEFAULT NULL COMMENT '适宜地区',
+		`KEYWORDS` varchar(255) DEFAULT NULL COMMENT '关键字',
+		`CREATE_TIME` varchar(32) DEFAULT NULL COMMENT '创建时间',
+		`HIT` varchar(255) DEFAULT NULL COMMENT '点击次数',
+		`AUTHORISE_NUM` varchar(255) DEFAULT NULL COMMENT '认证编号',
+  		PRIMARY KEY (`BREED_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

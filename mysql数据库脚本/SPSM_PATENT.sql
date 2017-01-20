@@ -1,0 +1,22 @@
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `SPSM_PATENT`
+-- ----------------------------
+DROP TABLE IF EXISTS `SPSM_PATENT`;
+CREATE TABLE `SPSM_PATENT` (
+ 		`PATENT_ID` varchar(100) NOT NULL,
+		`TITLE` varchar(255) DEFAULT NULL COMMENT '专利名',
+		`APPLICANT` varchar(255) DEFAULT NULL COMMENT '申请人',
+		`APPLY_DATE` varchar(255) DEFAULT NULL COMMENT '申请时间',
+		`APPLY_NUM` varchar(255) DEFAULT NULL COMMENT '申请编号',
+		`AUTHORIZE_DATE` varchar(255) DEFAULT NULL COMMENT '认证时间',
+		`TYPE` varchar(255) DEFAULT NULL COMMENT '类型',
+		`INVENTOR` varchar(255) DEFAULT NULL COMMENT '发明人',
+		`SUMMARY` varchar(255) DEFAULT NULL COMMENT '摘要',
+		`KEYWORDS` varchar(255) DEFAULT NULL COMMENT '关键词',
+		`CREATE_TIME` varchar(32) DEFAULT NULL COMMENT '创建时间',
+		`HIT` int(11) NOT NULL COMMENT '点击次数',
+  		PRIMARY KEY (`PATENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

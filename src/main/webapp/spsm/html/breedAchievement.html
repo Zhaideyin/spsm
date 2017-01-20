@@ -6,261 +6,33 @@
     <title>成果与转化数据库</title>
     <link rel="stylesheet" href="../css/liMarquee.css">
     <link href="../css/pgwslider.min.css" rel="stylesheet">
+    <link href="../css/fourDataBase.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }
-        .content_left_container p{
-            text-indent: 2em;
-        }
-        a {
-            color: #ffffff;
-            text-decoration:none;
-        }
-        li{
-            color: #0072d8;
-        }
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }
-        .head p{
-            color: #ffffff;
-        }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-
-            margin-left:10%;;
-            float: left;
-        }  .first{
-            float: left;
-            margin-top:15px;
-        }  .second{
-            float: left;
-            margin-top:15px;
-
-        }  .third{
-            margin-top:15px;
-            float: left;
-        }  .fourth{
-            float: left;
-            margin-top:15px;
-
-        }
-        .main{
-            width: 100%;
-        }
-        .top{
-            background-color: #12525e;
-            width: 100%;
-            height:300px;
-        }
-        .top p{
-            position: relative;
-            left:7%;
-        }
-        .content{
-            margin-top:-225px;
-            margin-right:10%;
-            float: right;
-            width: 80%;
-            height: auto;
-        }
-        .m{ background-color: #0a0903;
-            overflow: hidden;}
-        .content_top{
-            background-color: #0f4850;
-            height: 36px;
-
-        }
-        .content_top p{
-            color: #ffffff;
-            position: relative;
-            left:2%;
-            top:8px;}
-        .content_container{
-            height: auto;
-        }
-        .content_left{
-            float: left;
-            margin-left: 0px;
-            width: 75%;
-        }
-        .content_right{
-            margin-right: 0px;
-            background-color: #f3f3f3;
-            width: 25%;
-            margin-top: 15px;
-            float: left;
-        }
-        .content_left_container_left{
-            float: left;
-
-            width:60%;
-            margin-bottom: 7px;
-
-        }
-        .content_left_container_left1{
-            width: 100%;
-            height:auto;
-            overflow: hidden;
-            margin-bottom: 15px;
-            padding-right: -14px;
-            padding-bottom: 15px;
-            border-bottom:solid 0.5px #c7c7c7;
-        }
-        .content_left_container{
-            height: auto;
-            overflow: hidden;
-            margin-top:10px;
-        }
-        .content_left_container_left2{
-            width: 100%;
-            height:auto;
-            overflow: hidden;
-            border-bottom:solid 0.5px #c7c7c7;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-
-        }
-        .content_left_container_left3{
-            width: 100%;
-            height:auto;
-            overflow: hidden;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-
-        }
-        .content_left_container_left_text{
-            width: 50%;
-            float: left;
-            padding: 0px 10px 10px 22px;
-            line-height: 22px;
-
-        }
-        .content_left_container_right{
-            float: left;
-            width: 38%;
-            height: 900px;
-        }
-        .content_left_container_left3_left,.content_left_container_left3_right{
-            width: 48%;
-            float: left;
-            height: auto;
-
-        }
-        .content_left_container_left3_right{
-            float: left;
-            padding-top:10px;
-            margin-left: 16px;
-        }
-        .content_left_container_left3_text{
-            width: 90%;
-            height: auto;
-            line-height: 22px;
-        }
-        .content_left_container_right1,.content_left_container_right2,.content_left_container_right3,.content_left_container_right4{
-            border-bottom: solid 0.5px #c7c7c7;
-            border-left: solid 0.5px #c7c7c7;
-            width: 98%;
-
-            line-height: 22px;
-            padding: 10px 10px 30px 10px;
-        }
-        .content_right_search{
-
-            margin-left: 1%;
-            overflow: hidden;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-right: 1%;
-
-        }
-        .content_right_title{
-
-            overflow: hidden;
-            padding: 10px 0px 10px 10px;
+        .content_main_right_lists{overflow: hidden;border-bottom:0.5px dashed #ddd;margin-bottom: 10px;padding-bottom: 5px;height: 16px;white-space:nowrap; }
+        .rightTitle{overflow: hidden;float: left;display: inline-block;width: 80%;text-overflow:ellipsis;font-size: 15px; }.listTime{float: right;display:inline-block;width: 19%;font-size: 13px}
+        .content_left_container3_titleBA{width: 100%;height: 81px;margin-bottom: 15px;}
+        .content_left_container2{padding: 10px;} .content_left_container2{padding-left: 0px;padding-right: 15px;}
+        .content_left_container3_contentListBA{float: left;margin-left: 3px;width: 32%;margin-right: 9px;}
 
 
-        }
-        .content_right_content{
-            padding: 20px 0px 20px 40px;
-        }
-        .content_right_title_logo{
-            float: left;
-        }
-        .content_right_title_text{
-            float: left;
-            margin-left: 5px;
-        }
-        .content_right_links{
-            margin-left: 1%;
-            margin-right: 1%;
-            overflow: hidden;
-
-        }
-        .content_right_content_scroll { height: 300px;margin-left: 5px; font-size: 14px;}
-        .content_right_content_scroll ul { margin: 0; line-height: 40px;}
-        .content_right_content_scroll a { color: #333; text-decoration: none;}
-        .content_right_content_scroll a:hover { text-decoration: none; color: #007aff;}
-        .content_right_content_scroll ul li{ line-height: 32px;}
-        .more{
-            margin-top: 20px;
-            margin-left: 29%;
-        }
-        .foot{
-            clear: both;
-            margin-top: 30px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }  .footLogo{
-            background-image: url("../img/foot.png");
-            float: left;
-            margin-left:10%;
-            margin-top:10px;
-            height: 57px;
-            width: 58px;
-        }  .footText{
-            float: left;
-            margin-top:10px;
-            height: 57px;
-        }  .footText b{
-            color: #ffffff;
-        }
-        .container{
-            width: 100%;
-            height: auto;
-            overflow: hidden;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-        .topSecond{
-            font-size: 30px;
-            margin-left: 3%;
-            top:15px;
-        }
-        .content_img_title span{
-            font-size: 26px;
-            padding-left: 10px;
-            font-family: 微软雅黑;
-        }
     </style>
     <script src="../js/jquery-1.10.1.min.js"></script>
     <script src="../js/pgwslider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.0.min.css" />
+    <script type="text/javascript" src="../js/swiper-3.4.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(document).ready(function() {
                 $('.pgwSlider').pgwSlider();
             });
+        });
+        $(function(){
+            $('.content_left_container2_content').liMarquee({
+                drag:"false",
+                scrolldelay:"0",
+                scrollamount:"60"
+            });
+
         });
     </script>
     <script src="../js/jquery.liMarquee.js"></script>
@@ -273,134 +45,292 @@
     </script>
 </head>
 <body>
+
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
-        </div>
+        <div class="headnav">
+            <div class="logo">
+            </div>
+            <div class="first">
+                <p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="second">
+                <p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="third">
+                <p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="fourth">
+                <p><a href="breedProfessor.html"> 育种专家数据库</a></p>
+            </div>
         </div>
     </div>
     <div class="main">
         <div class="top">
-            <p class="topSecond">成果转换与推广数据库</p>
+            <div class="topBox">
+                <p class="topSecond">成果推广数据库</p>
+            </div>
         </div>
+        <div class="contentBg">
         <div class="content">
             <div class="content_top">
-                <p><a href="index.html" >首页</a>&nbsp;&nbsp;<a href="AchievementShow.html">成果展示</a>&nbsp;&nbsp;
-                    <a href="AgencyService.html"> 机构服务</a>  &nbsp;<a href="cooperation.html "> 产学研合作</a></p></div>
+                <p><b><a href="index.html" >首页</a>&nbsp;&nbsp;<a href="AchievementShow.html">成果展示</a>&nbsp;&nbsp;
+                    <a href="AgencyService.html"> 机构服务</a>  &nbsp;<a href="cooperation.html "> 产学研合作</a></b></p></div>
             <div class="content_container">
-                <div class="m">
-                    <ul class="pgwSlider">
-                        <li><img src="../img/13552684_143829414115_2.jpg" style="width: 100%;height:  80px;" alt="UAV agricultural application" ><span>Chemical fertilizer experiment
-</span></li>
-                        <li><img src="../img/9739670_142633419147_2.jpg" style="width: 100%;height:  80px;"   alt="Modern farm" ><span>Greenhouse watermelon breeding</span></li>
-                        <li><img src="../img/18031775_122151459135_2.jpg" style="width: 100%;height:  80px;"   alt="Mechanized harvesting"><span>soilless culture</span></li>
-                        <li> <img src="../img/5750393_155126525000_2.jpg" style="width: 100%;height:  80px;" > <span>Modern greenhouse</span> </li>
-                        <li> <img src="../img/4120136_092739414000_2.jpg" style="width: 100%;height:  80px;"  > <span>kiwifruit breeding</span>  </li>
-                    </ul>
-                </div>
+
                 <div class="content_left">
+                    <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><a href="BINRROLdetails15.html"> <img src="../img/4120136_092739414000_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></a></div>
+                        <div class="swiper-slide"><img src="../img/9739670_142633419147_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                        <div class="swiper-slide"><img src="../img/18031775_122151459135_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                        <div class="swiper-slide"><img src="../img/5750393_155126525000_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="content_img_title">
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
                     <div class="content_left_container">
-                        <div class="content_left_container_left">
+                        <div class="main-title">
+                            <h2><a href="breedAchievement.html" style="color: #c34b1f;"> 成果展示</a></h2>
+                            <ul>
+                                <li><a href="AchievementShow.html" target="_blank" style="color: #0d4450;">成果推介</a></li>
+                                <li><a href="patent.html" target="_blank" style="color: #0d4450;">专利推介</a></li>
+                                <li><a href="TechnologyGuide.html" target="_blank" style="color: #0d4450;">实用技术指导</a></li>
+                                <li><a href="vedio.html" target="_blank" style="color: #0d4450;">视频图文展示</a></li>
 
-                            <div class="content_left_container_left1">
-                                <div class="content_left_container_left_img">
-                                    <img src="../img/20160805093323856360.jpg" style="width: 40%;height: 195px;float: left;">
+                            </ul>
+                        </div>
+                        <div class="content_left_container1">
+                            <div class="content_left_container1List1">
+                                <div class="content_left_container1List1_Title">
+                                    <span class="title"><a href="AchievementShow.html" style="color: #0d8897;">成果推介</a></span><span class="titleMore"><a href="AchievementShow.html" style="color: black;">更多>></a></span>
                                 </div>
-                                <div class="content_left_container_left_text">
-                                    <h4><a href="BALdetails1.html" style="color: black"> 烟草所定向改良主栽品种K326的病毒病抗性取得成功</a></h4><br>
-                                    <p> 7月29日，由中国农业科学院烟草研究所完成的“抗烟草烟草普通花叶病毒
-                                        (TMV)和烟草黄瓜花叶病毒(CMV)病基因定向改良K326品种”
-                                        通过国家烟草专卖局科技司和中国烟叶公司组织的田间鉴评。
-                                    </p>
+                                <div class="content_left_container1List1_content">
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/W020160511341541604212.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>常言道“不苦不涩不成茶”，茶叶的苦涩味主要来源于多酚类物质， 掌握多酚类物质的形成机理，就</p>
+                                            <span><a href="BARROLdetails9.html"> 更多>></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/W020151015380987717614.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>这种以天然有机生态茶树鲜叶为原料，借助现代生物技术发酵而成的具有抗癌功效的养生茶一经推</p>
+                                            <span><a href="BARROLdetails12.html">更多>></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/W020150708583652242999.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>据了解，“中茶108”由中国农业科学院茶叶研究所用“龙井43号”茶树品种作为母体通过辐射育</p>
+                                            <span><a href="BARROLdetails14.html">更多>></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/W020151028570613419312.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>近日，国家知识产权局授权公告了我市永安天宝岩茶业发展有限公司的“一种茶叶的加工工艺”发明</p>
+                                            <span><a href="BARROLdetails11.html">更多>></a> </span>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
-                            <div class="content_left_container_left2">
-                                <div class="content_left_container_left_img">
-                                    <img src="../img/20160726102711785951.png" style="width: 40%;height: 195px; float: left;">
+                            <div class="content_left_container1List2">
+                                <div class="content_left_container1List2_Title">
+                                    <span class="title"><a href="patent.html" style="color: #0d8897;">专利推介</a></span><span class="titleMore"><a href="patent.html" style="color: black;">更多>></a></span>
                                 </div>
-                                <div class="content_left_container_left_text">
-                                    <h4><a href="BALdetails2.html" style="color: black">蔬菜所发现一种脂肽抗生素生物合成途径</a></h4><br>
-                                    <p>近日，中国农业科学院蔬菜花卉研究所谢丙炎研究员领衔的蔬菜病害防控创新团队与
-                                        中国科学院微生物研究所合作，在淡紫拟青霉生物防治作用机制的研究方面取得了重要突破，
-                                        解析出了淡紫拟青霉中最重要的脂肽类抗生素
-                                        leucinostatins的生物合成途径，相关结果在7月14日发表于国际知名的病原菌刊物《PLoS Pathogens》。</p>
+                                <div class="content_left_container1List2_container">
+
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">名优花卉矮化科研成果获国家大奖</a></span><span class="listTime">2016.12.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">多项花卉科研成果获云南科技奖</a></span><span class="listTime">2017.1.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">七旬老人试制成功高端黄茶 获国家专利谜</a></span><span class="listTime">2015.12.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">背扶式甜菜收割机</a></span><span class="listTime">2015.6.05</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">DF380型一次成型式开沟机</a></span><span class="listTime">2016.3.22</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">13年攻关育出有机抗寒茶 极端耐寒温度可达-13℃</a></span><span class="listTime">2014.12.22</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">永安天宝岩茶业获福建三明首个茶业国家发明专利</a></span><span class="listTime">2015.9.09</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">一种利用二倍体细胞与花粉细胞融合育种法培育三倍体霍山石斛的方法</a></span><span class="listTime">2016.7.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">一种杂交稻开优18号的选育方法</a></span><span class="listTime">2016.5.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">一种抗虫低酚柱头外露两系杂交棉选育及杂交制种方法</a></span><span class="listTime">2014.12.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">利用传统大豆育种技术培育高油酸大豆的方法</a></span><span class="listTime">2015.12.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">一种酿酒甘蔗品种的选育方法</a></span><span class="listTime">2016.1.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">一种高抗性淀粉杂交粳稻三交组合快速育种的方法</a></span><span class="listTime">2013.12.12</span>
+                                    </div>
+                                    <div class="content_main_right_lists">
+                                        <span class="rightTitle"><a href="BINLdetails2.html" style="color: #000000;">全自动杂交仪</a></span><span class="listTime">2014.6.12</span>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <div class="content_left_container1List3">
+                                <div class="content_left_container1List3_Title">
+                                    <span class="title"><a href="TechnologyGuide.html" style="color: #0d8897;">实用技术指导</a></span><span class="titleMore"><a href="TechnologyGuide.html" style="color:black;">更多>></a></span>
+                                </div>
+                                <div class="content_left_container1List3_end">
+                                    <a href="plantTechnology.html" ><img src="../img/zhongzhijishu.jpg" style="width: 100%;height: 60px;" ></a>
+                                </div>
+                                <div class="content_left_container1List3_content">
+                                    <ul>
+                                        <li>家庭瓶插切花如何延长花期</li>
+                                        <li>观赏花木整形修剪原理</li>
+                                        <li>家庭养花常用的花卉扦插方法</li>
+                                        <li>家庭插花花艺一点通</li>
+                                        <li>湖南省林业科学院木本花卉研究基础及条件</li>
+                                        <li>猕猴桃膏药病咋防治</li>
+                                        <li>及时查治温室黄瓜病虫害</li>
+                                        <li>草地螟防控技术</li>
+                                        <li>采取有效措施防治水稻稻瘟病</li>
+
+                                    </ul>
+                                </div>
+                                <div class="content_left_container1List3_end">
+                                    <a href="breedingTechnology.html" > <img src="../img/yangzhijishu.jpg" style="width: 100%;height: 60px;" ></a>
                                 </div>
                             </div>
-                            <div class="content_left_container_left3">
-                                <div class="content_left_container_left3_left">
-
-                                    <div class="content_left_container_left3_img">
-                                        <img src="../img/20160128160839314827.png" style="width:98%;height: 80%">
-                                    </div>
-                                    <div class="content_left_container_left3_text">
-                                        <h4><a href="BALdetails3.html" style="color: black"> 郑州果树所3个优质桃品种通过省级品种审定</a></h4><br>
-                                        <p>近日，从中国农业科学院郑州果树研究所获悉，由该所桃育种课题组选育的“中桃5号”
-                                            “黄金蜜桃3号” “中桃22号”3个优质桃品种通过河南省林木品种审定。</p>
-                                    </div>
-                                </div>
-                                <div class="content_left_container_left3_right">
-                                    <div class="content_left_container_left3_img">
-                                        <img src="../img/20160120144302689244.png" style="width:98%;height: 80%">
-                                    </div>
-                                    <div class="content_left_container_left3_text">
-                                        <h4><a href="BALdetails4.html" style="color: black">作科所“CIMMYT小麦引进、研究与创新利用”获2015年度国家科学技术进步二等奖</a></h4><br>
-                                        <p> 近日，从中国农业科学院郑州果树研究所获悉，由该所桃育种课题组选育的“中桃5号”
-                                            “黄金蜜桃3号” “中桃22号”3个优质桃品种通过河南省林木品种审定。</p>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="content_left_container1List2_Title" style="border: 0.5px solid #dddddd;">
+                            <span class="title"><a href="vedio.html" style="color: #0d8897;">视频图文</a></span><span class="titleMore"><a href="vedio.html" style="color:black;">更多&gt;&gt;</a></span>
+                        </div>
+                        <div class="content_left_container2">
+                            <div class="content_left_container2_content">
+                                <img src="../img/22837992_112103119986_2.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/zjk.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/breedInnovation.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/20659758_222705828000_2.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020160805557364118299.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020160805555438918643.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020160805605288027580.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/花卉.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/new-york.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/1-1602191101450-L.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020161108600653104904.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020161013589086638959.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020160805603300893864.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020161108601832305734.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/W020150424388336713726.jpg" style="width: 170px;height: 200px;">
+                                <img src="../img/14796058_094354374160_2.jpg" style="width: 170px;height: 200px;">
 
                             </div>
                         </div>
-                        <div class="content_left_container_right">
-                            <div class="content_left_container_right1">
-                                <h4><a href="BARdetails1.html" style="color: black"> 双低油菜生产的“沙洋模式”</a></h4><br>
-                                <p>湖北省沙洋县是国家重要商品油菜籽生产基地，
-                                    油菜长年种植面积达60万亩，占全县耕地面积的62%；
-                                    油菜籽平均单产184公斤，多年稳居全省首位；总产13万吨，
-                                    连续多年居全省乃至全国前列。
-                                    该县连续多年承担农业部油菜整县推进高产创建和绿色增产模式攻关项目</p>
-                            </div>
-                            <div class="content_left_container_right2">
-                                <h4><a href="BARdetails2.html" style="color: black"> 冬季油菜田管技术措施</a></h4><br>
-                                <p>间苗定苗。要求早间苗，稀定苗。掌握的原则是间密留稀，去弱留壮，
-                                    调整株间距离，保持均匀。一般分两次间苗，第一次在齐苗后出现第一片真叶时进行
-                                    ，间到叶不搭叶；第二次间苗在第二片真叶出现时进行。
-                                    三叶期进行定苗，留苗密度根据油菜播种早迟、
-                                    秧龄长短和秧苗生长状况而定，一般保持苗距7～10厘米。播种量小的可只间一次苗。</p>
-                            </div>
-                            <div class="content_left_container_right3">
-                                <h4><a href="BARdetails3.html" style="color: black"> 巧用物理措施防好最后一波害虫</a></h4><br>
-                                <p>由于前期温度高，光照强，菜棚前脸通风口尚未关闭，给害虫迁入创造了条件。随着气温不断降低，
-                                    外界害虫寻找越冬场所而迁飞入棚，棚内害虫进入最后的高发期。此段时间，棚内发生最多的仍然是蚜虫、
-                                    粉虱、蓟马、螨虫等小型害虫，具有繁殖迅速、抗药性产生快、防治难度大等特点。
-                                    此外，蝶蛾类害虫成虫迁飞能力强，一般蝶类在白天活动
-                                    ，蛾类在夜间活动，往往在蔬菜定植后对新叶和生长点造成较大为害。</p>
-                            </div>
-                            <div class="content_left_container_right4">
-                                <h4><a href="BARdetails4.html" style="color: black"> 资划所初步完成全国“两区”划定研究工作</a></h4><br>
-                                <p>
-                                    近日，从中国农业科学院农业资源与农业区划研究所获悉，
-                                    2016年初国家发改委和农业部共同委托资划所农业布局与区域发展创新团队开展
-                                    “粮食功能区和重点农产品保护区
-                                    （全文简称“两区”）划定研究”，
-                                    为我国探索创建两区提供理论支撑，目前，课题研究已取得阶段性进展。
-                                </p>
+                        <div class="content_left_container3_titleBA">
+                          <a href="cooperation.html"><img src="../img/index_55.png" style="width: 100%;"> </a>
+                        </div>
 
-                            </div>
+                        <div class="main-title">
+                            <h2><a href="AgencyService.html" style="color: #c34b1f;"> 机构服务</a></h2>
+                            <ul>
+                                <li><a href="AgencyService.html" target="_blank" style="color: #0d4450;">科研院校</a></li>
+                                <li><a href="intermediaryAgencies.html" target="_blank" style="color: #0d4450;">中介机构</a></li>
+                                <li><a href="AgriculturalEnterprise.html" target="_blank" style="color: #0d4450;">涉农企业</a></li>
+
+                            </ul>
+                        </div>
+                        <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.0.min.css" />
+                        <div class="content_left_container3" style="width: 100%;overflow: hidden">
+                            <div class="content_left_container3_contentBA" style="width: 100%;overflow: hidden">
+                                <div class="content_left_container3_contentListBA">
+                                    <div class="content_left_container3_contentList_text">
+                                        <div class="industryTitle">
+                                            <span class="industryTitleHead"><a href="AgencyService.html" target="_blank" style="color: #0d4450;">科研院校</a></span>   <span class="industryTitleMore"><a href="AgencyService.html" target="_blank" style="color:black;">更多>></a></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">中国农业大学</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">北京农学院</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">天津农学院</span><span class="breedListMore">更多>></span>
+                                        </div>
 
 
+                                    </div>
+                                </div>
+                                <div class="content_left_container3_contentListBA">
+
+                                    <div class="content_left_container3_contentList_text">
+                                        <div class="industryTitle">
+                                            <span class="industryTitleHead"><a href="intermediaryAgencies.html" target="_blank" style="color: #0d4450;">中介机构</a></span>   <span class="industryTitleMore"><a href="intermediaryAgencies.html" target="_blank" style="color: black;">更多>></a></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">两优培九</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">两优培九</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">两优培九</span><span class="breedListMore">更多>></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="content_left_container3_contentListBA">
+
+                                    <div class="content_left_container3_contentList_text">
+                                        <div class="industryTitle">
+                                            <span class="industryTitleHead"><a href="AgriculturalEnterprise.html" target="_blank" style="color: #0d4450;">涉农企业</a></span>   <span class="industryTitleMore"><a href="AgriculturalEnterprise.html" target="_blank" style="color: #000000;">更多>></a></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">甘肃省敦煌种业股份有限公司</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">合肥丰乐种业股份有限公司</span><span class="breedListMore">更多>></span>
+                                        </div>
+                                        <div class="industryList">
+                                            <span class="breedList">孟山都（Momsanto）</span><span class="breedListMore">更多>></span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                     </div>
@@ -409,90 +339,181 @@
                     <div class="content_right_search">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1198274.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>搜索栏</span>
                             </div>
                         </div>
                         <div class="content_right_content">
-                            <input value="搜索"  type ="search " style="width: 50%;height: 30px;">&nbsp;
-                            <input type="submit" style="color:#ffffff;width: 20%;height: 36px; background-color: #0f4850" value="搜索">
+                            <select style="height: 36px;width: 35%;">
+                                <option>科研院校</option>
+                                <option>中介机构</option>
+                                <option>涉农企业</option>
+                                <option>专利技术</option>
+                                <option>种植技术</option>
+                                <option>养殖技术</option>
+
+                            </select>
+                            <input value="搜索" type="search " style="width:35%;height: 30px;">&nbsp;
+                            <input type="submit"
+                                   style="color:#ffffff;width: 20%;height: 30px; background-color: #0f4850"
+                                   value="搜索">
                         </div>
 
                     </div>
                     <div class="content_right_scroll">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1195360.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>行业动态</span>
                             </div>
                         </div>
                         <div class="content_right_content_scroll">
-                                <ul >
-                                    <li><a href="BALdetails1.html" >烟草所定向改良主栽品种K326的病毒病抗性取得成功</a></li>
-                                    <li><a href="BALdetails2.html">蔬菜所发现一种脂肽抗生素生物合成途径</a></li>
-                                    <li><a href="BALdetails3.html">郑州果树所3个优质桃品种通过省级品种审定</a></li>
-                                    <li><a href="BALdetails4.html" >作科所“CIMMYT小麦引进、研究与创新利用”获2015年度国家科学技术进步二等奖</a></li>
-                                    <li><a href="BARdetails1.html">双低油菜生产的“沙洋模式”</a></li>
-                                    <li><a href="BARdetails2.html" >冬季油菜田管技术措施</a></li>
-                                    <li><a href="BARdetails3.html"> 巧用物理措施防好最后一波害虫</a></li>
-                                    <li><a href="BARdetails4.html">资划所初步完成全国“两区”划定研究工作</a></li>
-                                    <li><a href="BARROLdetails9.html" >安徽农业大学专家揭“苦茶”之谜</a></li>
-                                    <li><a href="BARROLdetails10.html">浙江省茶界首获第一个浙江省科技进步一等奖</a></li>
-                                    <li><a href="BARROLdetails11.html">永安天宝岩茶业获福建三明首个茶业国家发明专利</a></li>
-                                    <li><a href="BARROLdetails12.html">黑茶新产品“酸茶”面市 获2项国家发明专利</a></li>
-                                    <li><a href="BARROLdetails13.html">13年攻关育出有机抗寒茶 极端耐寒温度可达-13℃</a></li>
-                                    <li> <a href="BARROLdetails14.html" >黎平引种“中茶108”成功</a></li>
-                                    <li><a href="BARROLdetails15.html">七旬老人试制成功高端黄茶 获国家专利</a></li>
-                                    <li><a href="BARROLdetails16.html">华南植物园“一种大头茶种子萌发及育苗的方法”获国家发明专利</a></li>
-                                    <li><a href="BARROLdetails17.html">喝过白茶红茶 喝过紫茶吗</a></li>
-                                    <li><a href="BARROLdetails18.html">云南发现香茶菜新品种 叫洱源香茶菜</a></li>
+                            <ul >
+                                <li><a href="BINLdetails1.html">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></li>
+                                <li><a href="BINLdetails2.html">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></li>
+                                <li><a href="BINLdetails3.html">新型转基因小麦产量有望提高20%</a></li>
+                                <li><a href="BINLdetails4.html">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></li>
+                                <li><a href="BINRdetails1.html"> "十二五"期间我国植物分子育种研究取得重要突破</a></li>
+                                <li><a href="BINRdetails2.html">精准育种 微生物 大数据 科技创新——未来农业的出路</a></li>
+                                <li><a href="BINRdetails3.html">高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></li>
+                                <li><a href="BINRdetails4.html">北京打造全国农业科技创新示范中心</a></li>
+                                <li><a href="BINRROLdetails99.html">美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></li>
+                                <li><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></li>
+                                <li><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></li>
+                                <li><a href="BINRROLdetails12.html">纳米农药“一点到位”</a></li>
+                                <li><a href="BINRROLdetails13.html">世界粮食奖和沃尔夫农业奖得主力挺转基因</a></li>
+                                <li><a href="BINRROLdetails14.html">袁隆平种出了“海水稻”</a></li>
+                                <li><a href="BINRROLdetails15.html">超级稻20年：累计推广种植10.9亿亩 增收600亿公斤稻谷</a></li>
+                                <li><a href="BINRROLdetails16.html">农业“嫁接”光伏，结什么果？</a></li>
+                                <li><a href="BINRROLdetails17.html">农用聚磷酸铵引领磷肥液体化新方向</a></li>
+                                <li><a href="BINRROLdetails18.html">秸秆颗粒肥研制成了</a></li>
+                            </ul>
 
-                                </ul>
                         </div>
                     </div>
                     <div class="content_right_links">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1192824.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
+                            </div>
+                            <div class="content_right_title_text">
+                                <span>点击排行</span>
+                            </div>
+                        </div>
+                        <div class="leftNewsTitleContent">
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                       安徽农业大学专家揭“苦茶”之谜
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                       黑茶新产品“酸茶”面市 获2项国家发明专利
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                        黎平引种“中茶108”成功
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                      13年攻关育出有机抗寒茶 极端耐寒温度可达-13℃
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                       七旬老人试制成功高端黄茶 获国家专利谜
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                        苦瓜强雌系优异种质创制与赣苦瓜1、2、3
+                                    </span>
+                            </div>
+                            <div class="leftNewsTitleContentList">
+                                    <span>
+                                      多项花卉科研成果获云南科技奖
+                                    </span>
+                            </div><div class="leftNewsTitleContentList">
+                                    <span>
+                                       湖南省林业科学院木本花卉研究基础及条件
+                                    </span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="content_right_links">
+                        <div class="content_right_title">
+                            <div class="content_right_title_logo">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>相关链接</span>
                             </div>
                         </div>
-                        <div class="content_right_content">
-                            <li><a href="http://icgr.caas.net.cn/" style="color: #0072d8">中国作物信息网</a></li><br>
-                            <li><a href="http://www.veg-china.com/" style="color: #0072d8">中国果蔬网</a></li><br>
-                            <li><a href="http://www.farmer.com.cn/" style="color: #0072d8">中国农业新闻网</a></li><br>
-                            <li><a href="http://theworldseeds.cn/index.php" style="color: #0072d8">世界种业网</a></li><br>
-                            <li><a href="http://www.chinanyjs.com/" style="color: #0072d8">中国农业技术网</a></li><br>
-                            <li><a href="http://www.cnasc.org/" style="color: #0072d8">中国农业科技网</a></li><br>
+                        <div class="content_right_contentLink">
+                            <div class="content_right_contentLinkList">
+                                <a href="http://icgr.caas.net.cn/" style="color: #0072d8"><img src="../img/chineseCrops.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.veg-china.com/" style="color: #0072d8"><img src="../img/chineseVegetables.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.farmer.com.cn/" style="color: #0072d8"><img src="../img/_CFCQT9~HLW_EO94M(924FA.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://theworldseeds.cn/index.php" style="color: #0072d8"><img src="../img/PQ{B56RL`_EE~4U0)85KCQR.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.chinanyjs.com/" style="color: #0072d8"><img src="../img/ZGNU7A(F}~R9LG8T}S[$A9Y.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.cnasc.org/" style="color: #0072d8"><img src="../img/A9UOAAX@$S0{FFZL6[EA7UB.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+
                         </div>
 
 
                     </div>
+
                 </div>
             </div>
 
         </div>
-
-        <div class="more">
-            <a href="breedAchievementMore.html" style="color: black;"><input type="button" value="更多" style="background-color: #0d4450;width:200px;height: 40px; color: #ffffff"></a>
-        </div>
+</div>
     </div>
     <div class="foot">
-        <div class="footLogo">
-        </div>
-        <div class="footText">
-            <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-            <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-            <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+        <div class="footBox">
+            <div class="footLogo">
+            </div>
+            <div class="footText">
+                <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+                <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+                <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+            </div>
         </div>
     </div>
 </div>
 
 </body>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop:true,
+        autoplay: 3000,//自动播放时间间隔
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+
+    });
+</script>
+
 </html>

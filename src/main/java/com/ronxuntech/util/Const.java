@@ -51,5 +51,5 @@ public class Const {
 	//jwts 相关参数
 	public static final String STORE_KEY="tokenData";//放在token中的数据key，验证通过后可以取出来使用
 	public static final String KEY_STRING="JWTS_TOKEN_KEY_STRING";
-	public static final String NO_APITOKEN_PATH = ".*/((member/login)|(member/store)|(worknews/list)|(worknews/info)|(spider/list)).*";
+	public static final String NO_APITOKEN_PATH = ".*/((member/login)|(member/store)|(worknews/list)|(worknews/info)|(spider/list)|(breed/*)|(achievement/*)|(patent/*)|(person/*)).*";
 }

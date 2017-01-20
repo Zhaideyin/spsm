@@ -4,365 +4,345 @@
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>省内企业</title>
+    <link href="../css/breedIndustry.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }
-        a{
-            color: #0a0903;
-            text-decoration:none;
-        }
-      .head a {
-            color: #ffffff;
 
-        }
-      .content_top a{
-          color: #ffffff;
-      }
-      .content_title a{
-          color: #ffffff;
-      }
-
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }
-        .head p{
-            color: #ffffff;
-        }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-            /*position: relative;*/
-            /*left: 11%;*/
-            /*top:3px;*/
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-            /*position: absolute;*/
-            /*left: 500px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-        }
-        .second{
-            /*position: absolute;*/
-            /*left: 650px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .third{
-            /*position: absolute;*/
-            /*left: 800px;*/
-            /*top:15px;*/
-            margin-top:15px;
-            float: left;
-        }
-        .fourth{
-            /*position: absolute;*/
-            /*left: 1000px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-        }
-
-        .main{
-            width: 100%;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -20px;
-
-        }
-        .top p{
-            position: relative;
-            padding-left: 10%;
-        }
-        .content_top{
-            width: 100%;
-            background-color: #0f4850;
-            height: 35px;
-        }
-        .foot{
-            clear: both;
-            margin-top: 20px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            position:relative ;
-            left: 15%;
-            top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            position: relative;
-            width: 900px;
-            left:20%;
-            top:-40px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-
-        .topSecond{
-            font-size: 40px;
-            top:15px;
-            margin:20px 0px 10px 20px  ;
-        }
-
-        .content{
-
-            position: relative;
-            top:-80px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_top{
-            padding: 10px 0px 0px 10px;
-            width: 100%;
-        }
-        .content_title {
-            width: 100%;
-            background-color: #106470;
-            padding: 10px 0px 0px 10px;
-            height: 40px;
-        }
-        .content_title h1{
-            color: #ffffff;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+        .content_main-left-list_container1 p, .content_main-left-list_container2 p {
             color: #0072d8;
         }
 
+        .content_title h2 a {
+            color: #ffffff;
+        }
+
         .list_content {
-            width: 100%;
+            width: 99%;
             border: 1px solid #ececec;
             margin-top: 10px;
             overflow: hidden;
         }
-        li{
-            list-style:none;
+
+        li {
+            list-style: none;
             overflow: hidden;
-            height:auto;
+            height: auto;
+            border-bottom: solid 0.5px #dddddd;
         }
+
         .list_content .cont ul li div {
             float: left;
             width: 70%;
             margin: 20px 0;
         }
+
         .list_content .cont ul li img {
             float: left;
             border: 3px solid #ececec;
             margin: 20px;
             display: inline;
         }
+
         .list_content .cont ul li span {
             position: relative;
             top: 25px;
             font-size: 12px;
+        }
+
+        .nav5 {
+            background: #109171
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo"></div>
+            <div class="first"><p><a href="breedInvoationDatabase.html">育种创新数据库</a>&nbsp;|&nbsp;</p></div>
+            <div class="second"><p><a href="breedIndustry.html">种子产业数据库</a>&nbsp;|&nbsp;</p></div>
+            <div class="third"><p><a href="breedAchievement.html"> 成果推广数据库</a>&nbsp;|&nbsp;</p></div>
+            <div class="fourth"><p><a href="breedProfessor.html"> 育种专家数据库</a></p></div>
         </div>
     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">种子企业</p>
-        </div>
+
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;
-                    <a href="breedRightApplication.html"> 行业资讯</a>&nbsp; &nbsp; &nbsp;    <a href="BreedDictionary.html"> 品种导航</a>&nbsp; &nbsp; &nbsp;
-                    <a href="breedBusiness.html"> 种子企业 </a> </b></p>
+                <div class="nav0">
+                    <a href="index.html">首页</a>
+                </div>
+                <div class="nav1 nav"><a href="hotSportOfBreed.html">前沿育种研究</a></div>
+                <div class="nav2 nav"><a href="breedKnowledge.html">育种知识服务</a></div>
+                <div class="nav3 nav"><a href="breedIndustryNews.html">行业资讯</a></div>
+                <div class="nav4 nav"><a href="BreedDictionary.html">品种导航</a></div>
+                <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>
+                <div class="nav6 nav"><a href="AchievementShow.html">成果展示</a></div>
+                <div class="nav7 nav"><a href="AgencyService.html">机构服务</a></div>
+                <div class="nav8 nav"><a href="cooperation.html">产学研合作</a></div>
+                <div class="nav9 nav"><a href="professors.html">育种专家</a></div>
+                <div class="nav10 nav"><a href="professorNews.html">人物动态</a></div>
+
             </div>
-            <div class="content_title">
-                <h2><a href="breedBusinessProvince.html">省内企业&nbsp;|</a>&nbsp; <a href="breedBusiness.html">国内企业&nbsp;|</a>&nbsp;<a href="breedBusinessInternational.html"> 国际企业</a></h2>
-            </div>
+
             <div class="content_main">
-                <div class="list_content">
-                    <div class="cont">
-                        <ul>
-
-                            <li><a href="http://scwdkj.3456.tv/" target="_blank"><img src="../img/2016521111402960.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川万德科技有限公司"></a>
-                                <div>
-                                    <h3><a href="http://scwdkj.3456.tv/" target="_blank" title="四川万德科技有限公司">四川万德科技有限公司</a></h3>
-                                    <p>主营产品：<a href="http://scwdkj.3456.tv/product_class_38949.html" target="_blank">小麦种子</a> <a href="http://scwdkj.3456.tv/product_class_38951.html" target="_blank">油菜种子</a> <a href="http://scwdkj.3456.tv/product_class_38952.html" target="_blank">水稻种子</a>
-                                        <br>
-                                        公司地址：四川省成都市锦江区静沙南路29号7栋29F<br>
-                                        公司介绍： 四川万德科技有限公司是一家以农作物种子育、繁、推为一体化的生物科技（创新型）股份制企业，旗下控股成都科源农作物研… <br><a href="http://scwdkj.3456.tv/intro.html" target="_blank" title="四川万德科技有限公司">查看详情&gt;&gt;</a></p>
+                <div class="content_main_left">
+                    <div class="content_main_left_term">
+                        <div class="dataBaseTitle"><span><a href="breedIndustry.html  "
+                                                            style="color: #12525e;"> 种子产业数据库</a></span></div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 行业资讯</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/农业要闻.png"
+                                                                                    style="width: 40px;height: 40px;"><span>                                   <a
+                                    href="breedIndustryNews.html" style="color: #0f4850;">种业要闻</a></span></div>
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/政策.png"
+                                                                                    style="width: 40px;height: 40px;">
+                                <span><a href="policy.html" style="color: #0f4850;">政策法规</a></span></div>
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/著作权.png"
+                                                                                    style="width: 40px;height: 40px;"><span>                                   <a
+                                    href="breedRightApplication.html"
+                                    style="color: #0f4850; width: 38px ;height: 38px;">品种权</a></span></div>
+                            <div class="breedIndustryNewTwo">
+                                <div class="breedIndustryNewTwoList"><span><a href="breedRightApplication.html"
+                                                                              style="color: #0f4850;">品种权申请查询</a></span>
                                 </div>
-                                <span><a href="http://scwdkj.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://scwdkj.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li class="dbj"><a href="http://htyy.3456.tv/" target="_blank"><img src="../img/2015829173151924.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="成都好特园艺有限公司"></a>
-                                <div>
-                                    <h3><a href="http://htyy.3456.tv/" target="_blank" title="成都好特园艺有限公司">成都好特园艺有限公司</a></h3>
-                                    <p>主营产品：<a href="http://htyy.3456.tv/product_class_35112.html" target="_blank">其他种子</a> <a href="http://htyy.3456.tv/product_class_35358.html" target="_blank">茄子种子</a> <a href="http://htyy.3456.tv/product_class_35359.html" target="_blank">南瓜种子</a>
-                                        <br>
-                                        公司地址：四川省成都市静康路58号1-1-1801<br>
-                                        公司介绍：成都好特园艺有限公司是与四川省农业科学院密切合作的一家集育、繁、推于一体的专业化种苗公司，公司现有员工40余人，…<br> <a href="http://htyy.3456.tv/intro.html" target="_blank" title="成都好特园艺有限公司">查看详情&gt;&gt;</a></p>
+                                <div class="breedIndustryNewTwoList"><span><a href="breedRightAuthorizaton.html"
+                                                                              style="color: #0f4850;">品种权授权查询</a></span>
                                 </div>
-                                <span><a href="http://htyy.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://htyy.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li><a href="http://schfzy.3456.tv/" target="_blank"><img src="../img/201571105839830.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川恒禾种业有限公司"></a>
-                                <div>
-                                    <h3><a href="http://schfzy.3456.tv/" target="_blank" title="四川恒禾种业有限公司">四川恒禾种业有限公司</a></h3>
-                                    <p>主营产品：
-                                        <a href="http://www.3456.tv/chanpin/713431.html" title="德恒油900(油菜种子)-恒禾种业" target="_blank">德恒油900(油菜种</a> <a href="http://www.3456.tv/chanpin/713429.html" title="德恒油900(双低杂交油菜新品种)-恒禾种业" target="_blank">德恒油900(双低杂</a> <a href="http://www.3456.tv/chanpin/713420.html" title="油菜杂交种德恒油-恒禾种业" target="_blank">油菜杂交种德恒油-恒</a> <br>
-                                        公司地址：成都市静渝路48号索尔龙舟大厦12楼<br>
-                                        公司介绍： 四川恒禾种业有限公司是一家集科研、生产、营销推广服务 为一体的现代种业企业，主要致力于杂交油菜新优品种的开 发推…<br> <a href="http://schfzy.3456.tv/intro.html" target="_blank" title="四川恒禾种业有限公司">查看详情&gt;&gt;</a></p>
+                                <div class="breedIndustryNewTwoList"><span><a href="breedExhibition.html"
+                                                                              style="color: #0f4850;">农林品种公告</a></span>
                                 </div>
-                                <span><a href="http://schfzy.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://schfzy.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li class="dbj"><a href="http://sclzgyzy.3456.tv/" target="_blank"><img src="../img/2014922111212716.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川泸州耕耘种业"></a>
-                                <div>
-                                    <h3><a href="http://sclzgyzy.3456.tv/" target="_blank" title="四川泸州耕耘种业">四川泸州耕耘种业</a></h3>
-                                    <p>主营产品：
-                                        <a href="http://www.3456.tv/chanpin/678111.html" title="粗棒菜用型甜糯玉米种-加甜加糯" target="_blank">粗棒菜用型甜糯玉米种</a> <a href="http://www.3456.tv/chanpin/678110.html" title="糯玉米种-京科糯2008" target="_blank">糯玉米种-京科糯20</a> <a href="http://www.3456.tv/chanpin/678109.html" title="优质型香糯玉米种-京科糯3000" target="_blank">优质型香糯玉米种-京</a> <br>
-                                        公司地址：四川泸州王氏农资市场22号门市<br>
-                                        公司介绍：四川泸州耕耘种业，是一家专门从事大田种子~蔬菜种子销售并提供农作物技术咨询服务的现代农业科技型民营企业，公司实行…<br> <a href="http://sclzgyzy.3456.tv/intro.html" target="_blank" title="四川泸州耕耘种业">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://sclzgyzy.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://sclzgyzy.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li><a href="http://sczbseed.3456.tv/" target="_blank"><img src="../img/2014619145744412.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川仲帮种业有限公司"></a>
-                                <div>
-                                    <h3><a href="http://sczbseed.3456.tv/" target="_blank" title="四川仲帮种业有限公司">四川仲帮种业有限公司</a></h3>
-                                    <p>主营产品：<a href="http://sczbseed.3456.tv/product_class_30374.html" target="_blank">油菜品种</a> <a href="http://sczbseed.3456.tv/product_class_30376.html" target="_blank">玉米品种</a> <a href="http://sczbseed.3456.tv/product_class_30377.html" target="_blank">小麦品种</a>
-                                        <br>
-                                        公司地址：四川省南充市高坪区航空港工业园区松涛路<br>
-                                        公司介绍： 四川仲帮种业有限公司，是由原四川盛裕种业有限公司股东与仲衍种业股份公司发起设立，完全承接了四川盛裕种业有限公司全… <br><a href="http://sczbseed.3456.tv/intro.html" target="_blank" title="四川仲帮种业有限公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://sczbseed.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://sczbseed.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li class="dbj"><a href="http://dlzz.3456.tv/" target="_blank"><img src="../img/2014610170904488.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="成都达利种子有限公司"></a>
-                                <div>
-                                    <h3><a href="http://dlzz.3456.tv/" target="_blank" title="成都达利种子有限公司">成都达利种子有限公司</a></h3>
-                                    <p>主营产品：
-                                        <a href="http://www.3456.tv/chanpin/665036.html" title="K新绿开心绿毛豆种子" target="_blank">K新绿开心绿毛豆种子</a> <a href="http://www.3456.tv/chanpin/665033.html" title="台湾75-毛豆种子" target="_blank">台湾75-毛豆种子</a> <a href="http://www.3456.tv/chanpin/665032.html" title="红花四季豆-菜豆种子" target="_blank">红花四季豆-菜豆种子</a> <br>
-                                        公司地址：四川成都市新都区龙桥镇<br>
-                                        公司介绍：成都达利种子有限公司繁育种子品种有：韭葱种子（洋蒜苗种子）胡豆蚕豆种子豌豆种子中豌六号红花白壳四季豆红花青壳四季…<br> <a href="http://dlzz.3456.tv/intro.html" target="_blank" title="成都达利种子有限公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://dlzz.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://dlzz.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li><a href="http://cdynny.3456.tv/" target="_blank"><img src="../img/2014421175611225.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="成都优耐农业开发有限公司"></a>
-                                <div>
-                                    <h3><a href="http://cdynny.3456.tv/" target="_blank" title="成都优耐农业开发有限公司">成都优耐农业开发有限公司</a></h3>
-                                    <p>主营产品：
-                                        <a href="http://www.3456.tv/chanpin/655556.html" title="优耐-优粉108-番茄种子" target="_blank">优耐-优粉108-番</a> <a href="http://www.3456.tv/chanpin/655555.html" title="优耐-优粉1016-番茄种子" target="_blank">优耐-优粉1016-</a> <a href="http://www.3456.tv/chanpin/655554.html" title="优耐-优粉106-番茄种子" target="_blank">优耐-优粉106-番</a> <br>
-                                        公司地址：四川省成都市静渝路39号1009室<br>
-                                        公司介绍： 成都优耐农业开发有限公司成立于2013年10月，公司注册资本200万人民币。主要从事茄科类蔬菜种子新品种的研究、… <br><a href="http://cdynny.3456.tv/intro.html" target="_blank" title="成都优耐农业开发有限公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://cdynny.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://cdynny.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li class="dbj"><a href="http://xwseed.3456.tv/" target="_blank"><img src="../img/2014421171921281.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川喜望种业有限公司"></a>
-                                <div>
-                                    <h3><a href="http://xwseed.3456.tv/" target="_blank" title="四川喜望种业有限公司">四川喜望种业有限公司</a></h3>
-                                    <p>主营产品：
-                                        <a href="http://www.3456.tv/chanpin/654738.html" title="喜望-华凯2号" target="_blank">喜望-华凯2号</a> <a href="http://www.3456.tv/chanpin/654737.html" title="喜望-乾泰1号" target="_blank">喜望-乾泰1号</a> <a href="http://www.3456.tv/chanpin/654736.html" title="喜望-蓉单8号" target="_blank">喜望-蓉单8号</a> <br>
-                                        公司地址：成都龙舟路58号（仲衍种业背后种子楼3楼）<br>
-                                        公司介绍：四川喜望种业有限公司是一家以品种研发、品牌营销、项目运作等为一体的高型农业技术企业。公司注册资本三千万元，核心团… <br><a href="http://xwseed.3456.tv/intro.html" target="_blank" title="四川喜望种业有限公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://xwseed.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://xwseed.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li><a href="http://scfyseed.3456.tv/" target="_blank"><img src="../img/2014416151408755.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川方圆种业科技有限公司"></a>
-                                <div>
-                                    <h3><a href="http://scfyseed.3456.tv/" target="_blank" title="四川方圆种业科技有限公司">四川方圆种业科技有限公司</a></h3>
-                                    <p>主营产品：<a href="http://scfyseed.3456.tv/product_class_35338.html" target="_blank">葱蒜</a> <a href="http://scfyseed.3456.tv/product_class_35339.html" target="_blank">玉米</a> <a href="http://scfyseed.3456.tv/product_class_35340.html" target="_blank">瓜类</a>
-                                        <br>
-                                        公司地址：成都市锦江区静渝路2号一区4-6<br>
-                                        公司介绍： 四川方圆种业科技有限公司是成都种业协会蔬菜分会常务理事单位，从事蔬菜种子事业二十多年，我公司始终坚持以“探求卓越… <br><a href="http://scfyseed.3456.tv/intro.html" target="_blank" title="四川方圆种业科技有限公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://scfyseed.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://scfyseed.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                            <li class="dbj"><a href="http://kwseed.3456.tv/" target="_blank"><img src="../img/2012910162533264.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="西昌科威洋葱种业有限责任公司"></a>
-                                <div>
-                                    <h3><a href="http://kwseed.3456.tv/" target="_blank" title="西昌科威洋葱种业有限责任公司">西昌科威洋葱种业有限责任公司</a></h3>
-                                    <p>主营产品：<a href="http://kwseed.3456.tv/product_class_21409.html" target="_blank">白皮洋葱</a> <a href="http://kwseed.3456.tv/product_class_21410.html" target="_blank">黄皮洋葱</a> <a href="http://kwseed.3456.tv/product_class_21411.html" target="_blank">红皮洋葱</a>
-                                        <br>
-                                        公司地址：四川省西昌市福新路<br>
-                                        公司介绍：科威洋葱种业公司的全名为西昌科威洋葱种业有限责任公司，是专门进行洋葱育种研究、洋葱种子生产、洋葱种子销售，集科研…<br> <a href="http://kwseed.3456.tv/intro.html" target="_blank" title="西昌科威洋葱种业有限责任公司">查看详情&gt;&gt;</a></p>
-                                </div>
-                                <span><a href="http://kwseed.3456.tv/online.html" style="color:#f00" target="_blank"><img src="../img/liuyan.gif" alt="留言咨询"></a>　　<a href="http://kwseed.3456.tv/product.html" target="_blank">查看全部产品</a></span>
-                            </li>
-
-                        </ul>
-                        <div style="clear:both"></div>
-                        <!--分页-->
-                        <div id="pages" class="pages">
-
-                            <!-- AspNetPager V7.2 for VS2005 & VS2008  Copyright:2003-2008 Webdiyer (www.webdiyer.com) -->
-                            <div id="AspNetPager1" class="anpager">
-                                <a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上一页</a><span class="cpb" style="margin-right:5px;">1</span><a href="/business/zhongzi_sichuan_2.html" style="margin-right:5px;">2</a><a href="/business/zhongzi_sichuan_3.html" style="margin-right:5px;">3</a><a href="/business/zhongzi_sichuan_4.html" style="margin-right:5px;">4</a><a href="/business/zhongzi_sichuan_5.html" style="margin-right:5px;">5</a><a href="/business/zhongzi_sichuan_6.html" style="margin-right:5px;">...</a><a href="/business/zhongzi_sichuan_2.html" style="margin-right:5px;">下一页</a><a href="/business/zhongzi_sichuan_10.html" style="margin-right:5px;">尾页</a>
                             </div>
-                            <!-- AspNetPager V7.2 for VS2005 & VS2008 End -->
-
-
                         </div>
-                        <!--分页-->
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 品种导航</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/农业.png"
+                                                                                    style="width: 40px;height: 40px;"><span><a
+                                    href="BreedDictionary.html" style="color: #0f4850;">省内品种</a></span></div>
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/农业.png"
+                                                                                    style="width: 40px;height: 40px;"><span><a
+                                    href="BreedDictionaryOut.html" style="color: #0f4850;">省外品种</a></span></div>
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 种子企业</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list"><a href="breedBusinessProvince.html">
+                                <img class="titleList1" src="../img/shengnei.jpg" style="width: 100%;height: 40px;"></a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list"><a href="breedBusiness.html"><img
+                                    class="titleList1" src="../img/guonei.jpg" style="width: 100%;height: 40px;"></a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list"><a
+                                    href="breedBusinessInternational.html"><img class="titleList1"
+                                                                                src="../img/guoji.jpg"
+                                                                                style="width: 100%;height: 40px;"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 相关链接</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list1"><a href="http://news.aweb.com.cn/"> <img
+                                    src="../img/nongbozhongye.png" style="width: 100%;height: 60px;"></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_main_right">
+
+                    <div class="content_main_right_title">
+                        <span class="content_main_rightTitle">省内企业</span><span class="position">首页&nbsp;>&nbsp;种子数据库&nbsp;>&nbsp;种子企业&nbsp;>&nbsp;省内企业</span>
+                    </div>
+                    <div class="list_content">
+                        <div class="cont">
+                            <ul>
+                                <li><a href="http://scwdkj.3456.tv/" target="_blank"><img
+                                        src="../img/2016521111402960.jpg"
+                                        onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'"
+                                        width="120" height="99" alt="四川万德科技有限公司"></a>
+                                    <div>
+                                        <h3><a href="http://scwdkj.3456.tv/" target="_blank" title="四川万德科技有限公司">四川万德科技有限公司</a>
+                                        </h3>
+                                        <p>主营产品：<a href="http://scwdkj.3456.tv/product_class_38949.html"
+                                                   target="_blank">小麦种子</a> <a
+                                                href="http://scwdkj.3456.tv/product_class_38951.html" target="_blank">油菜种子</a>
+                                            <a href="http://scwdkj.3456.tv/product_class_38952.html" target="_blank">水稻种子</a>
+                                            <br>
+                                            公司地址：四川省成都市锦江区静沙南路29号7栋29F<br>
+                                            公司介绍： 四川万德科技有限公司是一家以农作物种子育、繁、推为一体化的生物科技（创新型）股份制企业，旗下控股成都科源农作物研… <br><a
+                                                    href="http://scwdkj.3456.tv/intro.html" target="_blank"
+                                                    title="四川万德科技有限公司">查看详情&gt;&gt;</a></p>
+                                    </div>
+                                </li>
+
+                                <li class="dbj"><a href="http://htyy.3456.tv/" target="_blank"><img
+                                        src="../img/2015829173151924.jpg"
+                                        onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'"
+                                        width="120" height="99" alt="成都好特园艺有限公司"></a>
+                                    <div>
+                                        <h3><a href="http://htyy.3456.tv/" target="_blank"
+                                               title="成都好特园艺有限公司">成都好特园艺有限公司</a></h3>
+                                        <p>主营产品：<a href="http://htyy.3456.tv/product_class_35112.html" target="_blank">其他种子</a>
+                                            <a href="http://htyy.3456.tv/product_class_35358.html"
+                                               target="_blank">茄子种子</a> <a
+                                                    href="http://htyy.3456.tv/product_class_35359.html" target="_blank">南瓜种子</a>
+                                            <br>
+                                            公司地址：四川省成都市静康路58号1-1-1801<br>
+                                            公司介绍：成都好特园艺有限公司是与四川省农业科学院密切合作的一家集育、繁、推于一体的专业化种苗公司，公司现有员工40余人，…<br> <a
+                                                    href="http://htyy.3456.tv/intro.html" target="_blank"
+                                                    title="成都好特园艺有限公司">查看详情&gt;&gt;</a></p>
+                                    </div>
+                                </li>
+
+                                <li><a href="http://schfzy.3456.tv/" target="_blank"><img
+                                        src="../img/201571105839830.jpg"
+                                        onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'"
+                                        width="120" height="99" alt="四川恒禾种业有限公司"></a>
+                                    <div>
+                                        <h3><a href="http://schfzy.3456.tv/" target="_blank" title="四川恒禾种业有限公司">四川恒禾种业有限公司</a>
+                                        </h3>
+                                        <p>主营产品：
+                                            <a href="http://www.3456.tv/chanpin/713431.html" title="德恒油900(油菜种子)-恒禾种业"
+                                               target="_blank">德恒油900(油菜种</a> <a
+                                                    href="http://www.3456.tv/chanpin/713429.html"
+                                                    title="德恒油900(双低杂交油菜新品种)-恒禾种业" target="_blank">德恒油900(双低杂</a> <a
+                                                    href="http://www.3456.tv/chanpin/713420.html" title="油菜杂交种德恒油-恒禾种业"
+                                                    target="_blank">油菜杂交种德恒油-恒</a> <br>
+                                            公司地址：成都市静渝路48号索尔龙舟大厦12楼<br>
+                                            公司介绍： 四川恒禾种业有限公司是一家集科研、生产、营销推广服务 为一体的现代种业企业，主要致力于杂交油菜新优品种的开 发推…<br> <a
+                                                    href="http://schfzy.3456.tv/intro.html" target="_blank"
+                                                    title="四川恒禾种业有限公司">查看详情&gt;&gt;</a></p>
+                                    </div>
+                                </li>
+
+                                <li class="dbj"><a href="http://sclzgyzy.3456.tv/" target="_blank"><img
+                                        src="../img/2014922111212716.gif"
+                                        onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'"
+                                        width="120" height="99" alt="四川泸州耕耘种业"></a>
+                                    <div>
+                                        <h3><a href="http://sclzgyzy.3456.tv/" target="_blank"
+                                               title="四川泸州耕耘种业">四川泸州耕耘种业</a></h3>
+                                        <p>主营产品：
+                                            <a href="http://www.3456.tv/chanpin/678111.html" title="粗棒菜用型甜糯玉米种-加甜加糯"
+                                               target="_blank">粗棒菜用型甜糯玉米种</a> <a
+                                                    href="http://www.3456.tv/chanpin/678110.html" title="糯玉米种-京科糯2008"
+                                                    target="_blank">糯玉米种-京科糯20</a> <a
+                                                    href="http://www.3456.tv/chanpin/678109.html"
+                                                    title="优质型香糯玉米种-京科糯3000" target="_blank">优质型香糯玉米种-京</a> <br>
+                                            公司地址：四川泸州王氏农资市场22号门市<br>
+                                            公司介绍：四川泸州耕耘种业，是一家专门从事大田种子~蔬菜种子销售并提供农作物技术咨询服务的现代农业科技型民营企业，公司实行…<br> <a
+                                                    href="http://sclzgyzy.3456.tv/intro.html" target="_blank"
+                                                    title="四川泸州耕耘种业">查看详情&gt;&gt;</a></p>
+                                    </div>
+                                </li>
+
+                                <li><a href="http://sczbseed.3456.tv/" target="_blank"><img
+                                        src="../img/2014619145744412.jpg"
+                                        onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'"
+                                        width="120" height="99" alt="四川仲帮种业有限公司"></a>
+                                    <div>
+                                        <h3><a href="http://sczbseed.3456.tv/" target="_blank" title="四川仲帮种业有限公司">四川仲帮种业有限公司</a>
+                                        </h3>
+                                        <p>主营产品：<a href="http://sczbseed.3456.tv/product_class_30374.html"
+                                                   target="_blank">油菜品种</a> <a
+                                                href="http://sczbseed.3456.tv/product_class_30376.html" target="_blank">玉米品种</a>
+                                            <a href="http://sczbseed.3456.tv/product_class_30377.html" target="_blank">小麦品种</a>
+                                            <br>
+                                            公司地址：四川省南充市高坪区航空港工业园区松涛路<br>
+                                            公司介绍： 四川仲帮种业有限公司，是由原四川盛裕种业有限公司股东与仲衍种业股份公司发起设立，完全承接了四川盛裕种业有限公司全… <br><a
+                                                    href="http://sczbseed.3456.tv/intro.html" target="_blank"
+                                                    title="四川仲帮种业有限公司">查看详情&gt;&gt;</a></p>
+                                    </div>
+                                </li>
+                                <!--
+
+                                                            <li class="dbj"><a href="http://dlzz.3456.tv/" target="_blank"><img src="../img/2014610170904488.jpg" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="成都达利种子有限公司"></a>
+                                                                <div>
+                                                                    <h3><a href="http://dlzz.3456.tv/" target="_blank" title="成都达利种子有限公司">成都达利种子有限公司</a></h3>
+                                                                    <p>主营产品：
+                                                                        <a href="http://www.3456.tv/chanpin/665036.html" title="K新绿开心绿毛豆种子" target="_blank">K新绿开心绿毛豆种子</a> <a href="http://www.3456.tv/chanpin/665033.html" title="台湾75-毛豆种子" target="_blank">台湾75-毛豆种子</a> <a href="http://www.3456.tv/chanpin/665032.html" title="红花四季豆-菜豆种子" target="_blank">红花四季豆-菜豆种子</a> <br>
+                                                                        公司地址：四川成都市新都区龙桥镇<br>
+                                                                        公司介绍：成都达利种子有限公司繁育种子品种有：韭葱种子（洋蒜苗种子）胡豆蚕豆种子豌豆种子中豌六号红花白壳四季豆红花青壳四季…<br> <a href="http://dlzz.3456.tv/intro.html" target="_blank" title="成都达利种子有限公司">查看详情&gt;&gt;</a></p>
+                                                                </div>
+                                                            </li>
+
+                                                            <li><a href="http://cdynny.3456.tv/" target="_blank"><img src="../img/2014421175611225.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="成都优耐农业开发有限公司"></a>
+                                                                <div>
+                                                                    <h3><a href="http://cdynny.3456.tv/" target="_blank" title="成都优耐农业开发有限公司">成都优耐农业开发有限公司</a></h3>
+                                                                    <p>主营产品：
+                                                                        <a href="http://www.3456.tv/chanpin/655556.html" title="优耐-优粉108-番茄种子" target="_blank">优耐-优粉108-番</a> <a href="http://www.3456.tv/chanpin/655555.html" title="优耐-优粉1016-番茄种子" target="_blank">优耐-优粉1016-</a> <a href="http://www.3456.tv/chanpin/655554.html" title="优耐-优粉106-番茄种子" target="_blank">优耐-优粉106-番</a> <br>
+                                                                        公司地址：四川省成都市静渝路39号1009室<br>
+                                                                        公司介绍： 成都优耐农业开发有限公司成立于2013年10月，公司注册资本200万人民币。主要从事茄科类蔬菜种子新品种的研究、… <br><a href="http://cdynny.3456.tv/intro.html" target="_blank" title="成都优耐农业开发有限公司">查看详情&gt;&gt;</a></p>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="dbj"><a href="http://xwseed.3456.tv/" target="_blank"><img src="../img/2014421171921281.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川喜望种业有限公司"></a>
+                                                                <div>
+                                                                    <h3><a href="http://xwseed.3456.tv/" target="_blank" title="四川喜望种业有限公司">四川喜望种业有限公司</a></h3>
+                                                                    <p>主营产品：
+                                                                        <a href="http://www.3456.tv/chanpin/654738.html" title="喜望-华凯2号" target="_blank">喜望-华凯2号</a> <a href="http://www.3456.tv/chanpin/654737.html" title="喜望-乾泰1号" target="_blank">喜望-乾泰1号</a> <a href="http://www.3456.tv/chanpin/654736.html" title="喜望-蓉单8号" target="_blank">喜望-蓉单8号</a> <br>
+                                                                        公司地址：成都龙舟路58号（仲衍种业背后种子楼3楼）<br>
+                                                                        公司介绍：四川喜望种业有限公司是一家以品种研发、品牌营销、项目运作等为一体的高型农业技术企业。公司注册资本三千万元，核心团… <br><a href="http://xwseed.3456.tv/intro.html" target="_blank" title="四川喜望种业有限公司">查看详情&gt;&gt;</a></p>
+                                                                </div>
+                                                            </li>
+
+                                                            <li><a href="http://scfyseed.3456.tv/" target="_blank"><img src="../img/2014416151408755.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="四川方圆种业科技有限公司"></a>
+                                                                <div>
+                                                                    <h3><a href="http://scfyseed.3456.tv/" target="_blank" title="四川方圆种业科技有限公司">四川方圆种业科技有限公司</a></h3>
+                                                                    <p>主营产品：<a href="http://scfyseed.3456.tv/product_class_35338.html" target="_blank">葱蒜</a> <a href="http://scfyseed.3456.tv/product_class_35339.html" target="_blank">玉米</a> <a href="http://scfyseed.3456.tv/product_class_35340.html" target="_blank">瓜类</a>
+                                                                        <br>
+                                                                        公司地址：成都市锦江区静渝路2号一区4-6<br>
+                                                                        公司介绍： 四川方圆种业科技有限公司是成都种业协会蔬菜分会常务理事单位，从事蔬菜种子事业二十多年，我公司始终坚持以“探求卓越… <br><a href="http://scfyseed.3456.tv/intro.html" target="_blank" title="四川方圆种业科技有限公司">查看详情&gt;&gt;</a></p>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="dbj"><a href="http://kwseed.3456.tv/" target="_blank"><img src="../img/2012910162533264.gif" onerror="javascript:this.src='http://www.3456.tv/images/BusinessImages/gongsizhaoshang.gif'" width="120" height="99" alt="西昌科威洋葱种业有限责任公司"></a>
+                                                                <div>
+                                                                    <h3><a href="http://kwseed.3456.tv/" target="_blank" title="西昌科威洋葱种业有限责任公司">西昌科威洋葱种业有限责任公司</a></h3>
+                                                                    <p>主营产品：<a href="http://kwseed.3456.tv/product_class_21409.html" target="_blank">白皮洋葱</a> <a href="http://kwseed.3456.tv/product_class_21410.html" target="_blank">黄皮洋葱</a> <a href="http://kwseed.3456.tv/product_class_21411.html" target="_blank">红皮洋葱</a>
+                                                                        <br>
+                                                                        公司地址：四川省西昌市福新路<br>
+                                                                        公司介绍：科威洋葱种业公司的全名为西昌科威洋葱种业有限责任公司，是专门进行洋葱育种研究、洋葱种子生产、洋葱种子销售，集科研…<br> <a href="http://kwseed.3456.tv/intro.html" target="_blank" title="西昌科威洋葱种业有限责任公司">查看详情&gt;&gt;</a></p>
+                                                                </div>
+                                                            </li>
+                                -->
+
+                            </ul>
+                            <div style="clear:both"></div>
+                            <!--分页-->
+                            <div id="pages" class="pages">
+
+                                <!-- AspNetPager V7.2 for VS2005 & VS2008  Copyright:2003-2008 Webdiyer (www.webdiyer.com) -->
+                                <div id="AspNetPager1" class="anpager">
+                                    <a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled"
+                                                                                              style="margin-right:5px;">上一页</a><span
+                                        class="cpb" style="margin-right:5px;">1</span><a
+                                        href="/business/zhongzi_sichuan_2.html" style="margin-right:5px;">2</a><a
+                                        href="/business/zhongzi_sichuan_3.html" style="margin-right:5px;">3</a><a
+                                        href="/business/zhongzi_sichuan_4.html" style="margin-right:5px;">4</a><a
+                                        href="/business/zhongzi_sichuan_5.html" style="margin-right:5px;">5</a><a
+                                        href="/business/zhongzi_sichuan_6.html" style="margin-right:5px;">...</a><a
+                                        href="/business/zhongzi_sichuan_2.html" style="margin-right:5px;">下一页</a><a
+                                        href="/business/zhongzi_sichuan_10.html" style="margin-right:5px;">尾页</a>
+                                </div>
+                                <!-- AspNetPager V7.2 for VS2005 & VS2008 End -->
+
+
+                            </div>
+                            <!--分页-->
+                        </div>
                     </div>
                 </div>
 
-
             </div>
-
-
-
-
-
 
 
         </div>
@@ -372,15 +352,13 @@
 </div>
 
 
-
-
 <div class="foot">
-    <div class="footLogo">
-    </div>
-    <div class="footText">
-        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    <div class="footBox">
+        <div class="footLogo"></div>
+        <div class="footText"><b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br> <b
+                style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail:pbding@163.com </b><br> <b
+                style="color: #cccbc9; font-size: 14px;"> Copyright news.sichuan.edu.cn All rights reserved</b></div>
     </div>
 </div>
 </div>

@@ -1,15 +1,19 @@
 package com.ronxuntech.component.spsm.util;
 
 import com.google.common.collect.Sets;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.Consts;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.annotation.ThreadSafe;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -31,8 +35,11 @@ import us.codecraft.webmagic.utils.HttpConstant;
 import us.codecraft.webmagic.utils.UrlUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -105,8 +112,9 @@ public class HttpClientDownloader extends AbstractDownloader {
                 onSuccess(request);
                 return page;
             }else{
+            	Page page = handleResponse(request, charset, httpResponse, task);
             	logger.warn("code error " + statusCode + "\t" + request.getUrl());
-                return null;
+                return page;
 	    }
         } catch (IOException e) {
             logger.warn("download page " + request.getUrl() + " error", e);
@@ -161,7 +169,59 @@ public class HttpClientDownloader extends AbstractDownloader {
         requestBuilder.setConfig(requestConfigBuilder.build());
         return requestBuilder.build();
     }
+    
+  //测试 的  
+   /* public HttpUriRequest getHttpUriRequest2(Request request,Site site, Map<String, String> headers){
+    	 RequestBuilder requestBuilder = selectRequestMethod(request).setUri(request.getUrl());
+    	if(((HttpResponse) request).getEntity()!=null&&request.getExtras()==null&&HttpConstant.Method.POST.equals(request.getMethod())){
+    	    	//处理相应的post请求
+    		 HttpUriRequest  httpUriRequest = getHttpUriRequestPostChinese(request, site, headers); 
+                System.out.println("--------------------------------------------------------");
+            }else{
+            	HttpUriRequest 	httpUriRequest = getHttpUriRequest(request, site, headers);
+            }
+    	 return requestBuilder.build();
+    }*/
+    
+   
+    
+    //测试的
+   /* protected HttpUriRequest getHttpUriRequestPostChinese(Request request, Site site, Map<String, String> headers) {
+        HttpPost httppost = new HttpPost(request.getUrl());
+        if (headers != null) {
+            for (Map.Entry<String, String> headerEntry : headers.entrySet()) {
+                httppost.addHeader(headerEntry.getKey(), headerEntry.getValue());
+            }
+        }
+        RequestConfig.Builder requestConfigBuilder = RequestConfig.custom()
+                .setConnectionRequestTimeout(site.getTimeOut())
+                .setSocketTimeout(site.getTimeOut())
+                .setConnectTimeout(site.getTimeOut())
+                .setCircularRedirectsAllowed(true)
+                .setMaxRedirects(10)
+                .setCookieSpec(CookieSpecs.BEST_MATCH);
+        if (site.getHttpProxyPool() != null && site.getHttpProxyPool().isEnable()) {
+            HttpHost host = site.getHttpProxyFromPool();
+            requestConfigBuilder.setProxy(host);
+            //RequestConfig config = RequestConfig.custom().setProxy(host).build();
+            //httppost.setConfig(config);
 
+        }else if(site.getHttpProxy()!= null){
+            HttpHost host = site.getHttpProxy();
+            requestConfigBuilder.setProxy(host);
+            //RequestConfig config = RequestConfig.custom().setProxy(host).build();
+            //httppost.setConfig(config);
+        }
+//        RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+        httppost.setConfig(requestConfigBuilder.build());
+        httppost.setEntity(((HttpResponse) request).getEntity());  
+        return httppost;
+
+    }*/
+    
+    
+    
+    
     protected RequestBuilder selectRequestMethod(Request request) {
         String method = request.getMethod();
         if (method == null || method.equalsIgnoreCase(HttpConstant.Method.GET)) {
@@ -169,9 +229,19 @@ public class HttpClientDownloader extends AbstractDownloader {
             return RequestBuilder.get();
         } else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {
             RequestBuilder requestBuilder = RequestBuilder.post();
+//            requestBuilder.setCharset(Consts.UTF_8);
             NameValuePair[] nameValuePair = (NameValuePair[]) request.getExtra("nameValuePair");
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            for(int i = 0 ;i<nameValuePair.length;i++){
+            	params.add(nameValuePair[i]);
+            }
             if (nameValuePair != null && nameValuePair.length > 0) {
-                requestBuilder.addParameters(nameValuePair);
+//                requestBuilder.addParameters(nameValuePair);
+            	try {
+					requestBuilder.setEntity(new UrlEncodedFormEntity(params));
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}  
             }
             return requestBuilder;
         } else if (method.equalsIgnoreCase(HttpConstant.Method.HEAD)) {
@@ -248,4 +318,6 @@ public class HttpClientDownloader extends AbstractDownloader {
         // 3��todo use tools as cpdetector for content decode
         return charset;
     }
+    
+    
 }

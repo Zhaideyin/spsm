@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.regexp.recompile;
 
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
@@ -19,15 +23,12 @@ import com.ronxuntech.service.spsm.seedurl.SeedUrlManager;
 import com.ronxuntech.service.spsm.seedurl.impl.SeedUrlService;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
 import com.ronxuntech.service.spsm.targeturl.TargetUrlManager;
-import com.ronxuntech.service.spsm.targeturl.impl.TargetUrlService;
 import com.ronxuntech.util.PageData;
 import com.ronxuntech.util.PathUtil;
 import com.ronxuntech.util.SpringBeanFactoryUtils;
 import com.ronxuntech.util.UuidUtil;
 
 import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.scheduler.Scheduler;
 
 /**
  * 工具类
@@ -177,34 +178,7 @@ public class AnnexUtil {
 
 	}
 
-	/*public boolean seedUrlDone(String seedUrl, TargetUrlManager targeturlService, SeedUrlManager seedurlService,AnnexUrlManager annexurlService){
-		if (annexUtil.pageUrlDone(seedUrl, targeturlService, seedurlService)
-				&& annexUtil.annexUrlDone(seedUrl, annexurlService, seedurlService)) {
-			return true;
-		}else{
-			return false;
-		}
-	}*/
 	
-	
-	/**
-	 * 更新种子的status
-	 * 
-	 * @param seedUrl
-	 * @param targeturlService
-	 * @param seedurlService
-	 */
-	/*public void updateSeedStatus(String seedUrl, SeedUrlManager seedurlService) {
-		PageData pdurl = findBySeedurl(seedUrl, seedurlService);
-		if (pdurl != null && pdurl.size() != 0) {
-			pdurl.put("STATUS", "1");
-			try {
-				seedurlService.edit(pdurl);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}*/
 
 	/**
 	 * 附件下载，判断该网站是否有配置图片或者文档
@@ -212,30 +186,13 @@ public class AnnexUtil {
 	 * @param web
 	 * @param pd
 	 * @param page
+	 * @return contents
 	 */
-	/*public void downloadAnnex(WebInfo web, PageData pd, Page page) {
-		StringBuffer annexUrlList = new StringBuffer();
-		StringBuffer fileList = new StringBuffer();
-		// 如果含有文字或者图片 传递当前页面的地址过去，
-		String pageUrl = "";
-		pageUrl = page.getUrl().toString();
-		Html html = page.getHtml();
-		String content = html.xpath(web.getList().get(1).toString()).toString();
-		if (web.isHasImg()) {
-			if (!(pageUrl.equals(web.getSeed()))) {
-				content = downImg(content, pageUrl, web, pd,annexUrlList,fileList);
-			}
-		}
-		if (web.isHasDoc()) {
-			if (!(pageUrl.equals(web.getSeed()))) {
-				downDoc(content, pageUrl, web, pd,annexUrlList,fileList);
-			}
 
-		}
-	}*/
-
-	public void downloadAnnex(WebInfo web, PageData pd, String content,String pageUrl) {
+	public String downloadAnnex(WebInfo web, PageData pd, String content,String pageUrl) {
+		//用来存放 下载 附件的链接地址
 		StringBuffer annexUrlList = new StringBuffer();
+		//用来存放 附件存放的地址+附件名
 		StringBuffer fileList = new StringBuffer();
 		// 如果含有文字或者图片 传递当前页面的地址过去，
 		String contents=content;
@@ -243,16 +200,20 @@ public class AnnexUtil {
 			contents = downImg(content, pageUrl, web, pd,annexUrlList,fileList);
 		}
 		if (web.isHasDoc()) {
-			downDoc(contents, pageUrl, web, pd,annexUrlList,fileList);
+		    contents=downDoc(contents, pageUrl, web, pd,annexUrlList,fileList);
 		}
+		return contents;
 	}
+	
 	/**
-	 * 图片下载
-	 * 
-	 * @param html
+	 * 获取图片链接并替换，返回替换后的content
+	 * @param content
 	 * @param pageUrl
 	 * @param web
 	 * @param pd
+	 * @param annexUrlList
+	 * @param fileList
+	 * @return contents
 	 */
 	public String downImg(String content, String pageUrl, WebInfo web, PageData pd,StringBuffer annexUrlList,StringBuffer fileList) {
 		// 通过正则表达式来找出符合图片或者文档的链接
@@ -262,9 +223,7 @@ public class AnnexUtil {
 		List<String> pathList = new ArrayList<>();
 		// 保存文件的路径
 		String fileDir = "";
-//		StringBuffer annexUrlList = new StringBuffer();
-//		StringBuffer fileList = new StringBuffer();
-		List<String> annexNameList = new ArrayList<>();
+//		List<String> annexNameList = new ArrayList<>();
 		// 循环取出抓取到的文本中符合配置的过滤图片正则的链接
 		while (m.find()) {
 			if (!(pageUrl.equals(""))) {
@@ -281,10 +240,7 @@ public class AnnexUtil {
 				// 文件路径： 项目的根路径 + 网站地址
 				fileDir = PathUtil.getClasspath() + map.get("fileDir").toString();
 				String fileName = map.get("fileName").toString();
-//				String fileName = getFileName();
-//				String extName = com.google.common.io.Files.getFileExtension(annexUrl);
-//				fileName = fileName + extName;
-				annexNameList.add(fileName);
+//				annexNameList.add(fileName);
 				// 清除特殊字符
 				String regex = "[|*?%<>\"]";
 				Pattern pattern = Pattern.compile(regex);
@@ -296,7 +252,7 @@ public class AnnexUtil {
 				content = content.replace(m.group(), map.get("fileDir").toString() + fileName);
 				String annexUrl1 = "";
 				if (annexUrl.contains("http")) {
-					annexUrl1.replace("amp;", "").trim();
+					annexUrl1 = annexUrl.replace("amp;", "").trim();
 				} else {
 					annexUrl1 = annexUtil.getTargetUrl(annexUrl, pageUrl).replace("amp;", "").trim();
 				}
@@ -307,38 +263,30 @@ public class AnnexUtil {
 		}
 		pd.put("ANNEXURLS", annexUrlList.toString());
 		pd.put("FILENAME", fileList.toString());
-		pd.put("CONTENT", content);
-		//如果下载的文件名列表不为空，则去执行下载
-		if(annexNameList.size()!=0){
-//			//存储urls文件的路径
-//			String filepath ="D:\\webmagic\\spsm\\urls\\annex";
-//		    Scheduler scheduler = new FileCacheQueueScheduler(filepath);
-			 
-			AnnexSpider annex = new AnnexSpider(pageUrl, web.getSeed(), web,"img");
-			ImgOrDocPipeline img = new ImgOrDocPipeline(fileDir, annexNameList, pageUrl, web.getSeed());
-			Spider.create(annex).addUrl(pageUrl).addPipeline(img).thread(3).start();
-		}
+		// 将[],去掉
+		String regex = "[\\[|\\]|,]";
+		pd.put("CONTENT", content.replaceAll(regex, ""));
+	
 		return content;
 	}
-
+	
 	/**
-	 * downDoc 文件下载
+	 * 获取文档等链接，并替换，无返回
 	 * 
 	 * @param html
 	 * @param pageUrl
 	 * @param web
 	 * @param pd
+	 * @return content
 	 */
-	public void downDoc(String content, String pageUrl, WebInfo web, PageData pd,StringBuffer annexUrlList,StringBuffer fileList) {
+	public String downDoc(String content, String pageUrl, WebInfo web, PageData pd,StringBuffer annexUrlList,StringBuffer fileList) {
 		// 通过正则表达式来找出符合图片或者文档的链接
 		Pattern p = Pattern.compile(web.getDocRegex().trim());
 		Matcher m = p.matcher(content);
 		// 用于存放多个文档链接。或者图片链接
 		List<String> pathList = new ArrayList<>();
 		// 循环检测是否匹配文档下载的链接
-//		StringBuffer annexUrlList = new StringBuffer();
-//		StringBuffer fileList = new StringBuffer();
-		List<String> annexNameList = new ArrayList<>();
+//		List<String> annexNameList = new ArrayList<>();
 		String fileDir = "";
 		while (m.find()) {
 			// 获取的图片或者文档的链接。
@@ -359,7 +307,7 @@ public class AnnexUtil {
 			String extName = com.google.common.io.Files.getFileExtension(annexUrl);
 			// 整个名称
 			fileName = fileName + extName;
-			annexNameList.add(fileName);
+//			annexNameList.add(fileName);
 
 			// 将当前下载的文档或者图片的路径保存到list
 			pathList.add(fileDir + fileName);
@@ -377,21 +325,12 @@ public class AnnexUtil {
 		
 		pd.put("FILENAME", fileList.toString());
 		pd.put("ANNEXURLS", annexUrlList.toString());
-		pd.put("CONTENT", content);
-		//如果下载文件的名称列表不为空，则去执行下载
-		if(annexNameList.size()!=0){
-//			//存储urls文件的路径
-//			String filepath ="D:\\webmagic\\spsm\\urls\\annex";
-//		    Scheduler scheduler = new FileCacheQueueScheduler(filepath);
-		    
-			AnnexSpider annex = new AnnexSpider(pageUrl, web.getSeed(), web,"doc");
-			ImgOrDocPipeline doc = new ImgOrDocPipeline(fileDir, annexNameList, pageUrl, web.getSeed());
-			Spider.create(annex).addUrl(pageUrl).addPipeline(doc).thread(3).start();
-		}
-		
+		// 将[],去掉
+		String regex = "[\\[|\\]|,]";
+		pd.put("CONTENT", content.replaceAll(regex, ""));
+		return content;
 
 	}
-
 	/**
 	 * 将下载的地址作为 文件夹和文件名。通过最后一个/ 来区分
 	 * 
@@ -433,28 +372,11 @@ public class AnnexUtil {
 	 * 先判断网页上抓到的链接，判断../ 出现的个数 如果前边含有 ./ / ../ ../../ 或没有
 	 * 分别截取网页地址的部分。前面两个和没有直接去掉网页的最后加上 / 后面的 如果是 ../ 则去掉倒数第1个 / 后的。
 	 * 并且加上传来的url最后的。同理，../../ 则是去掉倒数第2个 /后的。 tergetUrl
-	 * 
-	 * @param url
-	 *            htmlUrl(页面正则匹配到的，) pageUrl 是当前页面的地址
-	 * @return
-	 * @throws MalformedURLException
-	 */
-	/**
-	 * 得到完整地 链接
-	 * 
-	 * @param htmlUrl
-	 *            得到的html页面上抓取的 链接。
-	 * @param pageUrl
-	 *            当前页的链接
-	 * @return
-	 * @throws MalformedURLException
-	 */
-
-	/**
 	 * 拼接url(主要用于ajax分页和 抓取到相对路径时使用)
-	 * 
-	 * @param htmlUrl（正则匹配到的url）
-	 * @param pageUrl(当前页面的url)
+	 * htmlUrl(页面正则匹配到的，) pageUrl 是当前页面的地址
+	 * @param url
+	 * @return
+	 * @throws MalformedURLException
 	 * @return
 	 */
 	public String getTargetUrl(String htmlUrl, String pageUrl) {
@@ -538,7 +460,12 @@ public class AnnexUtil {
 	public String getBasePath(String pageUrl) throws MalformedURLException {
 		String baseUrl = "";
 		URL u = new URL(pageUrl);
-		baseUrl = u.getProtocol() + "://" + u.getHost() + ":" + u.getPort();
+		if(u.getPort()>0){
+			baseUrl = u.getProtocol() + "://" + u.getHost() + ":" + u.getPort();
+		}else{
+			baseUrl = u.getProtocol() + "://" + u.getHost();
+		}
+		
 		return baseUrl;
 	}
 
@@ -550,12 +477,7 @@ public class AnnexUtil {
 	 */
 	public Set<String> listToSet(List<String> list) {
 		Set<String> set = new HashSet<>();
-		for (String str : list) {
-			if(!(str.trim().equals(""))){
-				set.add(str);
-			}
-			
-		}
+		set.addAll(list);
 		return set;
 	}
 
@@ -567,12 +489,23 @@ public class AnnexUtil {
 	 */
 	public List<String> setToList(Set<String> set) {
 		List<String> list = new ArrayList<>();
-		for (String str : set) {
-			list.add(str);
-		}
+		list.addAll(set);
 		return list;
 	}
 
+	//去重， 替换上面的去重方法
+	public void removeDuplicateWithOrder(List<String> list) {
+		Set<String> set = new HashSet();
+		List<String> newList = new ArrayList();
+		for (Iterator<String> iter = list.iterator(); iter.hasNext();) {
+			String element = iter.next();
+			if (set.add(element))
+				newList.add(element);
+		}
+		list.clear();
+		list.addAll(newList);
+	}
+	
 	/**
 	 * 将抓到的页面信息插入数据库
 	 * 
@@ -583,16 +516,18 @@ public class AnnexUtil {
 	 * @param targeturlService
 	 */
 	
-	public void insertintoDatabase(String content,String title, WebInfo web, String pageUrl, SpiderManager spiderService,
+	public PageData insertintoDatabase(String contents,String title, WebInfo web, String pageUrl, SpiderManager spiderService,
 			TargetUrlManager targeturlService) {
 		PageData pd = new PageData();
 		// 将[],去掉
 		String regex = "[\\[|\\]|,]";
-		content =content.replaceAll(regex, "");
-		title = title.replaceAll(regex, "");
+		String content =contents.replaceAll(regex, "");
+		if(title!="" && title!=null){
+			title = title.replaceAll(regex, "");
+			pd.put("TITLE", title);
+		}
 		pd.put("SPIDER_ID", UuidUtil.get32UUID());
-		pd.put("TITLE", title);
-		pd.put("CONTENT", content);
+		
 		pd.put("DATABASETYPE", web.getDatabaseType());
 		pd.put("NAVBARTYPE", web.getNavbarType());
 		pd.put("LISTTYPE", web.getListType());
@@ -600,25 +535,11 @@ public class AnnexUtil {
 
 		String d = sdf.format(new Date());
 		pd.put("CREATE_TIME", d);
-		pd.put("TARGETURLID", pageUrl);
+		pd.put("TARGETURLID", pageUrl);//目前未存id
 		// 获取当前页的图片或者文档
-		annexUtil.downloadAnnex(web, pd, content, pageUrl);
-		try {
-			// 如果怕去的 内容是空，则不跳出。不存入数据库。
-			if (!("".equals(content.trim()))) {
-				if (content.trim().length() > 0) {
-					// 将爬取的数据放入数据库
-					spiderService.save(pd);
-					// 当钱页面不是种子页面，通过查询，然后修改该url的状态。
-					if (!(pageUrl.equals(web.getSeed()))) {
-						annexUtil.updateTargetStatus(pageUrl, targeturlService);
-					}
-
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		String final_content= annexUtil.downloadAnnex(web, pd, content, pageUrl);
+		pd.put("CONTENT", final_content);
+		return pd;
 	}
 
 	/**
@@ -629,18 +550,16 @@ public class AnnexUtil {
 	 * @param targeturlService
 	 * @throws Exception 
 	 */
-	public void targeturlInsertDatabase(List<String> urlList, String seedUrlId, TargetUrlService targeturlService) {
-		Set<String> set =listToSet(urlList);
-		List<String> tempList =setToList(set);
+	public void targeturlInsertDatabase(List<String> urlList, String seedUrlId, TargetUrlManager targeturlService) {
 		// 用于存入数据库
 		List<PageData> targetUrlList = new ArrayList<>();
-		if (tempList.size() != 0) {
+		if (urlList.size() != 0) {
 			// 取出所有target,重新组装到pd 中，然后放入list 进行批量插入
-			for (int i = 0; i < tempList.size(); i++) {
-				if(!(tempList.get(i).equals(""))){
+			for (int i = 0; i < urlList.size(); i++) {
+				if(StringUtils.isNotBlank(urlList.get(i))){
 					PageData pd1 = new PageData();
 					pd1.put("TARGETURL_ID", annexUtil.getFileName());
-					pd1.put("TARGETURL", tempList.get(i));
+					pd1.put("TARGETURL", urlList.get(i).replaceAll("&amp;", ""));
 					pd1.put("STATUS", "0");
 					pd1.put("SEEDURLID", seedUrlId);
 					pd1.put("CREATETIME", sdf.format(new Date()));
@@ -653,6 +572,7 @@ public class AnnexUtil {
 				try {
 					targeturlService.saveAll(pds);
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 		}
 
@@ -677,5 +597,207 @@ public class AnnexUtil {
 		return isNextPage;
 	}
 
+	/**
+	 * stringbuffer to list by ','
+	 * 主要用于 得到网页中的附件地址
+	 * @param sb
+	 * @return
+	 */
+	public List<String> stringToList(String sb){
+		String [] a= sb.split(",");
+		List<String> annexUrlList =new ArrayList<>();
+		for(int j=0;j<a.length;j++){
+			annexUrlList.add(a[j]);
+		}
+		return annexUrlList;
+	}
 	
+
+
+
+	/**
+	 * 保存 抓取到的附件链接地址
+	 * @param web
+	 * @param templist
+	 * @param pageUrl
+	 * @return
+	 */
+	public List<PageData> saveAnnexUrl(WebInfo web, List<String> templist,String pageUrl,TargetUrlManager targeturlService) {
+		//将抓到链接的去重
+//		Set<String> setTmep =  annexUtil.listToSet(templist);
+//		List<String> listTemp= annexUtil.setToList(setTmep);
+		List<PageData> annexUrlList = new ArrayList<>();
+		String seedUrlId = "";
+		PageData p = annexUtil.findBySeedurl(web.getSeed(), seedurlService);
+		seedUrlId = p.getString("SEEDURL_ID");
+		for (int i = 0; i < templist.size(); i++) {
+			PageData pd1 = new PageData();
+			pd1.put("ANNEXURL_ID", annexUtil.getFileName());
+			pd1.put("ANNEXURL", templist.get(i));
+			pd1.put("STATUS", "0");
+			pd1.put("SEEDURLID", seedUrlId);
+			PageData pd=annexUtil.findByPageurl(pageUrl, targeturlService);
+			pd1.put("TARGETURLID" ,pd.getString("TARGETURL_ID"));
+			pd1.put("CREATETIME",sdf.format(new Date()));
+			annexUrlList.add(pd1);
+		}
+		return annexUrlList;
+	}
+	
+	/**
+	 * 附件链接地址的保存和 下载附件
+	 * @param page
+	 * @param contents
+	 * @param title
+	 * @param web
+	 * @param annexurlService
+	 * @param pageUrl
+	 * @param spiderService
+	 * @param targeturlService
+	 */
+	public void annexSaveAndDown(Page page,String contents, String title,WebInfo web,AnnexUrlManager annexurlService,
+			String pageUrl,SpiderManager spiderService,TargetUrlManager targeturlService){
+		//****************附件下载准备*****************************************************/
+		//annexFileNameList（下载文件路径含文件名）   anneurlList（下载地址）
+		
+		//将需要保存的数据封装到 pd 中
+		PageData pd= annexUtil.insertintoDatabase(contents, title, web, pageUrl, spiderService, targeturlService);
+		page.putField("pd", pd);
+		
+		//用来保存 附件下载地址的中间变量
+		String annexUrlList1="";
+		//用来保存 附件保存地址和名称的中间变量
+		String fileList1="";
+		// 先判断是否有附件存在。
+		if(web.isHasImg() || web.isHasDoc()){
+			//获取附件的下载链接，
+			annexUrlList1=pd.getString("ANNEXURLS").trim();
+		
+			//获取附件的下载路径及附件名
+			fileList1=pd.getString("FILENAME").trim();
+		}
+		
+		//定义一个用于保存下载链接地址的集合
+		List<String>  annexUrlList= new ArrayList<>();
+		List<String> annexFileNameList= new ArrayList<>();
+		if(!(annexUrlList1.equals("") && fileList1.equals(""))){
+			//将下载的链接地址放入 page，然后再imgordoc pipeline 中取出，然后调用
+			annexUrlList =annexUtil.stringToList(annexUrlList1);
+			page.putField("annexUrlList", annexUrlList);
+			
+			//附件下载路径
+			
+			annexFileNameList=annexUtil.stringToList(fileList1);
+			page.putField("annexFileNameList", annexFileNameList);
+		}
+		
+		// 保存附件的下载地址
+		if (annexUrlList.size() != 0) {
+			PageData p = new PageData();
+			List<PageData> annexUrlList2 =annexUtil.saveAnnexUrl(web,annexUrlList,pageUrl,targeturlService);
+			p.put("annexUrlList", annexUrlList2);
+			try {
+				// 存入数据库
+				annexurlService.saveAll(p);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}
+	}
+	
+	/**
+	 * 主要针对某些特殊的网站。如：
+	 * 	网站能抓到 ：共158条，分8页，当前第页      转到页 
+	 * 	或者抓到：js 中含有 countPage = **页。
+	 * @param pageNumInContent
+	 * @return
+	 */
+	public int getTotalPageNum(String pageNumInContent,String seedUrl){
+		String totalPageNum =pageNumInContent;
+		//如果抓到的为空，则说明没有分页，
+		if(pageNumInContent==null || pageNumInContent.equals("")){
+			totalPageNum ="1";
+			return Integer.parseInt(totalPageNum);
+		}
+		//js生成的分页
+		if(seedUrl.contains("http://www.flower.agri.cn/") || seedUrl.contains("http://www.tea.agri.cn")
+				){
+			String regex = "(countPage.= (\\d+))";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(pageNumInContent);
+			if(matcher.find()){
+				String regex1 = "(\\d+)";
+				Pattern pattern1 = Pattern.compile(regex1);
+				Matcher matcher1 = pattern1.matcher(matcher.group());
+				if(matcher1.find()){
+					totalPageNum = matcher1.group();
+				}
+			}
+		}
+		if(seedUrl.contains("http://www.caas.net.cn")){
+			String content[] =pageNumInContent.split("，");
+			String regex = "(\\d+页)";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(content[1]);
+			if(matcher.find()){
+				totalPageNum =matcher.group().replaceAll("页", "");
+			}
+		}
+		if(seedUrl.contains("http://cxpt.agri.gov.cn") || seedUrl.contains("http://www.agri.cn")
+				|| seedUrl.contains("http://catf.agri.cn") || seedUrl.contains("http://www.moa.gov.cn")
+				|| seedUrl.contains("http://pfscnew.agri.gov.cn") || seedUrl.contains("http://www.gdcct.net")){
+			String regex = "(\\((\\d+))";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(pageNumInContent);
+			if(matcher.find()){
+				totalPageNum = matcher.group().replaceAll("\\(", "");
+			}
+		}
+		
+		if(seedUrl.contains("http://rdjc.lknet.ac.cn")){
+			String regex = "(currpage=(\\d+))";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(pageNumInContent);
+			if(matcher.find()){
+				totalPageNum= matcher.group().replaceAll(".*\\=", "");
+			}
+		}
+		
+		if(seedUrl.contains("http://www.agrione.cn")){
+			String [] temp =pageNumInContent.split("/");
+			totalPageNum = temp[1];
+		}
+		
+		if(seedUrl.contains("http://www.nykfw.com") || seedUrl.contains("http://www.3456.tv") ){
+			String regex ="(_\\d+)";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(pageNumInContent);
+			if(matcher.find()){
+				totalPageNum = matcher.group().replaceAll("_", "");
+			}
+			
+		}
+		
+		if(seedUrl.contains("http://www.sczyw.com")){
+			String regex ="\\d+页";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(pageNumInContent);
+			if(matcher.find()){
+				totalPageNum = matcher.group().replaceAll("页", "");
+			}
+		}
+		
+		/*if(seedUrl.contains("http://www.3456.tv")){
+			String regex ="_\\d+";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher m = pattern.matcher(pageNumInContent);
+			if(m.find()){
+				totalPageNum =m.group().replaceAll("_", "");
+			}
+			
+		}*/
+		
+		return  Integer.parseInt(totalPageNum);
+	}
 }

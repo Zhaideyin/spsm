@@ -4,179 +4,18 @@
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>赵尊练</title>
+    <link href="../css/professor.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
+        .nav9 {
+            background: #109171
         }
-        a{
-            text-decoration: none;
-
-        }
-        .head a {
-            color: #ffffff;
-
-        }
-        .content_top a{
-            color: #ffffff;
-
-        }
-        .content_title a{
-            color: #ffffff;
-        } *{  margin: 0px;
-              padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }  .head p{
-               color: #ffffff;
-           }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-
-            float: left;
-            margin-top:15px;
-        }  .second{
-
-               float: left;
-               margin-top:15px;
-
-           }  .third{
-
-                  margin-top:15px;
-                  float: left;
-              }  .fourth{
-
-                     float: left;
-                     margin-top:15px;
-
-                 }
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-        }
-
-        .main{
-            width: 100%;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -20px;
-
-        }  .top p{
-               position: relative;
-               padding-left: 10%;
-           }  .content_top{
-                  width: 100%;
-                  background-color: #0f4850;
-                  height: 35px;
-              }
-        .foot{
-            clear: both;
-            margin-top: 20px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            position:relative ;
-            left: 15%;
-            top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            position: relative;
-            width: 900px;
-            left:20%;
-            top:-40px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-
-        .topSecond{
-            font-size: 40px;
-            top:15px;
-            margin:20px 0px 10px 20px  ;
-        }
-
-        .content{
-
-            position: relative;
-            top:-80px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_main{
-            border: solid 0.5px #4e6064;
-        }
-        .content_top{
-            padding: 10px 0px 0px 10px;
-            width: 100%;
-        }
-        .content_title {
-            width: 100%;
-            background-color: #106470;
-            padding: 10px 0px 10px 10px;
-        }
-        .content_container{
-            width: 100%;
-        }
-        .content_title h1{
-            color: #ffffff;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-        .professorSearch{
-            float: left;
-            padding-top: 7px;
-
-        }
-        .content_container_head{
-            float: left;
-            background-color: #d5dbcc;
-            width: 50%;
-            padding: 7px;
-        }
-        .content_container_head_logo{
-            float: left;
-        }
-        .content_container_head_text{
-            float: left;
-            margin-left: 3%;
-        }
-        .content_container{
-            overflow: hidden;
-            height: auto;
-            background-color: #d5dbcc;
-        }
-        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
+        .content_main-left-list_container1 p, .content_main-left-list_container2 p {
             color: #0072d8;
         }
-        .content_container_head h4{
+
+        .content_container_head h4 {
 
         }
-
         .zjn {
             width: 676px;
             padding: 10px;
@@ -186,6 +25,7 @@
             margin: 8px 10px 0 10px;
             display: inline;
         }
+
         .zjn dt {
             width: 250px;
             height: 300px;
@@ -197,6 +37,7 @@
             border: 1px solid #dfdfdf;
             padding: 1px;
         }
+
         .zjn dd {
             width: 400px;
             float: right;
@@ -211,51 +52,31 @@
 <body>
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo"></div>
+            <div class="first"><p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="second"><p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="third"><p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="fourth"><p><a href="breedProfessor.html"> 育种专家数据库</a></p></div>
         </div>
     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">育种专家</p>
-        </div>
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;
-                    <a href="professorsProvincesOUT.html"> 育种专家</a>&nbsp; &nbsp; &nbsp;    <a href="professorNews.html"> 行业人物动态</a>&nbsp; &nbsp; &nbsp;
-                </b></p>
-            </div>
-            <div class="content_title">
-                <h2><a href="professorsProvincesIN.html">省内专家&nbsp;|</a>&nbsp;<a href="professorsProvincesOUT.html"> 省外专家</a></h2>
-            </div>
-            <div class="content_container">
-                <div class="content_container_head">
-                    <div class="content_container_head_logo"> <img src="../img/professor_128px_1193168_easyicon.net.ico" style="width: 30px;height: 30px;"></div>
-                    <div class="content_container_head_text"> <span style="font-size: 25px;font-family: 'Bell MT';">省内专家</span></div>
-
+                <div class="nav0">
+                    <a href="index.html">首页</a>
                 </div>
-                <div class="professorSearch">
-                    <select style="height: 30px;width: 100px;">
-                        <option>省内专家</option>
-                        <option>省外专家</option>
-                    </select>
-                    <input value="搜索" name="keyword" style=" height: 28px; width: 40%;
-
-            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:90px;background-color: #0d8897">
-                </div>
+                <div class="nav1 nav"><a href="hotSportOfBreed.html">前沿育种研究</a></div>
+                <div class="nav2 nav"><a href="breedKnowledge.html">育种知识服务</a></div>
+                <div class="nav3 nav"><a href="breedIndustryNews.html">行业资讯</a></div>
+                <div class="nav4 nav"><a href="BreedDictionary.html">品种导航</a></div>
+                <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>
+                <div class="nav6 nav"><a href="AchievementShow.html">成果展示</a></div>
+                <div class="nav7 nav"><a href="AgencyService.html">机构服务</a></div>
+                <div class="nav8 nav"><a href="cooperation.html">产学研合作</a></div>
+                <div class="nav9 nav"><a href="professors.html">育种专家</a></div>
+                <div class="nav10 nav"><a href="professorNews.html">人物动态</a></div>
             </div>
-
             <div class="content_main">
                 <div class="mbox">
                     <dl class="zjn">
@@ -265,40 +86,63 @@
                         <dd>
                             <strong>姓名：</strong><em>赵尊练</em></dd>
                         <dd>
-                            <strong>职称：</strong>陕西省园艺学会副理事长</dd>
+                            <strong>职称：</strong>陕西省园艺学会副理事长
+                        </dd>
                         <dd>
-                            <strong>所属行业：</strong>种植专家</dd>
+                            <strong>所属行业：</strong>种植专家
+                        </dd>
                         <dd>
                             <strong>电话： </strong>
                             029-87081224（办）
                         </dd>
                         <dd>
-                            <strong>E - mail：</strong><a href="mailto:zhaozunl@public.xa.sn.cn">zhaozunl@public.xa.sn.cn</a></dd>
+                            <strong>E - mail：</strong><a
+                                href="mailto:zhaozunl@public.xa.sn.cn">zhaozunl@public.xa.sn.cn</a></dd>
                         <dd>
-                            <strong>所在地区：</strong>陕西省-咸阳市</dd>
+                            <strong>所在地区：</strong>陕西省-咸阳市
+                        </dd>
                         <dd>
-                            <strong>联系方式：</strong>陕西杨凌邰城路3号 西北农林科技大学园艺学院</dd>
+                            <strong>联系方式：</strong>陕西杨凌邰城路3号 西北农林科技大学园艺学院
+                        </dd>
                         <dd>
-                            <strong>发布日期：</strong>2013-9-23</dd>
+                            <strong>发布日期：</strong>2013-9-23
+                        </dd>
                     </dl>
-                    <div class="xgtit">
-                        <h2>
-                            详细介绍</h2>
-                    </div>
+
                     <div class="content11">
-                        <p>	<br></p><p>	<strong>基本信息</strong> </p><p>	　　赵尊练，男，1960年4月生，陕西省乾县人，研究员，硕士生导师。1982年7月本科毕业于原西北农学院园艺系蔬菜专业，分配到陕西省果树研究所工作，1993年7月硕士研究生毕业于原西北农业大学园艺系蔬菜专业，2010年6月博士研究生毕业于西北农林科技大学园艺学院蔬菜专业。1997年5月～9月赴加拿大农业部太平洋农业食品研究中心（Pacific Agri-Food Research Centre, Summerland, BC Canada）作访问学者，1999年3~5月赴以色列农业部农业研究中心（The Volcani Center, A.R.O. Isreal）开展辣椒合作研究，2008年1～2月，赴美国加州、佐治亚州参加现代农业培训。</p><p>	　　现兼任中国园艺学会理事，中国园艺学会辣椒分会理事，陕西省园艺学会副理事长、秘书长。1997年入选陕西省“三·五”人才。</p><p>	<strong>工作学习简历</strong> </p><p>	　　1978年10月～1982年07月，原西北农学院园艺系本科学习；</p><p>	　　1982年08月～1990年08月，原陕西省果树研究所研究实习员</p><p>	　　1990年09月～1993年07月，原西北农业大学硕士研究生学习；</p><p>	　　1993年07月～1995年12月，原陕西省果树研究所助理研究员；</p><p>	　　1996年01月～1997年04月，原陕西省蔬菜花卉研究所副所长、助研；</p><p>	　　1997年05月～1997年09月，加拿大Pacific Research Centre进修；</p><p>	　　1997年10月～1999年01月，原陕西省蔬菜花卉研究所所长、副研；</p><p>	　　1999年02月～1999年06月，以色列Volcani Centre合作研究；</p><p>	　　1999年07月～2000年06月，原陕西省蔬菜花卉研究所所长、副研；</p><p>	　　2000年07月～2005年11月，西北农林科技大学园艺学院副院长、副研；</p><p>	　　2005年12月～今，西北农林科技大学园艺学院副院长、研究员。</p><p>	<strong>研究方向</strong> </p><p>	　　1982年～1995年期间，主要从事西瓜、甜瓜育种、种质资源及栽培技术研究；1996年至今主要从事线辣椒种质资源、育种及栽培技术研究，目前主要研究领域有：以抗病、优质、高产为主要目标的线辣椒新品种选育，陕西省线辣椒产区病毒病主要病原鉴定及病毒病防控技术研究，线辣椒连作障碍的主要成因及其克服途径研究，线辣椒/小麦间作防病、增产机理研究等。</p><p>	<strong>主要学术成果（省级以上）</strong> </p><p>	　　1996年至今，先后主持农业部948项目1项，陕西省科技攻关项目4项，参加国家九五攻关重大专项和国家公益性行业科研专项各1项。参与完成的线辣椒新品种“8819”及相关技术于1999年获得陕西省科技进步一等奖；参与完成的“线辣椒无公害标准化生产关键技术研究与示范” 于2009年获陕西省科技进步二等奖；主持育成辣椒新品种4个。</p><p>	<br></p>
+                        <p><br></p>
+                        <p><strong>基本信息</strong></p>
+                        <p>
+                            　　赵尊练，男，1960年4月生，陕西省乾县人，研究员，硕士生导师。1982年7月本科毕业于原西北农学院园艺系蔬菜专业，分配到陕西省果树研究所工作，1993年7月硕士研究生毕业于原西北农业大学园艺系蔬菜专业，2010年6月博士研究生毕业于西北农林科技大学园艺学院蔬菜专业。1997年5月～9月赴加拿大农业部太平洋农业食品研究中心（Pacific
+                            Agri-Food Research Centre, Summerland, BC Canada）作访问学者，1999年3~5月赴以色列农业部农业研究中心（The Volcani
+                            Center, A.R.O. Isreal）开展辣椒合作研究，2008年1～2月，赴美国加州、佐治亚州参加现代农业培训。</p>
+                        <p> 　　现兼任中国园艺学会理事，中国园艺学会辣椒分会理事，陕西省园艺学会副理事长、秘书长。1997年入选陕西省“三·五”人才。</p>
+                        <p><strong>工作学习简历</strong></p>
+                        <p> 　　1978年10月～1982年07月，原西北农学院园艺系本科学习；</p>
+                        <p> 　　1982年08月～1990年08月，原陕西省果树研究所研究实习员</p>
+                        <p> 　　1990年09月～1993年07月，原西北农业大学硕士研究生学习；</p>
+                        <p> 　　1993年07月～1995年12月，原陕西省果树研究所助理研究员；</p>
+                        <p> 　　1996年01月～1997年04月，原陕西省蔬菜花卉研究所副所长、助研；</p>
+                        <p> 　　1997年05月～1997年09月，加拿大Pacific Research Centre进修；</p>
+                        <p> 　　1997年10月～1999年01月，原陕西省蔬菜花卉研究所所长、副研；</p>
+                        <p> 　　1999年02月～1999年06月，以色列Volcani Centre合作研究；</p>
+                        <p> 　　1999年07月～2000年06月，原陕西省蔬菜花卉研究所所长、副研；</p>
+                        <p> 　　2000年07月～2005年11月，西北农林科技大学园艺学院副院长、副研；</p>
+                        <p> 　　2005年12月～今，西北农林科技大学园艺学院副院长、研究员。</p>
+                        <p><strong>研究方向</strong></p>
+                        <p>
+                            　　1982年～1995年期间，主要从事西瓜、甜瓜育种、种质资源及栽培技术研究；1996年至今主要从事线辣椒种质资源、育种及栽培技术研究，目前主要研究领域有：以抗病、优质、高产为主要目标的线辣椒新品种选育，陕西省线辣椒产区病毒病主要病原鉴定及病毒病防控技术研究，线辣椒连作障碍的主要成因及其克服途径研究，线辣椒/小麦间作防病、增产机理研究等。</p>
+                        <p><strong>主要学术成果（省级以上）</strong></p>
+                        <p>
+                            　　1996年至今，先后主持农业部948项目1项，陕西省科技攻关项目4项，参加国家九五攻关重大专项和国家公益性行业科研专项各1项。参与完成的线辣椒新品种“8819”及相关技术于1999年获得陕西省科技进步一等奖；参与完成的“线辣椒无公害标准化生产关键技术研究与示范”
+                            于2009年获陕西省科技进步二等奖；主持育成辣椒新品种4个。</p>
+                        <p><br></p>
                     </div>
 
                 </div>
 
 
-
             </div>
-
-
-
-
-
 
 
         </div>
@@ -308,15 +152,13 @@
 </div>
 
 
-
-
 <div class="foot">
-    <div class="footLogo">
-    </div>
-    <div class="footText">
-        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    <div class="footBox">
+        <div class="footLogo"></div>
+        <div class="footText"><b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br> <b
+                style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail:pbding@163.com </b><br> <b
+                style="color: #cccbc9; font-size: 14px;"> Copyright news.sichuan.edu.cn All rights reserved</b></div>
     </div>
 </div>
 </div>

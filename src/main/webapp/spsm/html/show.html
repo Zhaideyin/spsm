@@ -162,6 +162,7 @@
     <div class="footLogo">
     </div>
     <div class="footText">
+
         <b>网站地图</b>&nbsp;&nbsp;<b>关于我们</b>&nbsp;&nbsp;<b>友情链接</b>&nbsp;&nbsp;<b>四川省农研所</b><br>
         <b>四川省农研所版权所有，四川省农业科学研究所科研网编辑部维护，电子信箱：news@sichuan.edu.cn</b><br>
         <b> Copyright 2001-2016 news.sichuan.edu.cn All right reserved</b>
@@ -169,34 +170,39 @@
 </div>
 </div>
 <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
-<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
 <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.page.js"></script>
 <script>
     var str = "";
     var totalPage=0;
     var pageNum=1;
-    
+    //xsscd.xicp.net:8005  http://192.168.199.215:8080/spsm/api/breed/list?page=1&count=1
     $.ajax({
         type:"get",
-        url:"http://xsscd.xicp.net:8005/spsm/api/spider/list",
-        data: "page=1&count=3",
+        url:"http://xsscd.xicp.net:8005/spsm/api/breed/list",
+        data: "page=1&count=11",
         dataType:"json",
-        success: function(msg){
-            totalPage=msg.totalPage;
-            $(".tcdPageCode").createPage({
+        success: function(msg)
+        {
+            totalPage=msg.totalPage;//得到总的页数
+            $(".tcdPageCode").createPage({//显示第一页 的数据
                 pageCount:totalPage,
                 current:pageNum,
                 backFn:function(p){
                         pageNum=p;
-                    $.ajax({
+                    $.ajax({//通过发送get请求，得到下一页的数据
                         type: "get",
-                        url:"http://xsscd.xicp.net:8005/spsm/api/spider/list",
-                        data: "page="+pageNum+"&count=3",
+                        url: "http://xsscd.xicp.net:8005/spsm/api/breed/list",
+                        data: "page="+pageNum+"&count=10",
                         dataType:"json",
                         success:function (msg) {
-                            str="";
+                             str="";
                             for (var i =0;i<msg.data.length;i++){
-                                str += msg.data[i].CONTENT+"<hr>"
+                                var num =i+1;
+                                console.log(pageNum)
+                                str += "<span style='display:inline-block;width: 50px; margin-left:750px;'>"+(Number(pageNum)*Number(10)+num)+"、</span>"+
+                                        "<span style='display:inline-block;width: 280px;'><a class='details' onclick='details("+msg.data[i].BREED_ID+")'>"+msg.data[i].TITLE+"</a></span>" +
+                                        "<span style='display: inline-block;width: 100px;'>"+msg.data[i].AUTHORISE_DATE+"</span>" +
+                                        "<br>"
                             }
                             $(".content").html(str)
                         }
@@ -204,13 +210,31 @@
 
                 }
             });
-            for (var i =0;i<msg.data.length;i++){
-                str += msg.data[i].CONTENT+"<hr>"
+            for (var i =0;i<msg.data.length;i++){//取得第一页数据
+                var num =i+1;
+            if(i==0){
+                str +="<span style='display:inline-block;width: 50px;margin-left:750px;'></span>"
+            }else{
+                str += "<span style='display:inline-block;width: 50px;margin-left:750px;'>"+i+"、</span>"
             }
-            $(".content").html(str)
+            //'http://192.168.199.214:8080/spsm/api/breed/info?BREED_ID="+msg.data[i].BREED_ID+"'
+            str += "<span style='display:inline-block;width: 280px;'><a  class='details' onclick='' target='breed_details.html'>"+msg.data[i].TITLE+"</a></span>" +
+                    "<span style='display: inline-block;width: 100px;'>"+msg.data[i].AUTHORISE_DATE+"</span>" +
+                    "<br>"
+
+            }
+             $(".content").html(str)
         }
     });
 
+
+
+
+   function details(breed_id) {
+
+               location.href="breed_details.html?"+"txt="+encodeURI(breed_id);
+
+       }
     
 </script>
 </body>

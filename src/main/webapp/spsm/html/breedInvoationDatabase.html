@@ -6,258 +6,13 @@
     <title>育种创新数据库</title>
     <link href="../css/pgwslider.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/liMarquee.css">
+    <link href="../css/fourDataBase.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }  a {
-            color: #ffffff;
-            text-decoration:none;
-        }  li{
-            color: #0072d8;
-        }
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }  .head p{
-            color: #ffffff;
-        }  .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-
-               float: left;
-               margin-top:15px;
-           }  .second{
-                  float: left;
-                  margin-top:15px;
-              }  .third{
-                     margin-top:15px;
-                     float: left;
-                 }  .fourth{
-                        float: left;
-                        margin-top:15px;
-
-                    }
-        .main{
-            width: 100%;
-        }
-        .top{
-            background-color: #12525e;
-            width: 100%;
-            height:300px;
-        }
-        .top p{
-            position: relative;
-            left:7%;
-        }
-        .m{ background-color: #0a0903;
-            overflow: hidden;}
-        .content{
-            margin-top:-225px;
-            margin-right:10%;
-            float: right;
-            width: 80%;
-            overflow: hidden;
-            height: auto;
-        }
-        .content_top{
-            background-color: #0f4850;
-            height: 36px;
-
-        }
-        .content_top p{
-            color: #ffffff;
-            position: relative;
-            left:2%;
-            top:8px;}
-        .content_container{
-            height: auto;
-            overflow: hidden;
-            background-color: #feffff;
-        }
-        .content_left{
-            float: left;
-            margin-left: 0px;
-            width: 75%;
-        }
-        .content_right{
-            margin-right: 0px;
-            background-color: #f3f3f3;
-            margin-top: 15px;
-            width: 25%;
-            float: left;
-        }
-        .content_left_container_left{
-            float: left;
-            width:60%;
-            margin-bottom: 7px;
-
-        }
-        .content_left_container_left1{
-            width: 100%;
-            height:auto;
-            overflow: hidden;
-            margin-bottom: 15px;
-            padding-right: -14px;
-            padding-bottom: 15px;
-            border-bottom:solid 0.5px #c7c7c7;
-        }
-        .content_left_container{
-            height: auto;
-            overflow: hidden;
-            margin-top:10px;
-        }
-        .content_left_container_left2{
-            width: 100%;
-            height:auto;
-            overflow: hidden;
-            border-bottom:solid 0.5px #c7c7c7;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-
-        }
-        .content_left_container_left3{
-            width: 100%;
-            height: 26%;
-
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-
-        }
-        .content_left_container_left_text{
-            width: 50%;
-            float: left;
-            padding: 0px 10px 10px 22px;
-            line-height: 22px;
-
-        }
-        .content_left_container_right{
-            float: left;
-            width: 38%;
-            height: 900px;
-        }
-        .content_left_container_left3_left,.content_left_container_left3_right{
-            width: 48%;
-            float: left;
-            height: auto;
-            padding-left: 0px;
-        }
-        .content_left_container_left3_right{
-            margin-left: 16px;
-        }
-        .content_left_container_left3_text{
-            width: 90%;
-            height: auto;
-            line-height: 22px;
-        }
-        .content_left_container_right1,.content_left_container_right2,.content_left_container_right3,.content_left_container_right4{
-            border-bottom: solid 0.5px #c7c7c7;
-            border-left: solid 0.5px #c7c7c7;
-            width: 98%;
-
-            line-height: 22px;
-            padding: 10px 10px 30px 10px;
-        }
-        .content_right_search{
-
-            margin-left: 1%;
-            overflow: hidden;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-right: 1%;
-
-        }
-        .content_right_title{
-
-            overflow: hidden;
-            padding: 10px 0px 10px 10px;
-
-
-        }
-        .content_right_content{
-            padding: 20px 0px 20px 40px;
-        }
-        .content_right_title_logo{
-            float: left;
-        }
-        .content_right_title_text{
-            float: left;
-            margin-left: 5px;
-        }
-        .content_right_links{
-            margin-left: 1%;
-            margin-right: 1%;
-            overflow: hidden;
-
-        }
-        .content_right_content_scroll { height: 300px;margin-left: 5px; font-size: 14px;}
-        .content_right_content_scroll ul { margin: 0; line-height: 40px;}
-        .content_right_content_scroll a { color: #333; text-decoration: none;}
-        .content_right_content_scroll a:hover { color: #2698d6; }
-        .content_right_content_scroll ul li{ line-height: 32px;}
-        .more{
-            margin-top: 20px;
-            margin-left: 29%;
-        }
-
-        .foot{
-            clear: both;
-            margin-top: 30px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            float: left;
-            margin-left:10%;
-            margin-top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            float: left;
-            margin-top:10px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .container{
-            width: 100%;
-            height: auto;
-            overflow: hidden;
-        }
-
-        .topSecond{
-            color: #ffffff;
-        }
-        .topSecond{
-            font-size: 30px;
-            margin-left: 3%;
-            top:15px;
-        }
-
-        .content_img_title span{
-            font-size: 26px;
-            padding-left: 10px;
-            font-family: 微软雅黑;
-        }
-
-
-
     </style>
     <script src="../js/jquery-1.10.1.min.js"></script>
     <script src="../js/pgwslider.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.0.min.css" />
+    <script type="text/javascript" src="../js/swiper-3.4.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(document).ready(function() {
@@ -274,123 +29,237 @@
         });
     </script>
 
+
 </head>
 <body>
+
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo">
+            </div>
+            <div class="first">
+                <p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="second">
+                <p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="third">
+                <p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="fourth">
+                <p><a href="breedProfessor.html"> 育种专家数据库</a></p>
+            </div>
         </div>
     </div>
     <div class="main">
         <div class="top">
+            <div class="topBox">
             <p class="topSecond">育种创新数据库</p>
+                </div>
         </div>
+        <div class="contentBg">
         <div class="content">
             <div class="content_top">
-                <p><a href="index.html"><a href="index.html"> 首页</a></a>&nbsp;&nbsp;<a href="hotSportOfBreed.html"> 前沿育种研究</a>&nbsp;&nbsp;<a href="breedKnowledge.html"> 育种知识服务</a></p></div>
+                <p><b><a href="index.html"><a href="index.html"> 首页</a></a>&nbsp;&nbsp;<a href="hotSportOfBreed.html"> 前沿育种研究</a>&nbsp;&nbsp;<a href="breedKnowledge.html"> 育种知识服务</a></b></p></div>
             <div class="content_container">
-                <div class="m">
-                    <ul class="pgwSlider">
-                        <li><img src="../img/636046917122473748712.jpg" style="width: 100%;height: 80px;" alt="UAV agricultural application" ><span>UAV agricultural application</span></li>
-                        <li><img src="../img/20160629105970937093.jpg" style="width: 100%;height: 80px;"   alt="Modern farm" ><span>Modern farm</span></li>
-                        <li><img src="../img/20160329071758dff3e.jpg" style="width: 100%;height: 80px;"   alt="Mechanized harvesting"><span>Mechanized harvesting</span></li>
-                        <li> <img src="../img/8167850_125904655000_2.jpg" style="width: 100%;height: 80px;" > <span>Modern greenhouse</span> </li>
-                        <li> <img src="../img/pexels-photo-56708.jpg" style="width: 100%;height: 80px;"  > <span>Mechanized harvesting</span>  </li>
-                    </ul>
-                </div>
+            <div class="content_container">
+
                 <div class="content_left">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><a href="BINRROLdetails15.html"> <img src="../img/17961491_213543813000_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></a></div>
+                            <div class="swiper-slide"><img src="../img/17961491_141233030000_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                            <div class="swiper-slide"><img src="../img/8167850_125904655000_2.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                            <div class="swiper-slide"><img src="../img/636046917122473748712.jpg" style="background-repeat: no-repeat;width: 100%;height: 280px;"/></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="content_img_title">
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
                     <div class="content_left_container">
-                        <div class="content_left_container_left">
+                        <div class="main-title">
+                            <h2><a href="hotSportOfBreed.html" style="color: #c34b1f;"> 前沿育种研究</a></h2>
+                            <ul>
+                                <li><a href="hotSportOfBreed.html" target="_blank" style="color: #0d4450;">育种热点追踪</a></li>
+                                <li><a href="breedingMolecular.html" target="_blank" style="color: #0d4450;">技术荟萃</a></li>
+                                <li><a href="germplasm.html" target="_blank" style="color: #0d4450;">种质创新&创新材料</a></li>
 
-                            <div class="content_left_container_left1">
-                                <div class="content_left_container_left_img">
-                                    <img src="../img/2s5pfd1oax.png" style="width: 40%;height: 195px;float: left;">
-                                </div>
-                                <div class="content_left_container_left_text">
-                                    <h4><a href="BINLdetails1.html" style="color: black">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></h4><br>
-                                    <p>近日，合成生物学国际顶尖赛事——国际遗传工程机器设计竞赛（International Genetically Engineered Machine Competition，iGEM）2016全球总决赛在美国波士顿海因斯会议中心落幕，
-                                        上海交通大学的两支参赛队伍SJTU-Software和SJTU-BioX-Shanghai再度获得金牌。</p>
+                            </ul>
+                        </div>
+                        <div class="content_left_container1">
+                            <div class="content_left_container1List1">
+                             <div class="content_left_container1List1_Title">
+                                 <span class="title"><a href="hotSportOfBreed.html" style="color: #0d8897;">育种热点追踪</a></span><span class="titleMore"><a href="hotSportOfBreed.html" style="color: #0a0903;">更多>></a></span>
+                             </div>
+                                <div class="content_left_container1List1_content">
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/57d7b7cf7bc7f.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>什么是生命时代？ 怎么讲生命时代？所有的生命，不管是人、
+                                                动植物、微生物都是ATCG，这个世界就是这么简单，就是这么奇妙。</p>
+                                           <span> <a href="BINLdetails2.html" style="color: #000000" >更多>> </a></span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/160524flowers.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>在不断涌现的农业技术背后，是朝气蓬勃的农业初创企业和看好农业新技术前景的投资人。</p>
+                                            <span> <a href="BINRdetails2.html" style="color: #000000" >更多>></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/160510algae.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>英国研究人员正在向英国环境、食品和农村事务部提出一项申请，希望获准在户外研究</p>
+                                            <span> <a href="BINLdetails3.html" style="color: #000000" >更多>></a> </span>
+                                        </div>
+                                    </div>
+                                    <div class="content_left_container1List1_content_list">
+                                        <div class="newImg">
+                                            <img src="../img/160509africansongbird.jpg" style="width: 96px;height: 80px;">
+                                        </div>
+                                        <div class="newText">
+
+                                            <p>深秋时节，山东省高唐县盛和锦鲤养殖场的锦鲤池内，五彩斑斓的</p>
+                                            <span><a href="BINRdetails3.html" style="color: #000000" >更多>></a> </span>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
-                            <div class="content_left_container_left2">
-                                <div class="content_left_container_left_img">
-                                    <img src="../img/57d7ba1f20f59.jpg" style="width: 40%;height: 195px; float: left;">
+                            <div class="content_left_container1List2">
+                                <div class="content_left_container1List2_Title">
+                                    <span class="title"><a href="breedingMolecular.html" style="color: #0d8897;">技术荟萃</a></span><span class="titleMore"><a href="breedingMolecular.html" style="color: #0a0903">更多>></a></span>
                                 </div>
-                                <div class="content_left_container_left_text">
-                                    <h4><a href="BINLdetails2.html" style="color: black">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></h4><br>
-                                    <p>怎么讲生命时代？所有的生命，不管是人、动植物、微生物都是ATCG，这个世界就是这么简单，就是这么奇妙。而在上世纪最重要的一件事情就是把ATCG变成了0101。这把尺子是在4年前诺贝尔博物馆发现的，这是一个发明的尺子，
-                                        一共有两米长，正反两面打开是这样子的。
-                                        每一个刻度上都是一个重大的历史事件，要么就是社会的，要么就是科学技术的。</p>
+
+                                <div class="content_left_container1List2_container">
+                                <div class="content_left_container1List2_content">
+                                    <div class="ListTitle1">
+                                            <span class="industryTitleHead"><a href="AgencyService.html" target="_blank" style="color: #0d4450;">分子育种</a>
+                                            </span>   <span class="industryTitleMore"><a href="AgencyService.html" target="_blank" style="color:black;">更多>></a></span>
+                                    </div>
+                                    <div class="ListContent">
+                                        <ul>
+                                            <li> 将植物基因植入动物体内 科学家造出“菠菜”猪</li>
+                                            <li>美国第一头克隆牛“艾米”产下牛犊喜作妈咪</li>
+                                            <li>普通米诺鱼基因新发现 有助于人类心脏疾病研究</li>
+
+
+                                        </ul>
+                                    </div>
                                 </div>
+                                <div class="content_left_container1List2_content">
+                                    <div class="ListTitle2">
+<span class="industryTitleHead"><a href="AgencyService.html" target="_blank" style="color: #0d4450;">细胞育种</a>
+                                            </span>   <span class="industryTitleMore"><a href="AgencyService.html" target="_blank" style="color:black;">更多>></a></span>
+                                    </div>
+                                    <div class="ListContent">
+                                        <ul>
+                                            <ul>
+                                                <li>垦丰种业红兴隆育种站考核22名科研人员</li>
+                                                <li>“实践十号”:家畜航天生物育种实验首次上太空</li>
+                                                <li>种猪育种管理系统提高种猪场信息化水平</li>
+                                                <li>六大育种方法比较 别说你不知道!</li>
+                                            </ul>
+
+                                    </ul>
+                                    </div>
+                                </div>
+                                <div class="content_left_container1List2_content">
+                                    <div class="ListTitle3">
+<span class="industryTitleHead"><a href="AgencyService.html" target="_blank" style="color: #0d4450;">基因育种</a>
+                                            </span>   <span class="industryTitleMore"><a href="AgencyService.html" target="_blank" style="color:black;">更多>></a></span>
+                                    </div>
+                                    <div class="ListContent">
+                                        <ul>
+                                            <ul>
+                                                <li>畜牧发展,良种为先 育种:畜牧业发力新方向</li>
+                                                <li>欧盟加强种牛育种遗传资源管理</li>
+                                                <li>中国农科院烟草马铃薯Y病毒抗性基因研究取得新进展</li>
+                                                <li>华大基因：生命时代开启，基因工程发展超“摩尔定律”发展超“摩尔定律“</li>
+
+                                            </ul>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+
                             </div>
-                            <div class="content_left_container_left3">
-                                <div class="content_left_container_left3_left">
-
-                                    <div class="content_left_container_left3_img">
-                                        <img src="../img/20165131059093294.jpg" style="width:98%;height: 80%;">
-                                    </div>
-                                    <div class="content_left_container_left3_text">
-                                        <h4><a href="BINLdetails3.html" style="color: black">新型转基因小麦产量有望提高20%</a></h4><br>
-                                        <p>　英国研究人员正在向英国环境、食品和农村事务部提出一项申请，希望获准在户外研究工作中种植新型转基因小麦。如这项申请获得批准，该团队计划第一年四月开始种植，第二年收获。
-                                            　　在温室研究中，该技术可显著地将作物产量提高了20%—40%。研究人员希望，在户外种植中这一比例至少能达到20%。</p>
-                                    </div>
+                            <div class="content_left_container1List3">
+                                <div class="content_left_container1List3_Title">
+                                    <span class="title"><a href="germplasm.html" style="color: #0d8897;">种质创新&创新材料</a></span><span class="titleMore"><a href="germplasm.html" style="color: #0a0903">更多>></a></span>
                                 </div>
-                                <div class="content_left_container_left3_right">
-                                    <div class="content_left_container_left3_img">
-                                        <img src="../img/201606036015.jpg" style="width:98%;height: 80%;">
-                                    </div>
-                                    <div class="content_left_container_left3_text">
-                                        <h4><a href="BINLdetails4.html" style="color: black">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></h4><br>
-                                        <p>日前，安徽省劳动竞赛委员会、省总工会表彰了2015年度安徽省劳动竞赛先进集体和先进个人。皖西学院安徽省植物细胞工程中心被授予2015年度“安徽省工人先锋号”荣誉称号。
-                                            6月1日下午，省教育工会主席凤桦，在副主席唐成等陪同下来到皖西学院向皖西学院安徽省植物细胞工程中心授牌。</p>
-                                    </div>
+                                <div class="content_left_container1List3_end">
+                                    <img src="../img/20151030083716521.jpg" style="width: 100%;height: 100px;" >
                                 </div>
+                                <div class="content_left_container1List3_content">
+                                      <ul>
+                                          <li>牧草描述规范和数据标准</li>
+                                          <li>牧草种质资源描述规范和数据标准</li>
+                                          <li>苜蓿种质资源描述规范和数据标准</li>
+                                          <li>无芒雀麦种质资源描述规范和数据标准</li>
+                                          <li>老芒麦种质资源描述规范和数据标准</li>
+                                          <li>冰草种质资源描述规范和数据标准</li>
+                                          <li>牧草植物种质资源标准化整理、整合及共享试点子项目执行进展情况综述</li>
+                                          <li>牧草植物种质资源标准化整理、整合及共享试点子项目共享服务主要成效</li>
 
+                                      </ul>
+                                </div>
+                                <div class="content_left_container1List3_end">
+                                    <a href="http://www.chinaforage.com/"><img src="../img/zhongzhixinxi.png" style="width: 100%;height: 100px;" ></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="content_left_container_right">
-                            <div class="content_left_container_right1">
-                                <h4><a href="BINRdetails1.html" style="color: black"> "十二五"期间我国植物分子育种研究取得重要突破</a></h4><br>
-                                <p><a href="BINRdetails1.html" style="color: black">“十二五”期间，围绕保障国家粮食安全、生态安全和增加农民收入等重大目标，
-                                    863计划现代农业技术领域先后启动了“作物分子育种与品种创制”、“林果花草分子育种与品种创制”、
-                                    “主要蔬菜分子育种与功能基因组研究”等3个项目。经过近五年的研究，各项目组攻克了一批分子育种关键技术，
-                                    选育了一批高产、优质、多抗、高效的作物、
-                                    蔬菜及林果花草的新种质、新品种，
-                                    有力推进了我国植物育种技术的发展，
-                                    带动了相关产业创新和能力提升，部分相关成果达到世界先进水平。</a></p>
+                        <div class="main-title">
+                            <h2><a href="breedKnowledge.html" style="color: #c34b1f;">育种知识服务</a></h2>
+                            <ul>
+                                <li><a href="documentDatabase.html" target="_blank" style="color: #0d4450;">文献数据库</a></li>
+                                <li><a href="AgricultureThink-tank.html" target="_blank" style="color: #0d4450;">农业智库</a></li>
+                                <li><a href="breedSoftware.html" target="_blank" style="color: #0d4450;">育种相关软件</a></li>
+                                <li><a href="breedKnowledge.html" target="_blank" style="color: #0d4450;">文献服务</a></li>
+                                <li><a href="Advice.html" target="_blank" style="color: #0d4450;">查新咨询</a></li>
+                            </ul>
+                        </div>
+                        <div class="content_left_container2">
+                            <div class="content_left_container2_content">
+                                <div class="content_left_container2_contentList">
+                                    <a href="documentDatabase.html" ><img src="../img/16pic_190.jpg" style="width: 100%;height: 200px;"></a>
+                                    <p><a href="documentDatabase.html" target="_blank" style="color:black">文献数据库</a></p>
+                                </div>
+                                <div class="content_left_container2_contentList">
+                                    <a href="AgricultureThink-tank.html"><img src="../img/nongyekanwu.jpg" style="width: 100%;height: 200px;"></a>
+                                    <p> <a href="AgricultureThink-tank.html" style="color: black">农业智库</a></p>
+                                </div>
+                                <div class="content_left_container2_contentList">
+                                    <a href="breedSoftware.html" ><img src="../img/9068870200cfc82be178o_0.jpg" style="width: 100%;height: 200px;"></a>
+                                    <p><a href="breedSoftware.html" target="_blank" style="color: black">育种相关软件</a></p>
+                                </div>
+                                <div class="content_left_container2_contentList">
+                                    <a href="breedKnowledge.html" target="_blank"> <img src="../img/sirjamesdysoncourtesyjdf.jpg" style="width: 100%;height: 200px;"></a>
+                                    <p><a href="breedKnowledge.html" target="_blank" style="color: black">文献服务</a></p>
+                                </div>
+                                <div class="content_left_container2_contentList">
+                                    <a href="Advice.html" target="_blank"><img src="../img/201322013234434.jpg" style="width: 100%;height: 200px;"></a>
+                                    <p><a href="Advice.html" target="_blank" style="color: black">查新咨询</a></p>
+                                </div>
                             </div>
-                            <div class="content_left_container_right2">
-                                <h4><a href="BINRdetails2.html" style="color: black"> 精准育种 微生物 大数据 科技创新——未来农业的出路</a></h4><br>
-                                <p>在不断涌现的农业技术背后，是朝气蓬勃的农业初创企业和看好农业新技术前景的投资人。
-                                    2015年，全球农业投资达到前所未有的100亿美元（约650亿元人民币），对农业技术的风险投资高达46亿美元
-                                    （约300亿元人民币），创历年新高。密集涌入的资金为农业领域带来了崭新的技术，加快了农业技术创新的步伐，
-                                    不断有新技术被运用到农业领域当中。而在已开发的技术领域中，例如农业生物技术，
-                                    也吸引了更多企业和研究者的加入。</p>
-                            </div>
-                            <div class="content_left_container_right3">
-                                <h4><a href="BINRdetails3.html" style="color: black"> 高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></h4><br>
-                                <p>深秋时节，山东省高唐县盛和锦鲤养殖场的锦鲤池内，五彩斑斓的锦鲤在清澈的水中相互簇拥着自由游弋，如水中盛开的朵朵牡丹。“这批价值10万余元的5000尾锦鲤已经被一位南方的客商预订了。”盛和锦鲤养殖场负责人贾清河喜滋滋地告诉记者，
-                                    “锦鲤养殖从鱼苗到成鱼大约需经4个月时间，品相好的能卖到上万元一尾，预计今年可创收300余万元”。</p>
-                            </div>
-                            <div class="content_left_container_right4">
-                                <h4><a href="BINRdetails4.html" style="color: black">北京打造全国农业科技创新示范中心</a></h4><br>
-                                <p>今年全市农业科教工作紧紧围绕都市型现代农业生活、生态、生产与示范功能，突出“节水、生态、安全、高效”的重点，着力加强现代都市农业科技创新体系、
-                                    产业技术服务体系和农民科技教育培训体系的建设，打造全国农业科技创新中心和农业科技示范中心。</p>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -398,67 +267,91 @@
                     <div class="content_right_search">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1198274.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>搜索栏</span>
                             </div>
                         </div>
                         <div class="content_right_content">
-                            <input value="搜索"  type ="search " style="width: 50%;height: 30px;">&nbsp;
-                            <input type="submit" style="color:#ffffff;width: 20%;height: 36px; background-color: #0f4850" value="搜索">
+                            <select style="height: 36px;width: 35%;">
+                                <option>文献数据库</option>
+                                <option>农业智库</option>
+                                <option>育种相关软件</option>
+                                <option>分子育种</option>
+                                <option>细胞育种</option>
+                                <option>基因育种</option>
+
+                            </select>
+                            <input value="搜索" type="search " style="width:35%;height: 30px;">&nbsp;
+                            <input type="submit"
+                                   style="color:#ffffff;width: 20%;height: 30px; background-color: #0f4850"
+                                   value="搜索">
                         </div>
 
                     </div>
                     <div class="content_right_scroll">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1195360.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>行业动态</span>
                             </div>
                         </div>
                         <div class="content_right_content_scroll">
-                                <ul >
-                                    <li><a href="BINLdetails1.html">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></li>
-                                    <li><a href="BINLdetails2.html">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></li>
-                                    <li><a href="BINLdetails3.html">新型转基因小麦产量有望提高20%</a></li>
-                                    <li><a href="BINLdetails4.html">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></li>
-                                    <li><a href="BINRdetails1.html"> "十二五"期间我国植物分子育种研究取得重要突破</a></li>
-                                    <li><a href="BINRdetails2.html">精准育种 微生物 大数据 科技创新——未来农业的出路</a></li>
-                                    <li><a href="BINRdetails3.html">高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></li>
-                                    <li><a href="BINRdetails4.html">北京打造全国农业科技创新示范中心</a></li>
-                                    <li><a href="BINRROLdetails9.html">美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></li>
-                                    <li><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></li>
-                                    <li><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></li>
-                                    <li><a href="BINRROLdetails12.html">纳米农药“一点到位”</a></li>
-                                    <li><a href="BINRROLdetails13.html">世界粮食奖和沃尔夫农业奖得主力挺转基因</a></li>
-                                    <li><a href="BINRROLdetails14.html">袁隆平种出了“海水稻”</a></li>
-                                    <li><a href="BINRROLdetails15.html">超级稻20年：累计推广种植10.9亿亩 增收600亿公斤稻谷</a></li>
-                                    <li><a href="BINRROLdetails16.html">农业“嫁接”光伏，结什么果？</a></li>
-                                    <li><a href="BINRROLdetails17.html">农用聚磷酸铵引领磷肥液体化新方向</a></li>
-                                    <li><a href="BINRROLdetails18.html">秸秆颗粒肥研制成了</a></li>
-                                </ul>
+                            <ul >
+                                <li><a href="BINLdetails1.html">上海交通大学团队再度斩获国际基因工程机器设计大赛金牌</a></li>
+                                <li><a href="BINLdetails2.html">华大基因：生命时代开启，基因工程发展超“摩尔定律”</a></li>
+                                <li><a href="BINLdetails3.html">新型转基因小麦产量有望提高20%</a></li>
+                                <li><a href="BINLdetails4.html">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></li>
+                                <li><a href="BINRdetails1.html"> "十二五"期间我国植物分子育种研究取得重要突破</a></li>
+                                <li><a href="BINRdetails2.html">精准育种 微生物 大数据 科技创新——未来农业的出路</a></li>
+                                <li><a href="BINRdetails3.html">高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></li>
+                                <li><a href="BINRdetails4.html">北京打造全国农业科技创新示范中心</a></li>
+                                <li><a href="BINRROLdetails99.html">美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></li>
+                                <li><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></li>
+                                <li><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></li>
+                                <li><a href="BINRROLdetails12.html">纳米农药“一点到位”</a></li>
+                                <li><a href="BINRROLdetails13.html">世界粮食奖和沃尔夫农业奖得主力挺转基因</a></li>
+                                <li><a href="BINRROLdetails14.html">袁隆平种出了“海水稻”</a></li>
+                                <li><a href="BINRROLdetails15.html">超级稻20年：累计推广种植10.9亿亩 增收600亿公斤稻谷</a></li>
+                                <li><a href="BINRROLdetails16.html">农业“嫁接”光伏，结什么果？</a></li>
+                                <li><a href="BINRROLdetails17.html">农用聚磷酸铵引领磷肥液体化新方向</a></li>
+                                <li><a href="BINRROLdetails18.html">秸秆颗粒肥研制成了</a></li>
+                            </ul>
 
                         </div>
                     </div>
                     <div class="content_right_links">
                         <div class="content_right_title">
                             <div class="content_right_title_logo">
-                                <img src="../img/1192824.gif" style="height: 30px;width: 30px;">
+                                <img src="../img/index_09.jpg" style="height: 30px;width: 10px;">
                             </div>
                             <div class="content_right_title_text">
                                 <span>相关链接</span>
                             </div>
                         </div>
-                        <div class="content_right_content">
-                            <li><a href="http://icgr.caas.net.cn/" style="color: #0072d8">中国作物信息网</a></li><br>
-                            <li><a href="http://www.veg-china.com/" style="color: #0072d8">中国果蔬网</a></li><br>
-                            <li><a href="http://www.farmer.com.cn/" style="color: #0072d8">中国农业新闻网</a></li><br>
-                            <li><a href="http://theworldseeds.cn/index.php" style="color: #0072d8">世界种业网</a></li><br>
-                            <li><a href="http://www.chinanyjs.com/" style="color: #0072d8">中国农业技术网</a></li><br>
-                            <li><a href="http://www.cnasc.org/" style="color: #0072d8">中国农业科技网</a></li><br>
+                        <div class="content_right_contentLink">
+                            <div class="content_right_contentLinkList">
+                                <a href="http://icgr.caas.net.cn/" style="color: #0072d8"><img src="../img/chineseCrops.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.veg-china.com/" style="color: #0072d8"><img src="../img/chineseVegetables.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.farmer.com.cn/" style="color: #0072d8"><img src="../img/_CFCQT9~HLW_EO94M(924FA.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://theworldseeds.cn/index.php" style="color: #0072d8"><img src="../img/PQ{B56RL`_EE~4U0)85KCQR.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.chinanyjs.com/" style="color: #0072d8"><img src="../img/ZGNU7A(F}~R9LG8T}S[$A9Y.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="http://www.cnasc.org/" style="color: #0072d8"><img src="../img/A9UOAAX@$S0{FFZL6[EA7UB.png"style="width: 100%;height: 50px;"> </a>
+                            </div>
+
                         </div>
 
 
@@ -467,11 +360,10 @@
             </div>
 
         </div>
-        <div class="more">
-            <a href="breedInvoationDatabaseMore.html" style="color: black;"><input type="button" value="更多" style="background-color: #0d4450;width:200px;height: 40px; color: #ffffff"></a>
-        </div>
     </div>
+            </div>
     <div class="foot">
+        <div class="footBox">
         <div class="footLogo">
         </div>
         <div class="footText">
@@ -479,8 +371,21 @@
             <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
             <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
         </div>
+        </div>
     </div>
 </div>
-
+</div>
 </body>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop:true,
+        autoplay: 3000,//自动播放时间间隔
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+
+    });
+</script>
 </html>

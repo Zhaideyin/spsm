@@ -3,216 +3,33 @@
 <head>
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
-    <title>林竹木草(林木，竹类，花卉，牧草)</title>
+    <title>竹木林草</title>
+    <link href="../css/breedIndustry.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
+        .table{
+            margin-top: 20px;
+            width: 98%;
+            margin-left: 1%;
+            border: 1px solid #e9e9e9;
         }
-        table{ width: 100%;}
-        a{
-            text-decoration:none;
-            color: #0a0903;}
-        .head a {
-            color: #ffffff;
-        }
-        .content_top a{
-            color: #ffffff;
-        }
-        .content_title a{  color: #ffffff; }
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }
-        .head p{
-            color: #ffffff;
-        }
-
-
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-        }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-            /*position: relative;*/
-            /*left: 11%;*/
-            /*top:3px;*/
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-            /*position: absolute;*/
-            /*left: 500px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-        }
-        .second{
-            /*position: absolute;*/
-            /*left: 650px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .third{
-            /*position: absolute;*/
-            /*left: 800px;*/
-            /*top:15px;*/
-            margin-top:15px;
-            float: left;
-        }
-        .fourth{
-            /*position: absolute;*/
-            /*left: 1000px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .main{
-            width: 100%;
-            overflow: hidden;
-            height: auto;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -20px;
-
-        }
-        .top p{
-            position: relative;
-            left: 10%;
-            width: 750px;
-        }
-        .content_top{
-            width: 100%;
-            background-color: #0f4850;
-            height: 35px;
-        }
-        .foot{
-            clear: both;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            position:relative ;
-            left: 15%;
-            top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            position: relative;
-            width: 900px;
-            left:20%;
-            top:-40px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-        .content_main{
-            overflow: hidden;
-            height: auto;
-        }
-        .topSecond{
-            font-size: 40px;
-            top:15px;
-            margin:20px 0px 10px 20px  ;
-        }
-
-        .content{
-
-            position: relative ;
-            top:-80px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_top{
-            padding: 12px 0px 0px 10px;
-            width: 100%;
-        }
-        .content_title {
-            width: 100%;
-            background-color: #106470;
-            padding: 2px 0px 0px 10px;
-        }
-        .content_title h1{
-            color: #ffffff;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        .content_main_left{
-
-            width: 20%;
-            float: left;
-            background-color: #f2f2f2;
-
-        }
-        .content_main_right{
-            width: 75%;
-            float: left;
-            margin-left: 2%;
-            padding-top: 10px;
-        }
-        .content_main-left-list_container{
-            border: solid 1px;
-            border-color: #4e6064;
-        }
-        .content_main-left-list_container1, .content_main-left-list_container2{
-            padding: 20px 2px 2px 30px;
-        }
-        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
-            color: #0072d8;
-        }
+        .content_main_right_first_search{  float: left;margin-left: 150px;}
         .content_main_right_first{
             float:left;
-            width: 64%;
+            width: 100%;
             margin-right: 10px;
         }
-        .content_main_right_second{
-            float:left;
-            padding-left: 20px;
-            width: 30%;
-            background-color: #f4f3ff;
+        td{
+            text-align: center;
+            font-size: 14px;
+            line-height: 25px;
+            border-bottom: 0.5px solid #dddddd;
+            border-right: 0.5px solid #dddddd;
         }
-        .breed_search,.links{
-            padding: 3px 10px 50px 30px;
-        }
-        .sub-list-pg .imgs li {
-            display: block;
-            line-height: 20px;
-            float: left;
-            padding-left: 20px;
-            padding-right: 25px;
-        }
-        ul{
-            overflow: hidden;
-        }
-        .content_main-left-list-content2{
-            display:none;
+        .nav4 {
+            background: #109171
         }
     </style>
-    <script src="../jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".content_main-left-list-title2").click(function(){
@@ -224,224 +41,255 @@
 <body>
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo">
+            </div>
+            <div class="first">
+                <p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="second">
+                <p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="third">
+                <p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p>
+            </div>
+            <div class="fourth">
+                <p><a href="breedProfessor.html"> 育种专家数据库</a></p>
+            </div>
         </div>
     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">品种导航</p>
-        </div>
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;<a href="breedRightApplication.html">
-                    行业资讯</a>&nbsp; &nbsp; &nbsp;<a href="BreedDictionary.html">品种导航</a> &nbsp;
-                    &nbsp;     <a href="breedBusiness.html"> 种子企业 </a> </b></p>
-            </div>
-            <div class="content_title">
-               <h1>林竹木草(林木，竹类，花卉，牧草)</h1>
+                <div class="nav0">
+                    <a href="index.html">首页</a>
+                </div>
+                <div class="nav1 nav">                     <a href="hotSportOfBreed.html">前沿育种研究</a>                 </div>                 <div class="nav2 nav">                     <a href="breedKnowledge.html">育种知识服务</a>                 </div>                 <div class="nav3 nav">                     <a href="breedIndustryNews.html">行业资讯</a>                 </div>                 <div class="nav4 nav">                     <a href="BreedDictionary.html">品种导航</a>                 </div>                  <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>                 <div class="nav6 nav">                     <a href="AchievementShow.html">成果展示</a>                 </div>                 <div class="nav7 nav">                    <a href="AgencyService.html">机构服务</a>                 </div>                 <div class="nav8 nav">                     <a href="cooperation.html">产学研合作</a>                 </div>                 <div class="nav9 nav">                    <a href="professors.html">育种专家</a>                 </div>                 <div class="nav10 nav">                    <a href="professorNews.html">人物动态</a>                 </div>
+
             </div>
             <div class="content_main">
-                <div class="content_main_left">
-                    <div class="content_main-left-list_container">
-                        <div class="content_main-left-list_container1">
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-title">
-                                <h4>四川品种</h4><br>
-                            </div>
-                            <div class="content_main-left-list-content">
-                                <p><a href="BreedDictionary1.html" style="color: #0072d8;">水稻</a></p><br>
-                                <p><a href="BreedDictionary.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
-                                <p><a href="BDCorn.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
-                                <p><a href="BDOil.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
-                                <p><a href="BDPotato.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
-                                <p><a href="BDVegetables.html" style="color: #0072d8">蔬菜</a></p><br>
-                                <p><a href="BDFruitTree.html" style="color: #0072d8">果树</a></p><br>
-                                <p><a href="BDTea.html" style="color: #0072d8">茶树</a></p><br>
-                                <p><a href="BDMedicine.html" style="color: #0072d8">中药材</a></p><br>
-                                <p><a href="BDCotton.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
-                                <p><a href="BDBacterium.html" style="color: #0072d8">食用菌</a></p><br>
-                                <p><a href="BDFlower.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
-                                <p><a href="BDAnimal.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="content_main-left-list_container2">
-                        <div class="content_main-left-list2">
-                            <div class="content_main-left-list-title2">
-                                <h4>省外品种</h4><br>
-                            </div>
-                            <div class="content_main-left-list-content2">
-                                <p><a href="BreedDictionary1PO.html" style="color: #0072d8;">水稻</a></p><br>
-                                <p><a href="BreedDictionaryPO.html" style="color: #0072d8;">麦类(小麦、青稞、荞麦)</a></p><br>
-                                <p><a href="BDCornPO.html" style="color: #0072d8">玉米(含高粱)</a></p><br>
-                                <p><a href="BDOilPO.html" style="color: #0072d8">油料（油菜、花生、豆类）</a></p><br>
-                                <p><a href="BDPotatoPO.html" style="color: #0072d8">薯类（甘薯、马铃薯）</a></p><br>
-                                <p><a href="BDVegetablesPO.html" style="color: #0072d8">蔬菜</a></p><br>
-                                <p><a href="BDFruitTreePO.html" style="color: #0072d8">果树</a></p><br>
-                                <p><a href="BDTeaPO.html" style="color: #0072d8">茶树</a></p><br>
-                                <p><a href="BDMedicinePO.html" style="color: #0072d8">中药材</a></p><br>
-                                <p><a href="BDCottonPO.html" style="color: #0072d8">蚕桑麻(含棉花)</a></p><br>
-                                <p><a href="BDBacteriumPO.html" style="color: #0072d8">食用菌</a></p><br>
-                                <p><a href="BDFlowerProvinceOut.html" style="color: #0072d8">林竹木草(林木，竹类，花卉，牧草)</a></p><br>
-                                <p><a href="BDAnimalPO.html" style="color: #0072d8">畜禽(猪，鸡，水禽，羊，兔，水产，峰)</a></p><br>
-
-                        </div>
-                            </div>
-
-                    </div>
-                    </div>
-                </div>
-
+                <div class="content_main_left">                     <div class="content_main_left_term">                         <div class="dataBaseTitle">                                <span><a href="breedAchievement.html " style="color: #12525e;">成果推广数据库</a></span>                         </div>                      </div>                     <div class="content_main_left_terms1">                         <div class="content_main_left_terms1_title">                             <span> 行业资讯</span></div>                         <div class="content_main_left_terms1_content">                             <div class="content_main_left_terms1_content_list">                                 <img class="titleList" src="../img/农业要闻.png" style="width: 40px;height: 40px;"><span>                                   <a href="breedIndustryNews.html" style="color: #0f4850;">种业要闻</a></span>                             </div>                             <div class="content_main_left_terms1_content_list">                                 <img class="titleList" src="../img/政策.png" style="width: 40px;height: 40px;">                                 <span><a href="policy.html" style="color: #0f4850;">政策法规</a></span>                             </div>                             <div class="content_main_left_terms1_content_list">                                 <img class="titleList" src="../img/著作权.png" style="width: 40px;height: 40px;"><span>                                   <a href="breedRightApplication.html" style="color: #0f4850; width: 38px ;height: 38px;">品种权</a></span>                             </div>                             <div  class="breedIndustryNewTwo">                                 <div  class="breedIndustryNewTwoList">                                     <span><a href="breedRightApplication.html" style="color: #0f4850;">品种权申请查询</a></span>                                 </div>                                 <div  class="breedIndustryNewTwoList">                                     <span><a href="breedRightAuthorizaton.html" style="color: #0f4850;">品种权授权查询</a></span>                                 </div>                                 <div  class="breedIndustryNewTwoList">                                     <span><a href="breedExhibition.html" style="color: #0f4850;">农林品种公告</a></span>                                 </div>                             </div>                          </div>                     </div>                     <div class="content_main_left_terms1">                         <div class="content_main_left_terms1_title"><span> 品种导航</span></div>                         <div class="content_main_left_terms1_content">                             <div class="content_main_left_terms1_content_list"><img class="titleList"                                                                                     src="../img/农业.png"                                                                                     style="width: 40px;height: 40px;"><span><a                                     href="BreedDictionary.html" style="color: #0f4850;">省内品种</a></span></div>                              <div class="content_main_left_terms1_content_list"><img class="titleList"                                                                                     src="../img/农业.png"                                                                                     style="width: 40px;height: 40px;"><span><a                                     href="BreedDictionaryOut.html" style="color: #0f4850;">省外品种</a></span></div>                           </div>                     </div>                     <div class="content_main_left_terms1">                         <div class="content_main_left_terms1_title"><span> 种子企业</span></div>                         <div class="content_main_left_terms1_content">                             <div class="content_main_left_terms1_content_list">                                 <a href="breedBusinessProvince.html"> <img class="titleList1" src="../img/shengnei.jpg" style="width: 100%;height: 40px;"></a>                             </div>                             <div class="content_main_left_terms1_content_list">                                 <a href="breedBusiness.html"><img class="titleList1" src="../img/guonei.jpg" style="width: 100%;height: 40px;"></a>                             </div>                             <div class="content_main_left_terms1_content_list">                                 <a href="breedBusinessInternational.html"><img class="titleList1" src="../img/guoji.jpg" style="width: 100%;height: 40px;"></a>                             </div>                            </div>                     </div>                     <div class="content_main_left_terms1">                         <div class="content_main_left_terms1_title"><span> 相关链接</span></div>                         <div class="content_main_left_terms1_content">                             <div class="content_main_left_terms1_content_list1"><a href="cooperation.html"> <img                                     src="../img/P020150526620390425806.png" style="width: 100%;height: 60px;"></a></div>                         </div>                     </div>                 </div>
                 <div class="content_main_right">
-                    <div class="content_main_right_first">
-                        <div class="content_main_right_first_img">
-                            <img src="../img/花卉.jpg" style="height:390px;width: 100%;">
-                        </div>
-                        <div class="content_main_right_first_text">
-                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
-                                <h2>花卉</h2>
-                            </div>
-                            <table border="1" cellspacing="0" cellpadding="0"  bordercolor="#FF9966">
-                                <tbody><tr>
-                                    <td height="25" width="77" valign="middle" align="center"><p align="center"><font lang="ZH-CN" face="宋体"><a href="mudan.htm">牡丹</a></font> </p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><font lang="ZH-CN" face="宋体"><a href="shacha.htm">山茶</a></font> </p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><font lang="ZH-CN" face="宋体"><a href="hehua.htm">荷花</a></font></p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><font face="宋体"><a href="yueji.htm">月季</a></font></p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><font lang="ZH-CN" face="宋体"><a href="xianrenqiu.htm">仙人球</a></font></p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><a href="lanhua.htm">兰花</a></p></td>
-                                    <td height="25" width="79" valign="middle" align="center"><p align="center"><a href="shuixian.htm">水仙</a></p></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><p align="center"><font lang="ZH-CN" face="宋体"><a href="30a.htm">菊花</a></font></p></td>
-                                    <td height="26" width="79" valign="middle" align="center"><p align="center"><a href="1a.htm">毛茛科</a></p></td>
-                                    <td height="26" width="79" valign="middle" align="center"><p align="center"><a href="2.htm">小蘖科</a></p></td>
-                                    <td height="26" width="79" valign="middle" align="center"><p align="center"><a href="3.htm">鬼臼科</a></p></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="4.htm">罂粟科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="5.htm">紫堇科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="6.htm">凤仙花科</a></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><a href="7.htm">十字花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="8.htm">景天科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="9.htm">虎耳草科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="10.htm">石竹科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="11.htm">蓼 科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="12.htm">芒牛苗科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="13.htm">瑞香科</a></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><a href="14.htm">柽柳科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="15.htm">木兰科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="16.htm">大戟科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="17.htm">绣球花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="18.htm">蔷薇科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="19.htm">蝶形花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="20.htm">柳叶菜科</a></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><a href="21.htm">槭树科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="22.htm">珙桐科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="23.htm">五加科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="24.htm">伞形花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="25.htm">杜鹃花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="26.htm">岩梅科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="27.htm">木樨科</a></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><a href="28.htm">忍冬科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="29.htm">川续断科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="31.htm">龙胆科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="32.htm">报春花科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="33.htm">紫草科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="34.htm">桔梗科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="35.htm">玄参科</a></td>
-                                </tr>
-                                <tr>
-                                    <td height="26" width="77" valign="middle" align="center"><a href="36.htm">苦苣苔科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="37.htm">茄 科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="38.htm">紫葳科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="40.htm">唇形科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="41.htm">百合科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="42.htm">天南星科</a></td>
-                                    <td height="26" width="79" valign="middle" align="center"><a href="43.htm">鸢尾科</a></td>
-                                </tr>
-                                </tbody></table>
-                            <div class="content_main_right_first_img">
-                                <img src="../img/1122240_20160901115924926200_1.jpg" style="height:390px;width: 100%;">
-                            </div>
-                            <div class="table_title" style="text-align: center;padding-bottom: 10px;padding-top: 10px;">
-                                <h2>橡胶</h2>
-                            </div>
-                            <table border="0" >
-                                <tbody><tr>
-                                    <td width="100%"><table border="1" width="100%"  cellspacing="0">
-                                        <tbody><tr>
-                                            <td width="17%" height="19" align="center"><a href="橡胶/橡胶文昌7-35-11.htm">文昌7-35-11</a></td>
-                                            <td width="17%" height="19" align="center"><a href="橡胶文昌11.htm">文昌11</a></td>
-                                            <td width="17%" height="19" align="center"><a href="橡胶/橡胶云研77-2.htm">IAN873</a></td>
-                                            <td width="16%" height="19" align="center"><a href="橡胶/橡胶云研77-49.htm">云研77-49</a></td>
-                                            <td width="16%" height="19" align="center"><a href="橡胶/橡胶云研77-2.htm">云研77-2</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="17%" height="23" align="center"><a href="橡胶/橡胶保亭911.htm">保亭911</a></td>
-                                            <td width="17%" height="23" align="center"><a href="橡胶/橡胶保亭155.htm">保亭155</a></td>
-                                            <td width="17%" height="23" align="center"><a href="橡胶/橡胶热研917.htm">热研917</a></td>
-                                            <td width="16%" height="23" align="center"><a href="橡胶/橡胶热研918.htm">热研918</a></td>
-                                            <td width="16%" height="23" align="center">&nbsp;&nbsp;&nbsp; </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="17%" height="20" align="center">&nbsp;<a href="橡胶/橡胶热研8-79.htm">热研8-79</a></td>
-                                            <td width="17%" height="20" align="center"><a href="橡胶/橡胶文昌217.htm">文昌217</a>
-                                            </td>
-                                            <td width="17%" height="20" align="center"><a href="橡胶/橡胶保亭3410.htm">保亭3410</a></td>
-                                            <td width="16%" height="20" align="center"><a href="橡胶/橡胶大丰117.htm">大丰117</a></td>
-                                            <td width="16%" height="20" align="center">&nbsp;&nbsp; </td>
-                                        </tr>
+                    <div class="content_main_right_title">
+                        <span class="content_main_rightTitle">竹木林草</span>
+                        <div class="content_main_right_first_search">
+                            <input  name="keyword" style=" height: 25px; width: 150px;
 
-                                        </tbody></table>
-                                    </td>
-                                </tr>
-                                </tbody></table>
+            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width: 70px;background-color: #12525e;color: white">
                         </div>
-
+                        <span class="position">首页&nbsp;>&nbsp;种子数据库&nbsp;>&nbsp;品种导航&nbsp;>&nbsp;省内品种&nbsp;>&nbsp;竹木林草</span>
                     </div>
-                    <div class="content_main_right_second">
-                        <div class="breed_search">
-                         <h2>品种搜索</h2><br>
-                            <div class="breed_button">
-                                <input value="搜索" name="keyword" style=" height: 28px; width: 60%;
+                    <div class="content_main_right_first">
+                        <div class="content_main_right_first_text">
+                            <table class="table">
+                                <tr style="background-color: #0d8897">
+                                    <td style=" background-color: #aaaaaa;color: #ffffff;font-size: 20px;width: 12%;">序号</td>
+                                    <td style=" background-color: #aaaaaa; color: #ffffff;font-size: 20px;width: 18%;">品种名称</td>
+                                    <td style=" background-color: #aaaaaa;color: #ffffff;font-size: 20px;width: 12%;">序号</td>
+                                    <td style=" background-color: #aaaaaa;color: #ffffff;font-size: 20px;width: 18%;">品种名称</td>
+                                    <td style=" background-color: #aaaaaa;color: #ffffff;font-size: 20px;width: 12%;">序号</td>
+                                    <td style=" background-color: #aaaaaa;color: #ffffff;font-size: 20px;width: 18%;">品种名称</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>两优培九</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
 
-            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:30%;background-color: #0d8897">
-                            </div>
-                            <br>
-                            <br>
-                            <div class=" brief ">
-                                <span>
-                                     花是被子植物繁衍后代的生殖器官。典型的花，在一个有限生长的短轴上，着生花萼、花冠和产生生殖细胞的雄蕊与雌蕊。有些学者认为裸子植物的孢子叶球也是“花”，而多数人则认为被子植物才有花，所以被子植物也称为有花植物。花的各部分不易受外界环境的影响，变化较小，所以长
-                                    期以来，人们都以花的形态结构，作为被子植物分类鉴定和系统演化的主要依据。
-                                </span>
-                            </div>
-                        </div>
-                        <div class="links">
-                            <h2>相关链接</h2>
-                            <br>
-                            <ul>
-                                <li>
-                                   <a href="http://www.ricedata.cn/" style="color: black"> 国家水稻数据中心</a>
-                                </li>
-                            </ul>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>II优725</td>
+                                    <td>18</td>
+                                    <td>II优501</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>两优培九</td>
+                                    <td>19</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>中香1号</td>
+                                    <td>20</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>两优培九</td>
+                                    <td>25</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>两优培九</td>
+                                    <td>26</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>两优培九</td>
+                                    <td>27</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>两优培九</td>
+                                    <td>28</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>两优培九</td>
+                                    <td>29</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>两优培九</td>
+                                    <td>30</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>两优培九</td>
+                                    <td>31</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>两优培九</td>
+                                    <td>32</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>两优培九</td>
+                                    <td>33</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>两优培九</td>
+                                    <td>34</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>两优培九</td>
+                                    <td>35</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>两优培九</td>
+                                    <td>16</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>两优培九</td>
+                                    <td>31</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>两优培九</td>
+                                    <td>32</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>两优培九</td>
+                                    <td>33</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>两优培九</td>
+                                    <td>34</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>两优培九</td>
+                                    <td>35</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>两优培九</td>
+                                    <td>16</td>
+                                    <td>扬稻6号</td>
+                                    <td>17</td>
+                                    <td>扬稻6号</td>
+
+                                </tr>
+
+                            </table>
                         </div>
 
                     </div>
@@ -450,12 +298,12 @@
 
 
 
+
+
+            </div>
 
 
         </div>
-
-
-    </div>
 
         <div class="foot">
             <div class="footLogo">
@@ -466,7 +314,7 @@
                 <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
             </div>
         </div>
-</div>
+    </div>
 </div>
 </body>
 

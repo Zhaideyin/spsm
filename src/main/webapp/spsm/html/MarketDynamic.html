@@ -5,377 +5,201 @@
     <meta charset="UTF-8">
     <title>市场动态</title>
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }
-        a{
-            text-decoration: none;
-        }
-        .head a {
-            color: #ffffff;
-            text-decoration:none;
-        }
-        .content_top a{
-            color: #ffffff;
-            text-decoration:none;
-        }
-        .content_main-left-list a{
-            text-decoration:none;
-        }
-        *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }
-        .head p{
-            color: #ffffff;
-        }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-            /*position: relative;*/
-            /*left: 11%;*/
-            /*top:3px;*/
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-            /*position: absolute;*/
-            /*left: 500px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-        }
-        .second{
-            /*position: absolute;*/
-            /*left: 650px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .third{
-            /*position: absolute;*/
-            /*left: 800px;*/
-            /*top:15px;*/
-            margin-top:15px;
-            float: left;
-        }
-        .fourth{
-            /*position: absolute;*/
-            /*left: 1000px;*/
-            /*top:15px;*/
-            float: left;
-            margin-top:15px;
-
-        }
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-            height: 1100px;
-        }
-
-        .main{
-            width: 100%;
-            overflow: hidden;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -20px;
-
-        }
-        .top p{
-            position: relative;
-            left: 10%;
-        }
-        .content_top{
-            width: 100%;
-            background-color: #0f4850;
-            height: 35px;
-        }
-        .foot{
-            clear: both;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            position:relative ;
-            left: 15%;
-            top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            position: relative;
-            width: 900px;
-            left:20%;
-            top:-40px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-
-        .topSecond{
-            font-size: 40px;
-            top:15px;
-            margin:20px 0px 10px 20px  ;
-        }
-
-        .content{
-
-            position: relative;
-            top:-80px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_top{
-            padding: 10px 0px 0px 15px;
-            width: 99%;
-        }
-        .content_title {
-            width: 100%;
-            background-color: #106470;
-        }
-        .content_title h2{
-            color: #ffffff;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-        .content_main_left{
-
-            width: 20%;
-            float:left;
-            background-color: #f2f2f2;
-
-        }
-        .content_main-left-list_container{
-            border: solid 1px;
-            border-color: #4e6064;
-            padding-bottom: 15px;
-        }
-        .content_main-left-list{
-            width: 79%;
-            overflow: hidden;
-            padding:20px 0px 0px 10px;
-            border-bottom: solid 1px;
-            border-color: #586c70;
-            margin-left: 7%;
-        }
-        .content_main-left-list-title{
-            float: left;
-            margin-left: 5px;
-            margin-top: 10px;
-        }
-        .content_main-left-list-logo{ float: left;}
-
-
-
-        .content_main-left-list-down2{
-            width: 79%;
-            padding: 10px 0px 10px 10px;
-            border-bottom: solid 1px;
-            border-color: #586c70;
-            margin-left: 7%;
-            text-align: left;
-            display:none;
-        }
-        .content_main-left-list-down1{
-            width: 79%;
-            padding: 10px 0px 10px 10px;
-            border-bottom: solid 1px;
-            border-color: #586c70;
-            margin-left: 7%;
-            text-align: left;
-
-        }
-        .content_main-left-list-down1 li{margin-left: 20%; line-height: 25px;}
-        .content_main-left-list-down2 li{margin-left: 20%; line-height: 25px;}
-        .content_main-left-list-down span{  font-size: 10px;  color: #007aff;  line-height: 25px;  }
-        .content_main-left-list-title{  float: left;  }
-        .content_main-left-list-img{  float: right;  }
-        .content_main_right{
-            width: 80%;
-            float:left;
-        }
-        .content_main_right_box{ background-color: #e9e9e9;padding: 5px;  margin: 2%;}
-        .content_main_right_lists{ margin-left: 3%;  padding-left: 4%;  background-color: white;}
-        li{ line-height: 40px;}
-
+        .content_main_right_box_title span {font-size: 18px;padding-left: 23px; color: #109171;}
+        .content_main_right_lists {  overflow: hidden;  border-bottom: 0.5px dashed #ddd;  margin-bottom: 10px;  padding-bottom: 5px;  }
+        .rightTitle {  float: left;  }
+        .listTime {  float: right;  }
+        .content_main_right_box {  padding-top: 20px;  }
+        .nav3{background: #109171}
     </style>
-    <script src="../jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".down2").click(function(){
-                $(".content_main-left-list-down2").slideToggle("slow");
-            });
-        });
-        $(document).ready(function(){
-            $(".down1").click(function(){
-                $(".content_main-left-list-down1").slideToggle("slow");
-            });
-        });
-    </script>
+    <link href="../css/breedIndustry.css" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
-    <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
-        </div>
-    </div>
+    <div class="head">         <div class="headnav">             <div class="logo">             </div>             <div class="first">                 <p><a href="breedInvoationDatabase.html">育种创新数据库</a>&nbsp;|&nbsp;</p>             </div>             <div class="second">                 <p><a href="breedIndustry.html">种子产业数据库</a>&nbsp;|&nbsp;</p>             </div>             <div class="third">                 <p><a href="breedAchievement.html"> 成果推广数据库</a>&nbsp;|&nbsp;</p>             </div>             <div class="fourth">                 <p><a href="breedProfessor.html"> 育种专家数据库</a></p>             </div>         </div>     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">行业资讯</p>
-        </div>
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;
-                    <a href="breedIndustryNews.html"> 行业资讯</a>&nbsp; &nbsp; &nbsp;    <a href="BreedDictionary.html"> 品种导航</a>&nbsp; &nbsp; &nbsp;
-                    <a href="breedBusiness.html"> 种子企业 </a> </b></p>
-            </div>
-            <div class="content_title">
-                <h2>市场动态</h2>
+                <div class="nav0">
+                    <a href="index.html">首页</a>
+                </div>
+                <div class="nav1 nav">                     <a href="hotSportOfBreed.html">前沿育种研究</a>                 </div>                 <div class="nav2 nav">                     <a href="breedKnowledge.html">育种知识服务</a>                 </div>                 <div class="nav3 nav">                     <a href="breedIndustryNews.html">行业资讯</a>                 </div>                 <div class="nav4 nav">                     <a href="BreedDictionary.html">品种导航</a>                 </div>                  <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>                 <div class="nav6 nav">                     <a href="AchievementShow.html">成果展示</a>                 </div>                 <div class="nav7 nav">                    <a href="AgencyService.html">机构服务</a>                 </div>                 <div class="nav8 nav">                     <a href="cooperation.html">产学研合作</a>                 </div>                 <div class="nav9 nav">                    <a href="professors.html">育种专家</a>                 </div>                 <div class="nav10 nav">                    <a href="professorNews.html">人物动态</a>                 </div>
+
             </div>
             <div class="content_main">
                 <div class="content_main_left">
-                    <div class="content_main-left-list_container">
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/生成采集成果.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <a href="breedIndustryNews.html" style="color: #0a0903;"><h4>种业要闻 </h4> </a>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <img  class="down1" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
-                            </div>
-                        </div>
-                        <div class="content_main-left-list-down1">
-                            <ul>
-                                <li>  <span>
-                            <a href="MarketDynamic.html" style="color: #000000;">市场动态</a></span></li>
-                                <li> <span> <a href="Exhibition.html" style="color: #000000;">展会信息</a></span></li>
-                            </ul>
-
-                        </div>
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/视频.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <a href=" policy.html  " style="color: #0a0903;"><h4>政策法规</h4></a>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <a href=" policy.html   " > <img src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;"> </a>
-                            </div>
-                        </div>
-                        <div class="content_main-left-list">
-                            <div class="content_main-left-list-logo">
-                                <img src="../img/种植技术3图标.png" style="width: 35px;height:35px;">
-                            </div>
-                            <div class="content_main-left-list-title">
-                                <h4>品种权</h4>
-                            </div>
-                            <div class="content_main-left-list-img">
-                                <img class="down2" src="../img/down.png" style="height: 20px; width: 20px;padding-bottom: 2px;">
-                            </div>
-                        </div>
-                        <div class="content_main-left-list-down2">
-                            <ul>
-                                <li>   <span>
-                            <a href=" breedRightApplication.html" style="color: #000000;">品种权申请查询</a></span></li>
-                                <li>     <span> <a href="breedRightAuthorizaton.html" style="color: #000000;">品种权授权查询</a></span></li>
-                                <li>  <span> <a href="breedExhibition.html" style="color: #000000;">最新农林品种权公告</a></span></li>
-                            </ul>
+                    <div class="content_main_left_term">
+                        <div class="dataBaseTitle">
+                              <span><a href="breedAchievement.html " style="color: #12525e;">成果推广数据库</a></span>
                         </div>
 
                     </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title">
+                            <span> 行业资讯</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/农业要闻.png" style="width: 40px;height: 40px;"><span>
+                                  <a href="breedIndustryNews.html" style="color: #0f4850;">种业要闻</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/政策.png" style="width: 40px;height: 40px;">
+                                <span><a href="policy.html" style="color: #0f4850;">政策法规</a></span>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <img class="titleList" src="../img/著作权.png" style="width: 40px;height: 40px;"><span>
+                                  <a href="breedRightApplication.html" style="color: #0f4850; width: 38px ;height: 38px;">品种权</a></span>
+                            </div>
+                            <div  class="breedIndustryNewTwo">
+                                <div  class="breedIndustryNewTwoList">
+                                    <span><a href="breedRightApplication.html" style="color: #0f4850;">品种权申请查询</a></span>
+                                </div>
+                                <div  class="breedIndustryNewTwoList">
+                                    <span><a href="breedRightAuthorizaton.html" style="color: #0f4850;">品种权授权查询</a></span>
+                                </div>
+                                <div  class="breedIndustryNewTwoList">
+                                    <span><a href="breedExhibition.html" style="color: #0f4850;">农林品种公告</a></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 品种导航</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"
+                                                                                    src="../img/农业.png"
+                                                                                    style="width: 40px;height: 40px;"><span><a
+                                    href="BreedDictionary.html" style="color: #0f4850;">省内品种</a></span></div>
+                            <div class="content_main_left_terms1_content_list"><img class="titleList"                                                                                     src="../img/农业.png"                                                                                     style="width: 40px;height: 40px;"><span><a                                     href="BreedDictionaryOut.html" style="color: #0f4850;">省外品种</a></span></div>
+
+
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 种子企业</span></div>
+                        <div class="content_main_left_terms1_content">
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="breedBusinessProvince.html"> <img class="titleList1" src="../img/shengnei.jpg" style="width: 100%;height: 40px;"></a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="breedBusiness.html"><img class="titleList1" src="../img/guonei.jpg" style="width: 100%;height: 40px;"></a>
+                            </div>
+                            <div class="content_main_left_terms1_content_list">
+                                <a href="breedBusinessInternational.html"><img class="titleList1" src="../img/guoji.jpg" style="width: 100%;height: 40px;"></a>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="content_main_left_terms1">
+                        <div class="content_main_left_terms1_title"><span> 相关链接</span></div>
+                        <div class="content_main_left_terms1_content">
+                          <div class="content_main_left_terms1_content_list1"><a href="http://news.aweb.com.cn/"> <img                                     src="../img/nongbozhongye.png" style="width: 100%;height: 60px;"></a></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="content_main_right">
+                    <div class="content_main_right_title">
+                        <span class="content_main_rightTitle">市场动态</span><span class="position">首页&nbsp;>&nbsp;种子数据库&nbsp;>&nbsp;行业资讯&nbsp;>&nbsp;种业要闻&nbsp;>&nbsp;市场动态</span>
+                    </div>
                     <div class="content_main_right_box">
-                        <div class="content_main_right_lists">
-                            <ul>
-                                <li>2015第二届华北种子交易会开幕在即[2015-10-16]</li>
-                                <li>(农民日报)800多个品种同台竞技[2015-9-21]</li>
-                                <li>(农民日报)让真正有需求的人来，带着收获走[2015-9-21]</li>
-                                <li>(农民日报)看国审品种大名单里的门道</li>
-                                <li>(农民日报)玉米种子生产基地检查：查到每处不留死角[2015-9-7]</li>
-                                <li>(农民日报)为农民用种安全把好关[2015-9-7]</li>
-                                <li>(法制日报)我国将建多元化品种审定指标体系[2015-9-6]</li>
-                                <li>(农民日报)依法治种 简政放权[2015-8-27]</li>
-                                <li>新疆（昌吉）种交会签约额预计达21亿元[2015-8-17]</li>
-                                <li>（农民日报）销售假种子 获刑又赔钱——黑龙江克东县杨贤成等售价案经过[2015-6-17]</li>
-                                <li>推进改革措施落实加快现代种业发展（农民日报）[2015-1-5]</li>
-                                <li> <a href="BIRROLdetails14.html" >荷兰瓦赫宁根大学模拟火星种植蔬菜</a></li>
-                                <li><a href="BIRROLdetails15.html">烟台海肠苗种繁育成功</a></li>
-                                <li><a href="BIRROLdetails16.html">杨凌育成首个油菜机收专用品种</a></li>
-                                <li><a href="BIRROLdetails17.html">韩国研发出白菜长期储存技术</a></li>
-                                <li><a href="BIRROLdetails18.html">中国首个转基因玉米种子产品将卖给美国</a></li>
-                                <li>（人民日报）聚焦种业体制改革（3）：蔬菜之乡”全力打造“种业硅谷”[2014-6-20]</li>
-                                <li>（人民日报）聚焦种业体制改革（2）：体制“活”起来 人才“动”起来[2014-5-29]</li>
-                            </ul>
-                        </div>
 
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">农业部发布《2014年全国集中连片特困地区农业适用品种和技术》</a></span><span class="listTime">2016.12.12</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">农业部副部长张桃林赴青海省调研农牧业生产及科技创新工作</a></span><span class="listTime">2016.12.12</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">农业部科教司组织召开农业科教系统联席会</a></span><span class="listTime">2016.08.25</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">CCTV2013年度科技创新人物郭三堆研究员：只为献“花”惠棉农</a></span><span class="listTime">2016.08.25</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">农业部副部长张桃林深入河北农村调研</a></span><span class="listTime">2016.08.25</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">全国农业科技教育工作视频会议召开</a></span><span class="listTime">2016.08.25</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">欧阳中石为“美丽乡村”创建活动题字</a></span><span class="listTime">2016.08.24</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">农业部启动农民田间学校创新试点</a></span><span class="listTime">2016.08.21</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">张桃林：加快形成新型职业农民培育的政策和措施体系 力求取得六大新突破</a></span><span class="listTime">2016.05.26</span>
+                        </div>  <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">加快推进农业科技创新与推广</a></span><span class="listTime">2016.05.25</span>
+                    </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a
+                                    href="BINLdetails2.html">中国水产科学研究院2011年7项科技成果获省部级一等奖奖励</a></span><span class="listTime">2016.05.12</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">农业部李家洋副部长一行到热科院考察时强调：学习贯彻中央一号文件精神 加快农业科技创新</a></span><span class="listTime">2016.05.09</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">张桃林：深入贯彻落实中央一号文件精神 加快构建新型农业科技创新体系</a></span><span class="listTime">2016.05.09</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">张桃林：中国水产科学研究院要担负起新时期渔业科技跨越发展重任</a></span><span class="listTime">2016.05.09</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">	推动农业科技加快发展 提高农产品供给保障能力——农业部总经济师、新闻发言人陈萌山解读中央1号文件精神</a></span><span class="listTime">2016.05.05</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">2012年中央一号文件公布 把农业科技摆上更加突出位置</a></span><span class="listTime">2016.05.04</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">绿色能源示范县技术服务专家咨询团在京成立</a></span><span class="listTime">2016.05.03</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">扎实推进农业和农村节能减排——访农业部副部长张桃林</a></span><span class="listTime">2016.05.03</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">农业部和共青团中央将在全国认定500个青少年农业科普示范基地</a></span><span class="listTime">2016.04.28</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">全国农民教育培训工作会议召开 农业部启动冬春农业科技大培训</a></span><span class="listTime">2016.04.21</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">给农村妇女送去致富金钥匙——农业部妇工委送科技下乡活动纪实</a></span><span class="listTime">2016.04.13</span>
+                        </div>
+                        <div class="content_main_right_lists">
+                            <span class="rightTitle"><a href="BINLdetails2.html">中国超级稻的光荣与梦想</a></span><span class="listTime">2016.02.25</span>
+                        </div>
                     </div>
 
 
 
                 </div>
             </div>
-
-
-
-
-
-
-
         </div>
-
-
+    </div>
+    <div class="foot">
+        <div class="footLogo">
+        </div>
+        <div class="footText">
+            <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
+            <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
+            <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+        </div>
     </div>
 </div>
-
-
-
-
-<div class="foot">
-    <div class="footLogo">
-    </div>
-    <div class="footText">
-        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
-    </div>
-</div>
-</div>
-
 </body>
-
 </html>

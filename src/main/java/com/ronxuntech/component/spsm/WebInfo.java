@@ -8,6 +8,7 @@ import com.ronxuntech.component.spsm.util.ReadXML;
 
 public class WebInfo {
 	private String seed;// 种子
+	private String urlTag; //要过滤的url 所在的区域 (xpath)
 	private String urlRex;// 要抓取的url正则表达式
 	private List<String> list;// 标签列表
 	private String imgRegex; // 过滤图片的正则表达式
@@ -16,7 +17,7 @@ public class WebInfo {
 	private String docTag; // 提取文档的标签
 	private boolean hasImg; // 是否存在图片
 	private boolean hasDoc; // 是否存在文档
-	private int totalPage; // 总页数
+	private String totalPage; // 总页数
 	private String pageAjaxTag; // 异步标签
 	private String pageMethod; // 分页方式
 	private String pageGetTag;  // get
@@ -102,14 +103,14 @@ public class WebInfo {
 		this.pagePostTag = pagePostTag;
 	}
 
-	public int getTotalPage() {
+
+	public String getTotalPage() {
 		return totalPage;
 	}
 
-	public void setTotalPage(int totalPage) {
+	public void setTotalPage(String totalPage) {
 		this.totalPage = totalPage;
 	}
-
 
 	public String getPageMethod() {
 		return pageMethod;
@@ -190,6 +191,14 @@ public class WebInfo {
 		this.hasDoc = hasDoc;
 	}
 	
+	public String getUrlTag() {
+		return urlTag;
+	}
+
+	public void setUrlTag(String urlTag) {
+		this.urlTag = urlTag;
+	}
+
 	/**
 	 * 初始化web,将传递来的种子网页
 	 * @param seedUrl
@@ -235,6 +244,11 @@ public class WebInfo {
 			if (!(seed.equals(seedUrl))) {
 				continue;
 			}
+			
+			String urlTag = hashMap.get("urlTag");
+			if(urlTag.equals("") || urlTag==null){
+				urlTag = "//body";
+			}
 			String urlRex = hashMap.get("urlRex");
 			String tag1 = hashMap.get("tag1");
 			String tag2 = hashMap.get("tag2");
@@ -242,6 +256,7 @@ public class WebInfo {
 			// 用web类来传值
 			// final Web web = new Web();
 			web.setSeed(seed.trim());
+			web.setUrlTag(urlTag);
 			web.setUrlRex(urlRex.trim());
 			List<String> taglist = new ArrayList<String>();
 			taglist.add(tag1.trim());
@@ -264,7 +279,7 @@ public class WebInfo {
 			web.setHasDoc(hasDoc);
 
 			// 分页
-			int totalPage = Integer.parseInt(hashMap.get("totalPage"));
+			String totalPage = hashMap.get("totalPage");
 			String pageAjaxTag = hashMap.get("pageAjaxTag");
 			String pageGetTag = hashMap.get("pageGetTag");
 			String pagePostTag = hashMap.get("pagePostTag");
@@ -297,6 +312,16 @@ public class WebInfo {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public String toString() {
+		return "WebInfo [seed=" + seed + ",urlTag="+urlTag+" urlRex=" + urlRex + ", list=" + list + ", imgRegex=" + imgRegex
+				+ ", docRegex=" + docRegex + ", imgTag=" + imgTag + ", docTag=" + docTag + ", hasImg=" + hasImg
+				+ ", hasDoc=" + hasDoc + ", totalPage=" + totalPage + ", pageAjaxTag=" + pageAjaxTag + ", pageMethod="
+				+ pageMethod + ", pageGetTag=" + pageGetTag + ", pagePostTag=" + pagePostTag + ", typeId=" + typeId
+				+ ", pageEncoding=" + pageEncoding + ", databaseType=" + databaseType + ", navbarType=" + navbarType
+				+ ", listType=" + listType + ", sublistType=" + sublistType + "]";
 	}
 
 }

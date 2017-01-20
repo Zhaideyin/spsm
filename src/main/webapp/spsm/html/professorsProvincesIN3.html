@@ -4,182 +4,12 @@
     <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>郑少锋</title>
+    <link href="../css/professor.css" rel="stylesheet">
     <style>
-        body{
-            font-family: 微软雅黑;
-            line-spacing: 22px;
-        }
-        a{
-                        text-decoration: none;
-
-                      }
-        .head a {
-            color: #ffffff;
-
-        }
-        .content_top a{
-            color: #ffffff;
-
-        }
-        .content_title a{
-            color: #ffffff;
-        } *{  margin: 0px;
-            padding: 0px;}
-        .head{
-            background-color:#272727;
-            width: 100%;
-            height: 50px;
-        }  .head p{
-            color: #ffffff;
-        }
-        .logo{
-            background-image: url("../img/head.png");
-            background-repeat: no-repeat;
-            width: 293px;
-            height: 46px;
-
-            margin-left:10%;;
-            float: left;
-        }
-        .first{
-
-            float: left;
-            margin-top:15px;
-        }  .second{
-
-            float: left;
-            margin-top:15px;
-
-        }  .third{
-
-            margin-top:15px;
-            float: left;
-        }  .fourth{
-
-            float: left;
-            margin-top:15px;
-
-        }
-        .container{
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
+        .nav9 {
+            background: #109171
         }
 
-        .main{
-            width: 100%;
-        }
-        .top {
-            background-color: #12525e;
-            width: 100%;
-            height: 179px;
-            margin-top: -20px;
-
-        }  .top p{
-            position: relative;
-            padding-left: 10%;
-        }  .content_top{
-            width: 100%;
-            background-color: #0f4850;
-            height: 35px;
-        }
-        .foot{
-            clear: both;
-            margin-top: 20px;
-            background-color: #878784;
-            width: 100%;
-            height: 80px;
-        }
-        .footLogo{
-            background-image: url("../img/foot.png");
-            position:relative ;
-            left: 15%;
-            top:10px;
-            height: 57px;
-            width: 58px;
-        }
-        .footText{
-            position: relative;
-            width: 900px;
-            left:20%;
-            top:-40px;
-            height: 57px;
-        }
-        .footText b{
-            color: #ffffff;
-        }
-        .topSecond{
-            color: #ffffff;
-        }
-
-        .topSecond{
-            font-size: 40px;
-            top:15px;
-            margin:20px 0px 10px 20px  ;
-        }
-
-        .content{
-
-            position: relative;
-            top:-80px;
-            left:10%;
-            width:80%;
-
-        }
-        .content_main{
-            border: solid 0.5px #4e6064;
-        }
-        .content_top{
-            padding: 10px 0px 0px 10px;
-            width: 100%;
-        }
-        .content_title {
-            width: 100%;
-            background-color: #106470;
-            padding: 10px 0px 10px 10px;
-        }
-        .content_container{
-            width: 100%;
-        }
-        .content_title h1{
-            color: #ffffff;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-        .professorSearch{
-            float: left;
-            padding-top: 7px;
-
-        }
-      .content_container_head{
-     float: left;
-     background-color: #d5dbcc;
-     width: 50%;
-          padding: 7px;
-      }
- .content_container_head_logo{
-     float: left;
- }
- .content_container_head_text{
-     float: left;
-     margin-left: 3%;
- }
-        .content_container{
-            overflow: hidden;
-            height: auto;
-            background-color: #d5dbcc;
-        }
-        .content_main-left-list_container1 p,.content_main-left-list_container2 p{
-            color: #0072d8;
-        }
-        .content_container_head h4{
-
-        }
-        .box{
-            width: 70%;
-            margin-left: 15%;
-        }
         .zjn {
             width: 676px;
             padding: 10px;
@@ -189,6 +19,7 @@
             margin: 8px 10px 0 10px;
             display: inline;
         }
+
         .zjn dt {
             width: 250px;
             height: 300px;
@@ -200,6 +31,7 @@
             border: 1px solid #dfdfdf;
             padding: 1px;
         }
+
         .zjn dd {
             width: 400px;
             float: right;
@@ -208,10 +40,12 @@
             overflow: hidden;
             font-size: 14px;
         }
-        .box_head{
+
+        .box_head {
             overflow: hidden;
         }
-        .box_text{
+
+        .box_text {
             padding: 20px;
         }
     </style>
@@ -219,49 +53,31 @@
 <body>
 <div class="container">
     <div class="head">
-        <div class="logo">
-        </div>
-        <div class="first">
-            <p><a href="breedInvoationDatabase.html">育种创新数据库</a> |&nbsp; </p>
-        </div>
-        <div class="second">
-            <p><a href="breedIndustry.html">种业产业数据库</a> |&nbsp;</p>
-        </div>
-        <div class="third">
-            <p ><a href="breedAchievement.html"> 成果推广与转化数据库</a> |&nbsp;</p>
-        </div>
-        <div class="fourth">
-            <p><a href="breedProfessor.html"> 育种专家智库</a></p>
+        <div class="headnav">
+            <div class="logo"></div>
+            <div class="first"><p><a href="breedInvoationDatabase.html">育种创新数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="second"><p><a href="breedIndustry.html">种子产业数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="third"><p><a href="breedAchievement.html"> 成果推广数据库&nbsp;|&nbsp;</a></p></div>
+            <div class="fourth"><p><a href="breedProfessor.html"> 育种专家数据库</a></p></div>
         </div>
     </div>
     <div class="main">
-        <div class="top">
-            <p class="topSecond">育种专家</p>
-        </div>
+
         <div class="content">
             <div class="content_top">
-                <p style="color: #ffffff"><b><a href="index.html"> 首页</a>&nbsp; &nbsp; &nbsp;
-                    <a href="professorsProvincesOUT.html"> 育种专家</a>&nbsp; &nbsp; &nbsp;    <a href="professorNews.html"> 行业人物动态</a>&nbsp; &nbsp; &nbsp;
-                   </b></p>
-            </div>
-            <div class="content_title">
-                <h2><a href="professorsProvincesIN.html">省内专家&nbsp;|</a>&nbsp;<a href="professorsProvincesOUT.html"> 省外专家</a></h2>
-            </div>
-            <div class="content_container">
-                <div class="content_container_head">
-                    <div class="content_container_head_logo"> <img src="../img/professor_128px_1193168_easyicon.net.ico" style="width: 30px;height: 30px;"></div>
-                    <div class="content_container_head_text"> <span style="font-size: 25px;font-family: 'Bell MT';">省内专家</span></div>
-
+                <div class="nav0">
+                    <a href="index.html">首页</a>
                 </div>
-                <div class="professorSearch">
-                    <select style="height: 30px;width: 100px;">
-                        <option>省内专家</option>
-                        <option>省外专家</option>
-                    </select>
-                    <input value="搜索" name="keyword" style=" height: 28px; width: 40%;
-
-            ">&nbsp;<input type="button" class="submit" value="搜索" style="height: 28px;width:90px;background-color: #0d8897">
-                </div>
+                <div class="nav1 nav"><a href="hotSportOfBreed.html">前沿育种研究</a></div>
+                <div class="nav2 nav"><a href="breedKnowledge.html">育种知识服务</a></div>
+                <div class="nav3 nav"><a href="breedIndustryNews.html">行业资讯</a></div>
+                <div class="nav4 nav"><a href="BreedDictionary.html">品种导航</a></div>
+                <div class="nav5 nav"><a href="breedBusinessProvince.html">种子企业 </a></div>
+                <div class="nav6 nav"><a href="AchievementShow.html">成果展示</a></div>
+                <div class="nav7 nav"><a href="AgencyService.html">机构服务</a></div>
+                <div class="nav8 nav"><a href="cooperation.html">产学研合作</a></div>
+                <div class="nav9 nav"><a href="professors.html">育种专家</a></div>
+                <div class="nav10 nav"><a href="professorNews.html">人物动态</a></div>
             </div>
 
             <div class="content_main">
@@ -273,9 +89,11 @@
                         <dd>
                             <strong>姓名：</strong><em>郑少锋</em></dd>
                         <dd>
-                            <strong>职称：</strong>教授，博士生导师</dd>
+                            <strong>职称：</strong>教授，博士生导师
+                        </dd>
                         <dd>
-                            <strong>所属行业：</strong>策划专家</dd>
+                            <strong>所属行业：</strong>策划专家
+                        </dd>
                         <dd>
                             <strong>电话： </strong>
                             029-87081590
@@ -283,82 +101,106 @@
                         <dd>
                             <strong>E - mail：</strong><a href="mailto:zsf831@163.com">zsf831@163.com</a></dd>
                         <dd>
-                            <strong>所在地区：</strong>陕西省-西安市</dd>
+                            <strong>所在地区：</strong>陕西省-西安市
+                        </dd>
                         <dd>
                             <strong>联系方式：</strong></dd>
                         <dd>
-                            <strong>发布日期：</strong>2013-10-8</dd>
+                            <strong>发布日期：</strong>2013-10-8
+                        </dd>
                     </dl>
-                    <div class="xgtit">
-                        <h2>
-                            详细介绍</h2>
-                    </div>
+
                     <div class="content11">
-                        <p>	一、教育及工作经历<br>&nbsp;
+                        <p> 一、教育及工作经历<br>&nbsp;
                             <br>1978-1982&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             西北农学院农经系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            农业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 本科、学士</p><p>
-                        1982-1985&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 西北农学院农经系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 农
-                        业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 研究生、硕士</p><p>	1999-2002&nbsp;&nbsp;&nbsp;
-                        西北农林科技大学经管学院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 农业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        研究生、博士</p><p>	1985-1994&nbsp;&nbsp; 西北农业大学&nbsp; 助教、讲师 兼任教研室主任、研究生秘书，
-                        期间赴加拿大曼尼托巴大学合作研究1年</p><p>	1994-1999&nbsp;&nbsp;&nbsp; 西北农业大学&nbsp;&nbsp; 副教授
-                        兼任经济贸易学院副院长、院长， 期间赴以色列海法大学进行合作研究2个月</p><p>	1999-2004&nbsp;&nbsp;&nbsp;&nbsp;
-                        西北农林科技大学 教授，兼任经济管理学院院长、国务院学位委员会第五届学科评议组成员，期间赴澳大利亚昆士兰大学合
-                        作研究3个月</p><p>	2004-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 西北农林科技大学&nbsp;&nbsp; 教授，兼任经济管理学院教
-                        授委员会主任、教育部第一届高等学校农林经济与管理类教学指导委员会委员、陕西省学位委员会第二、三届学科评议组成员
-                        ，曾赴瑞典、芬兰、奥地利、澳大利亚及新西兰等国访问 <br>&nbsp;<br>二、研究领域<br>&nbsp;<br>农业经济管理、会计学
-                        <br>&nbsp;<br>三、主讲课程<br>&nbsp;<br>&nbsp;经济计量学、会计学基础，统计学原理<br>&nbsp;<br>四、科研成果
-                        及获奖情况<br>&nbsp;<br>1、科研项目情况<br>&nbsp;<br>1.干旱半干旱地区农业可持续发展研究农业部&nbsp;&nbsp;
-                        2000-2001</p><p>	2.主要粮食作物和经济作物生产成本与效益分析&nbsp; 农业部&nbsp;&nbsp; 2002-2003</p><p>
-                        3.陕西绿色农产品产业发展及其运行模式研究&nbsp;&nbsp;&nbsp; 陕西省&nbsp;&nbsp; 2003-2005</p><p>	4.中澳畜
-                        产品成本效益比较研究&nbsp; 澳大利亚农业部&nbsp;&nbsp;&nbsp;&nbsp; 2003-2006</p><p>	5.杨凌示范区可持续发展
-                        研究&nbsp;&nbsp;&nbsp; 世界银行2004-2006</p><p>	6.农民培训体系研究&nbsp;&nbsp; 世界银行2004-2006</p><p>	7.
-                        陕西省统一年产值补偿标准研究&nbsp;&nbsp;&nbsp;&nbsp; 国土资源部&nbsp;&nbsp;&nbsp; 2006-2010</p><p>	8.综合
-                        可再生生物资源––财务分析&nbsp;&nbsp; 亚洲开发银行&nbsp; 2008-2010</p><p>	9.农产品成本核算及控制
-                        研究&nbsp;&nbsp;&nbsp; 西北农林科技大学&nbsp;&nbsp; 2008-2010</p><p>	10.农业基础设施综合开发项
-                        目财务分析 亚洲开发银行2010-2012</p><p>	11.黑龙江省能源效率项目财务分析&nbsp; 亚洲开发银行&nbsp;
-                        2011-2013<br>&nbsp;<br>2、出版著作情况<br>&nbsp;<br>1.农产品成本核算及控制机理研究&nbsp;&nbsp;&nbsp;&nbsp;
-                        中国农业出版社（独著）2005</p><p>	2.成本会计学&nbsp;&nbsp;&nbsp; 中国农业出版社（主编）2004</p><p>	3.加
-                        拿大畜牧业发展研究&nbsp;&nbsp; 中国农业出版社（主译）2001<br>&nbsp;<br>3、发表论文情况<br>&nbsp;<br>1.主
-                        要粮食作物成本效益影响因素分析 农业技术经济&nbsp; 2003.2</p><p>	2.目标成本和标准成本在农产品成本控制中的
-                        应用&nbsp; 农业技术经济&nbsp; 2004.5</p><p>	3.农产品成本控制及其方法 西北农林科技大学&nbsp;&nbsp; 20
-                        05.3</p><p>	4.农产品成本动因分析 中国农学通报&nbsp; 2005.4</p><p>	5.我国生猪规模养殖生产成本变动因
-                        素分析 农业技术经济&nbsp; 2006.1</p><p>	6.资源性企业作业成本管理浅析 财会通讯2006.3</p><p>	7.中国玉米
-                        生产成本地区差异性分析&nbsp; 商业研究2007.12</p><p>	8.玉米生产者经济效益影响因素实证分析&nbsp; 农业技术经
-                        济&nbsp; 2007.6</p><p>	9.农业上市公司经营业绩的是许多指标综合评价 中南大学学报&nbsp; 2008.1</p><p>	10.农
-                        业上市公司经营绩效的DEA分析&nbsp; 生产力研究&nbsp;&nbsp;&nbsp; 2008.6</p><p>	11. 种植大户生产行为意愿
-                        影响因素分析&nbsp; 农业技术经济2010.8</p><p>	12. 资本结构与公司绩效的关系 生产力研究2010.10</p><p>
-                        13. 新经济形势下中小上市公司融资效率研究 财会通讯2010.23</p><p>	14. 农业上市公司资本结构与绩效的关系 开发
-                        研究2010.4</p><p>	15. 探析农民专业合作社发展面临的主要问题及对策 经济问题探索2010.9</p><p>	16. 20
-                        06—2008年农业上市公司经营绩效评价及比较 哈尔滨工业大学学报2010.3</p><p>	17. 农业上市公司筹资
-                        风险预测实证分析 财会通讯2010.5</p><p>	18.农业上市公司资本结构影响因素分析 生产力研究2010-12</p><p>
-                        19.价值链企业物流成本管理浅析 商业会计2010.24</p><p>	20.农民专业合作社融资问题及寻求破解的探索
-                        农村经济2011.3</p><p>	21. 基于DEA方法的上市公司财务治理效率评价&nbsp; 经济问题2011.10</p><p>	22.
-                        农业上市公司股权结构及其治理优化 开发研究2011.3</p><p>	23. 农业上市公司Z计分财务预警模型应用研究2012
-                        .12<br>&nbsp;<br>4、获奖情况<br>&nbsp;<br>陕西省政府哲学与社会科学优秀成果三等奖&nbsp;&nbsp;&nbsp; 陕
-                        西省政府&nbsp;&nbsp;&nbsp; 2001</p>
+                            农业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 本科、学士</p>
+                        <p>
+                            1982-1985&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 西北农学院农经系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 农
+                            业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 研究生、硕士</p>
+                        <p> 1999-2002&nbsp;&nbsp;&nbsp;
+                            西北农林科技大学经管学院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 农业经济管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            研究生、博士</p>
+                        <p> 1985-1994&nbsp;&nbsp; 西北农业大学&nbsp; 助教、讲师 兼任教研室主任、研究生秘书，
+                            期间赴加拿大曼尼托巴大学合作研究1年</p>
+                        <p> 1994-1999&nbsp;&nbsp;&nbsp; 西北农业大学&nbsp;&nbsp; 副教授
+                            兼任经济贸易学院副院长、院长， 期间赴以色列海法大学进行合作研究2个月</p>
+                        <p> 1999-2004&nbsp;&nbsp;&nbsp;&nbsp;
+                            西北农林科技大学 教授，兼任经济管理学院院长、国务院学位委员会第五届学科评议组成员，期间赴澳大利亚昆士兰大学合
+                            作研究3个月</p>
+                        <p> 2004-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 西北农林科技大学&nbsp;&nbsp; 教授，兼任经济管理学院教
+                            授委员会主任、教育部第一届高等学校农林经济与管理类教学指导委员会委员、陕西省学位委员会第二、三届学科评议组成员
+                            ，曾赴瑞典、芬兰、奥地利、澳大利亚及新西兰等国访问 <br>&nbsp;<br>二、研究领域<br>&nbsp;<br>农业经济管理、会计学
+                            <br>&nbsp;<br>三、主讲课程<br>&nbsp;<br>&nbsp;经济计量学、会计学基础，统计学原理<br>&nbsp;<br>四、科研成果
+                            及获奖情况<br>&nbsp;<br>1、科研项目情况<br>&nbsp;<br>1.干旱半干旱地区农业可持续发展研究农业部&nbsp;&nbsp;
+                            2000-2001</p>
+                        <p> 2.主要粮食作物和经济作物生产成本与效益分析&nbsp; 农业部&nbsp;&nbsp; 2002-2003</p>
+                        <p>
+                            3.陕西绿色农产品产业发展及其运行模式研究&nbsp;&nbsp;&nbsp; 陕西省&nbsp;&nbsp; 2003-2005</p>
+                        <p> 4.中澳畜
+                            产品成本效益比较研究&nbsp; 澳大利亚农业部&nbsp;&nbsp;&nbsp;&nbsp; 2003-2006</p>
+                        <p> 5.杨凌示范区可持续发展
+                            研究&nbsp;&nbsp;&nbsp; 世界银行2004-2006</p>
+                        <p> 6.农民培训体系研究&nbsp;&nbsp; 世界银行2004-2006</p>
+                        <p> 7.
+                            陕西省统一年产值补偿标准研究&nbsp;&nbsp;&nbsp;&nbsp; 国土资源部&nbsp;&nbsp;&nbsp; 2006-2010</p>
+                        <p> 8.综合
+                            可再生生物资源––财务分析&nbsp;&nbsp; 亚洲开发银行&nbsp; 2008-2010</p>
+                        <p> 9.农产品成本核算及控制
+                            研究&nbsp;&nbsp;&nbsp; 西北农林科技大学&nbsp;&nbsp; 2008-2010</p>
+                        <p> 10.农业基础设施综合开发项
+                            目财务分析 亚洲开发银行2010-2012</p>
+                        <p> 11.黑龙江省能源效率项目财务分析&nbsp; 亚洲开发银行&nbsp;
+                            2011-2013<br>&nbsp;<br>2、出版著作情况<br>&nbsp;<br>1.农产品成本核算及控制机理研究&nbsp;&nbsp;&nbsp;&nbsp;
+                            中国农业出版社（独著）2005</p>
+                        <p> 2.成本会计学&nbsp;&nbsp;&nbsp; 中国农业出版社（主编）2004</p>
+                        <p> 3.加
+                            拿大畜牧业发展研究&nbsp;&nbsp; 中国农业出版社（主译）2001<br>&nbsp;<br>3、发表论文情况<br>&nbsp;<br>1.主
+                            要粮食作物成本效益影响因素分析 农业技术经济&nbsp; 2003.2</p>
+                        <p> 2.目标成本和标准成本在农产品成本控制中的
+                            应用&nbsp; 农业技术经济&nbsp; 2004.5</p>
+                        <p> 3.农产品成本控制及其方法 西北农林科技大学&nbsp;&nbsp; 20
+                            05.3</p>
+                        <p> 4.农产品成本动因分析 中国农学通报&nbsp; 2005.4</p>
+                        <p> 5.我国生猪规模养殖生产成本变动因
+                            素分析 农业技术经济&nbsp; 2006.1</p>
+                        <p> 6.资源性企业作业成本管理浅析 财会通讯2006.3</p>
+                        <p> 7.中国玉米
+                            生产成本地区差异性分析&nbsp; 商业研究2007.12</p>
+                        <p> 8.玉米生产者经济效益影响因素实证分析&nbsp; 农业技术经
+                            济&nbsp; 2007.6</p>
+                        <p> 9.农业上市公司经营业绩的是许多指标综合评价 中南大学学报&nbsp; 2008.1</p>
+                        <p> 10.农
+                            业上市公司经营绩效的DEA分析&nbsp; 生产力研究&nbsp;&nbsp;&nbsp; 2008.6</p>
+                        <p> 11. 种植大户生产行为意愿
+                            影响因素分析&nbsp; 农业技术经济2010.8</p>
+                        <p> 12. 资本结构与公司绩效的关系 生产力研究2010.10</p>
+                        <p>
+                            13. 新经济形势下中小上市公司融资效率研究 财会通讯2010.23</p>
+                        <p> 14. 农业上市公司资本结构与绩效的关系 开发
+                            研究2010.4</p>
+                        <p> 15. 探析农民专业合作社发展面临的主要问题及对策 经济问题探索2010.9</p>
+                        <p> 16. 20
+                            06—2008年农业上市公司经营绩效评价及比较 哈尔滨工业大学学报2010.3</p>
+                        <p> 17. 农业上市公司筹资
+                            风险预测实证分析 财会通讯2010.5</p>
+                        <p> 18.农业上市公司资本结构影响因素分析 生产力研究2010-12</p>
+                        <p>
+                            19.价值链企业物流成本管理浅析 商业会计2010.24</p>
+                        <p> 20.农民专业合作社融资问题及寻求破解的探索
+                            农村经济2011.3</p>
+                        <p> 21. 基于DEA方法的上市公司财务治理效率评价&nbsp; 经济问题2011.10</p>
+                        <p> 22.
+                            农业上市公司股权结构及其治理优化 开发研究2011.3</p>
+                        <p> 23. 农业上市公司Z计分财务预警模型应用研究2012
+                            .12<br>&nbsp;<br>4、获奖情况<br>&nbsp;<br>陕西省政府哲学与社会科学优秀成果三等奖&nbsp;&nbsp;&nbsp; 陕
+                            西省政府&nbsp;&nbsp;&nbsp; 2001</p>
                     </div>
-                    <div class="xgtit">
-                        <h2>
-                            同行业专家</h2>
-                    </div>
-                    <div class="xglist">
-                        <div class="zjfl">
-                            <a href="exp-26.html">姚顺波</a><a href="exp-25.html">郑少锋</a>
 
-                        </div>
-                    </div>
                 </div>
 
 
-
             </div>
-
-
-
-
-
 
 
         </div>
@@ -368,15 +210,13 @@
 </div>
 
 
-
-
 <div class="foot">
-    <div class="footLogo">
-    </div>
-    <div class="footText">
-        <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  E-mail:pbding@163.com  </b><br>
-        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+    <div class="footBox">
+        <div class="footLogo"></div>
+        <div class="footText"><b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br> <b
+                style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E-mail:pbding@163.com </b><br> <b
+                style="color: #cccbc9; font-size: 14px;"> Copyright news.sichuan.edu.cn All rights reserved</b></div>
     </div>
 </div>
 </div>

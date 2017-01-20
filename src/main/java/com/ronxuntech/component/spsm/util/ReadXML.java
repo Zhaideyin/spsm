@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.regexp.recompile;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -31,6 +30,8 @@ public class ReadXML {
             HashMap<String ,String> hsmap=new HashMap<String ,String>();
             //获得种子
             hsmap.put("seed",child.elementText("seed"));
+            //获取url过滤的区域
+            hsmap.put("urlTag",child.elementText("urlTag"));
             //获得url的正则表达式
             hsmap.put("urlRex",child.elementText("urlRex"));
             //标签列表
@@ -89,16 +90,16 @@ public class ReadXML {
      */
     
     public static void main(String[] args) {
-        ReadXML readXML=new ReadXML();
-        try {
-        	List<HashMap> map =readXML.ResolveXml();
-        	for(int i=0;i<map.size();i++){
-        		System.out.println(map.get(i).get("tag1").toString().equals(""));
-        	}
-        	
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ReadXML readXML=new ReadXML();
+//        try {
+//        	List<HashMap> map =readXML.ResolveXml();
+//        	for(int i=0;i<map.size();i++){
+//        		System.out.println(map.get(i).get("tag1").toString().equals(""));
+//        	}
+//        	
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     	
     }
 }

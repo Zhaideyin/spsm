@@ -2,454 +2,2024 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>首页</title>
     <style>
-        body{
+        .scenery ul li img {
+            width: 185px;
+            height: 85px;
+            background: #FFFFFF;
+            padding: 2px;
+            border: 1px solid #c7c7c7;
+        }
+        .scenery ul li a span {
+            width: 185px;
+            height: 35px;
+            position: absolute;
+            bottom: 2px;
+            left: 3px;
+            background: #fff;
+            opacity: 0.8;
+            color: #006b6d;
+            font-weight: 700;
+            filter: alpha(opacity=80);
+        }
+        .unit3 .title a {
+            color: #555;
+            font-size: 12px;
+            float: right;
+            margin-right: 30px
+        }
+
+        .ili_mian4_right_text span {
+            padding-left: 18px;
+        }
+
+        .rili_mian2_left a {
+            color: white
+        }
+
+        .rili_mian1_left_title1 a {
+            color: #12525e;
+        }
+
+        #topWiap {
+            width: 100%;
+            height: 372px;
+            overflow: hidden;
+            background: url(../img/素材中国sccnn.com_201604081029.jpg) no-repeat center top;
+        }
+
+        .topLogo {
+            width: 960px;
+            margin: 0 auto;
+            padding-top: 40px;
+            overflow: hidden;
+
+        }
+
+        .navWiap {
+            width: 960px;
+            height: 234px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .navMain {
+            width: 960px;
+            height: 64px;
+            overflow: hidden;
+            background-image: url(../img/nav_bg.png) !important;
+            background-repeat: no-repeat;
+            _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/nav_bg.png');
+            margin: 0 auto;
+        }
+
+        .navSer {
+            width: 244px;
+            height: 45px;
+            overflow: hidden;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .navSer ul li.t1 {
+            width: 164px;
+            height: 28px;
+            overflow: hidden;
+            margin: 9px auto auto auto;
+            background-position: 0 0;
+        }
+
+        .navSer ul li.t1 input {
+            width: 164px;
+            height: 28px;
+            overflow: hidden;
+            float: left;
+            border: 0;
+            background: none;
+            line-height: 28px;
+            padding-left: 10px;
+            color: #444;
+            _position: relative;
+        }
+
+        .navSer ul li.t2 input {
+            width: 63px;
+            height: 28px;
+            overflow: hidden;
+            border: 0;
+            background: none;
+            float: left;
+            cursor: pointer;
+            display: block;
+            text-indent: -9999px;
+            _position: relative;
+        }
+
+        .navSer ul li.t2 {
+            width: 63px;
+            height: 28px;
+            overflow: hidden;
+            margin: 9px auto auto auto;
+            background-position: -174px 0;
+        }
+
+        .navSer ul li {
+            background-image: url(../img/ico2_bg.png);
+            background-repeat: no-repeat;
+        }
+
+        li {
+            display: inline;
+            float: left;
+        }
+
+        .clear {
+            content: ".";
+            display: block;
+            font-size: 0px;
+            line-height: 0px;
+            height: 0px;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .fr {
+            float: left;
+        }
+
+        #rili_wiap {
+            width: 960px;
+            overflow: hidden;
+            position: absolute;
+            top: 45px;
+            left: 0;
+        }
+
+        .rili_mian {
+            width: 954px;
+            height: 164px;
+            overflow: hidden;
+            border: #12525e 3px solid;
+            background: #FFF;
+            opacity: 0.95;
+            filter: Alpha(Opacity=95);
+        }
+
+        #ChannelMenu, #menuUl {
+            overflow: hidden;
+        }
+
+        .white {
+            color: #FFFFFF;
+        }
+
+        .f14 {
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            clear: both;
+        }
+
+        .navCont ul li span {
+            height: 45px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .navCont ul li {
+            margin-right: 23px;
+            margin-left: 10px;
+            height: 45px;
+            overflow: hidden;
+            line-height: 45px;
+            text-align: center;
+            font-family: "黑体", Arial, Helvetica, sans-serif;
+        }
+
+        .white a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .top_topNews .title {
+            width: 473px;
+            height: 29px;
+            overflow: hidden;
+            line-height: 28px;
+            background: url(../img/line1.png) repeat-x center bottom;
+        }
+
+        .top_topNews .title h2 {
+            width: 473px;
+            height: 29px;
+            display: block;
+            text-align: center;
+            font-family: "宋体";
+            overflow: hidden;
+            background: url(../img/line2.png) repeat-x center bottom;
+        }
+
+        body {
             font-family: 微软雅黑;
             line-spacing: 22px;
         }
-        .content_img_title {
-            height: 42px;
-            background-color: #809ea4;
-            z-index: 100;
-            opacity: 0.5;
-            position: relative;
-            top: -45px;
+
+        .fl {
+            float: left;
         }
 
         a {
             color: #0a0903;
-            text-decoration:none;
+            text-decoration: none;
         }
-        *{  margin: 0;
-            padding: 0;}
-        .container{
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
             width: 100%;
             height: auto;
             overflow-y: hidden;
         }
-        .head{
-            width: 100%;
-        }
-        .head_top{
-            background-color: #333333;
-            width: 100%;
-            height: 20px;
-            padding-bottom: 3px;
-            padding-top: 5px;
 
-        }
-        .head_top b{
-            color: #ffffff;
-        }
-        .head_top_text{
-
-            padding-left: 15%;
-        }
-        .head_logo{
-            background-color: #106470;
-            width: 100%;
-            height: 90px;
-
-        }
-        .head_logo img{
-            position: relative;
-
-            margin-top: 10px;
-            padding-left: 15%;
-        }
-        .head_nav{
-            background-color: #f2f2f2;
-            width: 100%;
-            height: 60px;
-        }
-        .head_nav_text{
-            float: left;
-            padding-top: 15px;
-            padding-left: 15%;
-            font-size: 17px;
-        }
-        .head_nav_button{
-            float:left;
-            margin-left: 1%;
-            padding-top: 10px;
-
-        }
-        .submit{
-            background-color: #12525e ;height: 34px;width:47px;
-            color: #ffffff;
-            -webkit-border-radius: 5px;"
-        }
-
-
-
-        .main_container{
-            width: 70%;
+        .main_container {
+            padding-top: 20px;
+            width: 980px;
             min-height: 80%;
-            margin-left: 15%;
+            margin: 0 auto;
         }
-        .title{
-            width:100%;
-            border-bottom: 1px solid #0d8897;
+
+        .title {
+            width: 100%;
+            border-bottom: 1px solid #12525e;
             padding-bottom: 5px;
             margin-bottom: 20px;
         }
-        .title span b{
+
+        .title span b {
             font-size: x-large;
             color: #12525e;
         }
-        .title>b{
+
+        .title > b {
             float: right;
-            padding-top:5px;
+            padding-top: 5px;
             color: #12525e;
         }
-        .calender{
-           width: 30%;
-            background-color: #809ea4;
-            height: 80px;
-            float: left;
-            text-align: center;
 
-        }
-        .calender p{
+        .calender p {
 
-            font-weight:800;
+            font-weight: 800;
             color: #12525e;
-
-
         }
-       .head_top_text2{
-           padding-right:20%;
-           float: right;
-       }
 
-        .calender:nth-child(2){
-           font-size: small;
-            padding: 10px 0px 10px 3px;
-        }
-        .news{
-            float: left;
-            width: 68%;
-            margin-left: 2%;
-
-
-        }
-        .main_focus{
-
-            width: 100%;
-            overflow: hidden;
-        }
-        .main_focus_content{
-            width: 100%;
-            overflow: hidden;
-
-
-        }
-        .main_focus_content_first,.main_focus_content_second,.main_focus_content_Third{
-            width: 30%;
-            float: left;
-            margin-right:3%;
-
-        }
-        .main_seedIndustry,.main_achievement,.main_professor,.main_breedingInnovation{
-            padding-top: 30px;
-            clear: both;
-        }
-        .main_breedingInnovation,.main_seedIndustry,.main_achievement,.main_professor{
-            width: 100%;
-            margin-top: 30px;
-
-        }
-        .breedingInnovation_content_first,.breedingInnovation_content_second,.breedingInnovation_content_third{
-            float: left;
-            width: 30%;
-            margin-left: 3%;
-
-        }
-        .breedingInnovation_content_first span,.breedingInnovation_content_second span ,.breedingInnovation_content_third span {
-            line-height:26px ;
-        }
-.breedingInnovation_content_first li{
-   margin-bottom: 4%;
-}
-
-        .foot{
+        .foot {
             clear: both;
             margin-top: 30px;
             background-color: #878784;
             width: 100%;
             height: 80px;
         }
-        .footLogo{
+
+        .footLogo {
             background-image: url("../img/foot.png");
             /*position:relative ;*/
             /*left: 15%;*/
             /*top:10px;*/
             float: left;
-            margin-left:16%;
-            margin-top:10px;
+            margin-left: 24%;
+            margin-top: 10px;
             height: 57px;
             width: 58px;
         }
-        .footText{
-            /*position: relative;*/
-            /*width: 900px;*/
-            /*left:20%;*/
-            /*top:-40px;*/
+
+        .footText {
             float: left;
-            margin-top:10px;
+            margin-top: 10px;
             height: 57px;
         }
-        .footText b{
+
+        .footText b {
             color: #ffffff;
         }
-    </style>
-    <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.0.min.css" />
-    <script type="text/javascript" src="../js/swiper-3.4.0.min.js"></script>
 
+        .rili_mian1_left {
+            float: left;
+            margin-right: 30px;
+            width: 40%;
+            padding: 15px;
+        }
+
+        .rili_mian1_right {
+            float: left;
+            overflow: hidden;
+        }
+
+        .rili_mian1_left_content {
+            overflow: hidden;
+            padding-top: 5px;
+        }
+
+        .rili_mian1_left_title span {
+            letter-spacing: 1px;
+        }
+
+        .rili_mian1_left_title {
+            border-bottom: solid 0.5px #dddddd;
+            overflow: hidden;
+            padding-bottom: 8px;
+        }
+
+        .rili_mian1_left_title1 {
+            float: left;
+            height: 17px;
+        }
+
+        .rili_mian1_left_title1 span {
+            font-size: 15px;
+            color: #12525e;
+        }
+
+        .rili_mian1_left_content_ol_box {
+            overflow: hidden;
+        }
+
+        .rili_mian1_left_content_ol_left {
+            float: left;
+        }
+
+        .rili_mian1_left_content_ol_right {
+            float: right;
+        }
+
+        .rili_mian1_left_content_ol_left span {
+            font-size: 12px;
+        }
+
+        .rili_mian1_left_content_ol_right span {
+            font-size: 12px;
+        }
+
+        .rili_mian1_right1 {
+            overflow: hidden;
+        }
+
+        .rili_mian1_right2 {
+            overflow: hidden;
+        }
+
+        .rili_mian1_right_1ist1 {
+            float: left;
+            margin-right: 30px;
+            border: solid 2px #12525e;
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        .rili_mian1_right_1ist1_img {
+            padding-left: 40px;
+            padding-right: 20px;
+        }
+
+        .rili_mian1_right_1ist1_text span {
+            color: #FFFFFF;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .rili_mian1_right_1ist1_text {
+            background-color: #12525e;
+            padding-left: 25px;
+        }
+
+        .rili_mian1_right1 {
+            padding: 2px;
+        }
+
+        .rili_mian1_right2 {
+            padding: 2px;
+        }
+
+        .main-title {
+            width: 938px;
+            padding: 0 20px;
+            line-height: 48px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .row1 {
+            width: 978px;
+            height: 420px;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .main-content {
+            width: 978px;
+            height: 370px;
+        }
+
+        .main-content4 {
+            width: 978px;
+            overflow: hidden;
+        }
+
+        .row1 .main-title h2 {
+            padding-left: 20px;
+            background: url(../img/index_09.jpg) no-repeat left center;
+            color: #c34b1f;
+            font-size: 24px;
+            font-weight: normal;
+            width: 280px;
+            float: left;
+        }
+
+        .main-title ul {
+            float: left;
+            width: 765px;
+        }
+
+        .row1 .main-title ul li {
+            background: url(../img/index_12.jpg) no-repeat left center;
+        }
+
+        .main-title ul li {
+            float: left;
+            display: inline-block;
+            padding-left: 20px;
+            width: 130px;
+        }
+
+        .title {
+
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .notice .title .active {
+            color: #12525e;
+            font-size: 18px;
+        }
+
+        .notice ul .more1 {
+            position: absolute;
+            top: -40px;
+            right: 10px;
+            color: #555;
+            font-size: 12px;
+        }
+
+        .unit1 .title h2 {
+            color: #12525e;
+            font-size: 18px;
+            float: left;
+        }
+
+        .unit1 .title {
+            width: 80%;
+            height: 45px;
+            line-height: 45px;
+            padding: 0 10%;
+        }
+
+        .notice {
+            width: 260px;
+            height: 370px;
+            float: left;
+            border-right: 1px solid #ddd;
+        }
+
+        .notice ul li {
+            font-size: 15px;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            padding-left: 20px;
+            width: 220px;
+            background: url(../img/index_17.jpg) no-repeat left center;
+        }
+
+        .row1 .unit1 ul li {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 15px;
+            height: 24px;
+            line-height: 24px;
+            padding-left: 20px;
+            width: 190px;
+            overflow: hidden;
+            background: url(../img/index_17.jpg) no-repeat left 5px;
+        }
+
+        .row2 .unit1 ul li {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 15px;
+            height: 24px;
+            line-height: 24px;
+            padding-left: 20px;
+            width: 190px;
+            overflow: hidden;
+            background: url(../img/index_17.jpg) no-repeat left 5px;
+        }
+
+        .row4 .unit2 ul li {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 15px;
+            height: 24px;
+            line-height: 24px;
+            padding-left: 20px;
+            width: 190px;
+            overflow: hidden;
+            background: url(../img/index_17.jpg) no-repeat left 5px;
+        }
+
+        .notice .title {
+            width: 80%;
+            height: 45px;
+            border-bottom: 1px solid #eee;
+            color: #6e6e6e;
+            line-height: 45px;
+            padding: 0 10%;
+        }
+
+        .unit1 img {
+            width: 200px;
+            height: 150px;
+            padding: 0px 19px 10px 19px;
+        }
+
+        .unit1 ul {
+            padding: 0 20px;
+            _padding: 0 10px;
+        }
+
+        .notice ul {
+            padding-left: 10px;
+            position: relative;
+            margin-top: -10px;
+        }
+
+        .unit1 .title a {
+            color: #555;
+            font-size: 12px;
+            float: right;
+        }
+
+        .unit1 {
+            width: 238px;
+            height: 370px;
+            border-right: solid 0.5px #dddddd;
+            border-bottom: solid 0.5px #dddddd;
+            float: left;
+        }
+
+        .unit2 {
+            width: 50%;
+            border-right: 1px solid #ddd;
+            float: left;
+        }
+
+        .unit3 {
+            width: 49%;
+            float: left;
+        }
+
+        .unit2 .title a {
+            color: #555;
+            font-size: 12px;
+            float: right;
+        }
+
+        .unit2 .title {
+            width: 80%;
+            height: 50px;
+            line-height: 45px;
+            padding: 0 10%;
+        }
+
+        .unit3 .title {
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            padding-left: 30px;
+        }
+
+        .unit2 .title h2 {
+            color: #006b6d;
+            font-size: 18px;
+            float: left;
+        }
+
+        .unit3 .title h2 {
+            color: #006b6d;
+            font-size: 18px;
+            float: left;
+        }
+
+        .row1 .unit2 ul li {
+            height: 48px;
+            line-height: 24px;
+            padding-left: 20px;
+            width: 190px;
+            overflow: hidden;
+            background: url(../img/index_17.jpg) no-repeat left 5px;
+        }
+
+        .unit2 ul {
+            padding: 0 20px;
+            padding: 0 10px;
+        }
+
+        .rili_mian2_left {
+            float: left;
+            width: 40%;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+
+        .rili_mian2_right {
+            float: left;
+            overflow: hidden;
+            width: 55%;
+            margin-top: 40px;
+        }
+
+        .rili_mian2_left1 {
+            border-bottom: solid 0.5px #e9e9e9;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .rili_mian2_leftList1 span {
+            color: #FFFFFF;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .rili_mian2_leftList2 span {
+            color: #FFFFFF;
+            font-size: 16px;
+        }
+
+        .rili_mian2_leftList3 span {
+            color: #FFFFFF;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .rili_mian2_leftList1 {
+            padding-left: 5px;
+            float: left;
+            border-radius: 5px;
+            background-color: #12525e;
+            width: 70px;
+            margin-right: 10px;
+        }
+
+        .rili_mian2_leftList2 {
+            padding-left: 5px;
+            float: left;
+            border-radius: 5px;
+            background-color: #12525e;
+            width: 70px;
+            margin-right: 10px;
+        }
+
+        .rili_mian2_leftList3 {
+            padding-left: 5px;
+            width: 70px;
+            float: left;
+            border-radius: 5px;
+            background-color: #12525e;
+        }
+
+        .rili_mian2_left2 {
+            padding: 10px;
+        }
+
+        .rili_mian2_right1 {
+            float: left;
+            padding: 30px;
+        }
+
+        .rili_mian2_right2 {
+            float: left;
+            width: 68%;
+            padding: 10px;
+        }
+
+        .rili_mian2_right1 span {
+            display: inline-block;
+            color: #12525e;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .rili_mian2_right2 ol li {
+            font-size: 12px;
+        }
+
+        .rili_mian3_content {
+            padding: 40px 20px 20px 40px;
+        }
+
+        .rili_mian3_content ol li {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .rili_mian3_content_text span {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .rili_mian4_left {
+            float: left;
+            width: 40%;
+            padding: 10px;
+        }
+
+        .rili_mian4_right {
+            float: left;
+            padding: 20px;
+        }
+
+        .rili_mian4_left_title {
+            border-bottom: solid 0.5px #e9e9e9;
+            padding-bottom: 5px;
+        }
+
+        .rili_mian4_left_title span {
+            color: #12525e;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+
+        .rili_mian4_left_content ol li {
+            font-size: 12px;
+            float: left;
+            width: 370px;
+            display: inline-block;
+        }
+
+        .rili_mian4_left_content {
+            padding: 10px;
+        }
+
+        .rili_mian4_left_content_left {
+            float: left;
+        }
+
+        .rili_mian4_left_content_right {
+            float: right;
+        }
+
+        .rili_mian4_right1 {
+            float: left;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .rili_mian4_right2 {
+            float: left;
+            border-radius: 5px;
+        }
+
+        .rili_mian4_right1 {
+            float: left;
+            margin-right: 20px;
+            border: solid 2px #12525e;
+        }
+
+        .rili_mian4_right2 {
+            float: left;
+            border: solid 2px #12525e;
+        }
+
+        .ili_mian4_right_text {
+            background-color: #12525e;
+        }
+
+        .ili_mian4_right_text span {
+            color: #FFFFFF;
+        }
+
+        .breedIdustry {
+            width: 958px;
+            height: 32px;
+            border: 1px solid #eee;
+            background: #fbfbfb;
+            color: #6e6e6e;
+            line-height: 32px;
+            padding-left: 20px;
+        }
+
+        .breedIdustry a.active {
+            color: #12525e;
+            font-size: 18px;
+        }
+
+        .breedIdustry a {
+            color: #6e6e6e;
+            font-size: 14px;
+            padding: 0 5px;
+        }
+
+        .breedIdustry a {
+            color: #6e6e6e;
+            font-size: 14px;
+            padding: 0 5px;
+        }
+
+        .srcoll {
+            width: 978px;
+            height: 100px;
+            margin-bottom: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .scenery {
+            width: 938px;
+            height: 85px;
+            margin: 7px 20px;
+            overflow: hidden;
+        }
+
+        #demo {
+            overflow: hidden;
+            width: 938px;
+            position: relative;
+        }
+
+        #indemo {
+            float: left;
+            width: 10000px;
+        }
+
+        #demo1, #demo2 {
+            width: auto;
+            float: left;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #demo1 ul {
+            padding: 0px;
+        }
+
+        .scenery ul {
+            display: inline;
+        }
+
+        .scenery ul li {
+            width: 191px;
+            float: left;
+            margin: 0px 10px;
+            text-align: center;
+            line-height: 24px;
+            display: inline;
+            position: relative;
+        }
+
+        .content_main_right_lists {
+            overflow: hidden;
+            border-bottom: 0.5px dashed #ddd;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            height: 16px;
+            white-space: nowrap;
+        }
+
+        .rightTitle {
+            overflow: hidden;
+            float: left;
+            display: inline-block;
+            width: 82%;
+            text-overflow: ellipsis;
+        }
+
+        .listTime {
+            float: right;
+            display: inline-block;
+            width: 17%;
+            font-size: 13px
+        }
+
+        .scenery ul li a {
+            display: block;
+            width: 185px;
+            color: #000;
+        }
+
+        #demo1, #demo2 {
+            width: auto;
+            float: left;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #demo2 ul {
+            padding: 0px;
+        }
+
+        .scenery ul {
+            display: inline;
+        }
+
+        .scenery ul li {
+            width: 191px;
+            float: left;
+            margin: 0px 10px;
+            text-align: center;
+            line-height: 24px;
+            display: inline;
+            position: relative;
+        }
+
+        .row4 .btn {
+            width: 978px;
+            height: 81px;
+            clear: both;
+        }
+
+        .row2 {
+            width: 978px;
+            height: 420px;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .row2 .main-title h2 {
+            padding-left: 20px;
+            background: url(../img/index_25.jpg) no-repeat left center;
+            color: #6d4d00;
+            font-size: 24px;
+            font-weight: normal;
+            width: 280px;
+            float: left;
+        }
+
+        .row2 .main-title ul li {
+            background: url(../img/index_27.jpg) no-repeat left center;
+        }
+
+        .row4 {
+            width: 978px;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .row4 .main-title h2 {
+            padding-left: 20px;
+            background: url(../img/index_25.jpg) no-repeat left center;
+            color: #6d4d00;
+            font-size: 24px;
+            font-weight: normal;
+            width: 280px;
+            float: left;
+        }
+
+        .row4 .main-title ul li {
+            background: url(../img/index_27.jpg) no-repeat left center;
+        }
+
+        .btn {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .unit2box {
+            padding-left: 3px;
+        }
+
+        .professor {
+            width: 684px;
+            height: 160px;
+        }
+
+
+        .professor img {
+            margin-left: 10px;
+            vertical-align: top;
+        }
+
+        .content_right_contentLink {
+            padding: 2px;
+            margin-top: -18px;
+        }
+
+        .content_right_contentLinkList {
+            border: 0.5px solid #dddddd;
+            padding: 2px;
+            margin-bottom: 3px;
+        }
+        .suspend {
+            width: 40px;
+            height: 198px;
+            position: fixed;
+            top: 460px;
+            right: 0;
+            overflow: hidden;
+            z-index: 9999;
+        }.suspend dl dd.suspendQQ a {
+             width: 120px;
+             height: 85px;
+             display: block;
+             background: url(../img/suspend.jpg) -40px 0;
+             overflow: hidden;
+         }
+        .suspend dl dd.suspendTel {
+            width: 120px;
+            height: 112px;
+            background: #ffffff;
+            border-top: 1px solid #e4e8ec;
+        }
+        .suspend dl dd.suspendTel a {
+            width: 120px;
+            height: 112px;
+            display: block;
+            background: url(../img/suspend.jpg) -40px -86px;
+            overflow: hidden;
+        }.suspend dl dt {
+             width: 40px;
+             height: 198px;
+             background: url(../img/suspend.jpg);
+             position: absolute;
+             top: 0;
+             left: 0;
+             cursor: pointer;
+         }
+        .suspend dl dd.suspendQQ {
+            width: 120px;
+            height: 85px;
+            background: #ffffff;
+        }
+        .suspend dl dd.suspendQQ a {
+            width: 120px;
+            height: 85px;
+            display: block;
+            background: url(../img/suspend.jpg) -40px 0;
+            overflow: hidden;
+        }
+        dd {
+            display: block;
+            -webkit-margin-start: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/liMarquee.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.0.min.css"/>
+    <script type="text/javascript" src="../js/swiper-3.4.0.min.js"></script>
+    <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery.liMarquee.js"></script>
+    <script>
+        $(function () {
+            $('.professor').liMarquee(
+                    {
+                        circular: true
+                    }
+            );
+
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".suspend").mouseover(function () {
+                $(this).stop();
+                $(this).animate({width: 160}, 400);
+            });
+            $(".suspend").mouseout(function () {
+                $(this).stop();
+                $(this).animate({width: 40}, 400);
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">
-    <div class="head">
-        <div class="head_top">
-            <div class="head_top_text">
-                <span class="count"> <b>浏览量统计：41039528</b></span>
-                <span class="head_top_text2"> &nbsp;<b><a href="index.html" style="color: #ffffff;">机构首页</a></b>&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="contactUS.html" style="color: #ffffff;"> 我要投稿</a></b>&nbsp;&nbsp;
-                &nbsp;&nbsp;<b><a href="contactUS.html" style="color: #ffffff;"> 联系我们</a></b>&nbsp;&nbsp;&nbsp;&nbsp;<b><a href="siteMap.html" style="color: #ffffff;"> 站点地图</a></b>
-                </span>
-            </div>
+    <div id="topWiap">
+        <div class="topLogo">
+            <img src="../img/1_Primary_logo_on_transparent_605x63.png">
+        </div>
+        <div class="navWiap">
+            <div class="navMain">
+                <div class="navCont fl" id="ChannelMenu">
+                    <ul id="menuUl" class="f14 white">
+                        <li class=" sel"><span style="background:none;"><a href="./">首 页</a></span></li>
 
-        </div>
-        <div class="head_logo ">
-            <img src="../img/headlogo.png">
-        </div>
-        <div class="head_nav">
-            <div class="head_nav_text">
-                <p>首页 | <a href="breedInvoationDatabase.html">育种创新数据库</a> | <a href="breedIndustry.html">种业产业数据库</a>
-                    | <a href="breedAchievement.html">成果推广与转化数据库</a> | <a href="breedProfessor.html"> 育种专家智库</a></p>
+                        <li class=" "><span><a href="breedInvoationDatabase.html" target="_self">育种创新数据库</a></span></li>
+
+                        <li class=" "><span><a href="breedIndustry.html" target="_self">种子产业数据库</a></span></li>
+
+                        <li class=" "><span><a href="breedAchievement.html" target="_self">成果推广数据库</a></span></li>
+
+                        <li class=" "><span><a href="breedProfessor.html" target="_self">育种专家数据库</a></span></li>
+
+
+                    </ul>
+                    <script>
+                        $('#menuUl li:last').css("background", "none");
+                    </script>
+                </div>
+                <div class="navSer fr">
+                    <form action="./wasdemo/search" method="post" target="_blank">
+                        <input type="hidden" name="channelid" value="187029">
+                        <ul>
+                            <li class="t1">
+                                <input name="searchword" type="text" value="请输入关键字" onblur="leave()" id="searchword"
+                                       onclick="clearword()"></li>
+                            <li class="t2">
+                                <input name="" type="submit" onclick="return CheckIfEnglish()">
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <p class="clear"></p>
             </div>
-            <div class="head_nav_button">
-                <input value="搜索" name="keyword" style=" height: 28px; width: 280px;
-            -webkit-border-radius: 5px;
-            ">&nbsp;<input type="button" class="submit" value="搜索">
+            <div id="rili_wiap">
+                <ul style="display: block;">
+                </ul>
+                <ul class="hidden" style="display: none;">
+                    <div class="rili_mian">
+                        <div class="rili_mian1_left" style="height:164px;">
+                            <div class="rili_mian1_left_title">
+                                <div class="rili_mian1_left_title1"><span><a href="breedingMolecular.html">技术荟萃&nbsp;&nbsp;|</a></span>
+                                </div>
+                                <div class="rili_mian1_left_title1"><span><a href="germplasm.html">&nbsp;&nbsp;种质创新&创新材料&nbsp;&nbsp;|</a></span>
+                                </div>
+                                <div class="rili_mian1_left_title1"><span><a href="hotSportOfBreed.html">&nbsp;&nbsp;育种热点追踪</a></span>
+                                </div>
+                            </div>
+                            <p style="clear: both;"></p>
+                            <div class="rili_mian1_left_content">
+
+                                <div class="rili_mian1_left_content_ol_box">
+                                    <div class="rili_mian1_left_content_ol_left"> <span><a href="BINRROLdetails99.html">
+                                          美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></span></div>
+                                    <div class="rili_mian1_left_content_ol_right">  <span>
+                                          2017.01.09</span></div>
+                                </div>
+
+                                <div class="rili_mian1_left_content_ol_box">
+                                    <div class="rili_mian1_left_content_ol_left"><span><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></span>
+                                    </div>
+                                    <div class="rili_mian1_left_content_ol_right">  <span>
+                                          2017.01.09</span></div>
+                                </div>
+
+                                <div class="rili_mian1_left_content_ol_box">
+                                    <div class="rili_mian1_left_content_ol_left"><span><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></span>
+                                    </div>
+                                    <div class="rili_mian1_left_content_ol_right">  <span>
+                                          2016.12.19</span></div>
+                                </div>
+
+                                <div class="rili_mian1_left_content_ol_box">
+                                    <div class="rili_mian1_left_content_ol_left"> <span><a href="BINRROLdetails99.html">
+                                          美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></span></div>
+                                    <div class="rili_mian1_left_content_ol_right">  <span>
+                                          2016.06.21</span></div>
+                                </div>
+
+                                <div class="rili_mian1_left_content_ol_box">
+                                    <div class="rili_mian1_left_content_ol_left"> <span><a href="BINRROLdetails99.html">
+                                          美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></span></div>
+                                    <div class="rili_mian1_left_content_ol_right">  <span>
+                                          2016.08.21</span></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="rili_mian1_right">
+                            <div class="rili_mian1_right1">
+                                <div class="rili_mian1_right_1ist1">
+                                    <div class="rili_mian1_right_1ist1_img">
+                                        <a href="documentDatabase.html"> <img src="../img/机构数据库.png"></a>
+                                    </div>
+                                    <div class="rili_mian1_right_1ist1_text">
+                                        <span>文献数据库</span>
+                                    </div>
+                                </div>
+                                <div class="rili_mian1_right_1ist1">
+                                    <div class="rili_mian1_right_1ist1_img">
+                                        <a href="AgricultureThink-tank.html"><img src="../img/智城云学院 (1).png"></a>
+                                    </div>
+                                    <div class="rili_mian1_right_1ist1_text">
+                                        <span>农业智库</span>
+                                    </div>
+                                </div>
+                                <div class="rili_mian1_right_1ist1">
+                                    <div class="rili_mian1_right_1ist1_img">
+                                        <a href="breedSoftware.html"><img src="../img/软件更新.png"></a>
+                                    </div>
+                                    <div class="rili_mian1_right_1ist1_text">
+                                        <span>育种相关软件</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rili_mian1_right2">
+
+                                <div class="rili_mian1_right_1ist1">
+                                    <div class="rili_mian1_right_1ist1_img">
+                                        <a href="Advice.html"><img src="../img/咨询 (3).png"></a>
+                                    </div>
+                                    <div class="rili_mian1_right_1ist1_text">
+                                        <span>查新咨询</span>
+                                    </div>
+                                </div>
+                                <div class="rili_mian1_right_1ist1" style="width: 176px; ">
+                                    <div class="rili_mian1_right_1ist1_img" style="padding-left: 60px;">
+                                        <a href="breedKnowledge.html"> <img src="../img/文件.png"></a>
+                                    </div>
+                                    <div class="rili_mian1_right_1ist1_text">
+                                        <span>文献服务</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="clear"></p>
+                    </div>
+                </ul>
+                <ul class="hidden" style="display: none;">
+                    <div class="rili_mian">
+                        <div class="rili_mian2_left">
+                            <div class="rili_mian2_left1">
+                                <div class="rili_mian2_leftList1">
+                                    <span><a href="breedBusinessProvince.html"> 省内企业</a></span>
+                                </div>
+                                <div class="rili_mian2_leftList2">
+                                    <span><a href="breedBusiness.html"> 国内企业</a></span>
+                                </div>
+                                <div class="rili_mian2_leftList3">
+                                    <span><a href="breedBusinessInternational.html"> 国际企业</a></span>
+                                </div>
+                            </div>
+                            <div class="rili_mian2_left2">
+                                <a href="BreedDictionary.html"> <img src="../img/P020150526620390425806.png"></a>
+                            </div>
+                        </div>
+                        <div class="rili_mian2_right">
+                            <div class="rili_mian2_right1">
+                                <span> <a href="cooperation.html">行业资讯</a></span>
+                            </div>
+                            <div class="rili_mian2_right2">
+                                <ol>
+                                    <li><a href="BILdetails2.html">承稳粮国安之重——我国民族种业改革创新发展记</a></li>
+                                    <li><a href="BILdetails3.html">全国种业人才发展和科研成果权益改革工作视频会议要求深入 </a></li>
+                                    <li><a href="BILdetails4.html">全国人大常委会办公厅新闻发布会种子法修订相关内容</a></li>
+                                    <li><a href="BIRdetails1.html"> 推进改革措施落实加快现代种业发展</a></li>
+                                    <li><a href="BILdetails1.html"> 农业部副部长余欣荣强调：扎实推进种业人才发展 </a></li>
+
+
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+                <ul class="hidden" style="display: none;">
+                    <div class="rili_mian">
+                        <div class="rili_mian3_content">
+                            <ol>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="AchievementShow.html"> <img src="../img/20161026091319931119.jpg "
+                                                                             style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>成果展示</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="patent.html"> <img src="../img/zhuanlituijie.jpg"
+                                                                    style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>专利推介</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="vedio.html"> <img src="../img/a15747004_01000.jpg "
+                                                                   style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>视频图文</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="TechnologyGuide.html"> <img src="../img/W020160511341541604212.jpg"
+                                                                             style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>实用技术</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="AgencyService.html"> <img src="../img/10129 (1).jpg "
+                                                                           style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>科研院校</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="intermediaryAgencies.html"> <img src="../img/zhongjie.jpg "
+                                                                                  style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>中介机构</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="rili_mian3_content_img">
+                                        <a href="AgriculturalEnterprise.html"> <img src="../img/635191964396679254.jpg "
+                                                                                    style="width: 80px; height:80px;border-radius: 6px;"></a>
+                                    </div>
+                                    <div class="rili_mian3_content_text">
+                                        <span>涉农企业</span>
+                                    </div>
+                                </li>
+
+                            </ol>
+                        </div>
+                    </div>
+                </ul>
+                <ul class="hidden" style="display: none;">
+                    <div class="rili_mian">
+                        <div class="rili_mian4_left">
+                            <div class="rili_mian4_left_title">
+                                <span><a href="professorNews.html" style="color: #12525e"> 行业人物动态</a></span>
+                            </div>
+                            <div class="rili_mian4_left_content">
+                                <ol>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFRdetails2.html"> 水稻育种追梦人姚海根</a></span><span
+                                            class="rili_mian4_left_content_right">2017.01.08</span></li>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFRdetails1.html">一个央企下海者的种业梦</a></span><span
+                                            class="rili_mian4_left_content_right">2016.02.23</span></li>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFLdetails4.html">吴孔明会见国际生物防治组织主席</a></span><span
+                                            class="rili_mian4_left_content_right">2016.08.23</span></li>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFLdetails3.html">茶叶所与恩施州签订科技战略合作协议</a></span><span
+                                            class="rili_mian4_left_content_right">2016.07.23</span></li>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFRROLdetails9.html">玉米育种家程相文：用育种精神传递正能量</a></span><span
+                                            class="rili_mian4_left_content_right">2016.10.23</span></li>
+                                    <li><span class="rili_mian4_left_content_left"><a href="BFRdetails3.html">袁隆平与华媒分享“中国梦”：杂交水稻覆盖全球</a></span><span
+                                            class="rili_mian4_left_content_right">2017.01.12</span></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="rili_mian4_right">
+                            <div class="rili_mian4_right1">
+                                <div class="ili_mian4_right_img">
+                                    <img src="../img/色块－编写联系人.png" style="width: 100px;height: 100px;">
+                                </div>
+                                <div class="ili_mian4_right_text">
+                                    <span><a href="professors.html" style="color: white">省内专家</a></span>
+                                </div>
+                            </div>
+                            <div class="rili_mian4_right2">
+                                <div class="ili_mian4_right_img">
+                                    <img src="../img/色块－编写联系人.png" style="width: 100px;height: 100px;">
+                                </div>
+                                <div class="ili_mian4_right_text">
+                                    <span><a href="professorsProvinceOUT.html" style="color: white">省外专家</a></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ul>
+
             </div>
+            <script language="javascript" type="text/javascript" src="../js/yao.js"></script>
+            <script language="javascript" type="text/javascript">
+                <!--
+                YAO.YTabs({
+                    tabs: YAO.getEl('ChannelMenu').getElementsByTagName('li'),
+                    contents: YAO.getEl('rili_wiap').getElementsByTagName('ul')
+                });
+                //-->
+            </script>
         </div>
     </div>
     <div class="main">
         <div class="main_container">
-            <div class="main_Top">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="../img/mainTop.jpg" style="background-repeat: no-repeat;width: 100%;height: 503px;"/></div>
-                        <div class="swiper-slide"><img src="../img/玉米2.jpg" style="background-repeat: no-repeat;width: 100%;height: 503px;"/></div>
-                        <div class="swiper-slide"><img src="../img/KKJ7G]UG{1LE{P)A)Z9WF9L.jpg" style="background-repeat: no-repeat;width: 100%;height: 503px;"/></div>
-                        <div class="swiper-slide"><img src="../img/top4.jpg" style="background-repeat: no-repeat;width: 100%;height: 503px;"/></div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="content_img_title">
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+            <div class="row1">
+                <div class="main-title">
+                    <h2>育种创新数据库</h2>
+                    <ul>
+                        <li><a href="hotSportOfBreed.html" target="_blank">前沿育种研究</a></li>
+                        <li><a href="breedKnowledge.html" target="_blank">育种知识服务</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="main_focus">
-                <div class="main_focus_title">
+                <div class="main-content">
+                    <div class="notice">
+                        <div class="title">
+                            <a href="breedKnowledge.html" class="active">育种知识服务</a>
+                        </div>
+                        <div class="content_right_contentLink">
+                            <div class="content_right_contentLinkList">
+                                <a href="documentDatabase.html" style="color: #0072d8"><img src="../img/wenxian.jpg"
+                                                                                            style="width: 100%;height: 50px;">
+                                </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="AgricultureThink-tank.html" style="color: #0072d8"><img src="../img/nongye.jpg"
+                                                                                                 style="width: 100%;height: 50px;">
+                                </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="breedSoftware.html" style="color: #0072d8"><img src="../img/ruanjian.jpg"
+                                                                                         style="width: 100%;height: 50px;">
+                                </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="breedKnowledge.html" style="color: #0072d8"><img src="../img/zixun.jpg"
+                                                                                          style="width: 100%;height: 50px;">
+                                </a>
+                            </div>
+                            <div class="content_right_contentLinkList">
+                                <a href="Advice.html" style="color: #0072d8"><img src="../img/wenxianzhengli.jpg"
+                                                                                  style="width: 100%;height: 50px;">
+                                </a>
+                            </div>
 
-                    <div class="title">
-                        <span><img src="../img/focus.png" style="height: 27px;width: 28px"> <b>焦点关注</b></span>
-
-                    </div>
-                </div>
-                <div class="main_focus_content">
-                    <div class="main_focus_content_first">
-                        <div class="calender">
-                            <p style="font-size: xx-large; padding-right: 10px">23</p>
-                            <p >2016.9.10</p>
-                        </div>
-                        <div class="news">
-                            <h4><a href="details.html">北京市农业局代表团到甘肃省农牧厅考察交流种业有关工作</a></h4><br>
-                            <span>为了贯彻中共中央《国民经济和社会发展第十三个五年规划纲要》、
-                                《关于落实发展新理念加快农业现代化 实现全面小康目标的若干意见》
-                                (中发[2016]1号)的有关精神，落实国家现代种业发展布局，促进北京
-                                市国家现代种业创新示范区与甘肃省国家级玉米制种基地相互支撑，
-                                共同建设一区一地......</span>
-                        </div>
-                    </div>
-                    <div class="main_focus_content_second">
-                        <div class="calender">
-                            <p style="font-size: xx-large; padding-right: 10px">23</p>
-                            <p>2016.9.10</p>
-                        </div>
-                        <div class="news">
-                            <h4><a href="details1.html">农业部办公厅关于报送种子供需信息的通知</a></h4><br>
-                            <span> 各省、自治区、直辖市农业（农牧）厅（委、局），新疆生产建设兵团农业局，黑龙江省农垦总局：
-                                   为加强种业信息管理工作，及时准确调度、掌握农作物种子供需情况，为
-                                农业生产、种子产业宏观指导和技术服务
-                                提供支撑，我部决定开展种子信息调度工作，
-                                现将有关要求通知如下： ...........</span>
 
                         </div>
-                    </div>
-                    <div class="main_focus_content_Third">
-                        <div class="calender">
-                            <p style="font-size: xx-large; padding-right: 10px">23</p>
-                            <p>2016.9.10</p>
-                        </div>
-                        <div class="news">
-                            <h4><a href="BINRROLdetails15.html">超级稻20年：累计推广种植10.9亿亩 增收600亿公斤稻谷</a></h4><br>
-                            <span> 今年是农业部启动中国超级稻研究计划20周年。
-                                记者从11月15日在浙江宁波举行的超级稻20周年座谈会上获悉
-                                ，截至2015年底，全国累计种植超级稻10.9亿亩，合计增收稻谷600亿公
-                                斤，年种植面积由2005年的3837万亩扩大到了2015年的1.31亿亩，所占水
-                                稻种植比重由8.7%提高到了30%.........
 
- </span>
-
-                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="main_breedingInnovation">
-                <div class="breedingInnovation_title">
-                    <div class="title">
-                        <span><img src="../img/focus.png" style="height: 27px;width: 28px"> <b>育种创新数据库</b></span>
-                        <b> <a href="breedInvoationDatabaseMore.html">更多>>></a></b>
-                    </div>
-                    <div class="breedingInnovation_content_first">
+                    <div class="unit1">
+                        <div class="title"><h2>育种热点追踪</h2><a href=" hotSportOfBreed.html" target="_blank">更多</a></div>
+                        <img src="../img/20161026091319931119.jpg">
                         <ul>
-                        <li><a href="BINLdetails3.html">新型转基因小麦产量有望提高20%</a></li>
-                        <li><a href="BINLdetails4.html">皖西学院安徽省植物细胞工程中心喜获2015年度“安徽省工人先锋号”荣誉称号</a></li>
-                        <li><a href="BINRdetails1.html"> "十二五"期间我国植物分子育种研究取得重要突破</a></li>
-                        <li><a href="BINRdetails2.html">精准育种 微生物 大数据 科技创新——未来农业的出路</a></li>
-                        <li><a href="BINRdetails3.html">高唐锦鲤添锦绣 依赖技术创新实现自主育种</a></li>
-                        <li><a href="BINRdetails4.html">北京打造全国农业科技创新示范中心</a></li>
-                        <li><a href="BINRROLdetails9.html">美国第一头克隆牛“艾米”产下牛犊喜作妈咪</a></li>
-                        <li><a href="BINRROLdetails10.html">普通米诺鱼基因新发现 有助于人类心脏疾病研究</a></li>
-                        <li><a href="BINRROLdetails11.html">克隆牛“牡丹”再次难产 三大关口威胁牛妈妈</a></li>
-                        <li><a href="BINRROLdetails12.html">纳米农药“一点到位”</a></li>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                农业“嫁接”光伏，结什么果？
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                华大基因：生命时代开启，基因工程发展超“摩尔定律”
+                            </a></li>
+                            <li><a href="zx/kjyw/277467.shtml" title="走进农业“大科技”时代" target="_blank"> 精准育种 微生物 大数据
+                                科技创新——未来农业的出路
+                            </a></li>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                新型转基因小麦产量有望提高20%
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                高唐锦鲤添锦绣 依赖技术创新实现自主育种
+                            </a></li>
+
                         </ul>
                     </div>
-                    <div class="breedingInnovation_content_second">
-                        <p><img src="../img/2s5pfd1oax.png" style="width: 95%;height: 180px"></p><br>
-                        <span> <a href="BINLdetails1.html">近日，合成生物学国际顶尖赛事——国际遗传工程机器设计竞赛（International Genetically Engineered Machine Competition，iGEM）2016全球总决赛在美国波士顿海因斯会议中心落幕，
-                                        上海交通大学的两支参赛队伍SJTU-Software和SJTU-BioX-Shanghai再度获得金牌。</a></span>
+                    <div class="unit1">
+                        <div class="title"><h2>技术荟萃</h2><a href="breedingMolecular.html" target="_blank">更多</a></div>
+                        <img src="../img/57d7b7cf7bc7f.jpg">
+                        <ul>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank"> 将植物基因植入动物体内
+                                科学家造出“菠菜”猪
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank">
+                                美国第一头克隆牛“艾米”产下牛犊喜作妈咪
+                            </a></li>
+                            <li><a href="zx/zjlt/275481.shtml" title="倪洪兴：大豆进口对国内产业造成了很大伤害" target="_blank"> 普通米诺鱼基因新发现
+                                有助于人类心脏疾病研究
+                            </a></li>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank">
+                                基因突变50厘米小猪令人惊奇
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank"> 纳米中草药助奶牛安度苦夏
+                            </a></li>
+                        </ul>
+
                     </div>
-                    <div class="breedingInnovation_content_third">
-                        <p><img src="../img/57d7ba1f20f59.jpg" style="width: 95%;height: 180px"></p><br>
-                        <span><a href="BINLdetails2.html">  怎么讲生命时代？所有的生命，不管是人、动植物、微生物都是ATCG，这个世界就是这么简单，就是这么奇妙。而在上世纪最重要的一件事情就是把ATCG变成了0101。这把尺子是在4年前诺贝尔博物馆发现的，这是一个发明的尺子，
-                                        一共有两米长，正反两面打开是这样子的。
-                                        每一个刻度上都是一个重大的历史事件，要么就是社会的，要么就是科学技术的。</a></span>
+                    <div class="unit1" style="border:none;">
+                        <div class="title"><h2>种质创新&创新材料</h2><a href="germplasm.html" target="_blank">更多</a></div>
+                        <img src="../img/20151030083716521.jpg">
+                        <ul>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                牧草描述规范和数据标准
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank">
+                                牧草种质资源描述规范和数据标准
+                            </a></li>
+                            <li><a href="zx/nsqx/277378.shtml" title="未来三至五天冷空气活动频繁" target="_blank"> 苜蓿种质资源描述规范和数据标准
+                            </a></li>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                无芒雀麦种质资源描述规范和数据标准
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank">
+                                老芒麦种质资源描述规范和数据标准
+                            </a></li>
+                        </ul>
+
                     </div>
+
                 </div>
             </div>
-            <div class="main_seedIndustry">
-                <div class="title">
-                    <span><img src="../img/focus.png" style="height: 27px;width: 28px"> <b>种业产业数据库</b></span>
-                    <b><a href="breedIndustry.html"> 更多>>></a></b>
+            <div class="breedIdustry">
+                <a href="javascript:;" class="active" style="float:left">品种</a><a href="kj/kjzt/index.shtml"
+                                                                                  target="_blank"
+                                                                                  style="float:right">更多</a>
+            </div>
+            <div class="srcoll">
+                <div class="scenery">
+                    <style type="text/css">
+                        #demo {
+                            overflow: hidden;
+                            width: 938px;
+                            position: relative;
+                        }
+
+                        #indemo {
+                            float: left;
+                            width: 10000px;
+                        }
+
+                        #demo1, #demo2 {
+                            width: auto;
+                            float: left;
+                            margin: 0px;
+                            padding: 0px;
+                        }
+
+                        #demo1 ul {
+                            padding: 0px;
+                        }
+
+                        #demo2 ul {
+                            padding: 0px;
+                        }
+                    </style>
+                    <div id="demo">
+                        <div id="indemo">
+                            <div id="demo1">
+                                <ul>
+                                    <li><a href="BDVegetables.html" title="科技创新工程"
+                                           target="_blank"><img src="../img/蔬菜1.jpg" width="185"
+                                                                height="85"><span>          蔬菜
+    </span></a></li>
+                                    <li><a href="BDFruitTree.html" title="百项重点推广成果"
+                                           target="_blank"><img src="../img/葡萄1.jpg" width="185"
+                                                                height="85"><span>          果树
+    </span></a></li>
+                                    <li><a href="BDTea.html" title="科技扶贫工作回眸"
+                                           target="_blank"><img src="../img/chashu.jpg" width="185"
+                                                                height="85"><span>      茶树
+    </span></a></li>
+                                    <li><a href="BDMedicine.html" title="建设现代农业科研院所专栏"
+                                           target="_blank"><img src="../img/13032159_231817908000_2.jpg" width="185"
+                                                                height="85"><span>          中药材
+    </span></a></li>
+                                    <li><a href="BDCotton.html" title="食品营养质量与安全"
+                                           target="_blank"><img src="../img/棉花.jpg" width="185"
+                                                                height="85"><span>            蚕桑麻
+    </span></a></li>
+                                    <li><a href="BDrice.html" title="科技创新工程"
+                                           target="_blank"><img src="../img/ricehgh.jpg" width="185"
+                                                                height="85"><span>          水稻
+    </span></a></li>
+                                    <li><a href="BDwheat.html" title="百项重点推广成果"
+                                           target="_blank"><img src="../img/mailei.jpg" width="185"
+                                                                height="85"><span>          麦类
+    </span></a></li>
+                                    <li><a href="BDBacterium.html" title="科技扶贫工作回眸"
+                                           target="_blank"><img src="../img/knowledge_1373852979_52666_1.jpg" width="185"
+                                                                height="85"><span>           食用菌
+    </span></a></li>
+                                    <li><a href="BDOil.html" title="建设现代农业科研院所专栏"
+                                           target="_blank"><img src="../img/youcai.jpg" width="185"
+                                                                height="85"><span>          油料
+    </span></a></li>
+                                    <li><a href="BDPotato.html" title="食品营养质量与安全"
+                                           target="_blank"><img src="../img/甘薯1.jpg" width="185"
+                                                                height="85"><span>           薯类
+    </span></a></li>             <li><a href="BDAnimal.html" title="科技扶贫工作回眸"
+                                           target="_blank"><img src="http://www.30556.com/uploads/allimg/120304/1-1203041UR2258.jpg" width="185"
+                                                                height="85"><span>          畜禽
+    </span></a></li>
+                                    <li><a href="BDCorn.html" title="建设现代农业科研院所专栏"
+                                           target="_blank"><img src="../img/高粱1.jpg" width="185"
+                                                                height="85"><span>         玉米(高粱)
+    </span></a></li>
+                                    <li><a href="BDFlower.html" title="食品营养质量与安全"
+                                           target="_blank"><img src="../img/140624bamboocredit-jakob-montrasio.jpg" width="185"
+                                                                height="85"><span>      林竹木草
+    </span></a></li>
+                                </ul>
+                            </div>
+                            <div id="demo2">
+                                <ul>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        var speed = 16;
+                        var tab = document.getElementById("demo");
+                        var tab1 = document.getElementById("demo1");
+                        var tab2 = document.getElementById("demo2");
+                        tab2.innerHTML = tab1.innerHTML;
+                        function Marquee() {
+                            if (tab2.offsetWidth - tab.scrollLeft <= 0)
+                                tab.scrollLeft -= tab1.offsetWidth
+                            else {
+                                tab.scrollLeft++;
+                            }
+                        }
+                        var MyMar = setInterval(Marquee, speed);
+                        tab.onmouseover = function () {
+                            clearInterval(MyMar)
+                        };
+                        tab.onmouseout = function () {
+                            MyMar = setInterval(Marquee, speed)
+                        };
+                    </script>
                 </div>
-                <div class="breedingInnovation_content_first">
+            </div>
+            <div class="row2">
+                <div class="main-title">
+                    <h2>种子产业数据库</h2>
                     <ul>
-                        <li><a href="BILdetails3.html">全国种业人才发展和科研成果权益改革工作视频会议要求
-                            深入推进种业科研体制改革 形成充满活力的种业发展新局面</a></li>
-                        <li><a href="BILdetails4.html" >全国人大常委会办公厅新闻发布会种子法修订相关内容</a></li>
-                        <li><a href="BIRdetails1.html" > 推进改革措施落实加快现代种业发展</a></li>
-                        <li><a href="BIRdetails2.html">辽宁省人民政府关于加快推进现代农作物种业发展的实施意见</a></li>
-                        <li><a href="BIRdetails3.html" >贵州省人民政府办公厅关于深化种业体制改革提高创新能力的意见</a></li>
-                        <li><a href="BIRdetails4.html">春夏播种子供应充足 质优价稳销</a></li>
+                        <li><a href="breedIndustryNews.html" target="_blank">行业资讯</a></li>
+                        <li><a href="BreedDictionary.html" target="_blank">品种导航</a></li>
+                        <li><a href="breedBusinessProvince.html" target="_blank">种子企业</a></li>
                     </ul>
                 </div>
-                <div class="breedingInnovation_content_second">
-                    <p><img src="../img/20160928101428172.jpg" style="width: 95%;height: 180px"></p><br>
-                    <span><a href="BILdetails1.html"> 为加快推进种业人才发展和科研成果权益改革试点工作，增强现代种业发展活力
-                                        ，9月26日农业部专门召开会议，听取10个改革重点省市以及相关科研机构的情况汇报。</a></span>
-                </div>
-                <div class="breedingInnovation_content_third">
-                    <p><img src="../img/20151030083716521.jpg" style="width: 95%;height: 180px"></p><br>
-                    <span><a href="BILdetails2.html"> 编者按粮食是社稷之本，种业是粮食之基。我国种业从新中国成立之初的空白起步，
-                                        经过几十年的不懈努力，在同心共筑中不断发展壮大。特别是进入新世纪以来，我国种业在外有国际竞争压力、
-                                        内有转方式调结构的挑战中，不断改革创新，向纵深区攻坚挺进，
-                                        逐步冲破体制机制的桎梏，焕发出新的活力和光芒。</a></span>
-                </div>
-            </div>
-            <div class="main_achievement">
-                <div class="title">
-                    <span><img src="../img/focus.png" style="height: 27px;width: 28px"> <b>成果推广与转化数据库</b></span>
-                    <b><a href="breedAchievement.html">更多>>></a></b>
-                </div>
-                <div class="breedingInnovation_content_first">
-               <ul>
-                   <li><a href="BALdetails3.html">郑州果树所3个优质桃品种通过省级品种审定</a></li>
-                   <li><a href="BALdetails4.html" >作科所“CIMMYT小麦引进、研究与创新利用”获2015年度国家科学技术进步二等奖</a></li>
-                   <li><a href="BARdetails1.html">双低油菜生产的“沙洋模式”</a></li>
-                   <li><a href="BARdetails2.html" >冬季油菜田管技术措施</a></li>
-                   <li><a href="BARdetails3.html"> 巧用物理措施防好最后一波害虫</a></li>
-                   <li><a href="BARdetails4.html">资划所初步完成全国“两区”划定研究工作</a></li>
-                   <li><a href="BARROLdetails9.html" >安徽农业大学专家揭“苦茶”之谜</a></li>
-                   <li><a href="BARROLdetails10.html">浙江省茶界首获第一个浙江省科技进步一等奖</a></li>
-                   <li><a href="BARROLdetails11.html">永安天宝岩茶业获福建三明首个茶业国家发明专利</a></li>
-               </ul>
-                </div>
-                <div class="breedingInnovation_content_second">
-                    <p><img src="../img/20160805093323856360.jpg" style="width: 95%;height: 180px"></p><br>
-                    <span> <a href="BALdetails1.html">7月29日，由中国农业科学院烟草研究所完成的“抗烟草烟草普通花叶病毒
-                                        (TMV)和烟草黄瓜花叶病毒(CMV)病基因定向改良K326品种”
-                                        通过国家烟草专卖局科技司和中国烟叶公司组织的田间鉴评。</a></span>
-                </div>
-                <div class="breedingInnovation_content_third">
-                    <p><img src="../img/20160726102711785951.png" style="width: 95%;height: 180px"></p><br>
-                    <span> <a href="BALdetails2.html"> 近日，中国农业科学院蔬菜花卉研究所谢丙炎研究员领衔的蔬菜病害防控创新团队与
-                                        中国科学院微生物研究所合作，在淡紫拟青霉生物防治作用机制的研究方面取得了重要突破，
-                                        解析出了淡紫拟青霉中最重要的脂肽类抗生素
-                                        leucinostatins的生物合成途径，相关结果在7月14日发表于国际知名的病原菌刊物《PLoS Pathogens》。</a></span>
-                </div>
+                <div class="main-content">
+                    <div class="notice">
+                        <div class="title">
+                            <a href="breedIndustryNews.html" class="active">种业要闻</a>|
+                            <a href="policy.html">政策法规</a>
+                        </div>
+                        <ul>
+                            <a href="zx/tzgg/index.shtml" target="_blank" class="more1">更多</a>
+                            <li><a href="zx/tzgg/268937.shtml" title="关于举办“第一届亚太植物表型国际会议”的通知" target="_blank">
+                                2017河南郑州蔬菜种子交易会
+                            </a></li>
+                            <li><a href="zx/tzgg/268936.shtml" title="第二届亚洲园艺大会2016年在成都召开" target="_blank">
+                                2017中国（成都）国际新型肥料与植保药械博览会
+                            </a></li>
+                            <li><a href="zx/tzgg/254549.shtml" title="第七届国际作物科学大会通知" target="_blank"> 第22届哈尔滨种业博览会圆满闭幕
+                            </a></li>
+                            <li><a href="zx/tzgg/252327.shtml" title="关于召开“2015中国农业展望大会”的通知" target="_blank">
+                                倒计时仅剩10天！第22届哈尔滨种业博览会如约而至！
+                            </a></li>
+                            <li><a href="zx/tzgg/247946.shtml" title="农业基因组大会通知" target="_blank"> 农业基因组大会通知
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/240397.shtml"
+                                   title="关于举办第15次全国无籽西瓜科研与生产协作组会议的预备通知" target="_blank"> 哈尔滨种业博览会、成都种业博览会、济南种业博览会
+                            </a></li>
+                            <li><a href="zx/tzgg/239195.shtml" title="农科讲坛第4期通知" target="_blank">
+                                2017第20届内蒙古农博会暨肥料、种子、农药专项展示订货会
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/tzgg/237944.shtml"
+                                   title="牧医所关于“散装牛奶的商贩对外宣称牛奶来自我所”的郑重声明" target="_blank"> 第三届济南种业博览会暨农药肥料订货会
+                                为您的土地插上腾飞的翅膀！
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/236249.shtml"
+                                   title="食品安全与质量：核技术和相关技术应用国际专题讨论会" target="_blank"> 第二届中国（武清）北方鲜食玉米大会暨种植业新品种推介会将于7月召开
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/235433.shtml" title="举办2014年农业地理信息暑期学校的通知"
+                                   target="_blank"> 农业部发布《2014年全国集中连片特困地区农业适用品种和技术》
+                            </a></li>
+                        </ul>
+                        <ul style="display:none;">
+                            <a href="zx/zpxx/index.shtml" target="_blank" class="more1">更多</a>
+                            <li><a href="zx/zpxx/274214.shtml" title="蜜蜂所“农业部蜂产品质量监督检验测试中心（北京）”招聘编外科研辅助人员公告"
+                                   target="_blank"> 蜜蜂所“农业部蜂产品质量监督...
+                            </a></li>
+                            <li><a href="zx/zpxx/269205.shtml" title="中国农业科学院加工所戴小枫课题博士后招聘启事" target="_blank">
+                                中国农业科学院加工所戴小枫课...
+                            </a></li>
+                            <li><a href="zx/zpxx/268938.shtml" title="中国农业科学院加工所质量与生物安全研究室博士后招聘启事" target="_blank">
+                                中国农业科学院加工所质量与生...
+                            </a></li>
+                            <li><a href="zx/zpxx/255425.shtml" title="中国农业科学院研究生院2015年4月招聘编制外聘用人员公告" target="_blank">
+                                中国农业科学院研究生院201...
+                            </a></li>
+                            <li><a href="zx/zpxx/252328.shtml" title="中国农业科学院在京单位公开招聘2015年度应届高校毕业生等人员公告"
+                                   target="_blank"> 中国农业科学院在京单位公开招...
+                            </a></li>
+                            <li><a href="zx/zpxx/241569.shtml" title="饲料研究所招聘编外人员" target="_blank"> 饲料研究所招聘编外人员
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/240690.shtml" title="中国水稻研究所公开招聘人员公告"
+                                   target="_blank"> 中国水稻研究所公开招聘人员公...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/238845.shtml" title="质标所公开招聘编外科研辅助人员公告"
+                                   target="_blank"> 质标所公开招聘编外科研辅助人...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/238844.shtml" title="麻类所面向所内外公开招聘首席科学家公告"
+                                   target="_blank"> 麻类所面向所内外公开招聘首席...
+                            </a></li>
+                            <li><a href="zx/zpxx/238738.shtml" title="中国农业科学院北京畜牧兽医研究所博士后招聘启事" target="_blank">
+                                中国农业科学院北京畜牧兽医研...
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="unit1">
+                        <div class="title"><h2>行业资讯</h2><a href="breedIndustryNews.html" target="_blank">更多</a></div>
+                        <img src="../img/20160719161520160.jpg">
+                        <ul>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                农业部副部长张桃林赴青海省调研农牧业生产及科技创新工作
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                农业部科教司组织召开农业科教系统联席会
+                            </a></li>
+                            <li><a href="zx/kjyw/277467.shtml" title="走进农业“大科技”时代" target="_blank">
+                                CCTV2013年度科技创新人物郭三堆研究员：只为献“花”惠棉农
+                            </a></li>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                农业部副部长张桃林深入河北农村调研
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                全国农业科技教育工作视频会议召开
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="unit1">
+                        <div class="title"><h2>品种导航</h2><a href="BreedDictionary.html" target="_blank">更多</a></div>
+                        <img src="../img/ricehgh.jpg">
+                        <ul>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank"> 两优培九
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank"> 闫麦8911
+                            </a></li>
+                            <li><a href="zx/zjlt/275481.shtml" title="倪洪兴：大豆进口对国内产业造成了很大伤害" target="_blank"> 扬麦12号
+                            </a></li>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank"> 龙辐麦8号
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank"> 川农麦1号
+                            </a></li>
+                        </ul>
 
-            </div>
-            <div class="main_professor">
-                <div class="title">
-                    <span><img src="../img/focus.png" style="height: 27px;width: 28px"> <b>育种专家智库</b></span>
-                    <b><a href="breedProfessor.html"> 更多>>></a></b>
+                    </div>
+                    <div class="unit1" style="border:none;">
+                        <div class="title"><h2>种子企业</h2><a href="breedBusinessProvince.html" target="_blank">更多</a>
+                        </div>
+                        <img src="../img/syngenta.jpg">
+                        <ul>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                湖南亚华种子有限公司
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank"> 中国种子集团有限公司
+                            </a></li>
+                            <li><a href="zx/nsqx/277378.shtml" title="未来三至五天冷空气活动频繁" target="_blank"> 袁隆平农业高科技股份有限公司
+                            </a></li>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                山东登海种业股份有限公司
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank"> 甘肃省敦煌种业股份有限公司
+                            </a></li>
+                        </ul>
+
+                    </div>
+
                 </div>
-                <div class="breedingInnovation_content_first">
+            </div>
+            <div class="btn"><a href="cooperation.html  " target="_blank"><img src="../img/index_55.png"
+                                                                               style="width: 100%;"></a></div>
+            <div class="row1">
+                <div class="main-title">
+                    <h2>成果推广数据库</h2>
                     <ul>
-                        <li><a href="BFLdetails2.html" >第二届中韩药用植物国际化战略研讨会在韩召开</a></li>
-                        <li><a href="BFLdetails3.html" >茶叶所与恩施州签订科技战略合作协议</a></li>
-                        <li><a href="BFLdetails4.html" >吴孔明会见国际生物防治组织主席</a></li>
-                        <li><a href="BFRdetails1.html" >一个央企下海者的种业梦</a></li>
-                        <li><a href="BFRdetails2.html"> 水稻育种追梦人姚海根</a></li>
-                        <li><a href="BFRdetails3.html">袁隆平与华媒分享“中国梦”：杂交水稻覆盖全球</a></li>
-                        <li><a href="BFRdetails4.html">裘志新：一生倾情小麦育种</a></li>
-                        <li><a href="BFRROLdetails9.html">玉米育种家程相文：用育种精神传递正能量</a></li>
-                        <li><a href="BFRROLdetails10.html" >黄大昉：我为什么支持转基因</a></li>
+                        <li><a href="AchievementShow.html" target="_blank">成果展示</a></li>
+                        <li><a href="AgencyService.html" target="_blank">机构服务</a></li>
+                        <li><a href="cooperation.html" target="_blank">产学研合作</a></li>
                     </ul>
+                </div>
+                <div class="main-content">
+                    <div class="notice" id="box1">
+                        <div class="title" id="title1">
+                            <a href="AchievementShow.html" class="active">成果推介</a>|
+                            <a href="vedio.html">视频图文</a>
+
+                        </div>
+                        <ul>
+                            <a href="AchievementShow.html" target="_blank" class="more1">更多</a>
+                            <li><a href="zx/tzgg/268937.shtml" title="关于举办“第一届亚太植物表型国际会议”的通知" target="_blank">
+                                关于举办“第一届亚太植物表型...
+                            </a></li>
+                            <li><a href="zx/tzgg/268936.shtml" title="第二届亚洲园艺大会2016年在成都召开" target="_blank">
+                                第二届亚洲园艺大会2016年...
+                            </a></li>
+                            <li><a href="zx/tzgg/254549.shtml" title="第七届国际作物科学大会通知" target="_blank"> 第七届国际作物科学大会通知
+                            </a></li>
+                            <li><a href="zx/tzgg/252327.shtml" title="关于召开“2015中国农业展望大会”的通知" target="_blank">
+                                关于召开“2015中国农业展...
+                            </a></li>
+                            <li><a href="zx/tzgg/247946.shtml" title="农业基因组大会通知" target="_blank"> 农业基因组大会通知
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/240397.shtml"
+                                   title="关于举办第15次全国无籽西瓜科研与生产协作组会议的预备通知" target="_blank"> 关于举办第15次全国无籽西瓜...
+                            </a></li>
+                            <li><a href="zx/tzgg/239195.shtml" title="农科讲坛第4期通知" target="_blank"> 农科讲坛第4期通知
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/tzgg/237944.shtml"
+                                   title="牧医所关于“散装牛奶的商贩对外宣称牛奶来自我所”的郑重声明" target="_blank"> 牧医所关于“散装牛奶的商贩对...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/236249.shtml"
+                                   title="食品安全与质量：核技术和相关技术应用国际专题讨论会" target="_blank"> 食品安全与质量：核技术和相关...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//ggfw/kyxx/235433.shtml" title="举办2014年农业地理信息暑期学校的通知"
+                                   target="_blank"> 举办2014年农业地理信息暑...
+                            </a></li>
+                        </ul>
+                        <ul style="display:none;">
+                            <a href="zx/zpxx/index.shtml" target="_blank" class="more1">更多</a>
+                            <li><a href="zx/zpxx/274214.shtml" title="蜜蜂所“农业部蜂产品质量监督检验测试中心（北京）”招聘编外科研辅助人员公告"
+                                   target="_blank"> 蜜蜂所“农业部蜂产品质量监督...
+                            </a></li>
+                            <li><a href="zx/zpxx/269205.shtml" title="中国农业科学院加工所戴小枫课题博士后招聘启事" target="_blank">
+                                中国农业科学院加工所戴小枫课...
+                            </a></li>
+                            <li><a href="zx/zpxx/268938.shtml" title="中国农业科学院加工所质量与生物安全研究室博士后招聘启事" target="_blank">
+                                中国农业科学院加工所质量与生...
+                            </a></li>
+                            <li><a href="zx/zpxx/255425.shtml" title="中国农业科学院研究生院2015年4月招聘编制外聘用人员公告" target="_blank">
+                                中国农业科学院研究生院201...
+                            </a></li>
+                            <li><a href="zx/zpxx/252328.shtml" title="中国农业科学院在京单位公开招聘2015年度应届高校毕业生等人员公告"
+                                   target="_blank"> 中国农业科学院在京单位公开招...
+                            </a></li>
+                            <li><a href="zx/zpxx/241569.shtml" title="饲料研究所招聘编外人员" target="_blank"> 饲料研究所招聘编外人员
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/240690.shtml" title="中国水稻研究所公开招聘人员公告"
+                                   target="_blank"> 中国水稻研究所公开招聘人员公...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/238845.shtml" title="质标所公开招聘编外科研辅助人员公告"
+                                   target="_blank"> 质标所公开招聘编外科研辅助人...
+                            </a></li>
+                            <li><a href="http://www.caas.net.cn//rc/rczp/238844.shtml" title="麻类所面向所内外公开招聘首席科学家公告"
+                                   target="_blank"> 麻类所面向所内外公开招聘首席...
+                            </a></li>
+                            <li><a href="zx/zpxx/238738.shtml" title="中国农业科学院北京畜牧兽医研究所博士后招聘启事" target="_blank">
+                                中国农业科学院北京畜牧兽医研...
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="unit1">
+                        <div class="title"><h2>成果展示</h2><a href="AchievementShow.html" target="_blank">更多</a></div>
+                        <img src="../img/W020150708583652242999.jpg">
+                        <ul>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                安徽农业大学专家揭“苦茶”之谜
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                黑茶新产品“酸茶”面市 获2项国家发明专利
+                            </a></li>
+                            <li><a href="zx/kjyw/277467.shtml" title="走进农业“大科技”时代" target="_blank"> 黎平引种“中茶108”成功
+                            </a></li>
+                            <li><a href="zx/kjyw/277381.shtml" title="他们用什么方法让3000单农业众筹获得投资" target="_blank">
+                                永安天宝岩茶业获福建三明首个茶业国家...
+                            </a></li>
+                            <li><a href="zx/kjyw/277468.shtml" title="山东省科技厅推进“农科驿站”建设探索农业科技服务新途径" target="_blank">
+                                13年攻关育出有机抗寒茶 极端耐寒温度可达-13℃
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="unit1">
+                        <div class="title"><h2>机构服务</h2><a href="AgencyService.html" target="_blank">更多</a></div>
+                        <img src="../img/10129 (1).jpg">
+                        <ul>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank">
+                                植物病虫害生物学国家重点实验室
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank"> 动物营养学国家重点实验室
+                            </a></li>
+                            <li><a href="zx/zjlt/275481.shtml" title="倪洪兴：大豆进口对国内产业造成了很大伤害" target="_blank">
+                                水稻生物学国家重点实验室
+                            </a></li>
+                            <li><a href="zx/zjlt/277379.shtml" title="韩俊：以科技创新推动农业供给侧结构性改革" target="_blank">
+                                兽医生物技术国家重点实验室
+                            </a></li>
+                            <li><a href="zx/zjlt/276619.shtml" title="刘春明：科技创新助推现代农业产业化" target="_blank">
+                                SKL家畜疫病病原生物学国家重点实验室
+                            </a></li>
+                        </ul>
+
+                    </div>
+                    <div class="unit1" style="border:none;">
+                        <div class="title"><h2>产学研合作</h2><a href="cooperation.html" target="_blank">更多</a></div>
+                        <img src="../img/10019.jpg">
+                        <ul>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                北京市农业局代表团到甘肃省农牧厅考察交流种业有关工作
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank">
+                                2015年度京津冀沪渝农作物种业发展报告正式发布
+                            </a></li>
+                            <li><a href="zx/nsqx/277378.shtml" title="未来三至五天冷空气活动频繁" target="_blank">
+                                河北省2家种业企业在“新三板”挂牌交易
+                            </a></li>
+                            <li><a href="zx/nsqx/277466.shtml" title="大雾黄色预警持续 苏皖赣闽及四川盆地等地有大雾" target="_blank">
+                                河北省贯彻落实《种子法》配套办法培训班在石家庄成功举行
+                            </a></li>
+                            <li><a href="zx/nsqx/277412.shtml" title="冷空气频来袭 华北黄淮霾“见缝插针”" target="_blank"> 江西红一种业登陆新三版
+                            </a></li>
+                        </ul>
+
+                    </div>
 
                 </div>
-                <div class="breedingInnovation_content_second">
-                    <p><img src="../img/20160818151050640540.jpg" style="width: 90%;height: 180px"></p><br>
-                    <span> <a href="BFLdetails1.html">
-                                    8月15-16日，农业部副部长、中国农业科学院院长李家洋分别会见了来华参加“第七届国际作物科学大会”的国际玉米小麦改良中心（
-                                        CIMMTY）主任马丁•克罗波夫（Martin Kropff）
-                                        一行和国际水稻研究所（IRRI）所长马修•莫雷尔（Matthew Morell）一行，就继续推进双方今后在相关领域的合作进行了深入交流。</a></span>
+            </div>
+            <div class="row4">
+                <div class="main-title">
+                    <h2>育种专家数据库</h2>
+                    <ul>
+                        <li><a href="professors.html" target="_blank">育种专家</a></li>
+                        <li><a href="professorNews.html" target="_blank">人物动态</a></li>
+                    </ul>
                 </div>
-                <div class="breedingInnovation_content_third">
-                    <p><img src="../img/20160720110909112694.png" style="width: 95%;height: 180px"></p><br>
-                    <span> <a href="BFLdetails2.html">
-                                     7月5-6日，由中国农业科学院特产研究所与韩国农村振兴厅国立园艺特作科学院共同主办的，
-                                        第二届中韩药用植物国际化战略研讨会在韩国召开，
-                                        中韩两国专家学者共120余人参加本次会议。</a></span>
-                </div>
+                <div class="main-content4">
+                    <div class="unit2">
+                        <div class="title"><h2>人物动态</h2><a href="professorNews.html" target="_blank">更多</a></div>
+                        <div class="unit2box">
+                            <div class="content_main_right_lists">
+                                <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">北京市农业局代表团到甘肃省农牧厅考察交流种业有关工作</a></span><span
+                                    class="listTime">2016.12.12</span>
+                            </div>
+                            <div class="content_main_right_lists">
+                                <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">2015年度京津冀沪渝农作物种业发展报告正式发布</a></span><span
+                                    class="listTime">2016.12.12</span>
+                            </div>
+                            <div class="content_main_right_lists">
+                                <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">北京市农业局代表团到甘肃省农牧厅考察交流种业有关工作</a></span><span
+                                    class="listTime">2016.12.12</span>
+                            </div>
+                            <div class="content_main_right_lists">
+                                <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">河北省2家种业企业在“新三板”挂牌交易</a></span><span
+                                    class="listTime">2016.12.12</span>
+                            </div>
+                            <div class="content_main_right_lists">
+                                <span class="rightTitle"><a href="BINLdetails2.html" style="color: #0a0903;">河北省贯彻落实《种子法》配套办法培训班在石家庄成功举行</a></span><span
+                                    class="listTime">2016.12.12</span>
+                            </div>
+                        </div>
 
-            </div></div>
+                    </div>
+                    <div class="unit3">
+                        <div class="title"><h2>育种专家</h2><a href="professorNews.html" target="_blank">更多</a></div>
+                        <div class="professor">
+                            <img src="../img/201309231112031944.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201309231058433493.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201310081532221884.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201310081621026809.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201310081528173916.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201309231052305190.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201310081723276668.jpg" style="width: 150px;height: 150px;">
+                            <img src="../img/201310081612380073.jpg" style="width: 150px;height: 150px;">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="suspend" style="width: 40px;">
+                <dl>
+                    <dt class="IE6PNG"></dt>
+                    <dd class="suspendQQ"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes"></a></dd>
+                    <dd class="suspendTel"><a href="javascript:void(0);"></a></dd>
+                </dl>
+            </div>
+
+        </div>
+
     </div>
+
 </div>
 <div class="foot">
     <div class="footLogo">
     </div>
     <div class="footText">
         <b>网站地图&nbsp;|&nbsp;关于我们&nbsp;|&nbsp;友情链接&nbsp;|&nbsp;四川省农业科学院信息所</b><br>
-        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;E-mail:pbding@163.com  </b><br>
-        <b style="color: #cccbc9; font-size: 14px;">  Copyright  news.sichuan.edu.cn All rights reserved</b>
+        <b style="color: #cccbc9; font-size: 14px;">四川省农业科学院信息所版权所有并维护 &nbsp;&nbsp;&nbsp;&nbsp;联系电话：84504194&nbsp;&nbsp;&nbsp;&nbsp;E-mail:pbding@163.com </b><br>
+        <b style="color: #cccbc9; font-size: 14px;"> Copyright news.sichuan.edu.cn All rights reserved</b>
     </div>
 </div>
 </div>
@@ -457,7 +2027,7 @@
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true,
-        loop:true,
+        loop: true,
         autoplay: 3000,//自动播放时间间隔
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',

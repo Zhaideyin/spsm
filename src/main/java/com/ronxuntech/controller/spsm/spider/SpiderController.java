@@ -25,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ronxuntech.component.spsm.AjaxCrawler;
 import com.ronxuntech.component.spsm.BaseCrawler;
+import com.ronxuntech.component.spsm.PostCrawler;
 import com.ronxuntech.component.spsm.WebInfo;
-import com.ronxuntech.component.spsm.util.ImgOrDocPipeline;
 import com.ronxuntech.component.spsm.util.ReadXML;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
@@ -44,7 +44,6 @@ import com.ronxuntech.util.ObjectExcelView;
 import com.ronxuntech.util.PageData;
 
 import net.sf.json.JSONSerializer;
-import us.codecraft.webmagic.Spider;
 
 /** 
  * 说明：数据爬取
@@ -162,8 +161,8 @@ public class SpiderController extends BaseController {
 		//如果查询到数据库中存在了该种子，那么就证明该网站已经爬取过， 但是状态是 0，那么还有网站或者图未下载完成。
 		if(seedpd1!=null && seedpd1.size()!=0){
 				if(seedpd1.get("STATUS").equals("0")){
-					//重下目标网址
-					reDownloadTargetUrl(seedUrl, dataType, seedpd1);
+					/*//重下目标网址
+//					reDownloadTargetUrl(seedUrl, dataType, seedpd1);
 					//重下未下的附件（只是之前没有下载）
 					PageData seedPd2=new PageData();
 					seedPd2.put("SEEDURLID", seedpd1.getString("SEEDURL_ID"));
@@ -173,7 +172,7 @@ public class SpiderController extends BaseController {
 						reDownloadAnnexUrl(seedUrl, seedpd1);
 					}
 					//接着爬取没有爬完的
-					collar(web);
+*/					collar(web);
 //					
 					checkDone(seedpd, out);
 				}
@@ -221,10 +220,13 @@ public class SpiderController extends BaseController {
 	public void collar(WebInfo web) throws Exception{
 		BaseCrawler crawler=BaseCrawler.getInstance();
 		AjaxCrawler ajaxCrawler=AjaxCrawler.getInstance();
+		PostCrawler postCrawler =PostCrawler.getInstance();
 		if(web.getPageMethod().equals("get")){
 			crawler.start(web);
 		}else if(web.getPageMethod().equals("ajax")){
 			ajaxCrawler.start(web);
+		}else if(web.getPageMethod().equals("post")){
+			postCrawler.start(web);
 		}
 	}
 	
@@ -509,7 +511,7 @@ public class SpiderController extends BaseController {
 	 * @param web
 	 * @throws Exception   List<String> targetUrlList,List<PageData> redownTargetUrlList ,WebInfo web
 	 */
-	public void reDownloadTargetUrl(String seedUrl,StringBuffer dataType,PageData pd1) throws Exception{
+	/*public void reDownloadTargetUrl(String seedUrl,StringBuffer dataType,PageData pd1) throws Exception{
 		BaseCrawler crawler=BaseCrawler.getInstance();
 		PageData pd2=new PageData();
 		pd2.put("SEEDURLID", pd1.getString("SEEDURL_ID"));
@@ -531,7 +533,7 @@ public class SpiderController extends BaseController {
 			}
 		}
 		
-	}
+	}*/
 	
 	/**
 	 * 附件重新下载
@@ -558,41 +560,26 @@ public class SpiderController extends BaseController {
 			pd4.put("TARGETURLID",redownAnnexUrlList.get(i).getString("TARGETURLID"));
 			pd4.put("STATUS", "0");
 			List<PageData> AnnexUrlAndPageUrlList =spiderService.findByAnnexUrlAndPageUrl(pd4);
-//			System.out.println("AnnexUrlAndPageUrlList.size(): "+ AnnexUrlAndPageUrlList.toString());
 			for(int j =0;j<AnnexUrlAndPageUrlList.size();j++){
 				String fileName =AnnexUrlAndPageUrlList.get(j).getString("FILENAME");
 				String annexUrls =AnnexUrlAndPageUrlList.get(j).getString("ANNEXURLS");
-//				System.out.println("fileName:"+fileName);
-//				System.out.println("annexUrls "+ annexUrls );
 				// 将得到的下载地址，通过‘，’分离。得到一个数组
 				if(annexUrls!=null && fileName!=null){
 					String [] urls =annexUrls.split(",");
 					String [] fileNameList =fileName.split(",");
-//					System.out.println("annexUrls:"+annexUrls.toString());
 					
 					//取出一个网页中多个附件中， 未下载的，
 					for(int n=0;n<urls.length;n++){
 						if(urls[n].equals(annexurl)){
 							annexNameList.add(fileNameList[n]);
-//							System.out.println("fileNameList() "+fileNameList[n]);
 						}
 					}
 				}
 				
 			}
 		}
-//		//下载未下载的文件
-//		System.out.println("annexNameList.size() :"+annexNameList.size());
-//		for(int m=0;m<annexNameList.size();m++){
-//			System.out.println("annexNameList(): "+annexNameList.get(m));
-//		}
-//		System.out.println("fileNameList.size() : "+annexUrlList.size()  );
-//		for(int s=0;s<annexUrlList.size();s++)
-//		{
-//			System.out.println("annexUrlList :"+annexUrlList.get(s));
-//		}
 		
-		ImgOrDocPipeline imgOrDoc =new ImgOrDocPipeline(seedUrl,annexNameList, annexUrlList);
-		imgOrDoc.reDownloadAnnex();
+//		ImgOrDocPipeline imgOrDoc =new ImgOrDocPipeline(seedUrl,annexNameList, annexUrlList);
+//		imgOrDoc.reDownloadAnnex();
 	}
 }
