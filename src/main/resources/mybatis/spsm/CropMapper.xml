@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="SubListTypeMapper">
+<mapper namespace="CropMapper">
 	
 	<!--表名 -->
 	<sql id="tableName">
-		SPSM_SUBLISTTYPE
+		SPSM_CROP
 	</sql>
 	
 	<!-- 字段 -->
 	<sql id="Field">
-		SUBLISTTYPENAME,	
-		LISTID,	
-		SUBLISTTYPE_ID
+		CROPNAME,	
+		CROPTYPEID,	
+		CROP_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
-		#{SUBLISTTYPENAME},	
-		#{LISTID},	
-		#{SUBLISTTYPE_ID}
+		#{CROPNAME},	
+		#{CROPTYPEID},	
+		#{CROP_ID}
 	</sql>
 	
 	<!-- 新增-->
@@ -37,7 +37,7 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			SUBLISTTYPE_ID = #{SUBLISTTYPE_ID}
+			CROP_ID = #{CROP_ID}
 	</delete>
 	
 	<!-- 修改 -->
@@ -45,11 +45,11 @@
 		update
 		<include refid="tableName"></include>
 		set 
-			SUBLISTTYPENAME = #{SUBLISTTYPENAME},
-			LISTID = #{LISTID},
-		SUBLISTTYPE_ID = SUBLISTTYPE_ID
+			CROPNAME = #{CROPNAME},
+			CROPTYPEID = #{CROPTYPEID},
+		CROP_ID = CROP_ID
 		where 
-		SUBLISTTYPE_ID = #{SUBLISTTYPE_ID}
+		CROP_ID = #{CROP_ID}
 	</update>
 	
 	<!-- 通过ID获取数据 -->
@@ -59,49 +59,55 @@
 		from 
 		<include refid="tableName"></include>
 		where 
-			SUBLISTTYPE_ID = #{SUBLISTTYPE_ID}
+			CROP_ID = #{CROP_ID}
 	</select>
-	
-	<!-- 通过上一级来查询下一级 的列表 -->
-	<select id="listFindByListID" parameterType="pd" resultType="pd">
+	<!--通过作物类别id 来查询 -->
+	<select id="listFindByCropTypeID" parameterType="pd" resultType="pd">
 		select
 		<include refid="Field"></include>
 		from
 		<include refid="tableName"></include>
 		where
-		LISTID=#{LISTTYPE_ID}
+		CROPTYPEID=#{CROPTYPE_ID}
 	</select>
-	
+	<!-- 通过CropTypeName 查询所有作物 -->
+	<select id="listFindByCropTypeName" parameterType="pd" resultType="pd">
+		select 
+			* 
+		FROM
+		    spsm_crop a 
+		LEFT JOIN 
+			spsm_croptype b 
+		on 
+			a.CROPTYPEID=b.CROPTYPE_ID
+		WHERE 
+			b.CROPTYPENAME = #{CROPTYPENAME}
+	</select>
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		select
 		*
 		from 
-		SPSM_SUBLISTTYPE s
-		left join SPSM_LISTTYPE l on s.LISTID=l.LISTTYPE_ID
+		SPSM_CROP c
+		left join SPSM_CROPTYPE t on c.CROPTYPEID=t.CROPTYPE_ID
 		where 1=1
 		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
 			and
 				(
 				<!--	根据需求自己加检索条件-->
-					s.SUBLISTTYPENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					c.CROPNAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 					 or 
-					l.LISTTYPENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+					t.CROPTYPENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
 				)
 		</if>
-		order by s.LISTID asc
 	</select>
 	
 	<!-- 列表(全部) -->
 	<select id="listAll" parameterType="pd" resultType="pd">
-		SELECT a.LISTTYPE_ID ,b.* 
-		  FROM spsm_listtype a 
-		LEFT JOIN 
-			spsm_sublisttype b 
-		ON
-			b.LISTID=a.LISTTYPE_ID
-		WHERE 
-		a.LISTTYPENAME='省外品种'
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
 	</select>
 	
 	<!-- 批量删除 -->
@@ -109,7 +115,7 @@
 		delete from
 		<include refid="tableName"></include>
 		where 
-			SUBLISTTYPE_ID in
+			CROP_ID in
 		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
                  #{item}
 		</foreach>

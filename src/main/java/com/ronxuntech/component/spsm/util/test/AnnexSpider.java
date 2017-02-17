@@ -16,6 +16,8 @@ import org.w3c.dom.ls.LSInput;
 
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.component.spsm.util.AnnexUtil;
+import com.ronxuntech.component.spsm.util.ConvertUtil;
+import com.ronxuntech.component.spsm.util.FileNameUtil;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
 import com.ronxuntech.service.spsm.seedurl.SeedUrlManager;
 import com.ronxuntech.util.PageData;
@@ -36,6 +38,8 @@ public class AnnexSpider implements PageProcessor {
 	private SeedUrlManager seedurlService;
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
 
+	private FileNameUtil fileNameUtil = FileNameUtil.getInstance();
+	private ConvertUtil convertUtil =ConvertUtil.getInstance();
 	// 区别是图片还是文档，
 	private String  temp;
 	//构造函数
@@ -67,13 +71,11 @@ public class AnnexSpider implements PageProcessor {
 		if(temp.equals("img")){
 			if (StringUtils.isNotEmpty(imgRegex)) {
 				imgListProcess = obj.xpath(web.getImgTag()).regex(imgRegex).all();
-				System.out.println("imgListProcess:"+imgListProcess.toString());
 			}
 		}
 		if(temp.equals("doc")){
 			if (StringUtils.isNotEmpty(docRegex)) {
 				docListProcess = obj.xpath("//a/@href").regex(docRegex).all(); // 此时抓取出来的是html中的链接，
-				System.out.println("docListProcess:"+docListProcess.toString());// 以及项目名等。
 			} 
 		}
 		
@@ -86,7 +88,7 @@ public class AnnexSpider implements PageProcessor {
 		for (int i = 0; i < docListProcess.size(); i++) {
 			// 如果不是绝对路径，则通过抓取到的链接，和当前页面的 ｕｒｌ来拼接下载地址。
 			if (!(docListProcess.get(i).contains("http"))) {
-				templist.add(annexUtil.getTargetUrl(docListProcess.get(i), pageUrl).replace("amp;", "").trim());
+				templist.add(fileNameUtil.getTargetUrl(docListProcess.get(i), pageUrl).replace("amp;", "").trim());
 			} else {
 				templist.add(docListProcess.get(i).replace("amp;", "").trim());
 			}
@@ -95,7 +97,7 @@ public class AnnexSpider implements PageProcessor {
 		for (int j = 0; j < imgListProcess.size(); j++) {
 			// 如果不是绝对路径，则通过抓取到的链接，和当前页面的 ｕｒｌ来拼接下载地址。
 			if (!(imgListProcess.get(j).contains("http"))) {
-				templist.add(annexUtil.getTargetUrl(imgListProcess.get(j), pageUrl).replace("amp;", "").trim());
+				templist.add(fileNameUtil.getTargetUrl(imgListProcess.get(j), pageUrl).replace("amp;", "").trim());
 			} else {
 				templist.add(imgListProcess.get(j).replace("amp;", "").trim());
 			}
@@ -133,16 +135,15 @@ public class AnnexSpider implements PageProcessor {
 	public List<PageData> saveAnnexUrl(List<String> templist) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		//将抓到链接的去重
-		Set<String> setTmep =  annexUtil.listToSet(templist);
-		List<String> listTemp= annexUtil.setToList(setTmep);
-		System.out.println("tempList:"+templist.toString());
+		Set<String> setTmep =  convertUtil.listToSet(templist);
+		List<String> listTemp= convertUtil.setToList(setTmep);
 		List<PageData> annexUrlList = new ArrayList<>();
 		String seedUrlId = "";
 		PageData p = annexUtil.findBySeedurl(web.getSeed(), seedurlService);
 		seedUrlId = p.getString("SEEDURL_ID");
 		for (int i = 0; i < listTemp.size(); i++) {
 			PageData pd1 = new PageData();
-			pd1.put("ANNEXURL_ID", annexUtil.getFileName());
+			pd1.put("ANNEXURL_ID", fileNameUtil.getFileName());
 			pd1.put("ANNEXURL", listTemp.get(i));
 			pd1.put("STATUS", "0");
 			pd1.put("SEEDURLID", seedUrlId);

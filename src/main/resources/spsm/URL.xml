@@ -4909,7 +4909,7 @@
      <webpage>
         <seed>http://www.cgris.net/photobase/default.html</seed>
         <urlTag>/html/body/div[3]/center/table/tbody/tr/td/div/center/table/tbody</urlTag>
-        <urlRex>((http://www.cgris.net/photobase/cropphoshop/.*/.*/page_\d+.htm)</urlRex>
+        <urlRex>(http://www.cgris.net/photobase/cropphoshop/.*/.*/page_\d+.htm)</urlRex>
         <tagList>
             <tag1>/html/body/table[2]/tbody/tr/td/div/center/table/tbody/tr[1]/td/b/allText()</tag1>
             <tag2>/html/body/table[2]/tbody/tr/td/div/center/table/tbody/tr[2]/outerHtml()</tag2>
@@ -4933,4 +4933,34 @@
         	<pageEncoding>utf-8</pageEncoding>
         </page>
     </webpage>
+    
+    <!-- http://crop.agridata.cn/A010105.ASP 开始 -->
+    <webpage>
+        <seed>http://crop.agridata.cn/96-014/default.html</seed>
+        <urlTag>/html/body/table[2]/tbody/tr/td/table/tbody</urlTag>
+        <urlRex>(http://crop.agridata.cn/96-014/cgris.*.htm)</urlRex>
+        <tagList>
+            <tag1></tag1>
+            <tag2>/html/body/table/outerHtml()</tag2>
+        </tagList>
+        <img>
+            <hasImg>true</hasImg>
+            <imgRegex>[\u4e00-\u9fa5]+.*\.\w+</imgRegex>
+            <imgTag>//img/@src</imgTag>
+        </img>
+        <doc>
+            <hasDoc>false</hasDoc>
+            <docRegex>(\./\w+\.\w+)</docRegex>
+            <docTag>//a</docTag>
+        </doc>
+        <page>
+          	<totalPage></totalPage>
+        	<pageAjaxTag></pageAjaxTag>
+        	<pageGetTag></pageGetTag>
+        	<pagePostTag></pagePostTag>
+        	<pageMethod>get</pageMethod>
+        	<pageEncoding>utf-8</pageEncoding>
+        </page>
+    </webpage>
+    <!-- http://crop.agridata.cn/A010105.ASP 结束 -->
 </webList>

@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.ronxuntech.component.spsm.util.AnnexUtil;
+import com.ronxuntech.component.spsm.util.ConvertUtil;
+import com.ronxuntech.component.spsm.util.FileNameUtil;
 import com.ronxuntech.component.spsm.util.HttpClientDownloader;
 import com.ronxuntech.component.spsm.util.ImgOrDocPipeline;
 import com.ronxuntech.component.spsm.util.SpiderPipeline;
@@ -57,6 +59,8 @@ public class AjaxCrawler {
 	private AnnexUrlManager annexurlService;
 	// 附件工具类
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
+	private FileNameUtil fileNameUtil = FileNameUtil.getInstance();
+	private ConvertUtil convertUtil = ConvertUtil.getInstance();
 	private String seedUrlId = "";
 	
 	private Site site = Site.me().setRetryTimes(3).setSleepTime(1000).setTimeOut(200000).setCycleRetryTimes(3);
@@ -94,7 +98,7 @@ public class AjaxCrawler {
 				if (m.group().contains("http")) {
 					urlSet.add(m.group().replace("amp;", ""));
 				} else {
-					String targetUrl = annexUtil.getTargetUrl(m.group(), web.getSeed());
+					String targetUrl = fileNameUtil.getTargetUrl(m.group(), web.getSeed());
 					targetUrl = targetUrl.replace("amp;", "");
 					urlSet.add(targetUrl);
 				}
@@ -128,7 +132,7 @@ public class AjaxCrawler {
 		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
 		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
 		Set<String> urlSet = getAllUrl(web);
-		List<String> urlList = annexUtil.setToList(urlSet);
+		List<String> urlList = convertUtil.setToList(urlSet);
 		seedUrlId =annexUtil.getSeedUrlId(web);
 		//将抓到的targetUrl 存入数据库，并设置初始状态为 0
 		try{

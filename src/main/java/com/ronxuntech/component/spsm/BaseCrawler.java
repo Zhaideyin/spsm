@@ -9,8 +9,11 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 
 import com.ronxuntech.component.spsm.util.AnnexUtil;
+import com.ronxuntech.component.spsm.util.ConvertUtil;
+import com.ronxuntech.component.spsm.util.FileNameUtil;
 import com.ronxuntech.component.spsm.util.HttpClientDownloader;
 import com.ronxuntech.component.spsm.util.ImgOrDocPipeline;
+import com.ronxuntech.component.spsm.util.NextPageUrlUtil;
 import com.ronxuntech.component.spsm.util.SpiderPipeline;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
 import com.ronxuntech.service.spsm.annexurl.impl.AnnexUrlService;
@@ -53,6 +56,10 @@ public class BaseCrawler implements PageProcessor {
 	public BaseCrawler(WebInfo web, String seedUrlId) {
 		this.web = web;
 		this.seedUrlId = seedUrlId;
+		spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
+		targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
+//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
+		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
 	}
 
 	// 重新下载目标网页地址的集合
@@ -83,6 +90,9 @@ public class BaseCrawler implements PageProcessor {
 			.setUserAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36");
 	// 附件工具
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
+	private FileNameUtil fileNameUtil = FileNameUtil.getInstance();
+	private ConvertUtil convertUtil = ConvertUtil.getInstance();
+	private NextPageUrlUtil nextPageUrlUtil = NextPageUrlUtil.getInstance();
 	// 判断页面是否存在
 	private String error = "404";
 
@@ -90,10 +100,7 @@ public class BaseCrawler implements PageProcessor {
 
 	// 数据爬取的主要方法
 	public void process(Page page) {
-		spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
-		targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
-		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
+		
 		// 如果是重下，则将传递过来的targeturl添加到队列中。并且修改redown的值
 		if (reDown == 0 && retargetUrlList != null) {
 			page.addTargetRequests(retargetUrlList);
@@ -109,22 +116,12 @@ public class BaseCrawler implements PageProcessor {
 		}
 		// 将爬取的目标地址添加到队列里面 web.getUrlRex()
 		List<String> list =new ArrayList<>();
-//		if(web.getSeed().contains("http://finance.aweb.com.cn")){
-//			//为了去掉该网站没有用的链接
-//			list = html.xpath("//div[@class='newLists']").links().regex(web.getUrlRex()).all();
-//			if(list.size()==0 || list==null){
-//				list =html.links().regex(web.getUrlRex()).all();
-//			}
-//		}else{
 		if(StringUtils.isNotBlank(web.getUrlRex())){
 			list = html.xpath(web.getUrlTag()).links().regex(web.getUrlRex()).all();
 		}
 			
-//		}
-		// -------------将targeturl 去重-----------------------------------
-//		Set<String> urlSet = annexUtil.listToSet(list);
-//		List<String> urlList = annexUtil.setToList(urlSet);
-		annexUtil.removeDuplicateWithOrder(list);
+		convertUtil.removeDuplicateWithOrder(list);
+		
 		// --------------将targeturl 存入数据库去重开始-------------------------------
 
 		int flag = 0;
@@ -150,10 +147,6 @@ public class BaseCrawler implements PageProcessor {
 
 		}
 	
-		/*// 去掉页面上相同的链接
-		Set<String> urlSet = annexUtil.listToSet(list);
-		List<String> urlList = annexUtil.setToList(urlSet);*/
-
 		// 将抓取到符合的链接放入列表中
 		page.addTargetRequests(list);
 
@@ -165,7 +158,6 @@ public class BaseCrawler implements PageProcessor {
 					pageNum = Integer.parseInt(web.getTotalPage());
 				}else{
 					String pageNumInContent = html.xpath(web.getTotalPage()).toString();
-//					System.out.println("pageNumInContent:"+pageNumInContent);
 					pageNum =annexUtil.getTotalPageNum(pageNumInContent, page.getUrl().toString());
 				}
 				
@@ -205,7 +197,7 @@ public class BaseCrawler implements PageProcessor {
 			// 拼接网站下一页地址链接
 			// jointNextpage(page, urlList, web.getSeed(), web.getTotalPage());
 			if (pageNum > 1) {
-				urlList2 = jointNextpage(page, web.getSeed(), pageNum);
+				urlList2 = nextPageUrlUtil.jointNextpage(page, web.getSeed(), pageNum);
 				temp++;
 			}
 
@@ -219,7 +211,7 @@ public class BaseCrawler implements PageProcessor {
 						|| web.getSeed().contains("http://pfscnew.agri.gov.cn")
 						|| web.getSeed().contains("http://www.moa.gov.cn")))) {
 			if (pageNum > 1) {
-				 urlList2= jointNextpage2(page, web.getSeed(), pageNum);
+				 urlList2=nextPageUrlUtil.jointNextpage2(page, web.getSeed(), pageNum);
 				temp++;
 			}
 
@@ -227,22 +219,22 @@ public class BaseCrawler implements PageProcessor {
 
 		if (temp == 0 && web.getSeed().contains("http://www.caas.net.cn")) {
 			if (pageNum > 1) {
-				 urlList2=jointNextpage3(page, web.getSeed(), pageNum);
+				 urlList2=nextPageUrlUtil.jointNextpage3(page, web.getSeed(), pageNum);
 			}
 		}
 		
 		if(temp == 0 && web.getSeed().contains("http://finance.aweb.com.cn") 
 				||web.getSeed().contains("http://www.nykfw.com")  ||
 				web.getSeed().contains("http://www.gdcct.net")  && pageNum >1){
-			urlList2=jointNextpage4(page, web.getSeed(), pageNum);
+			urlList2=nextPageUrlUtil.jointNextpage4(page, web.getSeed(), pageNum);
 		}
 
 		if(temp ==0 && web.getSeed().contains("http://www.sczyw.com") && pageNum>1){
-			 urlList2=jointNextpage5(page, web.getSeed(), pageNum);
+			 urlList2=nextPageUrlUtil.jointNextpage5(page, web.getSeed(), pageNum);
 		}
 		
 		if(temp ==0 && web.getSeed().contains("http://www.3456.tv/") && pageNum>1){
-			urlList2 = jointNextpage6(page, web.getSeed(), pageNum);
+			urlList2 = nextPageUrlUtil.jointNextpage6(page, web.getSeed(), pageNum);
 		}
 		//将得到的分页链接也加入到target 中， 然后存入targeturl 中，
 		if(urlList2!=null  && urlList2.size()!=0){
@@ -266,9 +258,9 @@ public class BaseCrawler implements PageProcessor {
 		String title = "";
 		if (!(pageUrl.equals(web.getSeed().trim()))) {
 			if (isNextpage == false) {
-				
+				//web.getlist.get(1) 是读取配置文件中的需要抓取的 xpath
 				contents = html.xpath(web.getList().get(1)).all().toString().replaceAll(regex, "");
-
+				//web.getlist.get(1) 是读取配置文件中 需要抓取标题的 xpath
 				if (web.getList().get(0) != "" && web.getList().get(0) != null) {
 					title = html.xpath(web.getList().get(0)).toString();
 				}
@@ -332,6 +324,16 @@ public class BaseCrawler implements PageProcessor {
 					.thread(5);
 			spider.run();
 		}
+		// 特殊网站。http://crop.agridata.cn/96-014/default.html
+		if(web.getSeed().contains("http://crop.agridata.cn")){
+			Spider.create(new AgridataSpider(web,seedUrlId))
+				.setDownloader(new HttpClientDownloader())
+				.addUrl(web.getSeed())
+				.addPipeline(new SpiderPipeline(web))
+				.addPipeline(new ImgOrDocPipeline(fileDir))
+				.thread(5)
+				.run();
+		}
 		
 		if (web.isHasDoc() || web.isHasImg()) {
 			Spider.create(new BaseCrawler(web, seedUrlId)).addUrl(web.getSeed()).thread(3)
@@ -355,124 +357,13 @@ public class BaseCrawler implements PageProcessor {
 		this.web = web;
 	}
 
-	/**
-	 * 组装下一页的链接。针对 http://rdjc.lknet.ac.cn/list.php 这一系列的网站
-	 * 
-	 * @param page
-	 * @param urlList
-	 * @param str
-	 * @param totalpage
-	 */
-	public List<String> jointNextpage(Page page,  String str, int totalpage) {
-		String seed = str;
-		List<String> urlList =new ArrayList<>();
-		int n = seed.indexOf("?");
-		String id = seed.substring(n + 1);
-		String suffex = "&" + id + "&keyword=&select=";
-		String prefix = "http://rdjc.lknet.ac.cn/list.php?currpage=";
-		for (int i = 2; i < totalpage; i++) {
-			urlList.add(prefix + i + suffex);
-		}
-		page.addTargetRequests(urlList);
-		return urlList;
-	}
-
-	/**
-	 * 组装下一页的链接，主要用于http://catf.agri.cn 、 http://cxpt.agri.gov.cn
-	 * http://www.moa.gov.cn http://pfscnew.agri.gov.cn http://www.tea.agri.cn
-	 * 这一类的链接
-	 * 
-	 * @param page
-	 * @param urlList
-	 * @param str
-	 * @param totalpage
-	 */
-	public List<String> jointNextpage2(Page page,  String str, int totalpage) {
-		String seed = str;
-		List<String> urlList =new ArrayList<>();
-		for (int i = 1; i < totalpage; i++) {
-			urlList.add(seed + "index_" + i + ".htm");
-		}
-		page.addTargetRequests(urlList);
-		return urlList;
-	}
-
-	/**
-	 * 组装 http://www.caas.net.cn 一类的网站链接
-	 * 
-	 * @param page
-	 * @param urlList
-	 * @param str
-	 * @param totalpage
-	 */
-	public List<String> jointNextpage3(Page page,  String str, int totalpage) {
-		String seed = str;
-		List<String> urlList =new ArrayList<>();
-		for (int i = 1; i < totalpage; i++) {
-			urlList.add(seed + "index" + i + ".shtml");
-		}
-		page.addTargetRequests(urlList);
-		return urlList;
-	}
-
-	/**
-	 * http://finance.aweb.com.cn 等网站
-	 * 
-	 * @param page
-	 * @param urlList
-	 * @param str
-	 * @param totalpage
-	 */
 	
-	  public List<String> jointNextpage4(Page page,String str,int totalpage){
-		  List<String> urlList =new ArrayList<>();
-		  String seed=str; for(int i=1;i<=totalpage;i++){
-			  	urlList.add(seed+"index_"+i+".html"); 
-		  }
-		  page.addTargetRequests(urlList);
-		  return urlList;
-	  }
-	 
-	/**
-	 * http://www.sczyw.com
-	 * @param page
-	 * @param urlList
-	 * @param str
-	 * @param totalpage
-	 */
-	  public List<String> jointNextpage5(Page page, String str, int totalpage) {
-			String seed = str;
-			List<String> urlList =new ArrayList<>();
-			for (int i = 2; i <= totalpage; i++) {
-				urlList.add(seed + "&currpage=" + i);
-			}
-			page.addTargetRequests(urlList);
-			return urlList;
-		}
-	  
-	  /**
-	   * http://www.3456.tv/
-	   * @param page
-	   * @param str
-	   * @param totalpage
-	   * @return
-	   */
-	  public List<String> jointNextpage6(Page page, String str, int totalpage) {
-			String seed = str.replaceAll("\\.html", "");
-			List<String> urlList =new ArrayList<>();
-			for (int i = 2; i <= totalpage; i++) {
-				urlList.add(seed + "_" + i+".html");
-			}
-			page.addTargetRequests(urlList);
-			return urlList;
-		}
-	  
 	  
 	  
 	public static void main(String[] args) {
 		BaseCrawler b = new BaseCrawler();
 		Page page = new Page();
 		List<String> urlList = new ArrayList<>();
-		b.jointNextpage(page, "http://rdjc.lknet.ac.cn/list.php?colid=", 10);
+//		b.jointNextpage(page, "http://rdjc.lknet.ac.cn/list.php?colid=", 10);
 	}
 }

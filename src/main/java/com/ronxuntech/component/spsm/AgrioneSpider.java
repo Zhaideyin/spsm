@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ronxuntech.component.spsm.util.AnnexUtil;
+import com.ronxuntech.component.spsm.util.NextPageUrlUtil;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
 import com.ronxuntech.service.spsm.annexurl.impl.AnnexUrlService;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
@@ -16,7 +17,11 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
-
+/*
+ * 针对这类网站 的 http://www.agrione.cn
+ * 
+ * 
+ */
 public class AgrioneSpider implements PageProcessor{
 	private WebInfo web;
 	private SpiderManager spiderService;
@@ -27,6 +32,7 @@ public class AgrioneSpider implements PageProcessor{
 	private String seedUrlId = "";
 	// 附件工具
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
+	private NextPageUrlUtil nextPageUrlUtil = NextPageUrlUtil.getInstance();
 	private int pageFlag=0;
 	private Site site=Site.me().setSleepTime(1000).setRetryTimes(3).setTimeOut(2000000)
 			.addHeader("Upgrade-Insecure-Requests", "1")
@@ -38,6 +44,10 @@ public class AgrioneSpider implements PageProcessor{
 	
 	private String regex = "[\\[|\\]|,]";
 	public  AgrioneSpider(WebInfo web ,String seedUrlId) {
+		spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
+		targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
+//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
+		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
 		this.web =web;
 		this.seedUrlId=seedUrlId;
 	}
@@ -47,26 +57,18 @@ public class AgrioneSpider implements PageProcessor{
 
 	@Override
 	public void process(Page page) {
-		spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
-		targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
-		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
+		
 		Html html=page.getHtml();
 		List<String> links =html.xpath(web.getUrlTag()).links()
 				.regex(web.getUrlRex()).all();
-////		String title=html.xpath(web.getList().get(0)).toString();
-////		String contents =html.xpath(web.getList().get(1)).all().toString();
 		String pageUrl = page.getUrl().toString();
-//		page.putField("pageUrl",pageUrl);
-//		page.putField("content", contents);
-//		page.putField("title", title);
 		page.addTargetRequests(links);
 		
 		String pageNumInContent=html.xpath(web.getTotalPage()).toString();
 		int totalPageNum=annexUtil.getTotalPageNum(pageNumInContent, web.getSeed());
 		//拼接下一页的链接并放入Targetrequests 只是执行一次。
 		if(pageFlag==0){
-			List<String> urlList2 = jointNextpage(page, web.getSeed(), totalPageNum);
+			List<String> urlList2 = nextPageUrlUtil.jointNextpage7(page, web.getSeed(), totalPageNum);
 			links.addAll(urlList2);
 			pageFlag++;
 		}
@@ -78,9 +80,6 @@ public class AgrioneSpider implements PageProcessor{
 			} catch (Exception e) {
 			
 			}
-//		//信息保存 和附件下载	
-//		annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService, pageUrl, spiderService,
-//				targeturlService);
 			boolean isNextpage = annexUtil.isSave(web, page);
 			// --------将需要的数据 得到后数据存入数据库（排除种子页面、分页链接）----------
 			String contents = "";
@@ -117,23 +116,7 @@ public class AgrioneSpider implements PageProcessor{
 		return site;
 	}
 
-	/**
-	 * 拼接下一页的链接，并放入addTargetRequests
-	 * @param page
-	 * @param str
-	 * @param totalpage
-	 */
-	public List<String> jointNextpage(Page page,  String str, int totalpage) {
-		String seed = str;
-		List<String> urlList =new  ArrayList<>();
-		String prf = "index-";
-		String suf = ".html";
-		for (int i = 1; i < totalpage; i++) {
-			urlList.add(seed + prf + i + suf);
-		}
-		page.addTargetRequests(urlList);
-		return urlList;
-	}
+	
 
 	
 }
