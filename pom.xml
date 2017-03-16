@@ -19,7 +19,6 @@
 		<project.artifactId>zp</project.artifactId>
 		<drools.version>6.4.0.Final</drools.version>
 		<project.tomcat.version>8.0.0-RC5</project.tomcat.version>
-		
 	</properties>
 
 	<dependencies>
