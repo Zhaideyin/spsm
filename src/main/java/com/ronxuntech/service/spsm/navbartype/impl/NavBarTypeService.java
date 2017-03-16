@@ -69,7 +69,12 @@ public class NavBarTypeService implements NavBarTypeManager{
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("NavBarTypeMapper.findById", pd);
 	}
-	
+
+	@Override
+	public PageData findByName(PageData pd) throws Exception {
+		return (PageData)dao.findForObject("NavBarTypeMapper.findByName", pd);
+	}
+
 	/**批量删除
 	 * @param ArrayDATA_IDS
 	 * @throws Exception

@@ -69,7 +69,12 @@ public class SubListTypeService implements SubListTypeManager{
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("SubListTypeMapper.findById", pd);
 	}
-	
+
+	@Override
+	public PageData findByName(PageData pd) throws Exception {
+		return (PageData)dao.findForObject("SubListTypeMapper.findByName", pd);
+	}
+
 	/**批量删除
 	 * @param ArrayDATA_IDS
 	 * @throws Exception

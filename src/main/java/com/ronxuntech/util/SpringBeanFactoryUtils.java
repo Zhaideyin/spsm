@@ -1,8 +1,11 @@
 package com.ronxuntech.util;
 
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 普通类调用Spring注解方式的Service层bean

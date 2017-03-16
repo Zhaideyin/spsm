@@ -27,10 +27,14 @@ public class ConvertUtil {
 	public void removeDuplicateWithOrder(List<String> list) {
 		Set<String> set = new HashSet();
 		List<String> newList = new ArrayList();
+		if(list == null || list.size() == 0){
+			return;
+		}
 		for (Iterator<String> iter = list.iterator(); iter.hasNext();) {
 			String element = iter.next();
-			if (set.add(element))
+			if (set.add(element)){
 				newList.add(element);
+			}
 		}
 		list.clear();
 		list.addAll(newList);
@@ -73,5 +77,15 @@ public class ConvertUtil {
 			annexUrlList.add(a[j]);
 		}
 		return annexUrlList;
+	}
+	
+	public static void main(String[] args) {
+		ConvertUtil	convertUtil =new ConvertUtil();
+		List<String> list = new ArrayList<>();
+//		list.add("a");
+//		list.add("b");
+//		list.add("a");
+		convertUtil.removeDuplicateWithOrder(list);
+		System.out.println(list.toString());
 	}
 }

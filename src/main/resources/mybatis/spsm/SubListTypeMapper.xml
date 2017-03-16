@@ -61,7 +61,16 @@
 		where 
 			SUBLISTTYPE_ID = #{SUBLISTTYPE_ID}
 	</select>
-	
+
+<!--通过name 查询 -->
+	<select id="findByName" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include>
+		where
+		SUBLISTTYPENAME = #{datatypeName}
+	</select>
 	<!-- 通过上一级来查询下一级 的列表 -->
 	<select id="listFindByListID" parameterType="pd" resultType="pd">
 		select

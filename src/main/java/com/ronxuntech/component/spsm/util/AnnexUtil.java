@@ -1,21 +1,15 @@
 package com.ronxuntech.component.spsm.util;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.regexp.recompile;
 
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
@@ -334,7 +328,7 @@ public class AnnexUtil {
 	 * @param targeturlService
 	 */
 
-	public PageData insertintoDatabase(String contents, String title,String cropName,String varietalName, WebInfo web, String pageUrl,
+	public PageData insertintoDatabase(String contents, String title,String cropTypeId,String cropName,String breedName, WebInfo web, String pageUrl,
 			SpiderManager spiderService, TargetUrlManager targeturlService) {
 		PageData pd = new PageData();
 		// 将[],去掉
@@ -349,13 +343,13 @@ public class AnnexUtil {
 		pd.put("DATABASETYPE", web.getDatabaseType());
 		pd.put("NAVBARTYPE", web.getNavbarType());
 		pd.put("LISTTYPE", web.getListType());
-		pd.put("SUBLISTTYPE", web.getSublistType());
-
+		pd.put("SUBLISTTYPE",web.getSublistType());
+		pd.put("CROPTYPE", cropTypeId);
 		String d = sdf.format(new Date());
 		pd.put("CREATE_TIME", d);
 		pd.put("TARGETURLID", pageUrl);// 目前未存id
-		if(StringUtils.isNotEmpty(varietalName)){
-			pd.put("VARIETABLENAME", varietalName);
+		if(StringUtils.isNotEmpty(breedName)){
+			pd.put("BREEDNME", breedName);
 		}
 		if(StringUtils.isNotEmpty(cropName)){
 			pd.put("CROPNAME", cropName);
@@ -493,13 +487,13 @@ public class AnnexUtil {
 	 * @param spiderService
 	 * @param targeturlService
 	 */
-	public void annexSaveAndDown(Page page, String contents, String title,String cropName,String varietalName, WebInfo web, AnnexUrlManager annexurlService,
+	public void annexSaveAndDown(Page page, String contents, String title,String cropTypeId,String cropName,String breedName, WebInfo web, AnnexUrlManager annexurlService,
 			String pageUrl, SpiderManager spiderService, TargetUrlManager targeturlService) {
 		// ****************附件下载准备*****************************************************/
 		// annexFileNameList（下载文件路径含文件名） anneurlList（下载地址）
 
 		// 将需要保存的数据封装到 pd 中
-		PageData pd = annexUtil.insertintoDatabase(contents, title, cropName,varietalName,web, pageUrl, spiderService, targeturlService);
+		PageData pd = annexUtil.insertintoDatabase(contents, title, cropTypeId, cropName,breedName,web, pageUrl, spiderService, targeturlService);
 		page.putField("pd", pd);
 
 		// 用来保存 附件下载地址的中间变量

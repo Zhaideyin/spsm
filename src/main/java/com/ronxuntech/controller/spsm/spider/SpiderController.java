@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ronxuntech.component.spsm.spider.BaseSpider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ronxuntech.component.spsm.AjaxCrawler;
-import com.ronxuntech.component.spsm.BaseCrawler;
-import com.ronxuntech.component.spsm.PostCrawler;
 import com.ronxuntech.component.spsm.WebInfo;
+import com.ronxuntech.component.spsm.lucene.LuceneUtil;
+import com.ronxuntech.component.spsm.spider.AjaxSpider;
+import com.ronxuntech.component.spsm.spider.PostSpider;
 import com.ronxuntech.component.spsm.util.ReadXML;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
@@ -78,8 +79,6 @@ public class SpiderController extends BaseController {
 	
 	@Resource(name="annexurlService")
 	private AnnexUrlManager annexurlService;
-	
-	
 	
 	@Autowired
 	private  HttpServletRequest request;
@@ -186,6 +185,72 @@ public class SpiderController extends BaseController {
 		
 		out.close();
 	}
+	
+	/**
+	 * 创建索引  存放目录 D://index
+	 * @param out
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/createIndex")
+	public void createIndex(PrintWriter out) throws Exception {
+		PageData pd = this.getPageData();
+		
+		List<String> fieldNameList = new ArrayList<>();
+		fieldNameList.add("SPIDER_ID");
+		fieldNameList.add("TITLE");
+		fieldNameList.add("CONTENT");
+		if(null!=pd.getString("DATABASETYPE_ID") && ""!=pd.getString("DATABASETYPE_ID")){
+			List<PageData> pagedataList = spiderService.listByDataType(pd);;
+			LuceneUtil.createIndex(pagedataList, fieldNameList);
+			out.println("create index sucess!");
+		}else{
+			out.println("create index fail!");
+		}
+
+		/*int autocreate=0;
+		if(null != pd.getString("autocreate")){
+			autocreate=Integer.parseInt(pd.getString("autocreate"));
+		}*/
+		//如果autocreate ==1 则开始自动创建 否则 则是手动创建，如果手动没有选中任何库，则会对所有库创建。
+		/*if(autocreate != 1){
+			if(null != pd.get("DATABASETYPE_ID") && ""!=pd.get("DATABASETYPE_ID")){
+				out.println("please choose the databaseType!");
+				*//*List<PageData> databaseTypeList =databasetypeService.listAll(pd);
+				for(int i = 0 ;i< databaseTypeList.size();i++){
+					List<PageData> pagedataList = spiderService.listByDataType(databaseTypeList.get(i));
+					LuceneUtil.createIndex(pagedataList, fieldNameList);
+				}*//*
+			}else{
+
+			}*/
+//		}else{
+
+			/*List<PageData> databaseTypeList =databasetypeService.listAll(pd);
+			//循环创建索引
+			for(int i = 0 ;i< databaseTypeList.size();i++){
+				List<PageData> pagedataList = spiderService.listByDataType(databaseTypeList.get(i));
+				AutoCreateIndexTimer.startTimer(pagedataList, fieldNameList, 10);
+			}
+		}*/
+		
+	}
+	
+	/**
+	 * 进如创建索引界面
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/goCreateIndex")
+	public ModelAndView goCreateIndex() throws Exception {
+		List<PageData> list = databasetypeService.listAll(new PageData());
+		ModelAndView mv = this.getModelAndView();
+		mv.addObject("dataTypeList",list);
+		mv.setViewName("spsm/spider/spider_createIndex");
+		return mv;
+	}
+	
+	
+	
 	/**
 	 * 检查是否下载完成
 	 * @param seedpd1
@@ -212,38 +277,32 @@ public class SpiderController extends BaseController {
 	
 	/**
 	 * 开始抓取
-	 * @param pd
-	 * @param seedUrl
-	 * @param dataType
+	 * @param web
 	 * @throws Exception
 	 */
 	public void collar(WebInfo web) throws Exception{
-		BaseCrawler crawler=BaseCrawler.getInstance();
-		AjaxCrawler ajaxCrawler=AjaxCrawler.getInstance();
-		PostCrawler postCrawler =PostCrawler.getInstance();
+		BaseSpider crawler= BaseSpider.getInstance();
+		AjaxSpider ajaxSpider = AjaxSpider.getInstance();
+		PostSpider postSpider = PostSpider.getInstance();
 		if(web.getPageMethod().equals("get")){
 			crawler.start(web);
 		}else if(web.getPageMethod().equals("ajax")){
-			ajaxCrawler.start(web);
+			ajaxSpider.start(web);
 		}else if(web.getPageMethod().equals("post")){
-			postCrawler.start(web);
+			postSpider.start(web);
 		}
 	}
 	
 	//停止
-		@RequestMapping(value = "/stop")
+		/*@RequestMapping(value = "/stop")
 		public void stop(PrintWriter out) throws Exception {
-//			if(crawler.getS().getStatus()!=Spider.Status.Stopped){
-//				crawler.getS().stop();
-//				Thread t=new Thread();
-//				t.sleep(10000);
-//				System.out.println("stop: *******************   after "+crawler.getS().getStatus());
-//			}
+				crawler.stop();
+				System.out.println("stop: *******************   after "+crawler.getS().getStatus());
 			
-//			crawler.down();
+			crawler.down();
 			out.write("success");
 			out.close();
-		}
+		}*/
 	
 	/**保存
 	 * @param
@@ -512,7 +571,7 @@ public class SpiderController extends BaseController {
 	 * @throws Exception   List<String> targetUrlList,List<PageData> redownTargetUrlList ,WebInfo web
 	 */
 	/*public void reDownloadTargetUrl(String seedUrl,StringBuffer dataType,PageData pd1) throws Exception{
-		BaseCrawler crawler=BaseCrawler.getInstance();
+		BaseSpider crawler=BaseSpider.getInstance();
 		PageData pd2=new PageData();
 		pd2.put("SEEDURLID", pd1.getString("SEEDURL_ID"));
 		pd2.put("STATUS", "0");

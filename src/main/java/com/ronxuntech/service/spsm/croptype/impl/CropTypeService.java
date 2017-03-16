@@ -2,7 +2,12 @@ package com.ronxuntech.service.spsm.croptype.impl;
 
 import java.util.List;
 import javax.annotation.Resource;
+
+import org.junit.runner.RunWith;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import com.ronxuntech.dao.DaoSupport;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.util.PageData;
@@ -14,6 +19,7 @@ import com.ronxuntech.service.spsm.croptype.CropTypeManager;
  * 创建时间：2017-02-16
  * @version
  */
+
 @Service("croptypeService")
 public class CropTypeService implements CropTypeManager{
 
@@ -83,7 +89,7 @@ public class CropTypeService implements CropTypeManager{
 	 */
 	@Override
 	public PageData findByCropName(PageData pd) throws Exception {
-		return (PageData) dao.findForList("CropTypeMapper.findByCropName", pd);
+		return (PageData) dao.findForObject("CropTypeMapper.findByCropName", pd);
 	}
 
 	/**

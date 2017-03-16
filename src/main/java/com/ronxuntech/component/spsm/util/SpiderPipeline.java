@@ -1,18 +1,10 @@
 package com.ronxuntech.component.spsm.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.ronxuntech.component.spsm.FinancePageModel;
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
 import com.ronxuntech.service.spsm.targeturl.TargetUrlManager;
 import com.ronxuntech.util.PageData;
 import com.ronxuntech.util.SpringBeanFactoryUtils;
-import com.ronxuntech.util.UuidUtil;
 
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
@@ -76,6 +68,9 @@ public class SpiderPipeline implements Pipeline{
 				PageData pd= resultItems.get("pd");
 				// 如果怕去的 内容是空，则不跳出。不存入数据库。
 				if (!("".equals(resultItems.get("content").toString().trim()))) {
+					if(web.getSeed().contains("http://crop.agridata.cn/96-014/default.html") && pageUrl.toLowerCase().contains("cgris")){
+						return;
+					}
 					// 将爬取的数据放入数据库
 					spiderService.save(pd);
 					// 当钱页面不是种子页面，通过查询，然后修改该url的状态。

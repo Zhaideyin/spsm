@@ -65,6 +65,14 @@ public class SpiderService implements SpiderManager{
 		return (List<PageData>)dao.findForList("SpiderMapper.listAll", pd);
 	}
 	
+	/**通过数据类型查询
+	 * @param pd
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	public List<PageData> listPageByDataType(Page pg) throws Exception {
+		return (List<PageData>) dao.findForList("SpiderMapper.listPageByDataType", pg);
+	}
 	/**通过id获取数据
 	 * @param pd
 	 * @throws Exception
@@ -87,6 +95,13 @@ public class SpiderService implements SpiderManager{
 	public List<PageData> findByAnnexUrlAndPageUrl(PageData pd) throws Exception {
 		return (List<PageData>)dao.findForList("SpiderMapper.findByAnnexUrlAndPageUrl", pd);
 	}
+
+	@Override
+	public List<PageData> listByDataType(PageData pd) throws Exception {
+		
+		return  (List<PageData>) dao.findForList("SpiderMapper.listByDataType", pd);
+	}
+
 	
 }
 

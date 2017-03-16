@@ -61,7 +61,15 @@
 		where 
 			LISTTYPE_ID = #{LISTTYPE_ID}
 	</select>
-	
+
+	<select id="findByName" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include>
+		where
+		LISTTYPENAME = #{datatypeName}
+	</select>
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		select

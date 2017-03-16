@@ -61,7 +61,16 @@
 		where 
 			NAVBARTYPE_ID = #{NAVBARTYPE_ID}
 	</select>
-	
+
+	<select id="findByName" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from
+		<include refid="tableName"></include>
+		where
+		NAVBARTYPENAME = #{datatypeName}
+	</select>
+
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		select

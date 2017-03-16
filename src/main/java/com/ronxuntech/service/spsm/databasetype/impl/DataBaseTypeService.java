@@ -72,7 +72,12 @@ public class DataBaseTypeService implements DataBaseTypeManager{
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("DatabaseTypeMapper.findById", pd);
 	}
-	
+
+	@Override
+	public PageData findByName(PageData pd) throws Exception {
+		return (PageData)dao.findForObject("DatabaseTypeMapper.findByName", pd);
+	}
+
 	/**批量删除
 	 * @param ArrayDATA_IDS
 	 * @throws Exception

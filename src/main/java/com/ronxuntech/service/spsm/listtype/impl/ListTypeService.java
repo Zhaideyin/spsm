@@ -69,7 +69,12 @@ public class ListTypeService implements ListTypeManager{
 	public PageData findById(PageData pd)throws Exception{
 		return (PageData)dao.findForObject("ListTypeMapper.findById", pd);
 	}
-	
+
+	@Override
+	public PageData findByName(PageData pd) throws Exception {
+		return (PageData)dao.findForObject("ListTypeMapper.findByName", pd);
+	}
+
 	/**批量删除
 	 * @param ArrayDATA_IDS
 	 * @throws Exception

@@ -33,7 +33,7 @@ import us.codecraft.webmagic.utils.FilePersistentBase;
 public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	public ImgOrDocPipeline() {
 		setPath("/data/webmagic/");
 	}
@@ -68,6 +68,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 
 	// 附件功能
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
+	private ConvertUtil convertUtil =ConvertUtil.getInstance();
 	// 附件名
 	private List<String> annexNameList;
 	private AnnexUrlManager annexurlService;
@@ -94,8 +95,11 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 			CloseableHttpClient httpclient = HttpClients.custom().setDefaultRequestConfig(defaultRequestConfig).build();
 
 			List<String> annexUrlList =resultItems.get("annexUrlList");
+			//去重imgUrl
+			convertUtil.removeDuplicateWithOrder(annexUrlList);
 			List<String> annexFileNameList =resultItems.get("annexFileNameList");
-			String pageUrl =resultItems.get("pageUrl");
+			convertUtil.removeDuplicateWithOrder(annexFileNameList);
+//			String pageUrl =resultItems.get("pageUrl");
 			StringBuffer sb = new StringBuffer();
 			StringBuffer imgFileNameNewYuan = sb.append(path); // 此处提取文件夹名，即之前采集的标题名
 
@@ -104,9 +108,11 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 			if (!fp.exists()) {
 				fp.mkdirs();
 			}
+			if(annexUrlList == null || annexUrlList.size()==0){
+				return;
+			}
 			for(int i=0;i<annexUrlList.size();i++){
 				String url = annexUrlList.get(i).trim();
-				System.out.println("pageUrl :"+pageUrl +"imgordocpipeline:"+i+"   "+url);
 				HttpGet httpget = new HttpGet(url);
 				HttpResponse response = httpclient.execute(httpget);
 				HttpEntity entity = response.getEntity();
@@ -175,7 +181,7 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
 		
 		if(listPd.size()>0){
 			pd.put("ANNEXURL", url);
