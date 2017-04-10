@@ -22,7 +22,9 @@ public class DataBaseTypeService implements DataBaseTypeManager{
 
 	@Resource(name = "daoSupport")
 	private DaoSupport dao;
-	
+	public void test(){
+		System.out.println("dabasetypeservic dao:"+dao);
+	}
 	/**新增
 	 * @param pd
 	 * @throws Exception
@@ -86,7 +88,7 @@ public class DataBaseTypeService implements DataBaseTypeManager{
 		dao.delete("DatabaseTypeMapper.deleteAll", ArrayDATA_IDS);
 	}
 
-	
-	
+
+
 }
 

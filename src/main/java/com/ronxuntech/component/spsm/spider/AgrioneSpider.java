@@ -1,7 +1,5 @@
 package com.ronxuntech.component.spsm.spider;
 
-import java.util.List;
-
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.component.spsm.util.AnnexUtil;
 import com.ronxuntech.component.spsm.util.NextPageUrlUtil;
@@ -12,11 +10,12 @@ import com.ronxuntech.service.spsm.spider.impl.SpiderService;
 import com.ronxuntech.service.spsm.targeturl.TargetUrlManager;
 import com.ronxuntech.service.spsm.targeturl.impl.TargetUrlService;
 import com.ronxuntech.util.SpringBeanFactoryUtils;
-
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
+
+import java.util.List;
 
 /*
  * 针对这类网站 的 http://www.agrione.cn
@@ -60,7 +59,7 @@ public class AgrioneSpider implements PageProcessor {
     public void process(Page page) {
 
         Html html = page.getHtml();
-        List<String> links = html.xpath(web.getUrlTag()).links()
+        List<String> links = html.links()
                 .regex(web.getUrlRex()).all();
         String pageUrl = page.getUrl().toString();
         page.addTargetRequests(links);
@@ -83,27 +82,10 @@ public class AgrioneSpider implements PageProcessor {
         }
         boolean isNextpage = annexUtil.isSave(web, page);
         // --------将需要的数据 得到后数据存入数据库（排除种子页面、分页链接）----------
-        String contents = "";
-        String title = "";
-        if (!(pageUrl.equals(web.getSeed().trim()))) {
-            if (isNextpage == false) {
-
-                contents = html.xpath(web.getList().get(1)).all().toString().replaceAll(regex, "");
-
-                if (web.getList().get(0) != "" && web.getList().get(0) != null) {
-                    title = html.xpath(web.getList().get(0)).toString();
-                }
-                page.putField("content", contents.trim());
-                page.putField("title", title);
-                page.putField("pageUrl", pageUrl);
-
-                annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService, pageUrl, spiderService,
-                        targeturlService);
-
-            } else { // 如果该链接不是想要的，（如下一页的链接，但是又要修改他的状态）
-                annexUtil.updateTargetStatus(pageUrl, targeturlService);
-            }
-        }
+//        String contents = "";
+//        String title = "";
+        //将抓取的数据处理并放入page 以待
+        annexUtil.insertIntoPage(page, web, annexUtil, annexurlService, targeturlService);
 
         if (page.getResultItems().get("content") == null || page.getResultItems().get("content").equals("")) {
             // 设置skip之后，这个页面的结果不会被Pipeline处理

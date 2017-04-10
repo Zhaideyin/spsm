@@ -9,7 +9,8 @@
 	
 	<!-- 字段 -->
 	<sql id="Field">
-		SEED,	
+		SEED,
+		URLTAG,
 		URLREX,	
 		TITLETAG,	
 		CONTENTTAG,	
@@ -23,13 +24,19 @@
 		PAGEAJAXTAG,	
 		PAGEGETTAG,	
 		PAGEMETHOD,	
-		PAGEENCODING,	
+		PAGEENCODING,
+		DATABASETYPEID,
+		NAVBARTYPEID,
+		LISTTYPEID,
+		SUBLISTTYPEID,
+		CREATETIME,
 		WEBINFO_ID
 	</sql>
 	
 	<!-- 字段值 -->
 	<sql id="FieldValue">
-		#{SEED},	
+		#{SEED},
+		#{URLTAG},
 		#{URLREX},	
 		#{TITLETAG},	
 		#{CONTENTTAG},	
@@ -43,7 +50,12 @@
 		#{PAGEAJAXTAG},	
 		#{PAGEGETTAG},	
 		#{PAGEMETHOD},	
-		#{PAGEENCODING},	
+		#{PAGEENCODING},
+		#{DATABASETYPEID},
+		#{NAVBARTYPEID},
+		#{LISTTYPEID},
+		#{SUBLISTTYPEID},
+		#{CREATETIME},
 		#{WEBINFO_ID}
 	</sql>
 	
@@ -72,6 +84,7 @@
 		<include refid="tableName"></include>
 		set 
 			SEED = #{SEED},
+			URLTAG = #{URLTAG},
 			URLREX = #{URLREX},
 			TITLETAG = #{TITLETAG},
 			CONTENTTAG = #{CONTENTTAG},
@@ -86,6 +99,11 @@
 			PAGEGETTAG = #{PAGEGETTAG},
 			PAGEMETHOD = #{PAGEMETHOD},
 			PAGEENCODING = #{PAGEENCODING},
+			DATABASETYPEID=#{DATABASETYPEID},
+			NAVBARTYPEID=#{NAVBARTYPEID},
+			LISTTYPEID=#{LISTTYPEID},
+			SUBLISTTYPEID=#{SUBLISTTYPEID},
+			CREATETIME=#{CREATETIME},
 		WEBINFO_ID = WEBINFO_ID
 		where 
 		WEBINFO_ID = #{WEBINFO_ID}
@@ -108,15 +126,12 @@
 		from 
 		<include refid="tableName"></include>
 		where 1=1
-		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+		<if test="pd.seedUrl!= null and pd.seedUrl != ''"><!-- 关键词检索 -->
 			and
 				(
-				<!--	根据需求自己加检索条件
-					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
-					 or 
-					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
-				-->
-				)
+					/*根据需求自己加检索条件*/
+					SEED LIKE CONCAT(CONCAT('%', #{pd.seedUrl}),'%')
+  				)
 		</if>
 	</select>
 	

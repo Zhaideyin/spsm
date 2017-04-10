@@ -174,7 +174,7 @@ public class AjaxSpider {
 					page.putField("title", title);
 					page.putField("pageUrl", pageUrl);
 
-					annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService, pageUrl, spiderService, targeturlService);
+					annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService, targeturlService);
 					
 					if (page.getResultItems().get("content")==null || contents.equals("")){
 				        //设置skip之后，这个页面的结果不会被Pipeline处理
@@ -200,14 +200,14 @@ public class AjaxSpider {
 		if (web.isHasDoc() || web.isHasImg()) {
 			Spider.create(doc).addUrl(web.getSeed()).thread(3)
 			.setDownloader(new HttpClientDownloader())
-			.scheduler(scheduler)
+			.setScheduler(scheduler)
 			.addPipeline(new SpiderPipeline(web))
 			.addPipeline(new ImgOrDocPipeline(fileDir))
 			.run();
 		} else {
 			Spider.create(doc).addUrl(web.getSeed()).thread(10)
 			.setDownloader(new HttpClientDownloader())
-			.scheduler(scheduler)
+			.setScheduler(scheduler)
 			.addPipeline(new SpiderPipeline(web))
 			.run();
 		}

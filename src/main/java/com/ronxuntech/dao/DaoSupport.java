@@ -18,7 +18,10 @@ public class DaoSupport implements DAO {
 
 	@Resource(name = "sqlSessionTemplate")
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
+	public void test(){
+		System.out.println("DaoSupport sqlSessionTemplate:"+sqlSessionTemplate);
+	}
 	/**
 	 * 保存对象
 	 * @param str
@@ -55,7 +58,6 @@ public class DaoSupport implements DAO {
 	/**
 	 * 批量更新
 	 * @param str
-	 * @param obj
 	 * @return
 	 * @throws Exception
 	 */
@@ -80,7 +82,6 @@ public class DaoSupport implements DAO {
 	/**
 	 * 批量更新
 	 * @param str
-	 * @param obj
 	 * @return
 	 * @throws Exception
 	 */
@@ -124,7 +125,10 @@ public class DaoSupport implements DAO {
 	public Object findForMap(String str, Object obj, String key, String value) throws Exception {
 		return sqlSessionTemplate.selectMap(str, obj, key);
 	}
-	
+
+	public SqlSessionTemplate getSqlSessionTemplate() {
+		return sqlSessionTemplate;
+	}
 }
 
 

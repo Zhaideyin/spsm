@@ -85,7 +85,7 @@
 				<!-- 	根据需求自己加检索条件 -->
 					n.NAVBARTYPENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
 					 or 
-					d.DATABASENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+					d.NAVBARTYPENAME LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
 				
 				)
 		</if>

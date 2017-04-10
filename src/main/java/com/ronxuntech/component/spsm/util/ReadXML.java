@@ -10,6 +10,8 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.ronxuntech.util.PathUtil;
+import sun.applet.Main;
+
 /**
  * 读取配置文件，并且返回一个map
  * Created by tongbu on 2016/10/8 0008.
@@ -20,7 +22,8 @@ public class ReadXML {
         SAXReader reader = new SAXReader();
         //获取项目资源路径
         String filePath=PathUtil.getClassResources();
-        File file = new File(filePath+"spsm/URL.xml");
+        System.out.println("filepath:"+filePath);
+        File file = new File("C:\\software\\eclipse\\workspace\\ndrc_console\\ndrc_console\\target\\classes\\spsm\\URL.xml");
         
         Document document = reader.read(file);
         Element root = document.getRootElement();
@@ -33,7 +36,7 @@ public class ReadXML {
             //获取url过滤的区域
             hsmap.put("urlTag",child.elementText("urlTag"));
             //获得url的正则表达式
-            hsmap.put("urlRex",child.elementText("urlRex"));
+            hsmap.put("urlRex",child.elementText("urlRex").replaceAll("&","&amp;"));
             //标签列表
             List list = child.element("tagList").elements();
             for(int i=0;i<list.size();i++){
@@ -54,7 +57,7 @@ public class ReadXML {
             Element elementDoc1=(Element) listDoc.get(0);
             hsmap.put("hasDoc",elementDoc1.getStringValue());
             Element elementDoc2=(Element) listDoc.get(1);
-            hsmap.put("docRegex",elementDoc2.getStringValue());
+            hsmap.put("docRegex",elementDoc2.getStringValue().replaceAll("&","&amp;"));
             Element elementDoc3=(Element) listDoc.get(2);
             hsmap.put("docTag",elementDoc3.getStringValue());
             
@@ -79,27 +82,32 @@ public class ReadXML {
             
             Element elementPageEncoding=(Element) listPage.get(5);
             hsmap.put("pageEncoding", elementPageEncoding.getStringValue());
+
+            List datatypeList=child.element("datatype").elements();
+            Element databaseType=(Element) datatypeList.get(0);
+            hsmap.put("databaseType", databaseType.getStringValue());
+
+            Element navbarType=(Element) datatypeList.get(1);
+            hsmap.put("navbarType", navbarType.getStringValue());
+
+            Element listType=(Element) datatypeList.get(2);
+            hsmap.put("listType", listType.getStringValue());
+
+            Element sublistType=(Element) datatypeList.get(3);
+            hsmap.put("sublistType", sublistType.getStringValue());
+
             listmap.add(hsmap);
         }
         return listmap;
     }
-    
-    /**
-     * 测试
-     * @param args
-     */
-    
-    public static void main(String[] args) {
-//        ReadXML readXML=new ReadXML();
-//        try {
-//        	List<HashMap> map =readXML.ResolveXml();
-//        	for(int i=0;i<map.size();i++){
-//        		System.out.println(map.get(i).get("tag1").toString().equals(""));
-//        	}
-//        	
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    	
+
+
+    public static void main(String[] args) throws Exception {
+        ReadXML readXML = new ReadXML();
+        List<HashMap> listmap = readXML.ResolveXml();
+        for (HashMap<String,String> map:listmap
+             ) {
+            System.out.println(map.get("urlRex").toString());
+        }
     }
 }

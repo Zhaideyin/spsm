@@ -44,17 +44,7 @@
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastStart" id="lastStart"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期" title="开始日期"/></td>
 								<td style="padding-left:2px;"><input class="span10 date-picker" name="lastEnd" name="lastEnd"  value="" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期" title="结束日期"/></td>
 								<td style="vertical-align:top;padding-left:2px;">
-								 
-								 
-								 <%-- <select id="DATABASETYPE_ID" name="DATABASETYPE_ID" databaseId="${pd.DATABASETYPE_ID}" >
-								 </select>
-								 <select id="NAVBARTYPE_ID" name="NAVBARTYPE_ID" navbarId="${pd.NAVBARTYPE_ID}">
-								 </select>
-								 <select id="LISTTYPE_ID" name="LISTTYPE_ID" listId="${pd.LISTTYPE_ID}">
-								 </select>
-								 <select id="SUBLISTTYPE_ID" name="SUBLISTTYPE_ID"sublistId="${pd.SUBLISTTYPE_ID}">
-								 </select> --%>
-								 
+
 								 <!-- 数据库 -->
 								<select id="DATABASETYPE_ID" name="DATABASETYPE_ID" onchange="getSecondSelect()">
 									<option value="" >--请选择库--</option>
@@ -94,21 +84,18 @@
 						</table>
 						<!-- 检索  -->
 					
-						<table id="simple-table" class="table table-striped table-bordered table-hover" style="margin-top:5px;">	
+						<table id="simple-table" class="table table-striped table-bordered table-hover" style="margin-top:5px;table-layout:fixed;">
 							<thead>
 								<tr>
 									<th class="center" style="width:35px;">
 									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
 									</th>
-									<th class="center" style="width:50px;">序号</th>
-									<th class="center">标题</th>
-									<!-- <th class="center">作者</th> -->
-									<!-- <th class="center">摘要</th> -->
-									<th class="center">内容</th>
-									<th class="center">类型</th>
-									<!-- <th class="center">发布时间</th> -->
-									<th class="center">爬取时间</th>
-									<th class="center">操作</th>
+									<th class="center" style="width: 50px;">序号</th>
+									<th class="center" style="width: 10%;">标题</th>
+									<th class="center" style="width: 55%;">内容</th>
+									<th class="center" style="width: 10%;">类型</th>
+									<th class="center" style="width: 10%;">爬取时间</th>
+									<th class="center" style="width: 10%;">操作</th>
 								</tr>
 							</thead>
 													
@@ -122,31 +109,29 @@
 											<td class='center'>
 												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.SPIDER_ID}" class="ace" /><span class="lbl"></span></label>
 											</td>
-											<td class='center' style="width: 30px;">${vs.index+1}</td>
+											<td class='center' >${vs.index+1}</td>
 											<td class='center'>${var.TITLE}</td>
-											<%-- <td class='center'>${var.AUTHOR}</td> --%>
-										<%-- 	<td class='center'>${var.ABSTRACT}</td> --%>
-											<td class='center'>${var.CONTENT}</td>
+											<td class='center'style="width: auto ;word-wrap:break-word;">${var.CONTENT}</td>
 											<td class='center'>
-											<!-- 选择最小的类型作为显示-->
-											<c:choose>
-												<c:when test="${var.SUBLISTTYPENAME!=null}">
-													${var.SUBLISTTYPENAME }
-												</c:when>
-												<c:when test="${var.LISTTYPENAME!=null}">
-													${var.LISTTYPENAME }
-												</c:when>
-												<c:when test="${var.NAVBARTYPENAME!=null }">
-													${var.NAVBARTYPENAME }
-												</c:when>
-												<c:otherwise>
-													${var.DATABASETYPENAME }
-												</c:otherwise>
-											</c:choose>
+												<!-- 选择最小的类型作为显示-->
+												<c:choose>
+													<c:when test="${var.SUBLISTTYPENAME!=null}">
+														${var.SUBLISTTYPENAME }
+													</c:when>
+													<c:when test="${var.LISTTYPENAME!=null}">
+														${var.LISTTYPENAME }
+													</c:when>
+													<c:when test="${var.NAVBARTYPENAME!=null }">
+														${var.NAVBARTYPENAME }
+													</c:when>
+													<c:otherwise>
+														${var.DATABASETYPENAME }
+													</c:otherwise>
+												</c:choose>
 											</td>
 											<%-- <td class='center'>${var.PUBLISH_TIME}</td> --%>
-											<td class='center'>${var.CREATE_TIME}</td>
-											<td class="center">
+											<td class='center' >${var.CREATE_TIME}</td>
+											<td class="center" >
 												<c:if test="${QX.edit != 1 && QX.del != 1 }">
 												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
 												</c:if>

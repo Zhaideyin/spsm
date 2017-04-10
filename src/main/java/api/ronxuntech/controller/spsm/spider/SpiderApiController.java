@@ -25,126 +25,135 @@ import java.util.Map;
 
 /**
  * 说明：数据爬取 创建人：Liuxh 创建时间：2016-10-08
- *
  */
 @RestController
 @RequestMapping(value = "/api/spider")
 public class SpiderApiController extends BaseController {
 
-	@Resource(name = "spiderService")
-	private SpiderManager spiderService;
-	@Resource
-	private DataBaseTypeManager dataBaseTypeService;
-	@Resource
-	private NavBarTypeManager navBarTypeService;
-	@Resource
-	private ListTypeManager listTypeService;
-	@Resource
-	private SubListTypeManager subListTypeManager;
-	/**
-	 * 查询全部
-	 * @param page
-	 * @param count
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "list")
-	public Map list(int page, int count) throws Exception {
-		Page pg = new Page(page, count);
-		pg.setPd(this.getPageData());
+    @Resource(name = "spiderService")
+    private SpiderManager spiderService;
+    @Resource
+    private DataBaseTypeManager dataBaseTypeService;
+    @Resource
+    private NavBarTypeManager navBarTypeService;
+    @Resource
+    private ListTypeManager listTypeService;
+    @Resource
+    private SubListTypeManager subListTypeManager;
 
-		List<PageData> varList = spiderService.list(pg); // 列出SPIDER列表,有分页
-		return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
-	}
-	
-	/**
-	 * 全文检索查询
-	 * @param page
-	 * @param count
-	 * @param keyword
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value = "fullTextSearch")
-	public Map fullTextSearch(int page, int count,String keyword) throws Exception {
-		Page pg = new Page(page, count);
-		pg.setTotalResult(100);
-		List<String> fieldNameList = new ArrayList<>();
-		fieldNameList.add("TITLE");
-		fieldNameList.add("CONTENT");
-		fieldNameList.add("SPIDER_ID");
-		List<PageData> varList = LuceneUtil.search(keyword, fieldNameList, pg); // 列出SPIDER列表,有分页
-		return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
-	}
-	
-	/**
-	 * 通过 datatypeName 查询 得到 dataypeId 然后查询出该分类的数据， 有分页。
-	 * @param page
-	 * @param count
-	 * @param datatypeName
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value="listPageByDataType")
-	public Map listPageByDataType(int page, int count,String datatypeName)throws Exception{
-		Page pg = new Page(page, count);
-		PageData pd = this.getPageData();
-		pd.put("datatypeName", datatypeName);
+    /**
+     * 查询全部
+     *
+     * @param page
+     * @param count
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "list")
+    public Map list(int page, int count) throws Exception {
+        Page pg = new Page(page, count);
+        pg.setPd(this.getPageData());
 
-		PageData pd1 = null;
-		String datatype ="";
-		pd1 = dataBaseTypeService.findByName(pd);
-		if (null == pd1){
-			pd1 = navBarTypeService.findByName(pd);
-			if(null == pd1){
-				pd1 =  listTypeService.findByName(pd);
-				if(null == pd1){
-					pd1 = subListTypeManager.findByName(pd);
-					datatype = pd1.getString("SUBLISTTYPE_ID");
-				}else{
-					datatype = pd1.getString("LISTTYPE_ID"	);
-				}
-			}else{
-				datatype = pd1.getString("NAVBARTYPE_ID");
-			}
-		}else{
-			datatype = pd1.getString("DATABASETYPE_ID");
-		}
-		//通过pd1查数据库中的对应的type
-		PageData pd2 = new PageData();
-		pd2.put("datatype",datatype);
-		pg.setPd(pd2);
-		
-		List<PageData> varList  = spiderService.listPageByDataType(pg);
-		return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
-	}
+        List<PageData> varList = spiderService.list(pg); // 列出SPIDER列表,有分页
+        return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
+    }
 
-	/**
-	 * 列表 没有分页
-	 * @param databaseTypeId
-	 * @return
-	 * @throws Exception
-	 */
-	@RequestMapping(value="listByDataType")
-	public Map listByDataType(String databaseTypeId)throws Exception{
-		
-		PageData pd = this.getPageData();
-		pd.put("datatype", databaseTypeId);
-		List<PageData> varList  = spiderService.listByDataType(pd);
-		return this.formatRtnMsg(varList, "success");
-	}
+    /**
+     * 全文检索查询
+     *
+     * @param page
+     * @param count
+     * @param keyword
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "fullTextSearch")
+    public Map fullTextSearch(int page, int count, String keyword) throws Exception {
+        Page pg = new Page(page, count);
+        pg.setTotalResult(100);
+        List<String> fieldNameList = new ArrayList<>();
+        fieldNameList.add("TITLE");
+        fieldNameList.add("CONTENT");
+        fieldNameList.add("SPIDER_ID");
+        List<PageData> varList = LuceneUtil.search(keyword, fieldNameList, pg); // 列出SPIDER列表,有分页
+        return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
+    }
 
-	// 根据id获取单条信息
-	@RequestMapping(value = "info")
-	public Object info(String id) throws Exception {
-		PageData pd = this.getPageData();
-		pd.put("SPIDER_ID", id);
-		return spiderService.findById(pd);
-	}
+    /**
+     * 通过 datatypeName 查询 得到 dataypeId 然后查询出该分类的数据， 有分页。
+     *
+     * @param page
+     * @param count
+     * @param datatypeName
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "listPageByDataType")
+    public Map listPageByDataType(int page, int count, String datatypeName) throws Exception {
+        Page pg = new Page(page, count);
+        PageData pd = this.getPageData();
+        pd.put("datatypeName", datatypeName);
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, true));
-	}
+        PageData pd1 = null;
+        String datatype = "";
+        pd1 = dataBaseTypeService.findByName(pd);
+        //按照库的级别先后顺序来判断，如果都不存在，则在数据表中查询 CROPNAME 字段
+        if (null == pd1) {
+            pd1 = navBarTypeService.findByName(pd);
+            if (null == pd1) {
+                pd1 = listTypeService.findByName(pd);
+                if (null == pd1) {
+                    pd1 = subListTypeManager.findByName(pd);
+                    if (null == pd1) {
+                        datatype = datatypeName;
+                    } else {
+                        datatype = pd1.getString("SUBLISTTYPE_ID");
+                    }
+                } else {
+                    datatype = pd1.getString("LISTTYPE_ID");
+                }
+            } else {
+                datatype = pd1.getString("NAVBARTYPE_ID");
+            }
+        } else {
+            datatype = pd1.getString("DATABASETYPE_ID");
+        }
+        //通过pd1查数据库中的对应的type
+        PageData pd2 = new PageData();
+        pd2.put("datatype", datatype);
+        pg.setPd(pd2);
+
+        List<PageData> varList = spiderService.listPageByDataType(pg);
+        return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
+    }
+
+    /**
+     * 列表 没有分页
+     *
+     * @param databaseTypeId
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "listByDataType")
+    public Map listByDataType(String databaseTypeId) throws Exception {
+
+        PageData pd = this.getPageData();
+        pd.put("datatype", databaseTypeId);
+        List<PageData> varList = spiderService.listByDataType(pd);
+        return this.formatRtnMsg(varList, "success");
+    }
+
+    // 根据id获取单条信息
+    @RequestMapping(value = "info")
+    public Object info(String id) throws Exception {
+        PageData pd = this.getPageData();
+        pd.put("SPIDER_ID", id);
+        return spiderService.findById(pd);
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(format, true));
+    }
 }

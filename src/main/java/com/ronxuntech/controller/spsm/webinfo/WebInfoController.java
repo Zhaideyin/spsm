@@ -10,7 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
+import com.ronxuntech.component.spsm.WebInfo;
+import com.ronxuntech.component.spsm.util.ReadXML;
+import com.ronxuntech.service.spsm.databasetype.DataBaseTypeManager;
+import com.ronxuntech.service.spsm.listtype.ListTypeManager;
+import com.ronxuntech.service.spsm.navbartype.NavBarTypeManager;
+import com.ronxuntech.service.spsm.sublisttype.SubListTypeManager;
+import net.sf.json.JSONSerializer;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -40,7 +48,18 @@ public class WebInfoController extends BaseController {
 	String menuUrl = "webinfo/list.do"; //菜单地址(权限用)
 	@Resource(name="webinfoService")
 	private WebInfoManager webinfoService;
-	
+	@Resource(name="databasetypeService")
+	private DataBaseTypeManager databasetypeService;
+
+	@Resource(name="navbartypeService")
+	private NavBarTypeManager navbartypeService;
+
+	@Resource(name="listtypeService")
+	private ListTypeManager listtypeService;
+
+	@Resource(name="sublisttypeService")
+	private SubListTypeManager sublisttypeService;
+	private SimpleDateFormat sdf = new SimpleDateFormat("YY:MM:DD hh:mm:ss");
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -52,7 +71,11 @@ public class WebInfoController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		if(pd.getString("URLTAG").equals("")){
+			pd.put("URLTAG","//body");
+		}
 		pd.put("WEBINFO_ID", this.get32UUID());	//主键
+		pd.put("CREATETIME",sdf.format(new Date()));
 		webinfoService.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
@@ -102,12 +125,22 @@ public class WebInfoController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		String keywords = pd.getString("keywords");				//关键词检索条件
+		String keywords = pd.getString("seedUrl");				//关键词检索条件
 		if(null != keywords && !"".equals(keywords)){
-			pd.put("keywords", keywords.trim());
+			pd.put("seedUrl", keywords.trim());
 		}
 		page.setPd(pd);
 		List<PageData>	varList = webinfoService.list(page);	//列出WebInfo列表
+
+		List<PageData> sublisttype = sublisttypeService.listAll(new PageData());
+		pd.put("sublisttype", sublisttype);
+		List<PageData> listtype = listtypeService.listAll(new PageData());
+		pd.put("listtype", listtype);
+		List<PageData> navbarTypeList = navbartypeService.listAll(new PageData());
+		pd.put("navbarTypeList", navbarTypeList);
+		List<PageData> databaseTypeList = databasetypeService.listAll(new PageData());
+		pd.put("databaseTypeList",databaseTypeList);
+
 		mv.setViewName("spsm/webinfo/webinfo_list");
 		mv.addObject("varList", varList);
 		mv.addObject("pd", pd);
@@ -126,10 +159,41 @@ public class WebInfoController extends BaseController {
 		pd = this.getPageData();
 		mv.setViewName("spsm/webinfo/webinfo_edit");
 		mv.addObject("msg", "save");
+
+		//查询所有的数据类型
+		List<PageData> datatypeList =databasetypeService.listAll(pd);
+		pd.put("datatypeList", datatypeList);
+//		ReadXML rxml=new ReadXML();
+
+		List<PageData> listmap = webinfoService.listAll(new PageData());
+//				rxml.ResolveXml();
+		mv.addObject("urlList",listmap);
 		mv.addObject("pd", pd);
 		return mv;
-	}	
-	
+	}
+	/**
+	 * 下拉框数据获取
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/chooseNextSelect")
+	public void chooseNextSelect(HttpServletResponse response) throws Exception{
+		List<PageData> list =new 	ArrayList<>();
+		PageData pd = this.getPageData();
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out =response.getWriter();
+
+		//判断下是第几个， 则执行不同的service.
+		String flag =pd.get("flag").toString();
+		if(flag.equals("1")){
+			list =navbartypeService.listFindByDatabaseID(pd);
+		}else if(flag.equals("2")){
+			list = listtypeService.listFindByNavbarID(pd);
+		}else if(flag.equals("3")){
+			list=sublisttypeService.listFindByListID(pd);
+		}
+		out.print(JSONSerializer.toJSON(list));
+	}
 	 /**去修改页面
 	 * @param
 	 * @throws Exception
@@ -140,6 +204,23 @@ public class WebInfoController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd = webinfoService.findById(pd);	//根据ID读取
+		//查询所有的数据类型
+		List<PageData> datatypeList =databasetypeService.listAll(pd);
+		pd.put("datatypeList",datatypeList);
+
+		PageData tempPd = new PageData();
+		tempPd.put("DATABASETYPE_ID",pd.getString("DATABASETYPEID"));
+		List<PageData> navbartypeList =navbartypeService.listFindByDatabaseID(tempPd);
+		pd.put("navbartypeList",navbartypeList);
+
+		tempPd.put("NAVBARTYPE_ID",pd.getString("NAVBARTYPEID"));
+		List<PageData> listypeList =listtypeService.listFindByNavbarID(tempPd);
+		pd.put("listypeList",listypeList);
+
+		tempPd.put("LISTTYPE_ID",pd.getString("LISTTYPEID"));
+		List<PageData> sublistypeList =sublisttypeService.listFindByListID(tempPd);
+		pd.put("sublistypeList",sublistypeList);
+
 		mv.setViewName("spsm/webinfo/webinfo_edit");
 		mv.addObject("msg", "edit");
 		mv.addObject("pd", pd);

@@ -199,6 +199,8 @@
 				LISTTYPE = #{pd.datatype}
 				or
 				SUBLISTTYPE = #{pd.datatype}
+				OR
+				CROPNAME = #{pd.datatype}
 			)
 			</if>
 			order by CREATE_TIME desc

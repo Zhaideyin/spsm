@@ -102,7 +102,7 @@
 	</select>
 	
 	<!-- 列表(全部) -->
-	<select id="listAll" parameterType="pd" resultType="pd">
+	<!-- <select id="listAll" parameterType="pd" resultType="pd">
 		SELECT a.LISTTYPE_ID ,b.* 
 		  FROM spsm_listtype a 
 		LEFT JOIN 
@@ -111,6 +111,13 @@
 			b.LISTID=a.LISTTYPE_ID
 		WHERE 
 		a.LISTTYPENAME='省外品种'
+	</select> -->
+	
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
 	</select>
 	
 	<!-- 批量删除 -->

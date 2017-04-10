@@ -38,6 +38,10 @@
 								<td><input type="text" name="SEED" id="SEED" value="${pd.SEED}" maxlength="255" placeholder="这里输入种子地址" title="种子地址" style="width:98%;"/></td>
 							</tr>
 							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">url所在标签:</td>
+								<td><input type="text" name="URLTAG" id="URLTAG" value="${pd.URLTAG}" maxlength="255" placeholder="这里输入url所在标签" title="url所在标签" style="width:98%;"/></td>
+							</tr>
+							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">url过滤正则表达式:</td>
 								<td><input type="text" name="URLREX" id="URLREX" value="${pd.URLREX}" maxlength="255" placeholder="这里输入url过滤正则表达式" title="url过滤正则表达式" style="width:98%;"/></td>
 							</tr>
@@ -51,7 +55,13 @@
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">是否含图片:</td>
-								<td><input type="text" name="HASIMG" id="HASIMG" value="${pd.HASIMG}" maxlength="255" placeholder="这里输入是否含图片，输入‘true’ or ‘false’" title="是否含图片" style="width:98%;"/></td>
+								<td>
+									<select name="HASIMG" id="HASIMG">
+										<option name="false" value="0" <c:if test="${pd.HASIMG==0}"> selected</c:if>>false</option>
+										<option name="true" value="1" <c:if test="${pd.HASIMG==1}"> selected</c:if>>true</option>
+									</select>
+								</td>
+								<%--<td><input type="text" name="HASIMG" id="HASIMG" value="${pd.HASIMG}" maxlength="255" placeholder="这里输入是否含图片，输入‘true’ or ‘false’" title="是否含图片" style="width:98%;"/></td>--%>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">图片过滤正则表达式:</td>
@@ -63,7 +73,14 @@
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">是否含有文件:</td>
-								<td><input type="text" name="HASDOC" id="HASDOC" value="${pd.HASDOC}" maxlength="255" placeholder="这里输入是否含有文件" title="是否含有文件" style="width:98%;"/></td>
+								<td>
+
+									<select name="HASDOC" id="HASDOC">
+										<option name="false" value="0" <c:if test="${pd.HASDOC==0}">selected</c:if>>false</option>
+										<option name="true" value="1" <c:if test="${pd.HASDOC==1}">selected</c:if>>true</option>
+									</select>
+								</td>
+								<%--<td><input type="text" name="HASDOC" id="HASDOC" value="${pd.HASDOC}" maxlength="255" placeholder="这里输入是否含有文件" title="是否含有文件" style="width:98%;"/></td>--%>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">文件过滤正则表达式:</td>
@@ -75,23 +92,76 @@
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">网站总页数:</td>
-								<td><input type="text" name="TOTALPAGE" id="TOTALPAGE" value="${pd.TOTALPAGE}" maxlength="255" placeholder="这里输入网站总页数" title="网站总页数" style="width:98%;"/></td>
+								<td><input type="text" name="TOTALPAGE" id="TOTALPAGE" value="${pd.TOTALPAGE}" maxlength="255" placeholder="这里输入网站总页数所在的xpath" title="网站总页数" style="width:98%;"/></td>
 							</tr>
-							<tr>
+							<%--<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">ajax分页标签:</td>
 								<td><input type="text" name="PAGEAJAXTAG" id="PAGEAJAXTAG" value="${pd.PAGEAJAXTAG}" maxlength="255" placeholder="这里输入网站分页是ajax分页设置" title="网站分页是ajax分页设置" style="width:98%;"/></td>
-							</tr>
+							</tr>--%>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">get分页标签:</td>
 								<td><input type="text" name="PAGEGETTAG" id="PAGEGETTAG" value="${pd.PAGEGETTAG}" maxlength="255" placeholder="这里输入网站分页是get的" title="网站分页是get的" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">网站分页类型:</td>
-								<td><input type="text" name="PAGEMETHOD" id="PAGEMETHOD" value="${pd.PAGEMETHOD}" maxlength="255" placeholder="这里输入网站分页类型" title="网站分页类型" style="width:98%;"/></td>
+								<td>
+									<select name="PAGEMETHOD" id="PAGEMETHOD">
+										<option name="get" value="get">get</option>
+										<option name="post" value="post">post</option>
+										<option name="other" value="other">other</option>
+									</select>
+								</td>
+								<%--<td><input type="text" name="PAGEMETHOD" id="PAGEMETHOD" value="${pd.PAGEMETHOD}" maxlength="255" placeholder="这里输入网站分页类型" title="网站分页类型" style="width:98%;"/></td>--%>
 							</tr>
 							<tr>
 								<td style="width:75px;text-align: right;padding-top: 13px;">网页编码格式:</td>
-								<td><input type="text" name="PAGEENCODING" id="PAGEENCODING" value="${pd.PAGEENCODING}" maxlength="255" placeholder="这里输入网页编码格式" title="网页编码格式" style="width:98%;"/></td>
+								<td>
+									<input type="text" name="PAGEENCODING" id="PAGEENCODING" value="${pd.PAGEENCODING}" maxlength="255" placeholder="这里输入网页编码格式,如：utf-8或gb2312等" title="网页编码格式" style="width:98%;"/></td>
+							</tr>
+
+							<tr><td>库类型</td>
+								<td>
+									<select id="DATABASETYPE_ID" name="DATABASETYPEID" onchange="getSecondSelect()">
+
+										<c:forEach items="${pd.datatypeList}" var="r" varStatus="vs">
+											<option value="${r.DATABASETYPE_ID}" <c:if test="${r.DATABASETYPE_ID == pd.DATABASETYPEID}">selected</c:if>>${r.DATABASETYPENAME }</option>
+										</c:forEach>
+									</select>
+								</td>
+							</tr>
+
+							<tr><td>导航</td>
+								<td>
+									<select id="NAVBARTYPE_ID" name="NAVBARTYPEID"  onchange="getThirdSelect()">
+
+										<c:forEach items="${pd.navbartypeList}" var="r" varStatus="vs">
+												<option value="${r.NAVBARTYPE_ID}" <c:if test="${r.NAVBARTYPE_ID == pd.NAVBARTYPEID}">selected</c:if>>${r.NAVBARTYPENAME }</option>
+										</c:forEach>
+									</select>
+								</td>
+							</tr>
+
+							<tr><td>列表</td>
+								<td>
+									<select id="LISTTYPE_ID" name="LISTTYPEID" onchange="getForthSelect()">
+										<c:forEach items="${pd.listypeList}" var="r" varStatus="vs">
+											<option value="${r.LISTTYPE_ID}" <c:if test="${r.LISTTYPE_ID == pd.LISTTYPEID}">selected</c:if>>${r.LISTTYPENAME }</option>
+										</c:forEach>
+									</select>
+
+								</td>
+							</tr>
+
+							<tr><td>子列表</td>
+								<td><select id="SUBLISTTYPE_ID" name="SUBLISTTYPEID"><option value="" >
+									<c:forEach items="${pd.sublistypeList}" var="r" varStatus="vs">
+										<option value="${r.SUBLISTTYPE_ID}" <c:if test="${r.SUBLISTTYPE_ID == pd.SUBLISTTYPEID}">selected</c:if>>${r.SUBLISTTYPENAME }</option>
+									</c:forEach>
+								</select></td>
+							</tr>
+							<tr>
+								<td style="width:75px;text-align: right;padding-top: 13px;">爬取时间:</td>
+								<td><input class="span10 date-picker" name="CREATETIME" id="CREATETIME" value="${pd.CREATETIME}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" placeholder="添加时间" title="添加时间" style="width:98%;"/></td>
 							</tr>
 							<tr>
 								<td style="text-align: center;" colspan="10">
@@ -178,7 +248,8 @@
 				$("#HASIMG").focus();
 			return false;
 			}
-			if($("#IMGREGEX").val()==""){
+
+			/*if(($("#HASIMG").val()=="true" && $("#IMGREGEX").val()==""){
 				$("#IMGREGEX").tips({
 					side:3,
 		            msg:'请输入图片过滤正则表达式',
@@ -187,8 +258,8 @@
 		        });
 				$("#IMGREGEX").focus();
 			return false;
-			}
-			if($("#IMGTAG").val()==""){
+			}*/
+			/*if(($("#HASIMG").val()=="true" && $("#IMGTAG").val()==""){
 				$("#IMGTAG").tips({
 					side:3,
 		            msg:'请输入图片标签',
@@ -197,7 +268,7 @@
 		        });
 				$("#IMGTAG").focus();
 			return false;
-			}
+			}*/
 			if($("#HASDOC").val()==""){
 				$("#HASDOC").tips({
 					side:3,
@@ -208,7 +279,7 @@
 				$("#HASDOC").focus();
 			return false;
 			}
-			if($("#DOCREGEX").val()==""){
+			/*if(($("#HASDOC").val()=="true"  && $("#DOCREGEX").val()==""){
 				$("#DOCREGEX").tips({
 					side:3,
 		            msg:'请输入文件过滤正则表达式',
@@ -217,8 +288,8 @@
 		        });
 				$("#DOCREGEX").focus();
 			return false;
-			}
-			if($("#DOCTAG").val()==""){
+			}*/
+			/*if(($("#HASDOC").val()=="true"  && $("#DOCTAG").val()==""){
 				$("#DOCTAG").tips({
 					side:3,
 		            msg:'请输入文件标签',
@@ -227,18 +298,18 @@
 		        });
 				$("#DOCTAG").focus();
 			return false;
-			}
-			if($("#TOTALPAGE").val()==""){
+			}*/
+			/*if($("#TOTALPAGE").val()==""){
 				$("#TOTALPAGE").tips({
 					side:3,
-		            msg:'请输入网站总页数',
+		            msg:'请输入网站总页数,如只有一页，请输入1',
 		            bg:'#AE81FF',
 		            time:2
 		        });
 				$("#TOTALPAGE").focus();
 			return false;
-			}
-			if($("#PAGEAJAXTAG").val()==""){
+			}*/
+			/*if($("#PAGEAJAXTAG").val()==""){
 				$("#PAGEAJAXTAG").tips({
 					side:3,
 		            msg:'请输入网站分页是ajax分页设置',
@@ -247,8 +318,8 @@
 		        });
 				$("#PAGEAJAXTAG").focus();
 			return false;
-			}
-			if($("#PAGEGETTAG").val()==""){
+			}*/
+			/*if($("#PAGEGETTAG").val()==""){
 				$("#PAGEGETTAG").tips({
 					side:3,
 		            msg:'请输入网站分页是get的',
@@ -257,8 +328,8 @@
 		        });
 				$("#PAGEGETTAG").focus();
 			return false;
-			}
-			if($("#PAGEMETHOD").val()==""){
+			}*/
+			/*if($("#PAGEMETHOD").val()==""){
 				$("#PAGEMETHOD").tips({
 					side:3,
 		            msg:'请输入网站分页类型',
@@ -267,7 +338,7 @@
 		        });
 				$("#PAGEMETHOD").focus();
 			return false;
-			}
+			}*/
 			if($("#PAGEENCODING").val()==""){
 				$("#PAGEENCODING").tips({
 					side:3,
@@ -293,5 +364,82 @@
 		<script>
 			$(".filepicker").each(function(index){$(this).imguploader({id:"filepicker"+index})});
 		</script>
+
+<script type="text/javascript">
+    $(top.hangge());//关闭加载状态
+    //加载第二个下拉框的数据
+    function getSecondSelect(){
+        var rid = $("#DATABASETYPE_ID").val();
+        if(null!=rid && rid!=""){
+            $.get("spider/chooseNextSelect.do",{"DATABASETYPE_ID":rid,"flag":1},function(datas){
+                $("#NAVBARTYPE_ID").html("<option value=\"\" >--请选择导航--</option>");
+                if(datas.length<1){
+                    $("#NAVBARTYPE_ID").html("<option value=\"\" >--无--</option>");
+                }
+                for ( var i = 0; i < datas.length; i++) {
+                    var json = datas[i];
+                    //获取JSON对象的属性
+                    var username = json.NAVBARTYPE_ID;
+                    var name = json.NAVBARTYPENAME;
+                    var option = "<option value=\""+username+"\">"+name+"</option>";
+                    $("#NAVBARTYPE_ID").append(option);
+                }
+            },"json");
+        }else{
+            $("#NAVBARTYPE_ID").html("<option value=\"\" >--请选择导航--</option>");
+            $("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+            $("#SUBLISTTYPE_ID").html("<option value=\"\" >--请选择子列表--</option>");
+        }
+
+    }
+    // 加载第三个下拉框的数据
+    function getThirdSelect(){
+        var rid = $("#NAVBARTYPE_ID").val();
+        if(null!=rid && rid!=""){
+            $.get("spider/chooseNextSelect.do",{"NAVBARTYPE_ID":rid,"flag":2},function(datas){
+                $("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+                if(datas.length<1){
+                    $("#LISTTYPE_ID").html("<option value=\"\" >--无--</option>");
+                }
+                for ( var i = 0; i < datas.length; i++) {
+                    var json = datas[i];
+                    //获取JSON对象的属性
+                    var username = json.LISTTYPE_ID;
+                    var name = json.LISTTYPENAME;
+                    var option = "<option value=\""+username+"\">"+name+"</option>";
+                    $("#LISTTYPE_ID").append(option);
+                }
+            },"json");
+        }else{
+            $("#LISTTYPE_ID").html("<option value=\"\" >--请选择列表--</option>");
+            $("#SUBLISTTYPE_ID").html("<option value=\"\" >--请子列表--</option>");
+        }
+
+    }
+
+    //加载弟四个下拉框的数据。
+    function getForthSelect(){
+        var rid = $("#LISTTYPE_ID").val();
+        if(null!=rid && rid!=""){
+            $.get("spider/chooseNextSelect.do",{"LISTTYPE_ID":rid,"flag":3},function(datas){
+                $("#SUBLISTTYPE_ID").html("<option value=\"\" >--请选择子列表--</option>");
+                if(datas.length<1){
+                    $("#SUBLISTTYPE_ID").html("<option value=\"\" >--无--</option>");
+                }
+                for ( var i = 0; i < datas.length; i++) {
+                    var json = datas[i];
+                    //获取JSON对象的属性
+                    var username = json.SUBLISTTYPE_ID;
+                    var name = json.SUBLISTTYPENAME;
+                    var option = "<option value=\""+username+"\">"+name+"</option>";
+                    $("#SUBLISTTYPE_ID").append(option);
+                }
+            },"json");
+        }
+
+    }
+
+</script>
+
 </body>
 </html>

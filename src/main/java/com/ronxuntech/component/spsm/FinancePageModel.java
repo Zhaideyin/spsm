@@ -6,6 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import us.codecraft.webmagic.MultiPageModel;
+import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
 import us.codecraft.webmagic.model.annotation.ExtractByUrl;
 import us.codecraft.webmagic.model.annotation.TargetUrl;
@@ -90,5 +93,8 @@ public class FinancePageModel implements MultiPageModel{
         return financePageModel;
     }
 
+    public static void main(String[] args) {
+    	OOSpider.create(Site.me().addStartUrl("http://finance.aweb.com.cn/industry/news/"),FinancePageModel.class).run();
+	}
 
 }

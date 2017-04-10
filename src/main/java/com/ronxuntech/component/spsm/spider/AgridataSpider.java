@@ -44,7 +44,6 @@ public class AgridataSpider implements PageProcessor {
 	private WebInfo web;
 	private SpiderManager spiderService;
 	private TargetUrlManager targeturlService;
-//	private SeedUrlManager seedurlService;
 	private AnnexUrlManager annexurlService;
 	@Autowired(required=true)
 	private CropService cropService;
@@ -53,8 +52,7 @@ public class AgridataSpider implements PageProcessor {
 	private String seedUrlId = "";
 	// 附件工具
 	private AnnexUtil annexUtil = AnnexUtil.getInstance();
-	private NextPageUrlUtil nextPageUrlUtil = NextPageUrlUtil.getInstance();
-	
+
 	//得到链接中的中文，作物名。
 	String cropNameRegex = "\\/[\u4e00-\u9fa5]+";
 	Pattern cropNamePattern = Pattern.compile(cropNameRegex);
@@ -68,7 +66,6 @@ public class AgridataSpider implements PageProcessor {
 		this.seedUrlId=seedUrlId;
 		spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
 		targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
 		annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
 		cropService = (CropService) SpringBeanFactoryUtils.getBean("cropService");
 		initCropAndCropTypeRelation();
@@ -114,11 +111,9 @@ public class AgridataSpider implements PageProcessor {
 			e1.printStackTrace();
 		}
 		Matcher matcher = pattern.matcher(pageUrl);
-//		System.out.println("pageurl:"+pageUrl);
 		if(matcher.find()){
 			String temp =matcher.group().replaceAll(".htm", "");
 			Matcher m_cropName = cropNamePattern.matcher(temp);
-//			System.out.println("temp:"+temp);
 			if(m_cropName.find()){
 				cropName = m_cropName.group().substring(1, m_cropName.group().length());
 				breedName  = temp.substring(m_cropName.group().length()+1, temp.length());
@@ -128,28 +123,21 @@ public class AgridataSpider implements PageProcessor {
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				}
-				
 			}
-			
 		}
 	
-		System.out.println("has cgris:"+pageUrl+"----"+pageUrl.toLowerCase().contains("cgris"));
+
 		//得到想要的内容。
 		String contents ="";
 		if(!(pageUrl.toLowerCase().contains("cgris"))){
 			contents= html.xpath("/html/body/table/tbody/html()").toString();
-//			List<String> imgs= html.xpath("//img/@src").regex("([\u4e00-\u9fa5]+.*\\.jpg)").all();
-//			System.out.println("imgs:"+imgs.toString());
-//			String pageUrl = page.getUrl().toString();
+//
 			System.out.println("pageURL:"+pageUrl);
 			//放入map 中，在pipeline中取。
 			page.putField("content", contents.trim());
 			page.putField("title", breedName);
 			page.putField("pageUrl", pageUrl);
 			//通过作物来查询所属作物类别。如， 大豆  属于 油料作物
-			
-//			System.out.println("cropTypeId:"+cropTypeId);
-			//contents 不为空才执行。
 			
 		}else{
 //			修改不是目标地址的状态
@@ -161,8 +149,7 @@ public class AgridataSpider implements PageProcessor {
 			page.setSkip(true);
 		}else if(StringUtils.isNotEmpty(contents)){
 			String cropTypeId = cropMap.get(cropName).toString();
-			annexUtil.annexSaveAndDown(page, contents, breedName,cropTypeId,cropName, breedName,web, annexurlService, page.getUrl().toString(), spiderService,
-					targeturlService);
+			annexUtil.annexSaveAndDown(page, contents, breedName,cropTypeId,cropName, breedName,web, annexurlService);
 		}
 		
 	}
@@ -183,12 +170,22 @@ public class AgridataSpider implements PageProcessor {
 		System.out.println("cropMap:"+cropMap.toString());
 		return cropMap;
 	}
-	
-	public static void main(String[] args) {
-//		AgridataSpider agridataSpider = new AgridataSpider();
-//		System.out.println(agridataSpider.croptypeService.hashCode());
-		Spider.create(new AgridataSpider()).setDownloader(new HttpClientDownloader()).addUrl("http://crop.agridata.cn/96-014/%E8%BE%A3%E6%A4%92-%E5%B9%BF%E8%A5%BF%E7%8E%89%E6%9E%97%E7%BE%8A%E8%A7%92%E6%A4%92.htm").thread(5).run();
+
+	/**
+	 *
+	 * @param pageUrl
+	 * @return
+	 */
+	public Map<String,String> initCropMap(String pageUrl){
+		Map<String,String> cropMap1 = new HashMap<>();
+		String [] temp = pageUrl.split("/");
+		String crop = temp[temp.length-1].replaceAll("\\.htm","");
+		System.out.println("crop:"+crop);
+		if(crop.contains("-")){
+			String [] crops = crop.split("-");
+			cropMap1.put("cropName",crops[0]);
+			cropMap1.put("breedName",crops[1]);
+		}
+		return cropMap1;
 	}
-	
-	
 }

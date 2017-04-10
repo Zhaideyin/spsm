@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ronxuntech.component.spsm.spider.BaseSpider;
+import com.ronxuntech.service.spsm.webinfo.WebInfoManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -27,8 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ronxuntech.component.spsm.WebInfo;
 import com.ronxuntech.component.spsm.lucene.LuceneUtil;
 import com.ronxuntech.component.spsm.spider.AjaxSpider;
-import com.ronxuntech.component.spsm.spider.PostSpider;
-import com.ronxuntech.component.spsm.util.ReadXML;
+import com.ronxuntech.component.spsm.spider.SeedchinaSpider;
 import com.ronxuntech.controller.base.BaseController;
 import com.ronxuntech.entity.Page;
 import com.ronxuntech.service.spsm.annexurl.AnnexUrlManager;
@@ -58,7 +58,10 @@ public class SpiderController extends BaseController {
 	String menuUrl = "spider/list.do"; //菜单地址(权限用)
 	@Resource(name="spiderService")
 	private SpiderManager spiderService;
-	
+
+	@Resource
+	private WebInfoManager webinfoService;
+
 	@Resource(name="databasetypeService")
 	private DataBaseTypeManager  databasetypeService;
 	
@@ -86,7 +89,7 @@ public class SpiderController extends BaseController {
 	/**
 	 * 跳转到爬取页面，取出所有数据类型
 	 */
-	@RequestMapping(value="/gostart")
+	/*@RequestMapping(value="/gostart")
 	public ModelAndView goStart() throws Exception{
 		logBefore(logger, Jurisdiction.getUsername()+"开启爬取");
 		ModelAndView mv = this.getModelAndView();
@@ -100,7 +103,7 @@ public class SpiderController extends BaseController {
 		mv.addObject("urlList",listmap);
 		mv.setViewName("spsm/spider/spider_start");
 		return mv;
-	}
+	}*/
 	
 	/**
 	 * 下拉框数据获取
@@ -128,7 +131,7 @@ public class SpiderController extends BaseController {
 	}
 	
 	//开启爬取
-	@RequestMapping(value = "/start")
+	/*@RequestMapping(value = "/start")
 	public void start(PrintWriter out,@RequestParam(value="seedUrl") String seedUrl) throws Exception {
 		logBefore(logger, Jurisdiction.getUsername() + "开启爬取");
 		//将前台传递来的typeID 非空的组合在一起。
@@ -160,19 +163,19 @@ public class SpiderController extends BaseController {
 		//如果查询到数据库中存在了该种子，那么就证明该网站已经爬取过， 但是状态是 0，那么还有网站或者图未下载完成。
 		if(seedpd1!=null && seedpd1.size()!=0){
 				if(seedpd1.get("STATUS").equals("0")){
-					/*//重下目标网址
-//					reDownloadTargetUrl(seedUrl, dataType, seedpd1);
-					//重下未下的附件（只是之前没有下载）
-					PageData seedPd2=new PageData();
-					seedPd2.put("SEEDURLID", seedpd1.getString("SEEDURL_ID"));
-					seedPd2.put("STATUS", "0");
-					List<PageData> redownAnnexUrlList= annexurlService.listBySeedUrlIdAndStatus(seedPd2);
-					if(redownAnnexUrlList.size()>0){
-						reDownloadAnnexUrl(seedUrl, seedpd1);
-					}
-					//接着爬取没有爬完的
-*/					collar(web);
-//					
+//					//重下目标网址
+////					reDownloadTargetUrl(seedUrl, dataType, seedpd1);
+//					//重下未下的附件（只是之前没有下载）
+//					PageData seedPd2=new PageData();
+//					seedPd2.put("SEEDURLID", seedpd1.getString("SEEDURL_ID"));
+//					seedPd2.put("STATUS", "0");
+//					List<PageData> redownAnnexUrlList= annexurlService.listBySeedUrlIdAndStatus(seedPd2);
+//					if(redownAnnexUrlList.size()>0){
+//						reDownloadAnnexUrl(seedUrl, seedpd1);
+//					}
+//					//接着爬取没有爬完的
+//					collar(web);
+//
 					checkDone(seedpd, out);
 				}
 		}else{
@@ -183,6 +186,32 @@ public class SpiderController extends BaseController {
 			checkDone(seedpd, out);
 		}
 		
+		out.close();
+	}*/
+
+	@RequestMapping(value = "/start")
+	public void start(PrintWriter out,@RequestParam(value="seedUrl") String webinfoId) throws Exception {
+		logBefore(logger, Jurisdiction.getUsername() + "开启爬取");
+
+		PageData pd = new PageData();
+		pd.put("WEBINFO_ID",webinfoId);
+		PageData seedpd= webinfoService.findById(pd);
+		//查询seedurl，如果已经添加了，则
+		PageData seedurlPd =new PageData();
+		seedurlPd.put("SEEDURL_ID", System.currentTimeMillis());
+		seedurlPd.put("SEEDURL", seedpd.getString("SEED"));
+		seedurlPd.put("STATUS", "0");
+
+		PageData seedpd1=new PageData();
+		seedpd1 = seedurlService.findByUrl(seedurlPd);
+		if(null==seedpd1){
+			seedurlService.save(seedurlPd);
+			seedpd1 = seedurlPd;
+		}
+		WebInfo web = WebInfo.init(seedpd);
+		collar(web);
+		checkDone(seedpd1, out);
+
 		out.close();
 	}
 	
@@ -200,7 +229,7 @@ public class SpiderController extends BaseController {
 		fieldNameList.add("TITLE");
 		fieldNameList.add("CONTENT");
 		if(null!=pd.getString("DATABASETYPE_ID") && ""!=pd.getString("DATABASETYPE_ID")){
-			List<PageData> pagedataList = spiderService.listByDataType(pd);;
+			List<PageData> pagedataList = spiderService.listByDataType(pd);
 			LuceneUtil.createIndex(pagedataList, fieldNameList);
 			out.println("create index sucess!");
 		}else{
@@ -282,15 +311,7 @@ public class SpiderController extends BaseController {
 	 */
 	public void collar(WebInfo web) throws Exception{
 		BaseSpider crawler= BaseSpider.getInstance();
-		AjaxSpider ajaxSpider = AjaxSpider.getInstance();
-		PostSpider postSpider = PostSpider.getInstance();
-		if(web.getPageMethod().equals("get")){
-			crawler.start(web);
-		}else if(web.getPageMethod().equals("ajax")){
-			ajaxSpider.start(web);
-		}else if(web.getPageMethod().equals("post")){
-			postSpider.start(web);
-		}
+		crawler.start(web);
 	}
 	
 	//停止
