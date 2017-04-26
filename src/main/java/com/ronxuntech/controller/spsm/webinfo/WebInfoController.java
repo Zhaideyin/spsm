@@ -59,7 +59,7 @@ public class WebInfoController extends BaseController {
 
 	@Resource(name="sublisttypeService")
 	private SubListTypeManager sublisttypeService;
-	private SimpleDateFormat sdf = new SimpleDateFormat("YY:MM:DD hh:mm:ss");
+	private SimpleDateFormat sdf = new SimpleDateFormat("YYYY:MM:DD hh:mm:ss");
 	/**保存
 	 * @param
 	 * @throws Exception
@@ -132,14 +132,14 @@ public class WebInfoController extends BaseController {
 		page.setPd(pd);
 		List<PageData>	varList = webinfoService.list(page);	//列出WebInfo列表
 
-		List<PageData> sublisttype = sublisttypeService.listAll(new PageData());
+		/*List<PageData> sublisttype = sublisttypeService.listAll(new PageData());
 		pd.put("sublisttype", sublisttype);
 		List<PageData> listtype = listtypeService.listAll(new PageData());
 		pd.put("listtype", listtype);
 		List<PageData> navbarTypeList = navbartypeService.listAll(new PageData());
 		pd.put("navbarTypeList", navbarTypeList);
 		List<PageData> databaseTypeList = databasetypeService.listAll(new PageData());
-		pd.put("databaseTypeList",databaseTypeList);
+		pd.put("databaseTypeList",databaseTypeList);*/
 
 		mv.setViewName("spsm/webinfo/webinfo_list");
 		mv.addObject("varList", varList);

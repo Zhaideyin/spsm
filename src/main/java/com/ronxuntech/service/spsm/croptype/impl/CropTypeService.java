@@ -92,6 +92,11 @@ public class CropTypeService implements CropTypeManager{
 		return (PageData) dao.findForObject("CropTypeMapper.findByCropName", pd);
 	}
 
+	@Override
+	public List<PageData> findByCropTypeName(PageData pd) throws Exception {
+		return (List<PageData>) dao.findForList("CropTypeMapper.findByCropTypeName", pd);
+	}
+
 	/**
 	 *查询作物与作物类别的关系
 	 * @param pd

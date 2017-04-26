@@ -101,8 +101,8 @@ public class TargetUrlService implements TargetUrlManager{
 	 * 
 	 */
 	@Override
-	public PageData findByUrl(PageData pd) throws Exception {
-		return (PageData)dao.findForObject("TargetUrlMapper.findByUrl", pd);
+	public List<PageData> findByUrl(PageData pd) throws Exception {
+		return (List<PageData>)dao.findForList("TargetUrlMapper.findByUrl", pd);
 	}
 }
 

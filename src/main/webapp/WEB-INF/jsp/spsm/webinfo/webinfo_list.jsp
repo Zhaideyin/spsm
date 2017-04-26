@@ -38,8 +38,8 @@
                                         <div class="nav-search">
 										<span class="input-icon">
 											<input type="text" placeholder="这里输入关键词" class="nav-search-input"
-                                                   id="nav-search-input" autocomplete="off" name="seedUrl"
-                                                   value="${pd.seedUrl }" placeholder="这里输入关键词"/>
+                                                   id="nav-search-input" autocomplete="off" name="keywords"
+                                                   value="${pd.keywords }" placeholder="这里输入关键词"/>
 											<i class="ace-icon fa fa-search nav-search-icon"></i>
 										</span>
                                         </div>
@@ -116,8 +116,26 @@
                                                     <td class='center' style="word-wrap:break-word;">${var.SEED}</td>
                                                     <td class='center'>
                                                         <!-- 选择最小的类型作为显示-->
-
                                                         <c:choose>
+                                                            <c:when test='${var.SUBLISTTYPENAME!="" && var.SUBLISTTYPENAME!=null}'>
+                                                                ${var.SUBLISTTYPENAME}
+                                                            </c:when>
+
+                                                            <c:when test='${var.LISTTYPEID!="" && var.LISTTYPEID!=null}'>
+                                                                ${var.LISTTYPENAME}
+                                                            </c:when>
+
+                                                            <c:when test='${var.NAVBARTYPEID!="" && var.NAVBARTYPEID!=null}'>
+                                                                ${var.NAVBARTYPENAME}
+                                                            </c:when>
+
+                                                            <c:when test='${var.DATABASETYPEID!="" && var.DATABASETYPEID!=null}'>
+                                                                ${var.DATABASETYPENAME}
+                                                            </c:when>
+                                                        </c:choose>
+
+
+                                                        <%--<c:choose>
                                                             <c:when test='${var.SUBLISTTYPEID!="" && var.SUBLISTTYPEID!=null}'>
                                                                 <c:forEach items="${pd.sublisttype}" var="sub">
                                                                     <c:if test="${var.SUBLISTTYPEID==(sub.SUBLISTTYPE_ID)}">
@@ -149,7 +167,7 @@
                                                                     </c:if>
                                                                 </c:forEach>
                                                             </c:when>
-                                                        </c:choose>
+                                                        </c:choose>--%>
 
                                                     </td>
                                                     <td class='center'>${var.CREATETIME}</td>
@@ -163,7 +181,7 @@
                                                             <c:if test="${QX.edit == 1 }">
                                                                 <a class="btn btn-xs btn-success" title="爬取"
                                                                    name="seedUrl"
-                                                                   href="/spider/start.do?seedUrl=${var.WEBINFO_ID}">
+                                                                   href="spider/start.do?seedUrl=${var.WEBINFO_ID}">
                                                                     <i class="ace-icon fa fa-download bigger-110 nav-search-icon blue"></i>
                                                                 </a>
                                                             </c:if>

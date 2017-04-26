@@ -12,11 +12,12 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 
 import javax.annotation.Resource;
 
+/**
+ * 持久化到数据库
+ */
 public class SpiderPipeline implements Pipeline {
 
-    //	private AnnexUrlManager annexurlService;
     private TargetUrlManager targeturlService;
-    //	private SeedUrlManager seedurlService;
     private AnnexUtil annexUtil = AnnexUtil.getInstance();
     private WebInfo web;
     private SpiderManager spiderService;
@@ -39,8 +40,9 @@ public class SpiderPipeline implements Pipeline {
         try {
             String pageUrl = resultItems.get("pageUrl").toString();
             PageData pd = resultItems.get("pd");
-            // 如果怕去的 内容是空，则不跳出。不存入数据库。
+            // 如果爬取的内容是空，则不跳出。不存入数据库。
             if (!("".equals(resultItems.get("content").toString().trim()))) {
+                //特殊网站不抓取
                 if (web.getSeed().contains("http://crop.agridata.cn/96-014/default.html") && pageUrl.toLowerCase().contains("cgris")) {
                     return;
                 }

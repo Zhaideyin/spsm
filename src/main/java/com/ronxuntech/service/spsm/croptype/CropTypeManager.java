@@ -53,7 +53,13 @@ public interface CropTypeManager{
 	 * @throws Exception
 	 */
 	public PageData findByCropName(PageData pd)throws Exception;
-	
+
+	/**
+	 * 通过作物类型查询
+	 * @return
+	 * @throws Exception
+	 */
+	public List<PageData> findByCropTypeName(PageData pd) throws  Exception;
 	/**
 	 * 查询作物与作物类别的关系
 	 * @param pd

@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ronxuntech.component.spsm.spider.BaseSpider;
+import com.ronxuntech.component.spsm.util.TextRankKeyword;
 import com.ronxuntech.service.spsm.webinfo.WebInfoManager;
+import com.ronxuntech.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -39,10 +41,7 @@ import com.ronxuntech.service.spsm.seedurl.SeedUrlManager;
 import com.ronxuntech.service.spsm.spider.SpiderManager;
 import com.ronxuntech.service.spsm.sublisttype.SubListTypeManager;
 import com.ronxuntech.service.spsm.targeturl.TargetUrlManager;
-import com.ronxuntech.util.AppUtil;
-import com.ronxuntech.util.Jurisdiction;
-import com.ronxuntech.util.ObjectExcelView;
-import com.ronxuntech.util.PageData;
+import com.ronxuntech.component.spsm.util.HtmlUtil;
 
 import net.sf.json.JSONSerializer;
 
@@ -86,24 +85,7 @@ public class SpiderController extends BaseController {
 	@Autowired
 	private  HttpServletRequest request;
 	
-	/**
-	 * 跳转到爬取页面，取出所有数据类型
-	 */
-	/*@RequestMapping(value="/gostart")
-	public ModelAndView goStart() throws Exception{
-		logBefore(logger, Jurisdiction.getUsername()+"开启爬取");
-		ModelAndView mv = this.getModelAndView();
-		PageData pd = new PageData();
-		//查询所有的数据类型
-		List<PageData> list =databasetypeService.listAll(pd);
-		mv.addObject("list", list);
-		ReadXML rxml=new ReadXML();
-		
-		List<HashMap> listmap =rxml.ResolveXml();
-		mv.addObject("urlList",listmap);
-		mv.setViewName("spsm/spider/spider_start");
-		return mv;
-	}*/
+
 	
 	/**
 	 * 下拉框数据获取
@@ -216,7 +198,7 @@ public class SpiderController extends BaseController {
 	}
 	
 	/**
-	 * 创建索引  存放目录 D://index
+	 * 创建索引  存放目录  根目录下的 index目录
 	 * @param out
 	 * @throws Exception
 	 */
@@ -298,7 +280,7 @@ public class SpiderController extends BaseController {
 		List<PageData>  annexList =annexurlService.listBySeedUrlIdAndStatus(annexPd);
 	
 		if(targetList.size()>0 || annexList.size()>0){
-			out.write("some thing not done");
+			out.write("something not done");
 		}else{
 			out.write("success");
 		}
@@ -493,9 +475,34 @@ public class SpiderController extends BaseController {
 		mv.addObject("msg", "edit");
 		mv.addObject("pd", pd);
 		return mv;
-	}	
-	
-	 /**批量删除
+	}
+
+	/**
+	 * 关键词生成
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/keyWord")
+	public ModelAndView keyWord(@RequestParam(value="spiderId") String spiderId)throws Exception{
+		HtmlUtil  htmlUtil=new HtmlUtil();//去除HTML标签的工具类
+		TextRankKeyword textRankKeyword=new TextRankKeyword();//分词的并提取关键词的类
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		pd.put("SPIDER_ID",spiderId);
+		//根据ID读取
+		pd = spiderService.findById(pd);
+		//从数据库取出文本
+		String content=(String )pd.get("CONTENT");
+		content.replace("$nbsp;"," ");
+		String contentNoHtml=HtmlUtil.delHTMLTag(content);
+		List list=new ArrayList();//提取的关键词保存结果
+		list=textRankKeyword.getKeyword("",contentNoHtml);//提取关键词结果存储在list
+		pd.put("keyWordMap",list);//将结果放到pd
+		mv.setViewName("spsm/spider/spider_keyword");
+		mv.addObject("pd", pd);
+		return mv;
+	}
+	/**批量删除
 	 * @param
 	 * @throws Exception
 	 */

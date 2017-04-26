@@ -91,37 +91,34 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
     // 下载文件或图片
     public void process(ResultItems resultItems, Task task) {
         try {
-            // CloseableHttpClient httpclient = HttpClients.createDefault();
-            RequestConfig defaultRequestConfig = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000)
-                    .setConnectionRequestTimeout(5000).setStaleConnectionCheckEnabled(true).build();
-            CloseableHttpClient httpclient = HttpClients.custom().setDefaultRequestConfig(defaultRequestConfig).build();
+             CloseableHttpClient httpclient = HttpClients.createDefault();
 
             List<String> annexUrlList = resultItems.get("annexUrlList");
             //去重imgUrl
             convertUtil.removeDuplicateWithOrder(annexUrlList);
             List<String> annexFileNameList = resultItems.get("annexFileNameList");
             convertUtil.removeDuplicateWithOrder(annexFileNameList);
-//			String pageUrl =resultItems.get("pageUrl");
             StringBuffer sb = new StringBuffer();
-            StringBuffer imgFileNameNewYuan = sb.append(path); // 此处提取文件夹名，即之前采集的标题名
+            StringBuffer imgFileNameNewYuan = sb.append(path);
 
             // 这里先判断文件夹名是否存在，不存在则建立相应文件夹
             File fp = new File(imgFileNameNewYuan.toString());
             if (!fp.exists()) {
                 fp.mkdirs();
             }
+            //如果下载的列表为null 或者大小为0则退出
             if (annexUrlList == null || annexUrlList.size() == 0) {
                 return;
             }
+            //循环下载附件
             for (int i = 0; i < annexUrlList.size(); i++) {
                 String url = annexUrlList.get(i).trim();
                 HttpGet httpget = new HttpGet(url);
                 HttpResponse response = httpclient.execute(httpget);
                 HttpEntity entity = response.getEntity();
                 InputStream in = entity.getContent();
-                System.out.println("filename:"+annexFileNameList.get(i).toString());
 
-                File file = new File(annexFileNameList.get(i).toString().replaceAll(",",""));
+                File file = new File(annexFileNameList.get(i));
                 // 下载附件
                 downAnnex(file, url, in);
 
@@ -214,7 +211,8 @@ public class ImgOrDocPipeline extends FilePersistentBase implements Pipeline {
                 while ((l = in.read(tmp)) != -1) {
                     fout.write(tmp, 0, l);
                 }
-                System.out.println("tmp:" + l);
+                logger.info("file is down");
+//                System.out.println("tmp:" + l);
                 // 当下载完成后，
                 PageData pd2 = new PageData();
                 pd2.put("ANNEXURL", url);

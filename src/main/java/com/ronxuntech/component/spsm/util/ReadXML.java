@@ -15,6 +15,8 @@ import sun.applet.Main;
 /**
  * 读取配置文件，并且返回一个map
  * Created by tongbu on 2016/10/8 0008.
+ *
+ * 现在已经无用 2017-4-20
  */
 public class ReadXML {
     public List<HashMap>  ResolveXml() throws Exception{
@@ -23,7 +25,7 @@ public class ReadXML {
         //获取项目资源路径
         String filePath=PathUtil.getClassResources();
         System.out.println("filepath:"+filePath);
-        File file = new File("C:\\software\\eclipse\\workspace\\ndrc_console\\ndrc_console\\target\\classes\\spsm\\URL.xml");
+        File file = new File("C:\\software\\eclipse\\workspace\\spsm_console\\spsm_console\\target\\classes\\spsm\\URL.xml");
         
         Document document = reader.read(file);
         Element root = document.getRootElement();

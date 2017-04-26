@@ -121,17 +121,34 @@
 	
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
-		select
+		<!--select
 		<include refid="Field"></include>
-		from 
+		from
 		<include refid="tableName"></include>
 		where 1=1
-		<if test="pd.seedUrl!= null and pd.seedUrl != ''"><!-- 关键词检索 -->
+		<if test="pd.seedUrl!= null and pd.seedUrl != ''">&lt;!&ndash; 关键词检索 &ndash;&gt;
 			and
 				(
 					/*根据需求自己加检索条件*/
 					SEED LIKE CONCAT(CONCAT('%', #{pd.seedUrl}),'%')
   				)
+		</if>-->
+
+		SELECT  web.* ,d.DATABASETYPENAME,n.NAVBARTYPENAME , l.LISTTYPENAME ,sub.SUBLISTTYPENAME
+		FROM SPSM_WEBINFO web
+		LEFT JOIN SPSM_DATABASETYPE d  ON web.DATABASETYPEID=d.DATABASETYPE_ID
+		LEFT JOIN SPSM_NAVBARTYPE n ON web.NAVBARTYPEID=n.NAVBARTYPE_ID
+		LEFT JOIN SPSM_LISTTYPE l on web.LISTTYPEID=l.LISTTYPE_ID
+		LEFT JOIN SPSM_SUBLISTTYPE sub ON web.SUBLISTTYPEID=sub.SUBLISTTYPE_ID
+		where 1=1
+
+		<!--通过数据类型来查询  -->
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+				AND  SEED LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				or sub.SUBLISTTYPENAME =#{pd.keywords}
+				or l.LISTTYPENAME =#{pd.keywords}
+				or n.NAVBARTYPENAME =#{pd.keywords}
+				or d.DATABASETYPENAME =#{pd.keywords}
 		</if>
 	</select>
 	

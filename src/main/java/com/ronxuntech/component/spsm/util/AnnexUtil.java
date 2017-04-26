@@ -27,7 +27,7 @@ import com.ronxuntech.util.UuidUtil;
 import us.codecraft.webmagic.Page;
 
 /**
- * 工具类
+ * 附件工具类
  *
  * @author angrl
  */
@@ -72,15 +72,16 @@ public class AnnexUtil {
     /**
      * 通过targetUrl查询到 targeturlID
      */
-    public PageData findByPageurl(String pageUrl, TargetUrlManager targeturlService) {
+    public List<PageData> findByPageurl(String pageUrl, TargetUrlManager targeturlService) {
         PageData pdurl = new PageData();
         pdurl.put("TARGETURL", pageUrl);
+        List<PageData> pdList = new ArrayList<>();
         try {
-            pdurl = targeturlService.findByUrl(pdurl);
+            pdList = targeturlService.findByUrl(pdurl);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return pdurl;
+        return pdList;
     }
 
     /**
@@ -90,14 +91,18 @@ public class AnnexUtil {
      * @param targeturlService
      */
     public void updateTargetStatus(String pageUrl, TargetUrlManager targeturlService) {
-        PageData pdurl = findByPageurl(pageUrl, targeturlService);
-        if (pdurl != null) {
-            pdurl.put("STATUS", "1");
-            pdurl.put("UPDATETIME", sdf.format(new Date()).toString());
-            try {
-                targeturlService.edit(pdurl);
-            } catch (Exception e) {
-                e.printStackTrace();
+        List<PageData> pdList =findByPageurl(pageUrl, targeturlService);
+        if (pdList.size()>0) {
+            PageData pdurl =new PageData();
+            for(int i=0;i<pdList.size();i++){
+                pdurl = pdList.get(i);
+                pdurl.put("STATUS", "1");
+                pdurl.put("UPDATETIME", sdf.format(new Date()).toString());
+                try {
+                    targeturlService.edit(pdurl);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -215,6 +220,7 @@ public class AnnexUtil {
                           StringBuffer fileList) {
         // 通过正则表达式来找出符合图片或者文档的链接
         Pattern p = Pattern.compile(web.getImgRegex().trim());
+        content = content.replaceAll("alt=('([^']*)'|\"([^\"])*\")", "");
         Matcher m = p.matcher(content);
         // 用于存放多个文档链接。或者图片链接
         List<String> pathList = new ArrayList<>();
@@ -246,7 +252,7 @@ public class AnnexUtil {
                 // 将当前下载的文档或者图片的路径保存到list
                 pathList.add(fileDir + fileName);
                 // 替换原来html中读取文档或者图片的url
-                content = content.replace(m.group(),map.get("fileDir").toString()+fileName);
+                content = content.replace(m.group(), "/spsm/"+map.get("fileDir").toString() + fileName);
                 String annexUrl1 = "";
                 if (annexUrl.contains("http")) {
                     annexUrl1 = annexUrl.replace("amp;", "").trim();
@@ -317,8 +323,8 @@ public class AnnexUtil {
                 annexUrl1 = fileNameUtil.getTargetUrl(annexUrl, pageUrl).replace("amp;", "").trim();
             }
             annexUrlList.append(annexUrl1 + ",");
-            content = content.replace(m.group(), map.get("fileDir").toString() + fileName);
-            fileList.append(fileDir + fileName + "，");
+            content = content.replace(m.group(), "/spsm/"+map.get("fileDir").toString() + fileName);
+            fileList.append(fileDir + fileName + ",");
         }
 
         pd.put("FILENAME", fileList.toString());
@@ -408,6 +414,7 @@ public class AnnexUtil {
     public void targeturlInsertDatabase(List<String> urlList, String seedUrlId, TargetUrlManager targeturlService) {
         // 用于存入数据库
         List<PageData> targetUrlList = new ArrayList<>();
+        convertUtil.removeDuplicateWithOrder(urlList);
         if (urlList.size() != 0) {
             // 取出所有target,重新组装到pd 中，然后放入list 进行批量插入
             for (int i = 0; i < urlList.size(); i++) {
@@ -475,7 +482,7 @@ public class AnnexUtil {
             pd1.put("STATUS", "0");
             pd1.put("SEEDURLID", seedUrlId);
 
-            pd1.put("TARGETURLID",pageUrl);
+            pd1.put("TARGETURLID", pageUrl);
             pd1.put("CREATETIME", sdf.format(new Date()));
             annexUrlList.add(pd1);
         }
@@ -544,7 +551,7 @@ public class AnnexUtil {
 
 
     public void annexSaveAndDown(Page page, String contents, String title, WebInfo web, AnnexUrlManager annexurlService,
-                                TargetUrlManager targeturlService) {
+                                 TargetUrlManager targeturlService) {
         // ****************附件下载准备*****************************************************/
         // annexFileNameList（下载文件路径含文件名） anneurlList（下载地址）
 
@@ -701,7 +708,7 @@ public class AnnexUtil {
      * @param targeturlService
      */
     public void insertIntoPage(Page page, WebInfo web, AnnexUtil annexUtil, AnnexUrlManager annexurlService,
-                                TargetUrlManager targeturlService) {
+                               TargetUrlManager targeturlService) {
         String contents = "";
         String title = "";
         String regex = "[\\[|\\]|,]";
@@ -718,7 +725,7 @@ public class AnnexUtil {
                 page.putField("content", contents.trim());
                 page.putField("title", title);
                 page.putField("pageUrl", pageUrl);
-                annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService,targeturlService);
+                annexUtil.annexSaveAndDown(page, contents, title, web, annexurlService, targeturlService);
 
             } else { // 如果该链接不是想要的，（如下一页的链接，但是又要修改他的状态）
                 annexUtil.updateTargetStatus(pageUrl, targeturlService);
@@ -728,12 +735,13 @@ public class AnnexUtil {
 
     /**
      * url 解码
+     *
      * @param list
      * @return
      */
     public List<String> decodedURL(List<String> list) {
         List<String> urlList = new ArrayList();
-        for (String url : list ) {
+        for (String url : list) {
             try {
                 urlList.add(URLDecoder.decode(url, "utf-8"));
             } catch (UnsupportedEncodingException e) {

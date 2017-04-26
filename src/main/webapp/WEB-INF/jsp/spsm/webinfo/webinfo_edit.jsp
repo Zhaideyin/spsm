@@ -144,6 +144,7 @@
 							<tr><td>列表</td>
 								<td>
 									<select id="LISTTYPE_ID" name="LISTTYPEID" onchange="getForthSelect()">
+										<option></option>
 										<c:forEach items="${pd.listypeList}" var="r" varStatus="vs">
 											<option value="${r.LISTTYPE_ID}" <c:if test="${r.LISTTYPE_ID == pd.LISTTYPEID}">selected</c:if>>${r.LISTTYPENAME }</option>
 										</c:forEach>
@@ -154,6 +155,7 @@
 
 							<tr><td>子列表</td>
 								<td><select id="SUBLISTTYPE_ID" name="SUBLISTTYPEID"><option value="" >
+									<option></option>
 									<c:forEach items="${pd.sublistypeList}" var="r" varStatus="vs">
 										<option value="${r.SUBLISTTYPE_ID}" <c:if test="${r.SUBLISTTYPE_ID == pd.SUBLISTTYPEID}">selected</c:if>>${r.SUBLISTTYPENAME }</option>
 									</c:forEach>

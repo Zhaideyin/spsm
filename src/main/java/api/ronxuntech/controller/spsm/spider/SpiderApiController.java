@@ -3,6 +3,7 @@ package api.ronxuntech.controller.spsm.spider;
 import api.ronxuntech.controller.BaseController;
 import com.ronxuntech.component.spsm.lucene.LuceneUtil;
 import com.ronxuntech.entity.Page;
+import com.ronxuntech.service.spsm.croptype.CropTypeManager;
 import com.ronxuntech.service.spsm.databasetype.DataBaseTypeManager;
 import com.ronxuntech.service.spsm.listtype.ListTypeManager;
 import com.ronxuntech.service.spsm.navbartype.NavBarTypeManager;
@@ -39,7 +40,9 @@ public class SpiderApiController extends BaseController {
     @Resource
     private ListTypeManager listTypeService;
     @Resource
-    private SubListTypeManager subListTypeManager;
+    private SubListTypeManager subListTypeService;
+    @Resource
+    private CropTypeManager cropTypeService;
 
     /**
      * 查询全部
@@ -76,6 +79,7 @@ public class SpiderApiController extends BaseController {
         fieldNameList.add("CONTENT");
         fieldNameList.add("SPIDER_ID");
         List<PageData> varList = LuceneUtil.search(keyword, fieldNameList, pg); // 列出SPIDER列表,有分页
+//        System.out.println("varlist:"+varList.size());
         return this.formatRtnMsg(varList, "success", String.valueOf(pg.getTotalPage()));
     }
 
@@ -94,16 +98,16 @@ public class SpiderApiController extends BaseController {
         PageData pd = this.getPageData();
         pd.put("datatypeName", datatypeName);
 
-        PageData pd1 = null;
+        PageData pd1 = new PageData();
         String datatype = "";
-        pd1 = dataBaseTypeService.findByName(pd);
+       /* pd1 = dataBaseTypeService.findByName(pd);
         //按照库的级别先后顺序来判断，如果都不存在，则在数据表中查询 CROPNAME 字段
         if (null == pd1) {
             pd1 = navBarTypeService.findByName(pd);
             if (null == pd1) {
                 pd1 = listTypeService.findByName(pd);
                 if (null == pd1) {
-                    pd1 = subListTypeManager.findByName(pd);
+                    pd1 = subListTypeService.findByName(pd);
                     if (null == pd1) {
                         datatype = datatypeName;
                     } else {
@@ -117,7 +121,41 @@ public class SpiderApiController extends BaseController {
             }
         } else {
             datatype = pd1.getString("DATABASETYPE_ID");
+        }*/
+
+        pd1 = subListTypeService.findByName(pd);
+        if(null==pd1 ){
+            pd1 = listTypeService.findByName(pd);
+            if(null==pd1){
+                pd1 = navBarTypeService.findByName(pd);
+                if(null==pd1){
+                    pd1  =dataBaseTypeService.findByName(pd);
+                    //如果库类型没有找到，则去找作物类型
+                    if(null ==pd1){
+                        List<PageData> list =cropTypeService.findByCropTypeName(pd);
+                        //可能查出两个
+                        if(list.size()>0){
+                            pd1= list.get(0);
+                        }
+                        //如果作物类型为空，则设为作物名
+                        if(null ==pd1){
+                            datatype = datatypeName;
+                        }else{
+                           datatype = pd1.getString("CROPTYPE_ID");
+                        }
+                    }else{
+                        datatype = pd1.getString("DATABASETYPE_ID");
+                    }
+                }else{
+                    datatype = pd1.getString("NAVBARTYPE_ID");
+                }
+            }else{
+                datatype = pd1.getString("LISTTYPE_ID");
+            }
+        }else{
+            datatype = pd1.getString("SUBLISTTYPE_ID");
         }
+
         //通过pd1查数据库中的对应的type
         PageData pd2 = new PageData();
         pd2.put("datatype", datatype);

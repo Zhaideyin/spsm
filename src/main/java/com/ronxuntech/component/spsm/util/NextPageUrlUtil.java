@@ -3,6 +3,9 @@ package com.ronxuntech.component.spsm.util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 翻页链接工具类
+ */
 public class NextPageUrlUtil {
 
     private static NextPageUrlUtil nextPageUrlUtil = new NextPageUrlUtil();
@@ -86,6 +89,8 @@ public class NextPageUrlUtil {
         return urlList;
     }
 
+
+
     /**
      * http://www.sczyw.com
      *
@@ -137,6 +142,22 @@ public class NextPageUrlUtil {
             urlList.add(seed + prf + i + suf);
         }
 //			page.addTargetRequests(urlList);
+        return urlList;
+    }
+
+    /**
+     * 适用于 http://www.nykfw.com
+     * @param str
+     * @param totalpage
+     * @return
+     */
+    public List<String> jointNextpage8(String str, int totalpage) {
+        List<String> urlList = new ArrayList<>();
+        String seed = str;
+        for (int i = 1; i <= totalpage; i++) {
+            urlList.add(seed + "index_" + i + ".shtml");
+        }
+//		  page.addTargetRequests(urlList);
         return urlList;
     }
 }

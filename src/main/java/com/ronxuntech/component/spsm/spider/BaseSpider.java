@@ -42,8 +42,6 @@ public class BaseSpider implements PageProcessor {
         this.seedUrlId = seedUrlId;
         spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
         targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-        // seedurlService = (SeedUrlService)
-        // SpringBeanFactoryUtils.getBean("seedurlService");
         annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
     }
 
@@ -52,14 +50,13 @@ public class BaseSpider implements PageProcessor {
     // 创建service
     private SpiderManager spiderService;
     private TargetUrlManager targeturlService;
-    // private SeedUrlManager seedurlService;
     private AnnexUrlManager annexurlService;
-    // 用于存放第一次页面抓取到的list，用于去重
+    // 用于存放第一次页面抓取到的list，用于去重(部分网站)
     List<String> tempList = new ArrayList<>();
     // 保存seedURl的种子id
     private String seedUrlId = "";
     private WebInfo web;
-    //
+
     private int temp = 0;
     private int pageNumtemp = 0;
     // 用于判断是否是重下
@@ -68,11 +65,9 @@ public class BaseSpider implements PageProcessor {
     // 用于控制循环
     // private int forInt = 1;
     private Site site = Site.me().setRetryTimes(3).setSleepTime(1000).setTimeOut(200000).setCycleRetryTimes(3)
-            .setUserAgent(
-                    "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36");
+            .setUserAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36");
     // 附件工具
     private AnnexUtil annexUtil = AnnexUtil.getInstance();
-    // private FileNameUtil fileNameUtil = FileNameUtil.getInstance();
     private ConvertUtil convertUtil = ConvertUtil.getInstance();
     private NextPageUrlUtil nextPageUrlUtil = NextPageUrlUtil.getInstance();
     // 判断页面是否存在
@@ -81,11 +76,11 @@ public class BaseSpider implements PageProcessor {
     // 数据爬取的主要方法
     public void process(Page page) {
 
-        // 如果是重下，则将传递过来的targeturl添加到队列中。并且修改redown的值
+        /*// 如果是重下，则将传递过来的targeturl添加到队列中。并且修改redown的值
         if (reDown == 0 && retargetUrlList != null) {
             page.addTargetRequests(retargetUrlList);
             reDown++;
-        }
+        }*/
         // 获取页面信息保存在html 对象中。
         Html html = page.getHtml();
         String pageUrl = page.getUrl().toString().trim();
@@ -133,6 +128,7 @@ public class BaseSpider implements PageProcessor {
                     //如果是数字，则设置为数字
                     pageNum = Integer.parseInt(web.getTotalPage());
                 } else {
+                    //不是则通过抓取网页dom
                     String pageNumInContent = html.xpath(web.getTotalPage()).toString();
                     pageNum = annexUtil.getTotalPageNum(pageNumInContent, page.getUrl().toString());
                 }
@@ -144,7 +140,6 @@ public class BaseSpider implements PageProcessor {
 
         // 讲所有页的链接添加到targeturl 中，(通过获取 下一页 中的链接地址，放入target中， )
         if (StringUtils.isNotEmpty(web.getPageGetTag())) {
-            // for(;forInt<pageNum;forInt++){-----------------
             // 下一页是个链接的。 比如： 下一页是 ....html.
             String nextPage = "";
             if (StringUtils.isNotEmpty(web.getPageAjaxTag())) {
@@ -161,15 +156,13 @@ public class BaseSpider implements PageProcessor {
                 list.add(nextPage);
             }
             currentPageNum++;
-            // }
         }
 
-        // -------特殊网站分页开始----------------------------------------------------------------------------------
+        // -------特殊网站分页开始-------------
         // 该网站没有下一页的按钮，全是页码
         List<String> urlList2 = new ArrayList<>();
-        if (temp == 0 && web.getSeed().contains("http://rdjc.lknet.ac.cn/list.php")){
+        if (temp == 0 && web.getSeed().contains("http://rdjc.lknet.ac.cn/list.php")) {
             // 拼接网站下一页地址链接
-            // jointNextpage(page, urlList, web.getSeed(), web.getTotalPage());
             if (pageNum > 1) {
                 urlList2 = nextPageUrlUtil.jointNextpage(web.getSeed(), pageNum);
                 temp++;
@@ -193,17 +186,20 @@ public class BaseSpider implements PageProcessor {
         }
 
         if (temp == 0 && web.getSeed().contains("http://finance.aweb.com.cn")
-                || web.getSeed().contains("http://www.nykfw.com")
-                || web.getSeed().contains("http://www.gdcct.net") && pageNum > 1){
+                || web.getSeed().contains("http://www.gdcct.net") && pageNum > 1) {
             urlList2 = nextPageUrlUtil.jointNextpage4(web.getSeed(), pageNum);
         }
 
-        if (temp == 0 && web.getSeed().contains("http://www.sczyw.com") && pageNum > 1){
+        if (temp == 0 && web.getSeed().contains("http://www.sczyw.com") && pageNum > 1) {
             urlList2 = nextPageUrlUtil.jointNextpage5(web.getSeed(), pageNum);
         }
 
         if (temp == 0 && web.getSeed().contains("http://www.3456.tv/") && pageNum > 1) {
             urlList2 = nextPageUrlUtil.jointNextpage6(web.getSeed(), pageNum);
+        }
+
+        if(temp==0 && web.getSeed().contains("http://www.nykfw.com")){
+            urlList2 = nextPageUrlUtil.jointNextpage8(web.getSeed(), pageNum);
         }
         // 将得到的分页链接也加入到target 中， 然后存入targeturl 中，
         if (urlList2 != null && urlList2.size() != 0) {
@@ -212,13 +208,11 @@ public class BaseSpider implements PageProcessor {
         // list 去重
         convertUtil.removeDuplicateWithOrder(list);
         // 将抓取到符合的链接放入列表中
-//        List<String> urlList = annexUtil.decodedURL(list);
         page.addTargetRequests(list);
 
-        // ------特殊网站结束--------------------------------------------------------------------------------------------
-
+        // ------特殊网站结束------------------------------------------
         // 循环将list中的链接取出， 并存入targetUrl 的pd中。
-        if (flag == 0 && list.size() != 0){
+        if (flag == 0 && list.size() != 0) {
             try {
                 annexUtil.targeturlInsertDatabase(list, seedUrlId, targeturlService);
             } catch (Exception e) {
@@ -227,10 +221,8 @@ public class BaseSpider implements PageProcessor {
         }
 
         // --------将需要的数据 得到后数据存入数据库（排除种子页面、分页链接）----------
-
         // 数据处理并保存到page中。
         annexUtil.insertIntoPage(page, web, annexUtil, annexurlService, targeturlService);
-
         if (page.getResultItems().get("content") == null || page.getResultItems().get("content").equals("")) {
             // 设置skip之后，这个页面的结果不会被Pipeline处理
             page.setSkip(true);
@@ -276,24 +268,21 @@ public class BaseSpider implements PageProcessor {
                     .addUrl(web.getSeed()).addPipeline(new SpiderPipeline(web)).setScheduler(scheduler)
                     .addPipeline(new ImgOrDocPipeline(fileDir)).thread(5).run();
         } else if (web.getSeed().contains("http://www.cgris.net/photobase/default.html")) { // 特殊网站
-            // http://www.cgris.net/photobase/default.html
             Spider.create(new CgrisSpider(web, seedUrlId)).setDownloader(new HttpClientDownloader())
                     .addUrl(web.getSeed()).addPipeline(new SpiderPipeline(web)).setScheduler(scheduler)
                     .addPipeline(new ImgOrDocPipeline(fileDir)).thread(4).run();
-        } else if(web.getSeed().contains("http://sichuan.huangye88.com/zhongzi/")){
+        } else if (web.getSeed().contains("http://sichuan.huangye88.com/zhongzi/")) {
             Spider.create(new Huangye88Spider(web, seedUrlId)).setDownloader(new HttpClientDownloader())
                     .addUrl(web.getSeed()).addPipeline(new SpiderPipeline(web)).setScheduler(scheduler)
                     .addPipeline(new ImgOrDocPipeline(fileDir)).thread(4).run();
-        }else if(web.getSeed().contains("http://www.seedchina.com.cn")){
-            Spider.create(new SeedchinaSpider(web,seedUrlId)).addUrl(web.getSeed())
+        } else if (web.getSeed().contains("http://www.seedchina.com.cn")) {
+            Spider.create(new SeedchinaSpider(web, seedUrlId)).addUrl(web.getSeed())
                     .thread(5).setDownloader(new HttpClientDownloader())
                     .addPipeline(new SpiderPipeline(web))
                     .addPipeline(new ImgOrDocPipeline(fileDir))
                     .setScheduler(scheduler)
                     .run();
-        }else
-//很普通的网页
-           if (web.isHasDoc() || web.isHasImg()) {
+        } else if (web.isHasDoc() || web.isHasImg()) {
             Spider.create(new BaseSpider(web, seedUrlId)).addUrl(web.getSeed()).thread(3)
                     .setDownloader(new HttpClientDownloader()).addPipeline(new SpiderPipeline(web))
                     .addPipeline(new ImgOrDocPipeline(fileDir)).setScheduler(scheduler).run();
@@ -310,8 +299,8 @@ public class BaseSpider implements PageProcessor {
      * @param retargetUrlList
      * @param web
      */
-    public void setTargetUrlListAndWebInfo(List<String> retargetUrlList, WebInfo web) {
+  /*  public void setTargetUrlListAndWebInfo(List<String> retargetUrlList, WebInfo web) {
         this.retargetUrlList = retargetUrlList;
         this.web = web;
-    }
+    }*/
 }

@@ -19,7 +19,7 @@ public interface TargetUrlManager{
 	public void save(PageData pd)throws Exception;
 	
 	/**批量插入
-	 * @param list
+	 * @param pd
 	 * @throws Exception
 	 */
 	public void saveAll(PageData pd)throws Exception;
@@ -64,11 +64,11 @@ public interface TargetUrlManager{
 	
 	/**
 	 * 通过url c查询
-	 * @param url
+	 * @param
 	 * @return
 	 * @throws Exception
 	 */
-	public PageData findByUrl(PageData pd)throws Exception;
+	public List<PageData> findByUrl(PageData pd)throws Exception;
 	
 	/**批量删除
 	 * @param ArrayDATA_IDS

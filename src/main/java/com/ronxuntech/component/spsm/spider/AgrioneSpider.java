@@ -26,7 +26,6 @@ public class AgrioneSpider implements PageProcessor {
     private WebInfo web;
     private SpiderManager spiderService;
     private TargetUrlManager targeturlService;
-    //	private SeedUrlManager seedurlService;
     private AnnexUrlManager annexurlService;
     // 保存seedURl的种子id
     private String seedUrlId = "";
@@ -41,12 +40,10 @@ public class AgrioneSpider implements PageProcessor {
             .addCookie("Hm_lvt_9d8f86a65bc11382cd39fbe78884c454", "1483948469,1484012200")
             .addCookie("Hm_lpvt_9d8f86a65bc11382cd39fbe78884c454", "1484017938");
 
-    private String regex = "[\\[|\\]|,]";
 
     public AgrioneSpider(WebInfo web, String seedUrlId) {
         spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
         targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
         annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
         this.web = web;
         this.seedUrlId = seedUrlId;
@@ -59,9 +56,7 @@ public class AgrioneSpider implements PageProcessor {
     public void process(Page page) {
 
         Html html = page.getHtml();
-        List<String> links = html.links()
-                .regex(web.getUrlRex()).all();
-        String pageUrl = page.getUrl().toString();
+        List<String> links = html.links().xpath(web.getUrlTag()).regex(web.getUrlRex()).all();
         page.addTargetRequests(links);
 
         String pageNumInContent = html.xpath(web.getTotalPage()).toString();
@@ -73,7 +68,6 @@ public class AgrioneSpider implements PageProcessor {
             pageFlag++;
         }
 
-
         // 循环将list中的链接取出， 并存入targetUrl 的pd中。
         try {
             annexUtil.targeturlInsertDatabase(links, seedUrlId, targeturlService);
@@ -82,9 +76,7 @@ public class AgrioneSpider implements PageProcessor {
         }
         boolean isNextpage = annexUtil.isSave(web, page);
         // --------将需要的数据 得到后数据存入数据库（排除种子页面、分页链接）----------
-//        String contents = "";
-//        String title = "";
-        //将抓取的数据处理并放入page 以待
+        //将抓取的数据处理并放入page
         annexUtil.insertIntoPage(page, web, annexUtil, annexurlService, targeturlService);
 
         if (page.getResultItems().get("content") == null || page.getResultItems().get("content").equals("")) {

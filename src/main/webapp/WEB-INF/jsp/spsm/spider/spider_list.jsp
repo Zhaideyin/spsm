@@ -137,14 +137,20 @@
 												</c:if>
 												<div class="hidden-sm hidden-xs btn-group">
 													<c:if test="${QX.edit == 1 }">
-													<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SPIDER_ID}');">
-														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
+
+													<a class="btn btn-xs btn-success" name="spiderId" title="关键词" href="spider/keyWord.do?spiderId=${var.SPIDER_ID}">
+														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="关键词"></i>
 													</a>
 													</c:if>
 													<c:if test="${QX.del == 1 }">
 													<a class="btn btn-xs btn-danger" onclick="del('${var.SPIDER_ID}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
 													</a>
+														<c:if test="${QX.edit == 1 }">
+															<a class="btn btn-xs btn-success" title="编辑" onclick="edit('${var.SPIDER_ID}');">
+																<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
+															</a>
+														</c:if>
 													</c:if>
 												</div>
 												<div class="hidden-md hidden-lg">
@@ -395,33 +401,35 @@
 				}
 			});
 		};
-		
+
 		//导出excel
 		function toExcel(){
 			window.location.href='<%=basePath%>spider/excel.do';
 		}
+		// 关键词生成
+        function keyWord(){
+            top.jzts();
+            var diag = new top.Dialog();
+            diag.Drag=true;
+            diag.Title ="新增";
+            diag.URL = '<%=basePath%>spider/keyWord.do';
+            diag.Width = 450;
+            diag.Height = 355;
+            diag.CancelEvent = function(){ //关闭事件
+                if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
+                    if('${page.currentPage}' == '0'){
+                        top.jzts();
+                        setTimeout("self.location=self.location",100);
+                    }else{
+                        nextPage(${page.currentPage});
+                    }
+                }
+                diag.close();
+            };
+            diag.show();
+        }
 		
-		<%-- 
-		function select1() {
-			var rid = $("#DATABASETYPE_ID").val();
-			$.ajax(
-			{
-				type: "post",
-				url: "<%=basePath%>spider/chooseNextSelect.do",
-				data: {"DATABASETYPE_ID":rid,"flag":1},
-				success: function (data) {
-					var obj = $.parseJSON(data);
-					for (var i = 0; i < obj.length; i++) {
-						if(proid==obj[i].id){
-							$("#NAVBARTYPE_ID").append("<option selected value=" + obj[i].NAVBARTYPE_ID +">" + obj[i].NAVBARTYPENAME + "</option>");
-							continue;
-						}
-						$("#NAVBARTYPE_ID").append("<option value=" + obj[i].NAVBARTYPE_ID + ">" + obj[i].NAVBARTYPENAME + "</option>");
-					}
-				
-				}
-			})
-		}; --%>
+
 		
 		
 	 	//加载第二个下拉框的数据
@@ -497,10 +505,7 @@
 		} 
 		
 		
-	/* 	$(function () {
-			$('#DATABASETYPE_ID').bind("change", select1);
-			
-		}); */
+
 	
 		</script>
 

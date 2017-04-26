@@ -68,7 +68,6 @@ public class CgrisSpider implements PageProcessor {
         this.seedUrlId = seedUrlId;
         spiderService = (SpiderService) SpringBeanFactoryUtils.getBean("spiderService");
         targeturlService = (TargetUrlService) SpringBeanFactoryUtils.getBean("targeturlService");
-//		seedurlService = (SeedUrlService) SpringBeanFactoryUtils.getBean("seedurlService");
         annexurlService = (AnnexUrlService) SpringBeanFactoryUtils.getBean("annexurlService");
         croptypeService = (CropTypeService) SpringBeanFactoryUtils.getBean("croptypeService");
         cropService = (CropService) SpringBeanFactoryUtils.getBean("cropService");
@@ -108,7 +107,6 @@ public class CgrisSpider implements PageProcessor {
                 page.putField("content", contents.trim());
                 page.putField("title", title);
                 page.putField("pageUrl", pageUrl);
-                System.out.println("process:croptypemap:" + cropTypeMap.toString());
 
                 String cropTypeName = cropMap.get("cropTypeName").toString();
                 String cropTypeId = cropTypeMap.get(cropTypeName).toString();
@@ -131,7 +129,7 @@ public class CgrisSpider implements PageProcessor {
      *
      * @param links
      */
-    public void linksFilter(List<String> links) {
+   /* public void linksFilter(List<String> links) {
         System.out.println(links.size());
         System.out.println(links.toString());
         for (int i = links.size() - 1; i >= 0; i--) {
@@ -140,7 +138,7 @@ public class CgrisSpider implements PageProcessor {
                 links.remove(i);
             }
         }
-    }
+    }*/
 
     /**
      * 查询出所有作物类型
@@ -160,7 +158,6 @@ public class CgrisSpider implements PageProcessor {
         for (PageData pd : list) {
             cropTypeMap.put(pd.getString("CROPTYPENAME"), pd.getString("CROPTYPE_ID"));
         }
-        System.out.println("getallcropType cropTypeMap:" + cropTypeMap);
         return cropTypeMap;
     }
 
@@ -192,8 +189,7 @@ public class CgrisSpider implements PageProcessor {
         String cropName = cropMap.get("cropName").toString();
         String cropTypeName = cropMap.get("cropTypeName").toString();
         //得到最新的cropTypeMap；
-//        getALlCropType();
-        System.out.println("cropMap:" + cropMap.toString());
+        //getALlCropType();
         //三个参数都不为空才执行存存储
         if (StringUtils.isNotEmpty(breedName) && StringUtils.isNotEmpty(cropName) && StringUtils.isNotEmpty(cropTypeName)) {
             Map<String, String> cropTypeMap = getALlCropType();
@@ -201,7 +197,6 @@ public class CgrisSpider implements PageProcessor {
             if (cropTypeMap.containsKey(cropTypeName)) {
                 //得到改作物类型的id.然后通过id 查询出所有的作物。
                 String cropType_Id = cropTypeMap.get(cropTypeName).toString();
-                System.out.println("cropTypeId:" + cropType_Id);
                 try {
                     //重新得到当前作物类型的所有作物、
                     Map<String,String> allCropMap = getAllCrop(cropType_Id);
@@ -214,7 +209,6 @@ public class CgrisSpider implements PageProcessor {
                         pd1.put("CROPTYPEID", cropType_Id);
                         try {
                             cropService.save(pd1);
-                            System.out.println("just save Crop!");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -230,7 +224,6 @@ public class CgrisSpider implements PageProcessor {
                 pd.put("CROPTYPENAME", cropTypeName);
                 try {
                     croptypeService.save(pd);
-                    System.out.println("save Croptype");
                     //重新得到map
                     this.getALlCropType();
                 } catch (Exception e) {
@@ -243,7 +236,6 @@ public class CgrisSpider implements PageProcessor {
                 pd1.put("CROPTYPEID", cropType_Id);
                 try {
                     cropService.save(pd1);
-                    System.out.println("save Crop!");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

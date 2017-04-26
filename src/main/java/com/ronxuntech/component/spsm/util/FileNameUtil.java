@@ -10,10 +10,14 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 文件工具类
+ */
 public class FileNameUtil {
     // 单例模式
     private static FileNameUtil fileNameUtil = new FileNameUtil();
-    public static final String DOWN_URL_PATH = PathUtil.getClasspath() + "\\urls";
+    public static final String DOWN_URL_PATH = PathUtil.getClasspath() + "/urls"; //linux
+//    public static final String DOWN_URL_PATH = PathUtil.getClasspath() + "\\urls";
 
     public static FileNameUtil getInstance() {
         return fileNameUtil;

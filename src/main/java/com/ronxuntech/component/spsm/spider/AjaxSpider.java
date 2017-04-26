@@ -40,6 +40,8 @@ import us.codecraft.webmagic.selector.Html;
  * 用chormedriver 来模拟点击下一页，来抓取数据
  * @author angrl
  *
+ *现在没有用
+ *
  */
 public class AjaxSpider {
 

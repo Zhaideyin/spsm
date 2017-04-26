@@ -132,7 +132,6 @@ public class AgridataSpider implements PageProcessor {
 		if(!(pageUrl.toLowerCase().contains("cgris"))){
 			contents= html.xpath("/html/body/table/tbody/html()").toString();
 //
-			System.out.println("pageURL:"+pageUrl);
 			//放入map 中，在pipeline中取。
 			page.putField("content", contents.trim());
 			page.putField("title", breedName);
@@ -167,7 +166,6 @@ public class AgridataSpider implements PageProcessor {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("cropMap:"+cropMap.toString());
 		return cropMap;
 	}
 
@@ -176,16 +174,15 @@ public class AgridataSpider implements PageProcessor {
 	 * @param pageUrl
 	 * @return
 	 */
-	public Map<String,String> initCropMap(String pageUrl){
+	/*public Map<String,String> initCropMap(String pageUrl){
 		Map<String,String> cropMap1 = new HashMap<>();
 		String [] temp = pageUrl.split("/");
 		String crop = temp[temp.length-1].replaceAll("\\.htm","");
-		System.out.println("crop:"+crop);
 		if(crop.contains("-")){
 			String [] crops = crop.split("-");
 			cropMap1.put("cropName",crops[0]);
 			cropMap1.put("breedName",crops[1]);
 		}
 		return cropMap1;
-	}
+	}*/
 }

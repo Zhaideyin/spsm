@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>FH</groupId>
-	<artifactId>ndrc_console</artifactId>
+	<artifactId>spsm_console</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spsm</name>
@@ -670,6 +670,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+		<!--分词及关键字提取的包-->
+		<dependency>
+			<groupId>com.hankcs</groupId>
+			<artifactId>hanlp</artifactId>
+			<version>portable-1.1.5</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -685,7 +691,7 @@
         <encoding>UTF-8</encoding>  
             <compilerArguments>  
                   <verbose />  
-              <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>  
+              <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>
         </compilerArguments>  
     </configuration>  
 </plugin> 

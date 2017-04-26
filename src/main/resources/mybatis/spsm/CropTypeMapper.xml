@@ -63,11 +63,20 @@
 	<select id="findByCropName" parameterType="pd" resultType="pd">
 		select
 		  *
-	    FROM spsm_croptype a 
-		LEFT JOIN spsm_crop b 
+	    FROM spsm_croptype a
+		LEFT JOIN spsm_crop b
 			on a.CROPTYPE_ID=b.CROPTYPEID
 		WHERE
 			b.CROPNAME=#{CROPNAME}
+	</select>
+
+	<select id="findByCropTypeName" parameterType="pd" resultType="pd">
+		SELECT
+		<include refid="Field"></include>
+		FROM
+		<include refid="tableName"></include>
+		WHERE
+		CROPTYPENAME =#{datatypeName}
 	</select>
 	
 	<select id="findCropAndCropTypeRaletion">

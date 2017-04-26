@@ -104,7 +104,7 @@ public class CreateCodeController extends BaseController {
 		String objectName = pd.getString("objectName");	   			//类名				========参数2
 		String tabletop = pd.getString("tabletop");	   				//表前缀				========参数3
 		String basedir = pd.getString("BASEDIR");
-		tabletop = null == tabletop?"":tabletop.toUpperCase();		//表前缀转大写
+		tabletop = null == tabletop?"":tabletop.toLowerCase();		//表前缀转大写
 		String zindext = pd.getString("zindex");	   	   			//属性总数
 		int zindex = 0;
 		if(null != zindext && !"".equals(zindext)){
@@ -195,7 +195,7 @@ public class CreateCodeController extends BaseController {
 	public void save(PageData pd) throws Exception{
 		pd.put("PACKAGENAME", pd.getString("packageName"));	//包名
 		pd.put("OBJECTNAME", pd.getString("objectName"));	//类名
-		pd.put("TABLENAME", pd.getString("tabletop")+",fh,"+pd.getString("objectName").toUpperCase());	//表名
+		pd.put("TABLENAME", pd.getString("tabletop")+",fh,"+pd.getString("objectName").toLowerCase());	//表名
 		pd.put("FIELDLIST", pd.getString("FIELDLIST"));		//属性集合
 		pd.put("CREATETIME", DateUtil.getTime());			//创建时间
 		pd.put("TITLE", pd.getString("TITLE"));				//说明

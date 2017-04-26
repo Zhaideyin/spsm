@@ -125,8 +125,8 @@
 	<!-- SELECT s.* ,a.PAGEURL from spsm_spider s left JOIN spsm_annexurl a on 
 	a.PAGEURL=s.CURRENT_URL WHERE a.pageurl='http://www.cgris.net/32pu/dnsxmysjy.htm ' -->
 	<select id="findByAnnexUrlAndPageUrl" parameterType="pd" resultType="pd">
-		SELECT s.* ,a.* from spsm_spider s 
-		left JOIN spsm_annexurl a 
+		SELECT s.* ,a.* from SPSM_SPIDER s
+		left JOIN SPSM_ANNEXURL a
 		on 
 		a.TARGETURLID=s.TARGETURLID 
 		WHERE 1= 1
@@ -149,11 +149,11 @@
 	<!-- 列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		 SELECT  s.* ,d.DATABASETYPENAME,n.NAVBARTYPENAME , l.LISTTYPENAME ,sub.SUBLISTTYPENAME
-	   	 FROM spsm_spider s
-	     LEFT JOIN spsm_databasetype d  ON s.DATABASETYPE=d.DATABASETYPE_ID  
-	     LEFT JOIN spsm_navbartype n ON s.NAVBARTYPE=n.NAVBARTYPE_ID 
-	     LEFT JOIN spsm_listtype l on s.LISTTYPE=l.LISTTYPE_ID 
-		 LEFT JOIN spsm_sublisttype sub ON s.SUBLISTTYPE=sub.SUBLISTTYPE_ID
+	   	 FROM SPSM_SPIDER s
+	     LEFT JOIN SPSM_DATABASETYPE d  ON s.DATABASETYPE=d.DATABASETYPE_ID
+	     LEFT JOIN SPSM_NAVBARTYPE n ON s.NAVBARTYPE=n.NAVBARTYPE_ID
+	     LEFT JOIN SPSM_LISTTYPE l on s.LISTTYPE=l.LISTTYPE_ID
+		 LEFT JOIN SPSM_SUBLISTTYPE sub ON s.SUBLISTTYPE=sub.SUBLISTTYPE_ID
 		 where 1=1
 		 	<!--通过数据类型来查询  -->
 		<if test="pd.datatype!= null and pd.datatype != ''"><!-- 关键词检索 -->
@@ -199,6 +199,8 @@
 				LISTTYPE = #{pd.datatype}
 				or
 				SUBLISTTYPE = #{pd.datatype}
+				OR
+				CROPTYPE = #{pd.datatype}
 				OR
 				CROPNAME = #{pd.datatype}
 			)
